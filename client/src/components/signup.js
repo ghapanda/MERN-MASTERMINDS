@@ -43,13 +43,25 @@ const SignUp = (props) => {
       setPasswordError("Password must contain both letters and numbers.");
       return;
     }
+
+    const userData = {
+      username: username,
+      password: password,
+      email: email,
+      displayName: "Example User",
+      isAdmin: false,
+      danceStyle: "Hip Hop",
+      danceClip: "https://example.com/danceclip.mp4",
+      portrait: "https://example.com/portrait.jpg",
+      bio: "This is an example user bio.",
+      listSessions: [],
+    };
     try {
-      const response = await axios.post("/api/signup", {
-        username,
-        email,
-        password,
-        // Add other user data here if needed
-      });
+      const response = await axios.post(
+        "http://localhost:3001/api/signup",
+        userData
+      );
+
       console.log("User signed up successfully:", response.data);
       // Handle success, e.g., redirect to login page
     } catch (error) {

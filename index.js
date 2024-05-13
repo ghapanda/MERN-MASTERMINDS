@@ -7,7 +7,15 @@ const signupRoute = require("./routes/signup"); // Import the signup route
 const app = express();
 app.use(cors());
 const PORT = process.env.PORT || 3001;
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
+app.get("/", (req, res) => {
+  res.send("Welcome to my MERN stack app!");
+});
+app.get("/api", (req, res) => {
+  res.send("this is the api endpoint");
+});
 mongoose
   .connect("mongodb://localhost:27017/my_database", {
     useNewUrlParser: true,

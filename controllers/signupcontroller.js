@@ -1,6 +1,7 @@
 const User = require("../models/User");
 
 exports.signup = async (req, res) => {
+  console.log(req.body);
   try {
     const {
       username,
@@ -12,6 +13,7 @@ exports.signup = async (req, res) => {
       danceClip,
       portrait,
       bio,
+      listSessions,
     } = req.body;
 
     // Create a new user instance
@@ -25,7 +27,7 @@ exports.signup = async (req, res) => {
       danceClip,
       portrait,
       bio,
-      listSessions: [], // Initialize listSessions as an empty array
+      listSessions, // Initialize listSessions as an empty array
     });
 
     // Save the user to the database
