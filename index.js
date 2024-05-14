@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const signupRoute = require("./routes/signup"); // Import the signup route
+const loginRoute = require("./routes/login");
 
 const app = express();
 app.use(cors());
@@ -25,6 +26,7 @@ mongoose
   .catch((err) => console.log(err));
 
 // Use the signup route
+app.use("/api", loginRoute);
 app.use("/api", signupRoute);
 
 // Start the server

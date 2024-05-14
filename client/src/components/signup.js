@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
 const SignUp = (props) => {
@@ -63,6 +63,10 @@ const SignUp = (props) => {
       );
 
       console.log("User signed up successfully:", response.data);
+      const history = useHistory();
+      alert("Successfully signed up!");
+      history.push("/login"); //redirecting to login
+
       // Handle success, e.g., redirect to login page
     } catch (error) {
       if (

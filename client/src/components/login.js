@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 const Login = (props) => {
@@ -6,33 +7,46 @@ const Login = (props) => {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
-  const onButtonClick = () => {
+  const onLoginClick = async () => {
     // Set initial error values to empty
     setEmailError("");
     setPasswordError("");
 
     // Check if the user has entered both fields correctly
     if ("" === email) {
-      setEmailError("Please enter your email");
+      setEmailError("Please enter email or username");
       return;
     }
 
-    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-      setEmailError("Please enter a valid email");
-      return;
-    }
+    // if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+    //   setEmailError("Please enter a valid email");
+    //   return;
+    // }
 
     if ("" === password) {
       setPasswordError("Please enter a password");
       return;
     }
-
-    if (password.length < 7) {
-      setPasswordError("The password must be 8 characters or longer");
-      return;
+    try {
+      const userData = { emailOrUsername: email, password: password };
+      const response = await axios.post(
+        "http://localhost:3001/api/login",
+        userData
+      );
+      console.log("User loged in successfully:", response.data);
+      alert("Welcome!");
+    } catch (error) {
+      if (
+        error.response &&
+        error.response.status === 404 &&
+        error.response.data.message === "Wrong username or password"
+      ) {
+        setPasswordError("Wrong username or password");
+      } else {
+        console.error("Error logging in user:", error.response.data);
+        alert("An error occurred while logging in. Please try again.");
+      }
     }
-
-    // Authentication calls will be made here...
   };
 
   return (
@@ -44,7 +58,7 @@ const Login = (props) => {
       <div className={"inputContainer"}>
         <input
           value={email}
-          placeholder="Enter your email here"
+          placeholder="Enter email or username"
           onChange={(ev) => setEmail(ev.target.value)}
           className={"inputBox"}
         />
@@ -55,7 +69,7 @@ const Login = (props) => {
         <input
           type="password"
           value={password}
-          placeholder="Enter your password here"
+          placeholder="Enter password"
           onChange={(ev) => setPassword(ev.target.value)}
           className={"inputBox"}
         />
@@ -66,7 +80,7 @@ const Login = (props) => {
         <input
           className={"inputButton"}
           type="button"
-          onClick={onButtonClick}
+          onClick={onLoginClick}
           value={"Log in"}
         />
       </div>
