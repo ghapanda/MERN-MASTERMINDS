@@ -3,17 +3,16 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const SignUp = (props) => {
+  const navigate = useNavigate(); //for redirecting to login page
+
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [userError, setUserError] = useState("");
-  const [alreadyExist, setAlreadyExist] = useState(false);
-  const [isEmailValid, setIsEmailValid] = useState(false);
 
   const OnSignUpClick = async () => {
-    const navigate = useNavigate();
     // Set initial error values to empty
     setEmailError("");
     setPasswordError("");
@@ -28,7 +27,6 @@ const SignUp = (props) => {
       setEmailError("Please enter a valid email");
       return;
     }
-    setIsEmailValid(true); //for now it is always valid
     if (username === "") {
       setUserError("Please enter username");
       return;
@@ -66,7 +64,7 @@ const SignUp = (props) => {
       console.log("User signed up successfully:", response.data);
 
       alert("Successfully signed up!");
-      navigate.push("/login"); //redirecting to login
+      navigate("/login"); //redirecting to login
 
       // Handle success, e.g., redirect to login page
     } catch (error) {

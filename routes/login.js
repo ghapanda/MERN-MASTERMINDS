@@ -13,7 +13,7 @@ router.post("/login", async (req, res) => {
     if (!existingUser) {
       return res.status(404).json({ message: "Wrong username or password" });
     }
-
+    console.log("User logged in successfully");
     if (existingUser.isAdmin) {
       //redirect to the admin page
     } else {
@@ -23,3 +23,4 @@ router.post("/login", async (req, res) => {
     res.status(500).json({ message: "Error logging in, try again later" });
   }
 });
+module.exports = router;
