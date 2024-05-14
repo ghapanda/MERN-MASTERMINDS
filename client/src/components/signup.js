@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const SignUp = (props) => {
@@ -12,7 +12,8 @@ const SignUp = (props) => {
   const [alreadyExist, setAlreadyExist] = useState(false);
   const [isEmailValid, setIsEmailValid] = useState(false);
 
-  const onSignUpClick = async () => {
+  const OnSignUpClick = async () => {
+    const navigate = useNavigate();
     // Set initial error values to empty
     setEmailError("");
     setPasswordError("");
@@ -63,9 +64,9 @@ const SignUp = (props) => {
       );
 
       console.log("User signed up successfully:", response.data);
-      const history = useHistory();
+
       alert("Successfully signed up!");
-      history.push("/login"); //redirecting to login
+      navigate.push("/login"); //redirecting to login
 
       // Handle success, e.g., redirect to login page
     } catch (error) {
@@ -132,7 +133,7 @@ const SignUp = (props) => {
           <input
             className="inputButton"
             type="button"
-            onClick={onSignUpClick}
+            onClick={OnSignUpClick}
             value="Sign Up"
           />
         </div>
