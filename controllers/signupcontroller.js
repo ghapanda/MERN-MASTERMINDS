@@ -16,6 +16,12 @@ exports.signup = async (req, res) => {
       listSessions,
     } = req.body;
 
+    //check if the user already exists:
+    const existingUser = await User.findOne({ $or: [{ username }, { email }] });
+    if (existingUser) {
+      return res.status(400).json({ message: "User already exists" });
+    }
+
     // Create a new user instance
     const newUser = new User({
       username,

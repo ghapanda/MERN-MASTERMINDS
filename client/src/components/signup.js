@@ -65,7 +65,16 @@ const SignUp = (props) => {
       console.log("User signed up successfully:", response.data);
       // Handle success, e.g., redirect to login page
     } catch (error) {
-      console.error("Error signing up user:", error.response.data);
+      if (
+        error.response &&
+        error.response.status === 400 &&
+        error.response.data.message === "User already exists"
+      ) {
+        setEmailError("User already exists");
+      } else {
+        console.error("Error signing up user:", error.response.data);
+        alert("An error occurred while signing up. Please try again.");
+      }
       // Handle error, e.g., display error message to user
     }
   };
