@@ -1,0 +1,26 @@
+.mainContainer {
+    position: relative;
+    overflow: hidden;
+    height: 100vh; /* Ensure the container takes up the full viewport height */
+}
+
+#bgVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100vh); /* Set the height to one-third of the viewport height */
+    object-fit: cover; /* Ensure the video covers the entire space */
+    z-index: -1;
+}
+
+.mission li {
+    margin-bottom: 20px; /* Spacing between bullets in "About Us" Section */
+}
+
+.textContainer {
+    padding-top: 70vh; /* Adjust the value as needed to shift the content downwards */
+}
+
+
+
