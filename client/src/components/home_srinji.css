@@ -1,0 +1,12 @@
+.Home {
+  background-color: #282c34;
+  height: 100vh; 
+  overflow-y: scroll;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; 
+  align-items: center; 
+}
+
+/* https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-flexbox-properties */
