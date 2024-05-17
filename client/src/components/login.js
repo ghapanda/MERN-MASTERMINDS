@@ -31,8 +31,10 @@ const Login = (props) => {
         userData
       );
       if (!response.data.isAdmin) {
-        //FIX THIS
-        navigate("/AdminSchedulePage");
+        navigate("/homeSchedule");
+        // navigate("/AdminSchedulePage");
+      } else {
+        navigate("/MemberSchedulePage");
       }
 
       console.log("User loged in successfully:", response.data);
