@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = (props) => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -29,6 +30,13 @@ const Login = (props) => {
         "http://localhost:3001/api/login",
         userData
       );
+      if (!response.data.isAdmin) {
+        navigate("/homeSchedule");
+        // navigate("/AdminSchedulePage");
+      } else {
+        navigate("/MemberSchedulePage");
+      }
+
       console.log("User loged in successfully:", response.data);
       alert("Welcome!");
     } catch (error) {
