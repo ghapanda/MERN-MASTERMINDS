@@ -31,7 +31,7 @@ const Login = (props) => {
         userData
       );
       if (!response.data.isAdmin) {
-        navigate("/homeSchedule");
+        navigate("/dashboard");
         // navigate("/AdminSchedulePage");
       } else {
         navigate("/MemberSchedulePage");
