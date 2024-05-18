@@ -10,9 +10,9 @@ class UsersPage extends React.Component{
         super(props);
         this.state={
             users:[
-            { id: 1, name: 'Alice', danceStyle: "hiphop" },
-            { id: 2, name: 'Bob', danceStyle: "hiphop" },
-            { id: 3, name: 'Charlie', danceStyle: "hiphop" }],
+            { id: 1, name: 'Alice', style: "hiphop" },
+            { id: 2, name: 'Bob', style: "hiphop" },
+            { id: 3, name: 'Charlie', style: "hiphop" }],
             loading :false,
             error : null,
         }
@@ -51,14 +51,13 @@ class UsersPage extends React.Component{
 
         return (
             <>
-            <Link to="/homepage" >home page</Link>
+            <Link to="/" >home page</Link>
             <Link to="/shedule" >shedule page</Link>
 
               <h1>Users</h1>
               <table>
                 <thead>
                   <tr>
-                    <th>ID</th>
                     <th>Name</th>
                     <th>Dance Style</th>
                     <th>Video</th>
@@ -67,9 +66,8 @@ class UsersPage extends React.Component{
                 <tbody>
                   {users.map((user) => (
                     <tr key={user.id}>
-                      <td>{user.id}</td>
-                      <td>{user.name}</td>
-                      <td>{user.danceStyle}</td>
+                      <td><Link to={`/profile/${user.id}`}>{user.name}</Link></td>
+                      <td>{user.style}</td>
                       <td>
                         <video width="320" height="240" controls>
                           <source src={user.video} type="video/mp4" />
