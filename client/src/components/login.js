@@ -8,6 +8,7 @@ const Login = (props) => {
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  sessionStorage.clear();
 
   const onLoginClick = async () => {
     // Set initial error values to empty
@@ -30,12 +31,18 @@ const Login = (props) => {
         "http://localhost:3002/api/login",
         userData
       );
-      if (!response.data.isAdmin) {
-        navigate("/dashboard");
-        // navigate("/AdminSchedulePage");
-      } else {
-        navigate("/MemberSchedulePage");
-      }
+      // if (!response.data.isAdmin) {
+      //   navigate("/dashboard");
+      //   // navigate("/AdminSchedulePage");
+      // } else {
+      //   navigate("/MemberSchedulePage");
+      // }
+      const { token, userId, email, username, isAdmin } = response.data;
+      sessionStorage.setItem("token", token);
+      sessionStorage.setItem("userId", userId);
+      sessionStorage.setItem("isAdmin", isAdmin);
+      sessionStorage.setItem("email", email);
+      sessionStorage.setItem("username", username);
 
       console.log("User loged in successfully:", response.data);
       alert("Welcome!");

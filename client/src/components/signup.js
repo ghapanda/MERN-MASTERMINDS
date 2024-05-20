@@ -4,7 +4,7 @@ import axios from "axios";
 
 const SignUp = (props) => {
   const navigate = useNavigate(); //for redirecting to login page
-
+  sessionStorage.clear();
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
