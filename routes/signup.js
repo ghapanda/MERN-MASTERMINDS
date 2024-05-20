@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const signupController = require("../controllers/signupcontroller");
+const signupController = require("../controllers/signupController");
 
 // Route to handle user signup
 router.post("/signup", signupController.signup);

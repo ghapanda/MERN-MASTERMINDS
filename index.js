@@ -4,6 +4,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const signupRoute = require("./routes/signup"); // Import the signup route
 const loginRoute = require("./routes/login");
+const updateScheduleRoute = require("./routes/update-schedule");
 
 const app = express();
 app.use(cors());
@@ -28,6 +29,7 @@ mongoose
 // Use the signup route
 app.use("/api", loginRoute);
 app.use("/api", signupRoute);
+app.use("/api", updateScheduleRoute);
 
 // Start the server
 app.listen(PORT, () => {
