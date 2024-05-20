@@ -27,7 +27,7 @@ const Login = (props) => {
     try {
       const userData = { emailOrUsername: email, password: password };
       const response = await axios.post(
-        "http://localhost:3001/api/login",
+        "http://localhost:3002/api/login",
         userData
       );
       if (!response.data.isAdmin) {

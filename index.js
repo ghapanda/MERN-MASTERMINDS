@@ -8,7 +8,7 @@ const updateScheduleRoute = require("./routes/update-schedule");
 
 const app = express();
 app.use(cors());
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -35,22 +35,3 @@ app.use("/api", updateScheduleRoute);
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
-// // Connect to MongoDB
-// mongoose
-//   .connect("mongodb://localhost:27017/my_database", {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   })
-//   .then(() => console.log("MongoDB connected"))
-//   .catch((err) => console.log(err));
-
-// app.use(bodyParser.json());
-
-// app.get("/", (req, res) => {
-//   res.send("Hello everyone this is temporary!");
-// });
-
-// app.listen(PORT, () => {
-//   console.log(`Server listening on port ${PORT}.`);
-// });
