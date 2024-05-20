@@ -31,17 +31,17 @@ const Login = (props) => {
         "http://localhost:3002/api/login",
         userData
       );
-      // if (!response.data.isAdmin) {
-      //   navigate("/dashboard");
-      //   // navigate("/AdminSchedulePage");
-      // } else {
-      //   navigate("/MemberSchedulePage");
-      // }
-      const { token, userId, email, username, isAdmin } = response.data;
+      if (!response.data.isAdmin) {
+        navigate("/dashboard");
+        // navigate("/AdminSchedulePage");
+      } else {
+        navigate("/MemberSchedulePage");
+      }
+      const { token, userId, useremail, username, isAdmin } = response.data;
       sessionStorage.setItem("token", token);
       sessionStorage.setItem("userId", userId);
       sessionStorage.setItem("isAdmin", isAdmin);
-      sessionStorage.setItem("email", email);
+      sessionStorage.setItem("email", useremail);
       sessionStorage.setItem("username", username);
 
       console.log("User loged in successfully:", response.data);
@@ -49,7 +49,7 @@ const Login = (props) => {
     } catch (error) {
       if (
         error.response &&
-        error.response.status === 404 &&
+        error.response.status === 401 &&
         error.response.data.message === "Wrong username or password"
       ) {
         setPasswordError("Wrong username or password");
@@ -57,6 +57,8 @@ const Login = (props) => {
         console.error("Error logging in user:", error.response.data);
         alert("An error occurred while logging in. Please try again.");
       }
+      console.error("Error logging in user:", error);
+      alert("Cannot connect to server. Please try again later.");
     }
   };
 

@@ -7,6 +7,13 @@ const loginRoute = require("./routes/login");
 const updateScheduleRoute = require("./routes/update-schedule");
 
 const app = express();
+// Use the cors middleware
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
 app.use(cors());
 const PORT = process.env.PORT || 3002;
 app.use(express.json());

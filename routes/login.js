@@ -37,15 +37,13 @@ router.post("/login", async (req, res) => {
         expiresIn: "1h",
       }
     );
-    res
-      .status(200)
-      .json({
-        token,
-        userId: existingUser._id,
-        email: existingUser.email,
-        username: existingUser.username,
-        isAdmin: existingUser.isAdmin,
-      });
+    res.status(200).json({
+      token,
+      userId: existingUser._id,
+      email: existingUser.email,
+      username: existingUser.username,
+      isAdmin: existingUser.isAdmin,
+    });
   } catch (error) {
     res.status(500).json({ message: "Error logging in, try again later" });
   }
