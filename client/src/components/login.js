@@ -57,8 +57,6 @@ const Login = (props) => {
         console.error("Error logging in user:", error.response.data);
         alert("An error occurred while logging in. Please try again.");
       }
-      console.error("Error logging in user:", error);
-      alert("Cannot connect to server. Please try again later.");
     }
   };
 
