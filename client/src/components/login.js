@@ -37,14 +37,32 @@ const Login = (props) => {
       } else {
         navigate("/MemberSchedulePage");
       }
-      const { token, userId, useremail, username, isAdmin } = response.data;
+      const {
+        token,
+        userId,
+        usremail,
+        username,
+        isAdmin,
+        danceStyle,
+        bio,
+        displayName,
+        portrait,
+        danceClip,
+      } = response.data;
+
       sessionStorage.setItem("token", token);
       sessionStorage.setItem("userId", userId);
       sessionStorage.setItem("isAdmin", isAdmin);
-      sessionStorage.setItem("email", useremail);
-      sessionStorage.setItem("username", username);
+      sessionStorage.setItem("password", password);
 
-      console.log("User loged in successfully:", response.data);
+      sessionStorage.setItem("email", usremail);
+      sessionStorage.setItem("username", username);
+      sessionStorage.setItem("danceStyle", danceStyle);
+      sessionStorage.setItem("portrait", portrait);
+      sessionStorage.setItem("bio", bio);
+      sessionStorage.setItem("displayName", displayName);
+      sessionStorage.setItem("danceClip", danceClip);
+
       alert("Welcome!");
     } catch (error) {
       if (
@@ -54,7 +72,7 @@ const Login = (props) => {
       ) {
         setPasswordError("Wrong username or password");
       } else {
-        console.error("Error logging in user:", error.response.data);
+        console.error("Error logging in user:");
         alert("An error occurred while logging in. Please try again.");
       }
     }

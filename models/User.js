@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
-const schedule = require("./Schedule")
+const schedule = require("./Schedule");
 
 const userSchema = new mongoose.Schema({
+  // _id: mongoose.Schema.Types.ObjectId,
   username: String,
   password: String,
   email: String,

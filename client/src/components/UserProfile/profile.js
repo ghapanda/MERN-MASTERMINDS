@@ -1,6 +1,6 @@
-import {React , useState, useEffect} from 'react';
+import { React, useState, useEffect } from "react";
 
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 
@@ -8,77 +8,79 @@ import axios from "axios";
 
 import "./profile.css";
 
-import DisplayProfile from "./display.js"
+import DisplayProfile from "./display.js";
 
-import EditableProfile from "./edit.js"
+import EditableProfile from "./edit.js";
 
-const Profile = () =>{
-    console.log(useParams());
-    const {id}=useParams();
+const Profile = () => {
+  // using this id and get the user information using API
 
+  // temp use user infor as following
+  console.log("email is ", sessionStorage.getItem("email"));
 
-    // using this id and get the user information using API
+  const [info, setInfo] = useState({
+    userId: sessionStorage.getItem("userId"),
+    username: sessionStorage.getItem("username"),
+    password: sessionStorage.getItem("password"),
+    email: sessionStorage.getItem("email"),
+    displayName: sessionStorage.getItem("displayName"),
+    isAdmin: sessionStorage.getItem("isAdmin"),
+    danceStyle: sessionStorage.getItem("danceStyle"),
+    danceClip: sessionStorage.getItem("danceClip"),
+    portrait: sessionStorage.getItem("portrait"),
+    bio: sessionStorage.getItem("bio") || "No bio",
+  });
 
-    // temp use user infor as following
+  // if edit or not
 
-    const info= {
-            id: id,
-            name: "first last",
-            style: "temp hop",
-            image: "",
-        }
-    
+  const [editMode, setEditMode] = useState(false);
+  const [name, setName] = useState(info.username);
 
-
-
-
-    // if edit or not
-
-    const [editMode, setEditMode] = useState(false);
-    const [name,setName] = useState(info.name);
-
-    function handleEditComplete(result) {
-        console.log("handleEditComplete", result);
-        if (result != null) {
-            setName(result.name);
-        }        
-        setEditMode(false);
+  function handleEditComplete(result) {
+    console.log("handleEditComplete", result);
+    if (result != null) {
+      setName(result.name);
     }
+    setEditMode(false);
+  }
+  const EditProfile = () => {};
 
-
-    return (
-        <div className="container">
-            <div className="header">
-            <h1 className="headerT">ucla offbeat</h1>
-                <button className="button"><Link to="/" className="linkh"> HOME</Link></button>
-                <button className="button"><Link to="/shedule" className="linkh">schedule</Link></button>
-                <button className="button"><Link to="/userspage" className="linkh">users</Link></button>
-            </div>
-            <div className="Profile">                 
-                {
-                    
-                    editMode
-                        ? <>
-                            <h1>Edit Profile</h1>
-                            <EditableProfile
-                                    info={info}
-                                    editComplete={handleEditComplete}                            
-                            />
-                        </>
-                        :<>
-                            <h1 style={{textAlign: 'center'}}>Profile</h1>
-                            <DisplayProfile
-                                    info={info}
-                                    startEdit={() => setEditMode(true)}
-                            />
-                        </>
-                }            
-            </div>
-        </div>
-    );
+  return (
+    <div className="container">
+      <div className="header">
+        <h1 className="headerT">ucla offbeat</h1>
+        <button className="button">
+          <Link to="/" className="linkh">
+            {" "}
+            HOME
+          </Link>
+        </button>
+        <button className="button">
+          <Link to="/memberSchedulePage" className="linkh">
+            schedule
+          </Link>
+        </button>
+        <button className="button">
+          <Link to="/userspage" className="linkh">
+            users
+          </Link>
+        </button>
+      </div>
+      <div className="Profile">
+        {editMode ? (
+          <>
+            <h1>Edit Profile</h1>
+            <EditableProfile info={info} setInfo={setInfo} />
+          </>
+        ) : (
+          <>
+            <h1 style={{ textAlign: "center" }}>Profile</h1>
+            <DisplayProfile info={info} startEdit={() => setEditMode(true)} />
+          </>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default Profile;
-
-
-
