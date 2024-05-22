@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import Group from './Group';
+import React,{ useState } from 'react';
+
+import DisplayUser from "./displayuser.js"
 
 const DisplayProfile=({
     info,
@@ -26,19 +27,6 @@ const DisplayProfile=({
                 <div style={{ flexGrow: 1, marginLeft: '20px' }}>
                     <h2>{info.id}:{info.name}</h2>
                     <p>{info.style}</p>
-                    <button
-                        style={{
-                        height: '36px',
-                        overflow: 'visible',
-                        border: '1px solid black',  
-                        backgroundColor: 'transparent',  
-                        color: 'black', 
-                        borderRadius: '5px',  
-                        padding: '0 12px'  
-                        }}
-                        onClick={startEdit} >
-                        Edit profile
-                    </button>
                     {/*
                     <div style={{ display: 'flex', justifyContent: 'space-between', backgroundColor: '#efefef', padding: '10px', borderRadius: '10px' }}>
                     <div>
@@ -55,11 +43,26 @@ const DisplayProfile=({
                     </div>
                     </div>*/}
                 </div>
+                <div>
+                <button
+                        style={{
+                        height: '36px',
+                        overflow: 'visible',
+                        border: '1px solid black',  
+                        backgroundColor: 'transparent',  
+                        color: 'black', 
+                        borderRadius: '5px',  
+                        padding: '0 12px'  
+                        }}
+                        onClick={startEdit} >
+                        Edit profile
+                    </button>
+                </div>
                 </div>
             </div>
             </div>
             <div class="body">
-                <h1 style={{ textAlign:"center"}}>No post yet</h1>
+                <h1 style={{ textAlign:"center"}}>{info.name} has not attended any events yet.</h1>
             </div>
         </>
 

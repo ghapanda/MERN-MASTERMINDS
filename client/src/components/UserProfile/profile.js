@@ -48,13 +48,20 @@ const Profile = () =>{
 
 
     return (
-        <div className="container">
-            <div className="header">
+        <>
+        <div className="header">
             <h1 className="headerT">ucla offbeat</h1>
                 <button className="button"><Link to="/" className="linkh"> HOME</Link></button>
                 <button className="button"><Link to="/memberSchedulePage" className="linkh">schedule</Link></button>
                 <button className="button"><Link to="/userspage" className="linkh">users</Link></button>
             </div>
+        <div className="container">
+            editMode
+            ?<>
+            </>
+            :<>
+                <sidebar />
+            </>
             <div className="Profile">                 
                 {
                     
@@ -76,8 +83,10 @@ const Profile = () =>{
                 }            
             </div>
         </div>
+        </>
     );
 };
+
 
 export default Profile;
 

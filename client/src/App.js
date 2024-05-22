@@ -50,9 +50,9 @@ function App() {
         />
 
         <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/adminSchedulePage" element={<AdminSchedulePage />} />
+        {/*<Route path="/adminSchedulePage" element={<AdminSchedulePage />} />*/}
         <Route path="/memberSchedulePage" element={<MemberSchedulePage />} />
-        <Route path="/homeSchedule" element={<MainSchedulePage />} />
+        {/*<Route path="/homeSchedule" element={<MainSchedulePage />} /> */}
         <Route
           path="/update-schedule"
           element={
