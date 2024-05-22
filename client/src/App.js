@@ -14,7 +14,7 @@ import AdminSchedulePage from "./components/adminSchedulePage.js";
 import MemberSchedulePage from "./components/memberSchedulePage.js";
 import MainSchedulePage from "./components/home_srinji.js";
 
-import Prac from "./components/prac.js";
+
 
 function App() {
   return (
@@ -33,7 +33,6 @@ function App() {
         <Route path="/adminSchedulePage" element={<AdminSchedulePage />} />
         <Route path="/memberSchedulePage" element={<MemberSchedulePage />} />
         <Route path="/homeSchedule" element={<MainSchedulePage />} />
-        <Route path="/prac" element={<Prac />}/>
       </Routes>
     </BrowserRouter>
   );
