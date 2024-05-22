@@ -36,11 +36,12 @@ const Profile = () =>{
 
     const [editMode, setEditMode] = useState(false);
     const [name,setName] = useState(info.name);
-
+    const [style, setStyle] = useState(info.style);
     function handleEditComplete(result) {
         console.log("handleEditComplete", result);
         if (result != null) {
             setName(result.name);
+            setStyle(result.style);
         }        
         setEditMode(false);
     }
@@ -51,7 +52,7 @@ const Profile = () =>{
             <div className="header">
             <h1 className="headerT">ucla offbeat</h1>
                 <button className="button"><Link to="/" className="linkh"> HOME</Link></button>
-                <button className="button"><Link to="/shedule" className="linkh">schedule</Link></button>
+                <button className="button"><Link to="/memberSchedulePage" className="linkh">schedule</Link></button>
                 <button className="button"><Link to="/userspage" className="linkh">users</Link></button>
             </div>
             <div className="Profile">                 

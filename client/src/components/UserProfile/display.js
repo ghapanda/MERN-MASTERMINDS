@@ -6,7 +6,7 @@ const DisplayProfile=({
     startEdit
 }) =>{
 
-    const defaultImage="./image/temp.pngcd";
+    const defaultImage="./image/temp.png";
     return(
         <>
             <div className="vh-100" style={{ backgroundColor: '#4169E1', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
