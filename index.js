@@ -6,15 +6,15 @@ const signupRoute = require("./routes/signup"); // Import the signup route
 const loginRoute = require("./routes/login");
 const updateScheduleRoute = require("./routes/update-schedule");
 const authenticateMiddleware = require("./middleware/auth");
-
+const updatePorfile = require("./routes/editprofile");
 const app = express();
 // Use the cors middleware
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: "http://localhost:3000",
+//     credentials: true,
+//   })
+// );
 app.use(cors());
 const PORT = process.env.PORT || 3002;
 app.use(express.json());
@@ -43,6 +43,8 @@ app.use("/api", signupRoute);
 
 //NOTE: OTHER ROUTE HANDLERS SHOULD BE ADDED HERE.INCLUDE "token" in the client-side headers
 app.use("/api", updateScheduleRoute);
+app.use("/api", updatePorfile);
+
 app.use(authenticateMiddleware);
 
 // Start the server

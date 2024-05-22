@@ -1,6 +1,6 @@
-import {React , useState, useEffect} from 'react';
+import { React, useState, useEffect } from "react";
 
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 
@@ -8,26 +8,33 @@ import axios from "axios";
 
 import "./profile.css";
 
-import DisplayProfile from "./display.js"
+import DisplayProfile from "./display.js";
 
-import EditableProfile from "./edit.js"
+import EditableProfile from "./edit.js";
 
-const Profile = () =>{
-    console.log(useParams());
-    const {id}=useParams();
+const Profile = () => {
+  // using this id and get the user information using API
 
+  // temp use user infor as following
+  console.log("email is ", sessionStorage.getItem("email"));
 
-    // using this id and get the user information using API
+  const [info, setInfo] = useState({
+    userId: sessionStorage.getItem("userId"),
+    username: sessionStorage.getItem("username"),
+    password: sessionStorage.getItem("password"),
+    email: sessionStorage.getItem("email"),
+    displayName: sessionStorage.getItem("displayName"),
+    isAdmin: sessionStorage.getItem("isAdmin"),
+    danceStyle: sessionStorage.getItem("danceStyle"),
+    danceClip: sessionStorage.getItem("danceClip"),
+    portrait: sessionStorage.getItem("portrait"),
+    bio: sessionStorage.getItem("bio") || "No bio",
+  });
 
-    // temp use user infor as following
+  // if edit or not
 
-    const info= {
-            id: id,
-            name: "first last",
-            style: "temp hop",
-            image: "",
-        }
-    
+  const [editMode, setEditMode] = useState(false);
+  const [name, setName] = useState(info.username);
 
 
 
@@ -45,6 +52,9 @@ const Profile = () =>{
         }        
         setEditMode(false);
     }
+    setEditMode(false);
+  }
+  const EditProfile = () => {};
 
 
     return (
@@ -89,6 +99,3 @@ const Profile = () =>{
 
 
 export default Profile;
-
-
-

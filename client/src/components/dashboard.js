@@ -10,13 +10,16 @@ export default function dashboard() {
         to="/update-schedule"
         style={{ fontSize: "24px", color: "#38cce6" }}
       >
-         Update Schedule
+        Update Schedule
       </Link>
       <Link
         to="/memberSchedulePage"
         style={{ fontSize: "24px", color: "#38cce6" }}
       >
         Schedule
+      </Link>
+      <Link to="/profile" style={{ fontSize: "24px", color: "#38cce6" }}>
+        Profile
       </Link>
     </div>
   );

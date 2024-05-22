@@ -15,8 +15,10 @@ router.post("/login", async (req, res) => {
     if (!existingUser) {
       return res.status(401).json({ message: "Wrong username or password" });
     }
+    console.log("pas", password);
     const passwordMatch = await bcrypt.compare(password, existingUser.password);
     if (!passwordMatch) {
+      console.log("got u wrong pass");
       return res.status(401).json({ message: "Wrong username or password" });
     }
 
@@ -40,9 +42,14 @@ router.post("/login", async (req, res) => {
     res.status(200).json({
       token,
       userId: existingUser._id,
-      email: existingUser.email,
+      usremail: existingUser.email,
       username: existingUser.username,
       isAdmin: existingUser.isAdmin,
+      danceStyle: existingUser.danceStyle,
+      bio: existingUser.bio,
+      displayName: existingUser.displayName,
+      portrait: existingUser.portrait,
+      danceClip: existingUser.danceClip,
     });
   } catch (error) {
     res.status(500).json({ message: "Error logging in, try again later" });
