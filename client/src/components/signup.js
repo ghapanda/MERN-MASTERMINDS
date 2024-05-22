@@ -4,7 +4,7 @@ import axios from "axios";
 
 const SignUp = (props) => {
   const navigate = useNavigate(); //for redirecting to login page
-
+  sessionStorage.clear();
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -57,7 +57,7 @@ const SignUp = (props) => {
     };
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/signup",
+        "http://localhost:3002/api/signup",
         userData
       );
 

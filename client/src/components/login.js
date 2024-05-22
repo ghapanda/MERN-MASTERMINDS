@@ -8,6 +8,7 @@ const Login = (props) => {
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  sessionStorage.clear();
 
   const onLoginClick = async () => {
     // Set initial error values to empty
@@ -27,22 +28,28 @@ const Login = (props) => {
     try {
       const userData = { emailOrUsername: email, password: password };
       const response = await axios.post(
-        "http://localhost:3001/api/login",
+        "http://localhost:3002/api/login",
         userData
       );
       if (!response.data.isAdmin) {
-        navigate("/homeSchedule");
+        navigate("/dashboard");
         // navigate("/AdminSchedulePage");
       } else {
         navigate("/MemberSchedulePage");
       }
+      const { token, userId, useremail, username, isAdmin } = response.data;
+      sessionStorage.setItem("token", token);
+      sessionStorage.setItem("userId", userId);
+      sessionStorage.setItem("isAdmin", isAdmin);
+      sessionStorage.setItem("email", useremail);
+      sessionStorage.setItem("username", username);
 
       console.log("User loged in successfully:", response.data);
       alert("Welcome!");
     } catch (error) {
       if (
         error.response &&
-        error.response.status === 404 &&
+        error.response.status === 401 &&
         error.response.data.message === "Wrong username or password"
       ) {
         setPasswordError("Wrong username or password");

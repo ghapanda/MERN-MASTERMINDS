@@ -39,7 +39,7 @@ function Schedule() {
 function MemberSchedulePage() {
   return (
     <div className="MemberSchedulePage">
-      <h1 className="Title">Member Schedule Page</h1>
+      <h1 className="Title">Schedule</h1>
       <div>
         <Schedule /> {/* Includes component directly */}
       </div>  
@@ -48,3 +48,5 @@ function MemberSchedulePage() {
 }
 
 export default MemberSchedulePage;
+
+//automatically update from database
