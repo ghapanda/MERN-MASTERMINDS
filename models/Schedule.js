@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const user = require("./User")
 
 const scheduleSchema = new mongoose.Schema({
+    index: String,
     name: String,
     week: String,
     day: String,

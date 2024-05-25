@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import "./update-schedule.css";
 
 import axios from "axios";
+import { v4 as uuidv4 } from 'uuid';
 
-function SessionContainer({ index, sessionData, onSessionChange }) {
+
+function SessionContainer({ index, sessionData, onSessionChange, onSessionDelete }) {
   const [data, setData] = useState(sessionData);
 
   useEffect(() => {
@@ -33,6 +35,7 @@ function SessionContainer({ index, sessionData, onSessionChange }) {
       <input id="location" value={data.location} onChange={handleChange} />
       <label htmlFor="contact">Contact: </label>{" "}
       <input id="contact" value={data.contact} onChange={handleChange} />
+      <button className="delete" onClick={onSessionDelete(index)}>Delete</button>
     </div>
   );
 }
@@ -40,8 +43,7 @@ function SessionContainer({ index, sessionData, onSessionChange }) {
 function UpdateSchedule() {
   const [sessions, setSessions] = useState([]);
 
-  useEffect(() => {
-    // Fetch session data from the backend when the component mounts
+  useEffect(() => { //Fetch current session data
     axios
       .get("http://localhost:3002/api/update-schedule")
       .then((response) => {
@@ -54,6 +56,7 @@ function UpdateSchedule() {
 
   const addSession = () => {
     const newSession = {
+      index: uuidv4(),
       name: "",
       week: "",
       day: "",
@@ -85,6 +88,22 @@ function UpdateSchedule() {
       });
   };
 
+  const deleteSession = (index) => {
+    const updatedSessions = [...sessions]; // Create a shallow copy of the array
+    updatedSessions.splice(index, 1); // Remove the element at the specified index
+    setSessions(updatedSessions);
+    axios
+    .post("http://localhost:3002/api/update-schedule", index)
+    .then((response) => {
+      console.log("Sessions posted successfully:", response.data);
+      // Optionally, reset sessions state after successful post
+      // setSessions([]);
+    })
+    .catch((error) => {
+      console.error("Error posting sessions:", error);
+    });
+  };
+
   return (
     <div className="UpdateSchedule">
       <h1 className="Title">Schedule</h1>
@@ -95,17 +114,14 @@ function UpdateSchedule() {
       <div className="sessions">
         {sessions.map((session, index) => (
           <SessionContainer
-            key={index}
             index={index}
             sessionData={session}
             onSessionChange={updateSession}
+            onSessionDelete={() => deleteSession}
           />
         ))}
       </div>
-      <button className="update" onClick={update}>
-        {" "}
-        Update{" "}
-      </button>
+      <button className="update" onClick={update}>Update</button>
     </div>
     //have a delete session button and this should update/delete from the database
     //update only if it isnt already there else send a already updated message
