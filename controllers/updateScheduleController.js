@@ -12,7 +12,7 @@ exports.update = async (req, res) => {
                     name: sessionData.name,
                     week: sessionData.week,
                     day: sessionData.day,
-                    date: new Date(sessionData.date), // Convert date string to Date object
+                    date: sessionData.date, // Convert date string to Date object
                     time: sessionData.time,
                     location: sessionData.location,
                     contact: sessionData.contact,
@@ -24,7 +24,7 @@ exports.update = async (req, res) => {
                 foundSession.name = sessionData.name;
                 foundSession.week = sessionData.week;
                 foundSession.day = sessionData.day;
-                foundSession.date = new Date(sessionData.date); // Convert date string to Date object
+                foundSession.date = sessionData.date;
                 foundSession.time = sessionData.time;
                 foundSession.location = sessionData.location;
                 foundSession.contact = sessionData.contact;
@@ -48,7 +48,7 @@ exports.delete = async (req, res) => {
         
         
         // Find and delete the session with the specified index
-        const deletedSession = await Session.deleteOne({ index: req.body });
+        const deletedSession = await Session.deleteOne({ index: req.body.index });
 
         if (deletedSession.deletedCount === 1) {
             // If session was found and deleted successfully

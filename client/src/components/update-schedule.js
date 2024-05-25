@@ -5,47 +5,50 @@ import axios from "axios";
 import { v4 as uuidv4 } from 'uuid';
 
 
-function SessionContainer({ index, sessionData, onSessionChange, onSessionDelete }) {
-  const [data, setData] = useState(sessionData);
+function SessionContainer({ index, session, onSessionUpdate, onSessionDelete }) {
+  const [sessionDict, setDict] = useState(session);
 
   useEffect(() => {
-    setData(sessionData);
-  }, [sessionData]);
+    setDict(session);
+  }, [session]); // Runs while session changes
+  // why is this important?
 
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    const updatedData = { ...data, [id]: value };
-    setData(updatedData);
-    onSessionChange(index, updatedData);
+  const handleChange = (event) => {
+    const { id, value } = event.target; // Event target: refers to the element that triggered the event
+    const updatedSessionDict = { ...sessionDict, [id]: value }; // [id]: value updates the correct key value pair in sessionData
+    setDict(updatedSessionDict);
+    onSessionUpdate(index, updatedSessionDict);
   };
 
   return (
     <div className="session-container">
       <label htmlFor="name">Name: </label>{" "}
-      <input id="name" value={data.name} onChange={handleChange} />
+      <input id="name" value={sessionDict.name} onChange={handleChange} />
       <label htmlFor="week">Week: </label>{" "}
-      <input id="week" value={data.week} onChange={handleChange} />
+      <input id="week" value={sessionDict.week} onChange={handleChange} />
       <label htmlFor="day">Day: </label>{" "}
-      <input id="day" value={data.day} onChange={handleChange} />
+      <input id="day" value={sessionDict.day} onChange={handleChange} />
       <label htmlFor="date">Date: </label>{" "}
-      <input id="date" value={data.date} onChange={handleChange} />
+      <input id="date" value={sessionDict.date} onChange={handleChange} />
       <label htmlFor="time">Time: </label>{" "}
-      <input id="time" value={data.time} onChange={handleChange} />
+      <input id="time" value={sessionDict.time} onChange={handleChange} />
       <label htmlFor="location">Location: </label>{" "}
-      <input id="location" value={data.location} onChange={handleChange} />
+      <input id="location" value={sessionDict.location} onChange={handleChange} />
       <label htmlFor="contact">Contact: </label>{" "}
-      <input id="contact" value={data.contact} onChange={handleChange} />
-      <button className="delete" onClick={onSessionDelete(index)}>Delete</button>
+      <input id="contact" value={sessionDict.contact} onChange={handleChange} />
+      <button className="delete" onClick={() => onSessionDelete(index)}>Delete Permanently</button> 
+      {/* () => handles events/passes events, without causes function to run while rendering */}
     </div>
   );
 }
 
-function UpdateSchedule() {
+function Schedule() {
   const [sessions, setSessions] = useState([]);
 
-  useEffect(() => { //Fetch current session data
+  // Fetches current session data 
+  useEffect(() => { // Runs while rendering
     axios
-      .get("http://localhost:3002/api/update-schedule")
+      .get("http://localhost:3002/schedule/")
       .then((response) => {
         setSessions(response.data);
       })
@@ -55,7 +58,7 @@ function UpdateSchedule() {
   }, []);
 
   const addSession = () => {
-    const newSession = {
+    const newSession = { // Dictionary type object
       index: uuidv4(),
       name: "",
       week: "",
@@ -65,59 +68,53 @@ function UpdateSchedule() {
       location: "",
       contact: "",
     };
-    setSessions([...sessions, newSession]);
+    setSessions([...sessions, newSession]); // ... Spread operator: expands array into elements
   };
 
-  const updateSession = (index, updatedData) => {
+  const updateSession = (index, updatedSessionDict) => {
     const updatedSessions = sessions.map((session, i) =>
-      i === index ? updatedData : session
+      i === index ? updatedSessionDict : session
     );
     setSessions(updatedSessions);
   };
 
-  const update = () => {
+  const deleteSession = (index) => {
+    const updatedSessions = [...sessions]; 
+    const deletedSession = updatedSessions[index];;
+    updatedSessions.splice(index, 1); 
+    setSessions(updatedSessions);
     axios
-      .post("http://localhost:3002/api/update-schedule", sessions)
+      .post("http://localhost:3002/schedule/delete", deletedSession)
       .then((response) => {
         console.log("Sessions posted successfully:", response.data);
-        // Optionally, reset sessions state after successful post
-        // setSessions([]);
       })
       .catch((error) => {
         console.error("Error posting sessions:", error);
       });
   };
 
-  const deleteSession = (index) => {
-    const updatedSessions = [...sessions]; // Create a shallow copy of the array
-    updatedSessions.splice(index, 1); // Remove the element at the specified index
-    setSessions(updatedSessions);
+  const update = () => {
     axios
-    .post("http://localhost:3002/api/update-schedule", index)
-    .then((response) => {
-      console.log("Sessions posted successfully:", response.data);
-      // Optionally, reset sessions state after successful post
-      // setSessions([]);
-    })
-    .catch((error) => {
-      console.error("Error posting sessions:", error);
-    });
+      .post("http://localhost:3002/schedule/update", sessions) //put localhost in a variable 
+      .then((response) => {
+        console.log("Sessions posted successfully:", response.data);
+      })
+      .catch((error) => {
+        console.error("Error posting sessions:", error);
+      });
   };
 
   return (
     <div className="UpdateSchedule">
       <h1 className="Title">Schedule</h1>
-      <button className="addSession" onClick={addSession}>
-        {" "}
-        + Add Session{" "}
-      </button>
+      <button className="addSession" onClick={addSession}>+ Add Session</button>
       <div className="sessions">
-        {sessions.map((session, index) => (
+        {sessions.map((session, i) => (
           <SessionContainer
-            index={index}
-            sessionData={session}
-            onSessionChange={updateSession}
-            onSessionDelete={() => deleteSession}
+            index={i}
+            session={session}
+            onSessionUpdate={updateSession}
+            onSessionDelete={deleteSession}
           />
         ))}
       </div>
@@ -130,4 +127,4 @@ function UpdateSchedule() {
   );
 }
 
-export default UpdateSchedule;
+export default Schedule;

@@ -4,9 +4,9 @@ const updateScheduleController = require("../controllers/updateScheduleControlle
 const Session = require("../models/Schedule");
 
 // Route to handle user signup
-router.post("/update-schedule", updateScheduleController.update);
-router.post("/update-schedule", updateScheduleController.delete);
-router.get("/update-schedule", async (req, res) => {
+router.post("/update", updateScheduleController.update);
+router.post("/delete", updateScheduleController.delete);
+router.get("/", async (req, res) => {
   try {
     const sessions = await Session.find();
     res.json(sessions);
@@ -14,5 +14,5 @@ router.get("/update-schedule", async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
-
+ 
 module.exports = router;

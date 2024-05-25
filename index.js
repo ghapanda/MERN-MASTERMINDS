@@ -4,7 +4,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const signupRoute = require("./routes/signup"); // Import the signup route
 const loginRoute = require("./routes/login");
-const updateScheduleRoute = require("./routes/update-schedule");
+const scheduleRoute = require("./routes/schedule");
 const authenticateMiddleware = require("./middleware/auth");
 const updatePorfile = require("./routes/editprofile");
 const app = express();
@@ -42,7 +42,7 @@ app.use("/api", signupRoute);
 //from this point, authentication is being applied
 
 //NOTE: OTHER ROUTE HANDLERS SHOULD BE ADDED HERE.INCLUDE "token" in the client-side headers
-app.use("/api", updateScheduleRoute);
+app.use("/schedule", scheduleRoute);
 app.use("/api", updatePorfile);
 
 app.use(authenticateMiddleware);
