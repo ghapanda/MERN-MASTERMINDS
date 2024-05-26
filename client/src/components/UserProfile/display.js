@@ -2,7 +2,7 @@ import { useState } from "react";
 import Group from "./Group";
 
 const DisplayProfile = ({ info, startEdit }) => {
-  const defaultImage = "./image/temp.pngcd";
+  const defaultImage = "./image/temp.png";
   return (
     <>
       <div
@@ -78,7 +78,7 @@ const DisplayProfile = ({ info, startEdit }) => {
         </div>
       </div>
       <div classname="body">
-        <h1 style={{ textAlign: "center" }}>No post yet</h1>
+        <h1 style={{ textAlign: "center" }}>Event you have joined</h1>
       </div>
     </>
   );

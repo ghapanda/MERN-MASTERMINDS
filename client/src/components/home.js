@@ -15,10 +15,7 @@ const Home = (props) => {
       </video>
 
       <div className="textContainer">
-        <div className="welcomeMessage">
-          <p>Welcome to OffBeat Sessions! UCLA's Only Street Dance Club</p>
-        </div>
-
+        
         <p>
           New Here? <Link to="/signup">Signup here</Link>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {/* Adding space */}
@@ -29,9 +26,12 @@ const Home = (props) => {
           Follow us on Instagram:{" "}
           <a href="https://www.instagram.com/uclaoffbeat/">@uclaoffbeat</a>
         </p>
-
-        <p>Join us as we dance, connect, and grow together!</p>
       </div>
+
+      <div className="ending">
+      <p>Join us as we dance, connect, and grow together!</p>
+      </div>
+
     </div>
   );
 };

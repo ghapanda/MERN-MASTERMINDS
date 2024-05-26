@@ -70,8 +70,7 @@ const EditableProfile = ({ info, setInfo }) => {
     } catch (error) {
       console.error("Error updating profile:", error.response.data);
     }
-  };
-
+};  
   return (
     <>
       <Group>
@@ -132,10 +131,25 @@ const EditableProfile = ({ info, setInfo }) => {
         </h2>
       </Group>
 
+
+      <Group>
+        <h2 style={{ marginRight: "10px" }}>
+          portrait:
+          <input
+            type="portrait"
+            value={portrait}
+            onChange={(e) => setPortrait(e.target.value)}
+          />
+        </h2>
+      </Group>
+
       <Group>
         <button onClick={handleSaveClicked}>Save</button>
         <button onClick={handleCancelClicked}>Cancel</button>
       </Group>
+
+
+
     </>
   );
 };

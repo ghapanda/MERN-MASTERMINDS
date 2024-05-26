@@ -41,8 +41,6 @@ const Profile = () => {
 
     // if edit or not
 
-    const [editMode, setEditMode] = useState(false);
-    const [name,setName] = useState(info.name);
     const [style, setStyle] = useState(info.style);
     function handleEditComplete(result) {
         console.log("handleEditComplete", result);
@@ -52,9 +50,9 @@ const Profile = () => {
         }        
         setEditMode(false);
     }
-    setEditMode(false);
-  }
-  const EditProfile = () => {};
+    //setEditMode(false);
+  
+  //const EditProfile = () => {};
 
 
     return (
@@ -66,12 +64,12 @@ const Profile = () => {
                 <button className="button"><Link to="/userspage" className="linkh">users</Link></button>
             </div>
         <div className="container">
-            editMode
+            {/*editMode
             ?<>
             </>
             :<>
                 <sidebar />
-            </>
+            </> */}
             <div className="Profile">                 
                 {
                     

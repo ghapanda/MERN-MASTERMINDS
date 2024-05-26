@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './memberSchedulePage.css';
+
+import axios from "axios";
 
 function AttendantContainer() {
   return (
@@ -9,40 +11,47 @@ function AttendantContainer() {
   );
 }
 
-function Schedule() {
-  {/* Import schedule from Admin Schedule Page using Schedule component*/}
+function MemberSchedulePage() {
+  const [sessions, setSessions] = useState([]);
   const [attendants, setAttendants] = useState([]);
-
   const addAttendant = () => {
-      setAttendants([...attendants, <AttendantContainer key={attendants.length} />]); 
-  }; 
+    setAttendants([...attendants, <AttendantContainer key={attendants.length} />]); 
+}; 
+
+
+  // Fetches current session data 
+  useEffect(() => { // Runs while rendering
+    axios
+      .get("http://localhost:3002/schedule/")
+      .then((response) => {
+        setSessions(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching sessions:", error);
+      });
+  }, []);
 
   return (
-    // Import Schedule from Admin Schedule Page
-  <div className="Schedule">
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <p style={{ marginRight: '20px' }}> Week: </p>
-      <p style={{ marginRight: '20px' }}> Day: </p>
-      <p style={{ marginRight: '20px' }}> Date: </p>
-      <p style={{ marginRight: '20px' }}> Time: </p>
-      <p style={{ marginRight: '20px' }}> Location: </p>
-      <p style={{ marginRight: '20px' }}> Contact: </p>
-    </div>
+    <div className="Schedule">
+    <h1 className="Title">Schedule</h1>
+    <div className="sessions">
+      {sessions.map((session, i) => (
+        <div key={i} className="session">
+          <p>Name: {session.name}</p>
+          <p>Week: {session.week}</p>
+          <p>Day: {session.day}</p>
+          <p>Date: {session.date}</p>
+          <p>Time: {session.time}</p>
+          <p>Location: {session.location}</p>
+          <p>Contact: {session.contact}</p>
+        </div>
+        
+      ))}
     <div className="attendants">
       <button className="addAttendant" onClick={addAttendant}> + Add Attendant</button>
       {attendants}
     </div>
-  </div>
-  );
-}
-
-function MemberSchedulePage() {
-  return (
-    <div className="MemberSchedulePage">
-      <h1 className="Title">Schedule</h1>
-      <div>
-        <Schedule /> {/* Includes component directly */}
-      </div>  
+    </div>
     </div>
   );
 }

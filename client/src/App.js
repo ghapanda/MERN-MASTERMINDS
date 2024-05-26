@@ -13,7 +13,7 @@ import Profile from "./components/UserProfile/profile.js";
 import AboutUs from "./components/aboutus.js";
 
 import Dashboard from "./components/dashboard.js";
-import UpdateSchedule from "./components/update-schedule.js";
+import Schedule from "./components/update-schedule.js";
 import MemberSchedulePage from "./components/memberSchedulePage.js";
 import ProtectedRoute from "./authentication/protectedRoutes.js";
 function App() {
@@ -58,7 +58,7 @@ function App() {
           path="/update-schedule"
           element={
             <ProtectedRoute>
-              <UpdateSchedule />
+              <Schedule />
             </ProtectedRoute>
           }
         />
