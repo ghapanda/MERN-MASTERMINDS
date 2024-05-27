@@ -11,45 +11,27 @@ const SearchBar = () => {
         setQuery(e.target.value)
     }
 
-    // // Function to fetch search results from the backend
-    // async function fetchSearchResults() {
-    //     try {
-    //         const response = await axios.get(`http://localhost:3002/search?q=${query}`);
-    //         setSearchResults(response.data);
-    //     } catch (error) {
-    //         console.error("Error fetching search results:", error);
-    //     }
-    // }
-
-    // // useEffect hook to fetch search results when query state changes
-    // useEffect(() => {
-    //     if (query) {
-    //         fetchSearchResults();
-    //     } else {
-    //         setSearchResults([]);
-    //     }
-    // }, [query]);
-
-
-    console.log(sessionStorage.getItem("token"));
-
-    useEffect(() => { // Runs while rendering
-        axios
-            .get(`http://localhost:3002/api/search?q=${query}`, {
-                headers: {
-                    Authorization: `Bearer ${sessionStorage.getItem("token")}`
-                }
-            })
-            .then((response) => {
-                setSearchResults(response.data);
-            })
-            .catch((error) => {
-                console.error("Error fetching search results", error);
-            });
+    useEffect(() => {
+        if (query.trim() !== "") { // Check if the query is not empty
+            axios
+                .get(`http://localhost:3002/api/search?q=${query}`, {
+                    headers: {
+                        Authorization: `Bearer ${sessionStorage.getItem("token")}`
+                    }
+                })
+                .then((response) => {
+                    console.log(response.data);
+                    setSearchResults(response.data);
+                })
+                .catch((error) => {
+                    console.error("Error fetching search results", error);
+                });
+        } else {
+            setSearchResults([]); // Clear search results if query is empty
+        }
     }, [query]);
 
 
-    
     return (
         <div className="w-full max-w-xl flex mx-auto p-20 text-xl">
             <input
@@ -64,15 +46,14 @@ const SearchBar = () => {
                     {searchResults.map((result) => (
                         <li key={result._id}>
                             <div>
-                                <img src={result.portrait} alt={result.displayName} />
-                                <h3>{result.displayName}</h3>
-                                <p>{result.username}</p>
+                                <p>Profile Picture: <img src={result.portrait}/></p>
+                                <p>Display Name: {result.displayName}</p>
+                                <p>Username: {result.username}</p>
                             </div>
                         </li>
                     ))}
                 </ul>
             )}
-            <button className="bg-white p-4">🔍</button>
         </div>
     );
 };

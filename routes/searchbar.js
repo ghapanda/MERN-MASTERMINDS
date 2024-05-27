@@ -4,10 +4,13 @@ const router = express.Router();
 
 // Route to fetch user information based on search query
 router.get("/search", async (req, res) => {
-  console.log('Testing...')
+
     try {
+
       // Extract the search query from the request URL
       const { q } = req.query;
+
+      console.log(`This is q: ${q}`);
   
       // Define a regex pattern to match the search query
       const regex = new RegExp(q, "i"); // Case-insensitive search
@@ -19,6 +22,10 @@ router.get("/search", async (req, res) => {
           { username: { $regex: regex } },
         ],
       }, "displayName username portrait");
+
+
+      // debugging
+      console.log(`Found users: ${JSON.stringify(users, null, 2)}`);
 
       console.log('We have populated users')
       // send response back to the client
