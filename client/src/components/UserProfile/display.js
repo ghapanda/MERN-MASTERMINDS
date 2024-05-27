@@ -2,7 +2,11 @@ import { useState } from "react";
 import Group from "./Group";
 
 const DisplayProfile = ({ info, startEdit }) => {
-  const defaultImage = "./image/temp.pngcd";
+  const defaultImage = "./image/temp.png";
+
+
+  const [len, setLen] = useState(info.events.length? (info.events.length>0):false)
+
   return (
     <>
       <div
@@ -78,7 +82,22 @@ const DisplayProfile = ({ info, startEdit }) => {
         </div>
       </div>
       <div classname="body">
-        <h1 style={{ textAlign: "center" }}>No post yet</h1>
+        {len ? (
+          <>
+          <h1 style={{ textAlign: "center" }}>Event you have joined</h1>
+          <ul>
+            {info.events.map((event) =>(
+              <li key={event.id}>
+              <h2>{event.date}</h2>
+              </li>
+            ))}
+          </ul>
+          </>
+        ):(
+          <h1 style={{textAlign:"center"}}>no events yet</h1>
+        )
+
+        }
       </div>
     </>
   );

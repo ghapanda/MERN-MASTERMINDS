@@ -3,7 +3,7 @@ import Group from "./Group";
 import axios from "axios";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 
-const EditableProfile = ({ info, setInfo }) => {
+const EditableProfile = ({ info, setInfo , editMode, setEditMode}) => {
   const navigate = useNavigate();
   console.log("Edit User Profile");
 
@@ -15,20 +15,22 @@ const EditableProfile = ({ info, setInfo }) => {
 
   const [danceStyle, setDanceStyle] = useState(info.danceStyle);
   const [bio, setBio] = useState(info.bio);
-  const [portrait, setPortrait] = useState(info.portrait);
+  const [portrait, setPortrait] = useState(null);
   const [danceClip, setDanceClip] = useState(info.danceClip);
   const userId = info.userId;
-  const handleCancelClicked = () => {
-    // editComplete(null);
-    return;
+
+  const handlePortraitChange = async (e)=>{
+    const file = e.target.files[0];
+    setPortrait(file)
   };
 
+  //const history = useHistory();
   const handleSaveClicked = async () => {
     try {
       console.log("display name:", displayName);
       // editComplete({name,style});
-      sessionStorage.setItem("password", password);
 
+      sessionStorage.setItem("password", password);
       sessionStorage.setItem("email", email);
       sessionStorage.setItem("username", username);
       sessionStorage.setItem("danceStyle", danceStyle);
@@ -36,18 +38,7 @@ const EditableProfile = ({ info, setInfo }) => {
       sessionStorage.setItem("bio", bio);
       sessionStorage.setItem("displayName", displayName);
       sessionStorage.setItem("danceClip", danceClip);
-      // setInfo({
-      //   userId,
-      //   username,
-      //   password,
-      //   email,
-      //   displayName,
-      //   isAdmin,
-      //   danceStyle,
-      //   danceClip,
-      //   portrait,
-      //   bio,
-      // });
+
       const newData = {
         userId,
         username,
@@ -61,17 +52,22 @@ const EditableProfile = ({ info, setInfo }) => {
         bio,
       };
       console.log("display name:", info.displayName);
-
       const response = await axios.post(
         "http://localhost:3002/api/editprofile",
         newData
       );
-      navigate("/dashboard");
+
+      navigate("/loading")
+
+     // history.goBack()
     } catch (error) {
       console.error("Error updating profile:", error.response.data);
     }
-  };
+};  
 
+const handleCancel=()=>{
+  setEditMode(prevEditMode => !prevEditMode)
+}
   return (
     <>
       <Group>
@@ -133,8 +129,33 @@ const EditableProfile = ({ info, setInfo }) => {
       </Group>
 
       <Group>
+        <h2 style={{ marginRight: "10px" }}>
+          bio:
+          <input
+            type="text"
+            value={bio}
+            // onChange={e => setName(e.target.value)}
+            onChange={(e) => setBio(e.target.value)}
+          />
+        </h2>
+      </Group>
+
+
+      <Group>
+        <h2 style={{ marginRight: "10px" }}>
+          portrait:
+          <input
+            type="file"
+            /*value={portrait}*/
+            accept = "image/*"
+            onChange={(e) => setPortrait(e.target.value)}
+          />
+        </h2>
+      </Group>
+
+      <Group>
         <button onClick={handleSaveClicked}>Save</button>
-        <button onClick={handleCancelClicked}>Cancel</button>
+        <button onClick={handleCancel}>Cancel</button>
       </Group>
     </>
   );
