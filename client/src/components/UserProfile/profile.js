@@ -17,10 +17,8 @@ import AdminH from "./adminH.js";
 import NotAdminH from "./notAdminH.js"
 
 const Profile = () => {
-  // using this id and get the user information using API
 
-  // temp use user infor as following
-  console.log("email is ", sessionStorage.getItem("email"));
+  //console.log("email is ", sessionStorage.getItem("email"));
 
   const [info, setInfo] = useState({
     userId: sessionStorage.getItem("userId"),
@@ -36,14 +34,11 @@ const Profile = () => {
     events : sessionStorage.getItem("events"),
   });
 
-  // if edit or not
+
   const [editMode, setEditMode] = useState(false);
 
   const [name, setName] = useState(info.username);
-
-  const [isAdmin, setAdmin]  = useState(info.isAdmin)
-    // if edit or not
-
+    
     const [style, setStyle] = useState(info.style);
     function handleEditComplete(result) {
         console.log("handleEditComplete", result);
@@ -60,13 +55,13 @@ const Profile = () => {
 
     return (
         <>
-            { isAdmin ?(
+            { info.isAdmin ?(
                 <>
-                <AdminH/>
+                <NotAdminH />
                 </>
             ):(
                 <>
-                    <NotAdminH />
+                    <AdminH/>
                 </>
             )}
         <div className="container">

@@ -15,15 +15,21 @@ const EditableProfile = ({ info, setInfo , editMode, setEditMode}) => {
 
   const [danceStyle, setDanceStyle] = useState(info.danceStyle);
   const [bio, setBio] = useState(info.bio);
-  const [portrait, setPortrait] = useState(info.portrait);
+  const [portrait, setPortrait] = useState(null);
   const [danceClip, setDanceClip] = useState(info.danceClip);
   const userId = info.userId;
+
+  const handlePortraitChange = async (e)=>{
+    const file = e.target.files[0];
+    setPortrait(file)
+  };
 
   //const history = useHistory();
   const handleSaveClicked = async () => {
     try {
       console.log("display name:", displayName);
       // editComplete({name,style});
+
       sessionStorage.setItem("password", password);
       sessionStorage.setItem("email", email);
       sessionStorage.setItem("username", username);
