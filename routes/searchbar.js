@@ -21,6 +21,8 @@ router.get("/search", async (req, res) => {
       }, "displayName username portrait");
 
       console.log('We have populated users')
+      // send response back to the client
+      res.json(users);
 
     } catch (error) {
       // Handle errors

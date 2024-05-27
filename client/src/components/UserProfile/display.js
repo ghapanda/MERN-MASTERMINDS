@@ -77,7 +77,7 @@ const DisplayProfile = ({ info, startEdit }) => {
           </div>
         </div>
       </div>
-      <div classname="body">
+      <div className="body">
         <h1 style={{ textAlign: "center" }}>No post yet</h1>
       </div>
     </>

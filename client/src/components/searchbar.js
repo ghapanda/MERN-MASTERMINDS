@@ -35,7 +35,7 @@ const SearchBar = () => {
 
     useEffect(() => { // Runs while rendering
         axios
-            .get(`http://localhost:3002/api/search`, {
+            .get(`http://localhost:3002/api/search?q=${query}`, {
                 headers: {
                     Authorization: `Bearer ${sessionStorage.getItem("token")}`
                 }
@@ -49,7 +49,7 @@ const SearchBar = () => {
     }, [query]);
 
 
-
+    
     return (
         <div className="w-full max-w-xl flex mx-auto p-20 text-xl">
             <input
