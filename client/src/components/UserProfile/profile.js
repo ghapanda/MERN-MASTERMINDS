@@ -42,7 +42,6 @@ const Profile = () => {
   const [name, setName] = useState(info.username);
 
   const [isAdmin, setAdmin]  = useState(info.isAdmin)
-
     // if edit or not
 
     const [style, setStyle] = useState(info.style);
