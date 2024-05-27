@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const signupRoute = require("./routes/signup"); // Import the signup route
 const loginRoute = require("./routes/login");
 const scheduleRoute = require("./routes/schedule");
+const searchbarRoute = require("./routes/searchbar")
 const authenticateMiddleware = require("./middleware/auth");
 const updatePorfile = require("./routes/editprofile");
 const app = express();
@@ -46,6 +47,8 @@ app.use("/schedule", scheduleRoute);
 app.use("/api", updatePorfile);
 
 app.use(authenticateMiddleware);
+
+app.use("/api", searchbarRoute);
 
 // Start the server
 app.listen(PORT, () => {
