@@ -48,6 +48,7 @@ const Login = (props) => {
         displayName,
         portrait,
         danceClip,
+        events,
       } = response.data;
 
       sessionStorage.setItem("token", token);
@@ -62,7 +63,8 @@ const Login = (props) => {
       sessionStorage.setItem("bio", bio);
       sessionStorage.setItem("displayName", displayName);
       sessionStorage.setItem("danceClip", danceClip);
-
+      sessionStorage.setItem("events", events);
+      
       alert("Welcome!");
     } catch (error) {
       if (

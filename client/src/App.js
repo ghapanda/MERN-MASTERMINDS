@@ -10,6 +10,9 @@ import UsersPage from "./components/users-page.js";
 
 import Profile from "./components/UserProfile/profile.js";
 
+import Loading from "./components/UserProfile/loading.js";
+
+
 import AboutUs from "./components/aboutus.js";
 
 import Dashboard from "./components/dashboard.js";
@@ -76,6 +79,15 @@ function App() {
           element={
             <ProtectedRoute>
               <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/loading"
+          element={
+            <ProtectedRoute>
+              <Loading />
             </ProtectedRoute>
           }
         />

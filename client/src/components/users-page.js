@@ -3,7 +3,11 @@ import axios from "axios";
 
 import { Link } from "react-router-dom";
 
+
+
+
 const UsersPage =(props)=>{
+  /*
       const [user, setUser] = useState({
         userId: sessionStorage.getItem("userId"),
         username: sessionStorage.getItem("username"),
@@ -50,6 +54,7 @@ const UsersPage =(props)=>{
         </table>
       </>
     );
+    */
 }
 
 export default UsersPage;

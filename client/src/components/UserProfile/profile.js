@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate} from "react-router-dom";
 
 import { Link } from "react-router-dom";
 
@@ -11,6 +11,10 @@ import "./profile.css";
 import DisplayProfile from "./display.js";
 
 import EditableProfile from "./edit.js";
+
+import AdminH from "./adminH.js";
+
+import NotAdminH from "./notAdminH.js"
 
 const Profile = () => {
   // using this id and get the user information using API
@@ -29,13 +33,16 @@ const Profile = () => {
     danceClip: sessionStorage.getItem("danceClip"),
     portrait: sessionStorage.getItem("portrait"),
     bio: sessionStorage.getItem("bio") || "No bio",
+    events : sessionStorage.getItem("events"),
   });
 
   // if edit or not
-
+  console.log(info.isAdmin)
   const [editMode, setEditMode] = useState(false);
+
   const [name, setName] = useState(info.username);
 
+  const [isAdmin, setAdmin]  = useState(info.isAdmin)
 
 
 
@@ -57,12 +64,17 @@ const Profile = () => {
 
     return (
         <>
-        <div className="header">
-            <h1 className="headerT">ucla offbeat</h1>
-                <button className="button"><Link to="/" className="linkh"> HOME</Link></button>
-                <button className="button"><Link to="/memberSchedulePage" className="linkh">schedule</Link></button>
-                <button className="button"><Link to="/userspage" className="linkh">users</Link></button>
-            </div>
+            {
+                isAdmin
+                ?
+                    <>
+                        <AdminH />
+                    </>
+                    :<>
+                        <NotAdminH />
+                        <div>bb</div>
+                    </>
+            }
         <div className="container">
             {/*editMode
             ?<>
@@ -75,10 +87,13 @@ const Profile = () => {
                     
                     editMode
                         ? <>
+                            <div>{editMode}</div>
                             <h1>Edit Profile</h1>
                             <EditableProfile
                                     info={info}
-                                    editComplete={handleEditComplete}                            
+                                    editComplete={handleEditComplete} 
+                                    editMode={editMode}
+                                    setEditMode={setEditMode}                           
                             />
                         </>
                         :<>
