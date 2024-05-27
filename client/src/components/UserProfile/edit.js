@@ -32,18 +32,7 @@ const EditableProfile = ({ info, setInfo , editMode, setEditMode}) => {
       sessionStorage.setItem("bio", bio);
       sessionStorage.setItem("displayName", displayName);
       sessionStorage.setItem("danceClip", danceClip);
-      // setInfo({
-      //   userId,
-      //   username,
-      //   password,
-      //   email,
-      //   displayName,
-      //   isAdmin,
-      //   danceStyle,
-      //   danceClip,
-      //   portrait,
-      //   bio,
-      // });
+
       const newData = {
         userId,
         username,
@@ -133,13 +122,26 @@ const handleCancel=()=>{
         </h2>
       </Group>
 
+      <Group>
+        <h2 style={{ marginRight: "10px" }}>
+          bio:
+          <input
+            type="text"
+            value={bio}
+            // onChange={e => setName(e.target.value)}
+            onChange={(e) => setBio(e.target.value)}
+          />
+        </h2>
+      </Group>
+
 
       <Group>
         <h2 style={{ marginRight: "10px" }}>
           portrait:
           <input
-            type="portrait"
-            value={portrait}
+            type="file"
+            /*value={portrait}*/
+            accept = "image/*"
             onChange={(e) => setPortrait(e.target.value)}
           />
         </h2>

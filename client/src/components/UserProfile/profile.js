@@ -37,14 +37,11 @@ const Profile = () => {
   });
 
   // if edit or not
-  console.log(info.isAdmin)
   const [editMode, setEditMode] = useState(false);
 
   const [name, setName] = useState(info.username);
 
   const [isAdmin, setAdmin]  = useState(info.isAdmin)
-
-
 
     // if edit or not
 
@@ -64,17 +61,15 @@ const Profile = () => {
 
     return (
         <>
-            {
-                isAdmin
-                ?
-                    <>
-                        <AdminH />
-                    </>
-                    :<>
-                        <NotAdminH />
-                        <div>bb</div>
-                    </>
-            }
+            { isAdmin ?(
+                <>
+                <AdminH/>
+                </>
+            ):(
+                <>
+                    <NotAdminH />
+                </>
+            )}
         <div className="container">
             {/*editMode
             ?<>
