@@ -53,6 +53,7 @@ const Login = (props) => {
       } = response.data;
 
       sessionStorage.setItem("token", token);
+      
       sessionStorage.setItem("userId", userId);
       sessionStorage.setItem("isAdmin", isAdmin);
       sessionStorage.setItem("password", password);

@@ -9,6 +9,7 @@ import AdminPage from "./components/admin-page.js";
 import UsersPage from "./components/users-page.js";
 
 import Profile from "./components/UserProfile/profile.js";
+import SearchBar from "./components/searchbar.js"
 
 import Loading from "./components/UserProfile/loading.js";
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/searchbar" element={<SearchBar />} />
 
         <Route
           path="/userspage"

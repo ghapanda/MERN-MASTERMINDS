@@ -21,6 +21,9 @@ export default function dashboard() {
       <Link to="/profile" style={{ fontSize: "24px", color: "#38cce6" }}>
         Profile
       </Link>
+      <Link to="/searchbar" style={{ fontSize: "24px", color: "#38cce6" }}>
+        SearchBar
+      </Link>
     </div>
   );
 }
