@@ -1,11 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Group from "./Group";
 
 const DisplayProfile = ({ info, startEdit }) => {
   const defaultImage = "./image/temp.png";
 
-
-  const [len, setLen] = useState(info.events.length? (info.events.length>0):false)
+  const [len, setLen] = useState(info.events.length > 0);
 
   return (
     <>
@@ -57,47 +56,44 @@ const DisplayProfile = ({ info, startEdit }) => {
                   color: "black",
                   borderRadius: "5px",
                   padding: "0 12px",
+                  cursor: "pointer",
+                  transition: "background-color 0.3s",
                 }}
                 onClick={startEdit}
               >
                 Edit profile
               </button>
-              {/*
-                    <div style={{ display: 'flex', justifyContent: 'space-between', backgroundColor: '#efefef', padding: '10px', borderRadius: '10px' }}>
-                    <div>
-                        <p className="small text-muted mb-1"># of attend</p>
-                        <p>{info.count}</p>
-                    </div>
-                    <div>
-                        <p className="small text-muted mb-1">I am going to </p>
-                        <p>{info.going}</p>
-                    </div>
-                    <div>
-                        <p className="small text-muted mb-1">instagram</p>
-                        <a>{info.instaUrl}</a>
-                    </div>
-                    </div>*/}
             </div>
           </div>
         </div>
       </div>
-      <div classname="body">
+      <div className="body" style={{ marginTop: "20px" }}>
         {len ? (
           <>
-          <h1 style={{ textAlign: "center" }}>Event you have joined</h1>
-          <ul>
-            {info.events.map((event) =>(
-              <li key={event.id}>
-              <h2>{event.date}</h2>
-              </li>
-            ))}
-          </ul>
+            <h1 style={{ textAlign: "center", color: "#4169E1" }}>
+              Events you have joined
+            </h1>
+            <ul style={{ listStyleType: "none", padding: 0 }}>
+              {info.events.map((event) => (
+                <li
+                  key={event.id}
+                  style={{
+                    border: "1px solid #4169E1",
+                    borderRadius: "5px",
+                    padding: "10px",
+                    marginBottom: "10px",
+                  }}
+                >
+                  <h2>{event.date}</h2>
+                </li>
+              ))}
+            </ul>
           </>
-        ):(
-          <h1 style={{textAlign:"center"}}>no events yet</h1>
-        )
-
-        }
+        ) : (
+          <h1 style={{ textAlign: "center", color: "#4169E1" }}>
+            No events yet
+          </h1>
+        )}
       </div>
     </>
   );
