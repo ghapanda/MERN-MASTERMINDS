@@ -1,34 +1,32 @@
-.header{
-    background-color:#4169E1;
+.header {
+  background-color: #4169e1;
 }
 
-.button{
-    background-color:#4169E1;
-    color : #FFD700;
+.button {
+  background-color: #4169e1;
+  color: #ffd700;
 }
 
-.headerT{
-    color : #FFD700;
+.headerT {
+  color: #ffd700;
 }
 
-.linkh{
-    color:#FFD700;
+.linkh {
+  color: #ffd700;
 }
-
-
 
 .profile-page {
-    display: flex;
+  display: flex;
 }
-  
+
 .sidebar {
-    width: 250px;
-    padding: 10px;
-    background-color: #f0f0f0;
-    border-right: 1px solid #ccc;
+  width: 250px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-right: 1px solid #ccc;
 }
-  
+
 .profile-details {
-    flex-grow: 1;
-    padding: 20px;
+  flex-grow: 1;
+  padding: 20px;
 }

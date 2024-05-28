@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "./login.css";
 
 const Login = (props) => {
   const navigate = useNavigate();
@@ -64,7 +65,7 @@ const Login = (props) => {
       sessionStorage.setItem("displayName", displayName);
       sessionStorage.setItem("danceClip", danceClip);
       sessionStorage.setItem("events", events);
-      
+
       alert("Welcome!");
     } catch (error) {
       if (
@@ -81,43 +82,44 @@ const Login = (props) => {
   };
 
   return (
-    <div className={"mainContainer"}>
-      <div className={"titleContainer"}>
-        <div>Login</div>
+    <div className={"mainContainer login-bg"}>
+      <div className="login-box">
+        <h2>Login</h2>
+        <form>
+          <div className="user-box">
+            <input
+              type="text"
+              value={email}
+              onChange={(ev) => setEmail(ev.target.value)}
+              required
+            />
+            <label>Email or Username</label>
+            <div className="errorLabel">{emailError}</div>
+          </div>
+          <div className="user-box">
+            <input
+              type="password"
+              value={password}
+              onChange={(ev) => setPassword(ev.target.value)}
+              required
+            />
+            <label>Password</label>
+            <div className="errorLabel">{passwordError}</div>
+          </div>
+          <button type="button" onClick={onLoginClick}>
+            Log in
+          </button>
+          <p>
+            Don't have an account? Register{" "}
+            <Link
+              to="/signup"
+              style={{ color: "yellow", textDecoration: "underline" }}
+            >
+              here
+            </Link>
+          </p>
+        </form>
       </div>
-      <br />
-      <div className={"inputContainer"}>
-        <input
-          value={email}
-          placeholder="Enter email or username"
-          onChange={(ev) => setEmail(ev.target.value)}
-          className={"inputBox"}
-        />
-        <label className="errorLabel">{emailError}</label>
-      </div>
-      <br />
-      <div className={"inputContainer"}>
-        <input
-          type="password"
-          value={password}
-          placeholder="Enter password"
-          onChange={(ev) => setPassword(ev.target.value)}
-          className={"inputBox"}
-        />
-        <label className="errorLabel">{passwordError}</label>
-      </div>
-      <br />
-      <div className={"inputContainer"}>
-        <input
-          className={"inputButton"}
-          type="button"
-          onClick={onLoginClick}
-          value={"Log in"}
-        />
-      </div>
-      <p>
-        Don't have an account? Register <Link to="/signup">here</Link>
-      </p>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import "./login.css";
 
 const SignUp = (props) => {
   const navigate = useNavigate(); //for redirecting to login page
@@ -47,12 +48,12 @@ const SignUp = (props) => {
       username: username,
       password: password,
       email: email,
-      displayName: "Example User",
+      displayName: username,
       isAdmin: false,
-      danceStyle: "Hip Hop",
-      danceClip: "https://example.com/danceclip.mp4",
-      portrait: "https://example.com/portrait.jpg",
-      bio: "This is an example user bio.",
+      danceStyle: "Not chosen yet",
+      danceClip: "",
+      portrait: "",
+      bio: "add a bio",
       listSessions: [],
     };
     try {
@@ -81,65 +82,55 @@ const SignUp = (props) => {
       // Handle error, e.g., display error message to user
     }
   };
-
   return (
-    <div className={"mainContainer"}>
-      <div className={"titleContainer"}>
-        <div>Sign Up</div>
+    <div className={"mainContainer login-bg"}>
+      <div className="login-box">
+        <h2>Sign Up</h2>
+        <form>
+          <div className="user-box">
+            <input
+              type="text"
+              value={email}
+              onChange={(ev) => setEmail(ev.target.value)}
+              required
+            />
+            <label>Email</label>
+            <div className="errorLabel">{emailError}</div>
+          </div>
+          <div className="user-box">
+            <input
+              type="text"
+              value={username}
+              onChange={(ev) => setUsername(ev.target.value)}
+              required
+            />
+            <label>Username</label>
+            <div className="errorLabel">{userError}</div>
+          </div>
+          <div className="user-box">
+            <input
+              type="password"
+              value={password}
+              onChange={(ev) => setPassword(ev.target.value)}
+              required
+            />
+            <label>Password</label>
+            <div className="errorLabel">{passwordError}</div>
+          </div>
+          <button type="button" onClick={OnSignUpClick}>
+            Sign Up
+          </button>
+          <p>
+            Already have an account?{" "}
+            <Link
+              to="/login"
+              style={{ color: "yellow", textDecoration: "underline" }}
+            >
+              Login
+            </Link>
+          </p>
+        </form>
       </div>
-
-      <br />
-
-      <div className={"inputContainer"}>
-        <input
-          value={email}
-          placeholder="Enter your email"
-          onChange={(ev) => setEmail(ev.target.value)}
-          className={"inputBox"}
-        />
-        <label className="errorLabel">{emailError}</label>
-      </div>
-
-      <br />
-
-      <div className={"inputContainer"}>
-        <input
-          value={username}
-          placeholder="Enter your username"
-          onChange={(ev) => setUsername(ev.target.value)}
-          className={"inputBox"}
-        />
-        <label className="errorLabel">{userError}</label>
-      </div>
-
-      <br />
-
-      <div className={"inputContainer"}>
-        <input
-          type="password"
-          value={password}
-          placeholder="Enter your password"
-          onChange={(ev) => setPassword(ev.target.value)}
-          className={"inputBox"}
-        />
-        <label className="errorLabel">{passwordError}</label>
-      </div>
-      <br />
-
-      <div>
-        <div className="inputContainer">
-          <input
-            className="inputButton"
-            type="button"
-            onClick={OnSignUpClick}
-            value="Sign Up"
-          />
-        </div>
-      </div>
-
-      <p>
-        Already have an account? <Link to="/login">Login</Link>
-      </p>
     </div>
   );
 };

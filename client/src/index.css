@@ -33,7 +33,7 @@ main {
 }
 
 code {
-  background: #fafafa;
+  background: #130359;
   border-radius: 5px;
   padding: 0.75rem;
   font-family: Menlo, Monaco, Lucida Console, Courier New, monospace;
@@ -41,7 +41,7 @@ code {
 
 input[type="button"] {
   border: none;
-  background: cornflowerblue;
+  background: rgb(114, 65, 96);
   color: white;
   padding: 12px 24px;
   margin: 8px;
