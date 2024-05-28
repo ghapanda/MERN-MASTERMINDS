@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./searchbar.css"
 
 const SearchBar = () => {
 
@@ -33,22 +34,23 @@ const SearchBar = () => {
 
 
     return (
-        <div className="w-full max-w-xl flex mx-auto p-20 text-xl">
+        <div className="search-bar">
             <input
                 type="text"
-                className="w-full placeholder-gray-400 text-gray-900 p-4"
                 placeholder="Search"
                 onChange={search}
                 value={query}
             />
             {searchResults.length > 0 && (
-                <ul>
+                <ul className="search-results">
                     {searchResults.map((result) => (
                         <li key={result._id}>
-                            <div>
-                                <p>Profile Picture: <img src={result.portrait}/></p>
-                                <p>Display Name: {result.displayName}</p>
-                                <p>Username: {result.username}</p>
+                            <div className="search-result-item">
+                                <img src={result.portrait} />
+                                <div>
+                                    <p>Display Name: {result.displayName}</p>
+                                    <p>Username: {result.username}</p>
+                                </div>
                             </div>
                         </li>
                     ))}
@@ -56,6 +58,7 @@ const SearchBar = () => {
             )}
         </div>
     );
+
 };
 
 export default SearchBar;

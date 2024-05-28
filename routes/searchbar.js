@@ -9,8 +9,6 @@ router.get("/search", async (req, res) => {
 
       // Extract the search query from the request URL
       const { q } = req.query;
-
-      console.log(`This is q: ${q}`);
   
       // Define a regex pattern to match the search query
       const regex = new RegExp(q, "i"); // Case-insensitive search
@@ -23,11 +21,6 @@ router.get("/search", async (req, res) => {
         ],
       }, "displayName username portrait");
 
-
-      // debugging
-      console.log(`Found users: ${JSON.stringify(users, null, 2)}`);
-
-      console.log('We have populated users')
       // send response back to the client
       res.json(users);
 
