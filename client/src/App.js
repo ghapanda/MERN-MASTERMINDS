@@ -11,6 +11,8 @@ import UsersPage from "./components/users-page.js";
 import Profile from "./components/UserProfile/profile.js";
 import SearchBar from "./components/searchbar.js"
 
+import Loading from "./components/UserProfile/loading.js";
+
 import AboutUs from "./components/aboutus.js";
 
 import Dashboard from "./components/dashboard.js";
@@ -53,6 +55,7 @@ function App() {
         />
 
         <Route path="/aboutus" element={<AboutUs />} />
+
         <Route
           path="/update-schedule"
           element={
@@ -78,11 +81,18 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+        <Route
+          path="/loading"
+          element={
+            <ProtectedRoute>
+              <Loading />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
 }
-
-//If you would like to test your work, you can temporarily add <Route> with the path to your work (e.g: <AdminPage/>)
 
 export default App;

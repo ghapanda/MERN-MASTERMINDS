@@ -55,6 +55,7 @@ router.post("/login", async (req, res) => {
       displayName: existingUser.displayName,
       portrait: existingUser.portrait,
       danceClip: existingUser.danceClip,
+      events:existingUser.listSessions,
     });
   } catch (error) {
     res.status(500).json({ message: "Error logging in, try again later" });
