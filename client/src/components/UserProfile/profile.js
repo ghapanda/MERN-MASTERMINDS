@@ -30,8 +30,9 @@ const Profile = () => {
     danceClip: sessionStorage.getItem("danceClip"),
     portrait: sessionStorage.getItem("portrait"),
     bio: sessionStorage.getItem("bio") || "No bio",
-    events: sessionStorage.getItem("events"),
+    listSessions: sessionStorage.getItem("listSessions"),
   });
+  console.log("userid", info.userId);
 
   const [editMode, setEditMode] = useState(false);
 
@@ -74,8 +75,7 @@ const Profile = () => {
               <div>{editMode}</div>
               <EditableProfile
                 info={info}
-                editComplete={handleEditComplete}
-                editMode={editMode}
+                setInfo={setInfo}
                 setEditMode={setEditMode}
               />
             </>

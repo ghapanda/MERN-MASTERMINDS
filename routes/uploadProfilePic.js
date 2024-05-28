@@ -33,6 +33,7 @@ router.post(
 
       if (!user) {
         console.log("catching here?");
+
         return res.status(404).send("User not found");
       }
 

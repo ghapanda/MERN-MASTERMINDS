@@ -49,8 +49,9 @@ const Login = (props) => {
         displayName,
         portrait,
         danceClip,
-        events,
+        listSessions,
       } = response.data;
+      console.log("user id in login", userId);
 
       sessionStorage.setItem("token", token);
       sessionStorage.setItem("userId", userId);
@@ -64,7 +65,7 @@ const Login = (props) => {
       sessionStorage.setItem("bio", bio);
       sessionStorage.setItem("displayName", displayName);
       sessionStorage.setItem("danceClip", danceClip);
-      sessionStorage.setItem("events", events);
+      sessionStorage.setItem("listSessions", listSessions);
 
       alert("Welcome!");
     } catch (error) {

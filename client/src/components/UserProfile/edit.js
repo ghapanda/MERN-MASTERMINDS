@@ -156,13 +156,139 @@
 // };
 
 // export default EditableProfile;
+
+// const EditableProfile = ({ info, setInfo, editMode, setEditMode }) => {
+//   const navigate = useNavigate();
+
+//   const [username, setUsername] = useState(info.username);
+//   const [password, setPassword] = useState(info.password);
+//   const [email, setEmail] = useState(info.email);
+//   const [displayName, setDisplayName] = useState(info.displayName);
+//   const [isAdmin, setIsAdmin] = useState(info.isAdmin);
+//   const [danceStyle, setDanceStyle] = useState(info.danceStyle);
+//   const [bio, setBio] = useState(info.bio);
+//   const [portrait, setPortrait] = useState(null);
+//   const [danceClip, setDanceClip] = useState(info.danceClip);
+//   const userId = info.userId;
+
+//   const handlePortraitChange = async (e) => {
+//     const file = e.target.files[0];
+//     setPortrait(file);
+//   };
+
+//   const handleSaveClicked = async () => {
+//     try {
+//       sessionStorage.setItem("password", password);
+//       sessionStorage.setItem("email", email);
+//       sessionStorage.setItem("username", username);
+//       sessionStorage.setItem("danceStyle", danceStyle);
+//       sessionStorage.setItem("portrait", portrait);
+//       sessionStorage.setItem("bio", bio);
+//       sessionStorage.setItem("displayName", displayName);
+//       sessionStorage.setItem("danceClip", danceClip);
+
+//       const newData = {
+//         userId,
+//         username,
+//         password,
+//         email,
+//         displayName,
+//         isAdmin,
+//         danceStyle,
+//         danceClip,
+//         portrait,
+//         bio,
+//       };
+
+//       const response = await axios.post(
+//         "http://localhost:3002/api/editprofile",
+//         newData
+//       );
+
+//       navigate("/loading");
+//     } catch (error) {
+//       console.error("Error updating profile:", error.response.data);
+//     }
+//   };
+
+//   const handleCancel = () => {
+//     setEditMode((prevEditMode) => !prevEditMode);
+//   };
+
+//   return (
+//     <div className="container">
+//       <h2 className="title">Edit Profile</h2>
+//       <div className="input-group">
+//         <label>Username:</label>
+//         <input
+//           type="text"
+//           value={username}
+//           onChange={(e) => setUsername(e.target.value)}
+//         />
+//       </div>
+//       <div className="input-group">
+//         <label>Password:</label>
+//         <input
+//           type="password"
+//           value={password}
+//           onChange={(e) => setPassword(e.target.value)}
+//         />
+//       </div>
+//       <div className="input-group">
+//         <label>Email:</label>
+//         <input
+//           type="text"
+//           value={email}
+//           onChange={(e) => setEmail(e.target.value)}
+//         />
+//       </div>
+//       <div className="input-group">
+//         <label>Screen Name:</label>
+//         <input
+//           type="text"
+//           value={displayName}
+//           onChange={(e) => setDisplayName(e.target.value)}
+//         />
+//       </div>
+//       <div className="input-group">
+//         <label>Dance Style:</label>
+//         <input
+//           type="text"
+//           value={danceStyle}
+//           onChange={(e) => setDanceStyle(e.target.value)}
+//         />
+//       </div>
+//       <div className="input-group">
+//         <label>Bio:</label>
+//         <input
+//           type="text"
+//           value={bio}
+//           onChange={(e) => setBio(e.target.value)}
+//         />
+//       </div>
+//       <div className="input-group">
+//         <label>Profile Picture:</label>
+//         <ProfilePicture info={info} setInfo={setInfo} />
+//       </div>
+//       <div className="buttons">
+//         <button className="save" onClick={handleSaveClicked}>
+//           Save
+//         </button>
+//         <button className="cancel" onClick={handleCancel}>
+//           Cancel
+//         </button>
+//       </div>
+//     </div>
+//   );
+// };
 import { useState, useEffect } from "react";
 import Group from "./Group";
 import axios from "axios";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import ProfilePicture from "./uploadProfilePic";
+import "./profile.css";
 
-const EditableProfile = ({ info, setInfo, editMode, setEditMode }) => {
+const EditableProfile = ({ info, setInfo, setEditMode }) => {
   const navigate = useNavigate();
 
   const [username, setUsername] = useState(info.username);
@@ -174,12 +300,6 @@ const EditableProfile = ({ info, setInfo, editMode, setEditMode }) => {
   const [bio, setBio] = useState(info.bio);
   const [portrait, setPortrait] = useState(null);
   const [danceClip, setDanceClip] = useState(info.danceClip);
-  const userId = info.userId;
-
-  const handlePortraitChange = async (e) => {
-    const file = e.target.files[0];
-    setPortrait(file);
-  };
 
   const handleSaveClicked = async () => {
     try {
@@ -191,9 +311,9 @@ const EditableProfile = ({ info, setInfo, editMode, setEditMode }) => {
       sessionStorage.setItem("bio", bio);
       sessionStorage.setItem("displayName", displayName);
       sessionStorage.setItem("danceClip", danceClip);
-
+      console.log(info.userId);
       const newData = {
-        userId,
+        userId: info.userId,
         username,
         password,
         email,
@@ -209,8 +329,8 @@ const EditableProfile = ({ info, setInfo, editMode, setEditMode }) => {
         "http://localhost:3002/api/editprofile",
         newData
       );
-
-      navigate("/loading");
+      setInfo(response.data);
+      setEditMode(false);
     } catch (error) {
       console.error("Error updating profile:", error.response.data);
     }
@@ -221,7 +341,7 @@ const EditableProfile = ({ info, setInfo, editMode, setEditMode }) => {
   };
 
   return (
-    <div className="container">
+    <div className="container_2">
       <h2 className="title">Edit Profile</h2>
       <div className="input-group">
         <label>Username:</label>
@@ -271,15 +391,14 @@ const EditableProfile = ({ info, setInfo, editMode, setEditMode }) => {
           onChange={(e) => setBio(e.target.value)}
         />
       </div>
-      <div className="input-group">
-        <label>Profile Picture:</label>
+      <div>
         <ProfilePicture info={info} setInfo={setInfo} />
       </div>
       <div className="buttons">
-        <button className="save" onClick={handleSaveClicked}>
+        <button className="editButton save" onClick={handleSaveClicked}>
           Save
         </button>
-        <button className="cancel" onClick={handleCancel}>
+        <button className="editButton cancel" onClick={handleCancel}>
           Cancel
         </button>
       </div>
