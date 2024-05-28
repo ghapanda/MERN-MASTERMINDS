@@ -7,6 +7,7 @@ const loginRoute = require("./routes/login");
 const scheduleRoute = require("./routes/schedule");
 const authenticateMiddleware = require("./middleware/auth");
 const updatePorfile = require("./routes/editprofile");
+const uploadProfilePicture = require("./routes/uploadProfilePic");
 const app = express();
 // Use the cors middleware
 // app.use(
@@ -44,6 +45,7 @@ app.use("/api", signupRoute);
 //NOTE: OTHER ROUTE HANDLERS SHOULD BE ADDED HERE.INCLUDE "token" in the client-side headers
 app.use("/schedule", scheduleRoute);
 app.use("/api", updatePorfile);
+app.use("/api", uploadProfilePicture);
 
 app.use(authenticateMiddleware);
 

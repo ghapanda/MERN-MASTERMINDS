@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import Group from "./Group";
 import axios from "axios";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import ProfilePicture from "./uploadProfilePic";
 
-const EditableProfile = ({ info, setInfo , editMode, setEditMode}) => {
+const EditableProfile = ({ info, setInfo, editMode, setEditMode }) => {
   const navigate = useNavigate();
   console.log("Edit User Profile");
 
@@ -19,9 +20,9 @@ const EditableProfile = ({ info, setInfo , editMode, setEditMode}) => {
   const [danceClip, setDanceClip] = useState(info.danceClip);
   const userId = info.userId;
 
-  const handlePortraitChange = async (e)=>{
+  const handlePortraitChange = async (e) => {
     const file = e.target.files[0];
-    setPortrait(file)
+    setPortrait(file);
   };
 
   //const history = useHistory();
@@ -57,17 +58,17 @@ const EditableProfile = ({ info, setInfo , editMode, setEditMode}) => {
         newData
       );
 
-      navigate("/loading")
+      navigate("/loading");
 
-     // history.goBack()
+      // history.goBack()
     } catch (error) {
       console.error("Error updating profile:", error.response.data);
     }
-};  
+  };
 
-const handleCancel=()=>{
-  setEditMode(prevEditMode => !prevEditMode)
-}
+  const handleCancel = () => {
+    setEditMode((prevEditMode) => !prevEditMode);
+  };
   return (
     <>
       <Group>
@@ -140,16 +141,9 @@ const handleCancel=()=>{
         </h2>
       </Group>
 
-
       <Group>
         <h2 style={{ marginRight: "10px" }}>
-          portrait:
-          <input
-            type="file"
-            /*value={portrait}*/
-            accept = "image/*"
-            onChange={(e) => setPortrait(e.target.value)}
-          />
+          <ProfilePicture info={info} setInfo={setInfo}></ProfilePicture>
         </h2>
       </Group>
 
