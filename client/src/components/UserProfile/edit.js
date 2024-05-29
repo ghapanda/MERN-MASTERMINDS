@@ -321,7 +321,7 @@ const EditableProfile = ({ info, setInfo, setEditMode }) => {
         isAdmin,
         danceStyle,
         danceClip,
-        portrait,
+        portrait: info.portrait,
         bio,
       };
       console.log("this is the data i am sending", newData);

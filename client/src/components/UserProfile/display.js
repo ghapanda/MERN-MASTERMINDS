@@ -6,6 +6,13 @@ const DisplayProfile = ({ info, startEdit }) => {
   console.log("list sessions:", info.listSessions);
   // const listSessionsJSON = JSON.parse(info.listSessions);
   // console.log("parsed back to jason", listSessionsJSON);
+  console.log("profile pic path in display:", info.portrait);
+  const defaultImage = "https://img.icons8.com/ios-glyphs/90/user--v1.png"; // Default image URL
+  if (info.portrait === "null") {
+    console.log("portrait is null");
+  } else {
+    console.log("portrait isNOT NULL", typeof info.portrait);
+  }
   return (
     <>
       <div
@@ -34,16 +41,18 @@ const DisplayProfile = ({ info, startEdit }) => {
             <div style={{ flexShrink: 0 }}>
               <img
                 style={{ width: "90px", borderRadius: "90px" }}
-                src={
-                  info.portrait ||
-                  "https://img.icons8.com/ios-glyphs/90/user--v1.png"
-                }
+                // src={
+                //   info.portrait !== "null"
+                //     ? info.portrait
+                //     : "https://img.icons8.com/ios-glyphs/90/user--v1.png"
+                // }
+                src="/Users/parnianghapandarkashani/Desktop/latest_version/MERN-MASTERMINDS/client/public/uploads/1716973607599-photo_6007961822180786105_y.jpg"
                 alt={`${info.displayName} profile`}
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src =
-                    "https://img.icons8.com/ios-glyphs/90/user--v1.png";
-                }}
+                // onError={(e) => {
+                //   e.target.onerror = null;
+                //   e.target.src =
+                //     "https://img.icons8.com/ios-glyphs/90/user--v1.png";
+                // }}
               />
             </div>
             <div style={{ flexGrow: 1, marginLeft: "20px" }}>

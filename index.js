@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const signupRoute = require("./routes/signup"); // Import the signup route
 const loginRoute = require("./routes/login");
 const scheduleRoute = require("./routes/schedule");
-const searchbarRoute = require("./routes/searchbar")
+const searchbarRoute = require("./routes/searchbar");
 const authenticateMiddleware = require("./middleware/auth");
 const updatePorfile = require("./routes/editprofile");
 const uploadProfilePicture = require("./routes/uploadProfilePic");
@@ -41,7 +41,7 @@ mongoose
 app.use("/api", loginRoute);
 app.use("/api", signupRoute);
 
-//from this point, authentication is being applied
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 //NOTE: OTHER ROUTE HANDLERS SHOULD BE ADDED HERE.INCLUDE "token" in the client-side headers
 app.use("/schedule", scheduleRoute);

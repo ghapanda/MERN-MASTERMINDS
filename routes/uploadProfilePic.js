@@ -6,7 +6,7 @@ const User = require("../models/User"); // Adjust path as necessary
 const router = express.Router();
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.resolve(__dirname, "../uploads/"));
+    cb(null, path.resolve(__dirname, "../client/public/uploads/"));
   },
   filename: (req, file, cb) => {
     cb(null, `${Date.now()}-${file.originalname}`);
@@ -33,9 +33,21 @@ router.post(
       if (!user) {
         return res.status(404).send("User not found");
       }
-
-      res.status(200).json(user);
-      console.log("new PORFILE PIC", user);
+      const sentData = {
+        userId,
+        username: user.username,
+        password: user.password,
+        email: user.email,
+        displayName: user.displayName,
+        isAdmin: user.isAdmin,
+        danceStyle: user.danceStyle,
+        danceClip: user.danceClip,
+        portrait: user.portrait,
+        bio: user.bio,
+        listSessions: user.listSessions,
+      };
+      console.log("sent data PROFILE is ", sentData);
+      res.status(200).json(sentData);
     } catch (error) {
       console.error("Error updating profile picture:", error);
       res.status(500).send("Internal Server Error");
