@@ -29,22 +29,37 @@ function MemberSchedulePage() {
   }, [attendants]);
 
   // Fetches data from sessionStorage
-  const addAttendant = (sessionIndex) => {
+  const addAttendant = (sessionIndex, sessionName, sessionDate, sessionLocation) => {
     const token = sessionStorage.getItem("token");
     const sessionUsername = sessionStorage.getItem("username");
     if (token) {
-      const data = {
+      const data1 = {
         index: sessionIndex,
         username: sessionUsername 
       };
       axios
-      .post("http://localhost:3002/schedule/addAttendant", data) //put localhost in a variable 
+      .post("http://localhost:3002/schedule/addAttendant", data1) //put localhost in a variable 
       .then((response) => {
         console.log("Attendant posted successfully:", response.data);
         setAttendants(attendants + 1);
       })
       .catch((error) => {
         console.error("Error posting attendant:", error);
+      });
+      const data2 = {
+        username: sessionUsername ,
+        name: sessionName,
+        date: sessionDate,
+        location: sessionLocation
+      };
+      axios
+      .post("http://localhost:3002/schedule/addSession", data2) //put localhost in a variable 
+      .then((response) => {
+        console.log("Session posted to user successfully:", response.data);
+        setAttendants(attendants + 1);
+      })
+      .catch((error) => {
+        console.error("Error posting attendant to user:", error);
       });
     }
   };
@@ -64,7 +79,7 @@ function MemberSchedulePage() {
           <p>Contact: {session.contact}</p>
           <p>Attendants: {session.listAttendants}</p>
           <div className="attendants">
-            <button className="addAttendant" onClick={() => addAttendant(session.index)}> + Add Self</button>
+            <button className="addAttendant" onClick={() => addAttendant(session.index, session.name, session.date, session.location)}> + Add Self</button>
           </div>
         </div>
       ))}
