@@ -47,7 +47,6 @@ exports.update = async (req, res) => {
 exports.delete = async (req, res) => {
     try {
         
-        
         // Find and delete the session with the specified index
         const deletedSession = await Session.deleteOne({ index: req.body.index });
 
@@ -64,6 +63,35 @@ exports.delete = async (req, res) => {
         res.status(500).json({ error: 'Error deleting session' });
     }
 };
+
+exports.deleteUserSession = async (req, res) => {
+    try {
+        const { name, date, location } = req.body;
+        // Retrieve all users
+        const users = await User.find();
+    
+        // Iterate through each user
+        for (const user of users) {
+          // Retrieve all sessions for the current user
+            const sessionExists = user.listSessions.some(session => 
+            session[0] === name && session[1] === date && session[2] === location
+            );
+            if (sessionExists) {
+                user.listSessions = user.listSessions.filter(session => 
+                    !(session[0] === name && session[1] === date && session[2] === location)
+                );
+                const savedUser = await user.save();
+            }
+        }
+        // Send a response indicating success
+        res.status(200).json({ message: 'session deleted for user successfully' });
+      } catch (error) {
+        // Handle any errors that occurred during the process
+        console.error('Error deleting sessions for user', error);
+        res.status(500).json({ message: 'An error occurred while deleting sessions for user' });
+      }
+};
+
 
 exports.addAttendant = async (req, res) => {
     try {

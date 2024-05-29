@@ -91,6 +91,14 @@ function Schedule() {
       .catch((error) => {
         console.error("Error posting sessions:", error);
       });
+      axios
+      .post("http://localhost:3002/schedule/deleteUserSession", deletedSession)
+      .then((response) => {
+        console.log("Session deleted from user successfully:", response.data);
+      })
+      .catch((error) => {
+        console.error("Error deleting sessions:", error);
+      });
   };
 
   const update = () => {
