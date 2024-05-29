@@ -120,10 +120,6 @@ function Schedule() {
       </div>
       <button className="update" onClick={update}>Update</button>
     </div>
-    //have a delete session button and this should update/delete from the database
-    //update only if it isnt already there else send a already updated message
-    //dont update all the sessions, just the latest one
-    //figure out the date data type
   );
 }
 
