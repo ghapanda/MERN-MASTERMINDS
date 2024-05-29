@@ -32,8 +32,10 @@ const Profile = () => {
     bio: sessionStorage.getItem("bio") || "No bio",
     listSessions: sessionStorage.getItem("listSessions"),
   });
-  console.log("userid", info.userId);
-
+  console.log(
+    "list sessions in profile",
+    sessionStorage.getItem("listSessions")
+  );
   const [editMode, setEditMode] = useState(false);
 
   const [name, setName] = useState(info.username);

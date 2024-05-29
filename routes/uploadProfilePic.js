@@ -20,7 +20,6 @@ router.post(
   upload.single("profilePicture"),
   async (req, res) => {
     try {
-      console.log("do we make the req?");
       const { userId } = req.body;
       const profilePicturePath = req.file.path;
 
@@ -32,8 +31,6 @@ router.post(
       );
 
       if (!user) {
-        console.log("catching here?");
-
         return res.status(404).send("User not found");
       }
 

@@ -32,7 +32,10 @@ const DisplayProfile = ({ info, startEdit }) => {
             <div style={{ flexShrink: 0 }}>
               <img
                 style={{ width: "90px", borderRadius: "90px" }}
-                src={info.portrait}
+                src={
+                  info.portrait ||
+                  "https://img.icons8.com/ios-glyphs/90/user--v1.png"
+                }
                 alt={`${info.displayName} profile`}
                 onError={(e) => {
                   e.target.onerror = null;

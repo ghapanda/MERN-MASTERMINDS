@@ -17,6 +17,7 @@ router.post("/editprofile", async (req, res) => {
       danceClip,
       portrait,
       bio,
+      listSessions,
     } = req.body;
     console.log("userid:", req.body.userId);
     // Find user by ID and update
@@ -37,13 +38,23 @@ router.post("/editprofile", async (req, res) => {
       },
       { new: true }
     );
-
+    const sentData = {
+      username,
+      password,
+      email,
+      displayName,
+      isAdmin,
+      danceStyle,
+      danceClip,
+      portrait,
+      bio,
+      listSessions: updatedUser.listSessions,
+    };
     if (!updatedUser) {
-      console.log("here????", updatedUser);
       return res.status(404).json({ error: "User not found" });
     }
 
-    res.status(200).json(updatedUser);
+    res.status(200).json(sentData);
     console.log("EDITED:", updatedUser);
   } catch (err) {
     console.error("Error updating profile:", err);
