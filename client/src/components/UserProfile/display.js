@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 const DisplayProfile = ({ info, startEdit }) => {
   console.log("list sessions:", info.listSessions);
+  // const listSessionsJSON = JSON.parse(info.listSessions);
+  // console.log("parsed back to jason", listSessionsJSON);
   return (
     <>
       <div
@@ -63,17 +65,22 @@ const DisplayProfile = ({ info, startEdit }) => {
               Events you have joined
             </h1>
             <ul style={{ listStyleType: "none", padding: 0 }}>
-              {info.listSessions.map((event) => (
+              {info.listSessions.map((event, index) => (
                 <li
-                  key={event.id}
+                  key={index}
                   style={{
                     border: "1px solid #4169E1",
                     borderRadius: "5px",
                     padding: "10px",
                     marginBottom: "10px",
+                    backgroundColor: "#f0f8ff",
                   }}
                 >
-                  <h2>{event.date}</h2>
+                  <h2 style={{ color: "#4169E1" }}>{event[0]}</h2>
+                  <p style={{ color: "#8b0000", fontWeight: "bold" }}>
+                    Date: {event[1]}
+                  </p>
+                  <p style={{ color: "#2e8b57" }}>Location: {event[2]}</p>
                 </li>
               ))}
             </ul>

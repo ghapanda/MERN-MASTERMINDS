@@ -51,8 +51,8 @@ const Login = (props) => {
         danceClip,
         listSessions,
       } = response.data;
-      console.log("usersessions in login", typeof listSessions);
-
+      console.log("usersessions in login", listSessions);
+      const listSessionsJSON = JSON.stringify(listSessions);
       console.log("user id in login", userId);
 
       sessionStorage.setItem("token", token);
@@ -68,11 +68,12 @@ const Login = (props) => {
       sessionStorage.setItem("bio", bio);
       sessionStorage.setItem("displayName", displayName);
       sessionStorage.setItem("danceClip", danceClip);
-      sessionStorage.setItem("listSessions", listSessions);
-      const retrievedSessions = JSON.parse(
-        sessionStorage.getItem("listSessions")
-      );
-      console.log("usersessions in login", typeof retrievedSessions); // "object"
+      sessionStorage.setItem("listSessions", listSessionsJSON);
+      console.log("strigified jason:", listSessionsJSON);
+      // const retrievedSessions = JSON.parse(
+      //   sessionStorage.getItem("listSessions")
+      // );
+      console.log("usersessions in login"); // "object"
 
       alert("Welcome!");
     } catch (error) {

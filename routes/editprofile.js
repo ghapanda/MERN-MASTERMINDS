@@ -17,9 +17,8 @@ router.post("/editprofile", async (req, res) => {
       danceClip,
       portrait,
       bio,
-      listSessions,
     } = req.body;
-    console.log("userid:", req.body.userId);
+    console.log("userid:", req.body);
     // Find user by ID and update
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -39,6 +38,7 @@ router.post("/editprofile", async (req, res) => {
       { new: true }
     );
     const sentData = {
+      userId,
       username,
       password,
       email,

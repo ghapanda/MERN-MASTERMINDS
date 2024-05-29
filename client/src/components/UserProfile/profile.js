@@ -30,12 +30,10 @@ const Profile = () => {
     danceClip: sessionStorage.getItem("danceClip"),
     portrait: sessionStorage.getItem("portrait"),
     bio: sessionStorage.getItem("bio") || "No bio",
-    listSessions: sessionStorage.getItem("listSessions"),
+    listSessions: JSON.parse(sessionStorage.getItem("listSessions")),
   });
-  console.log(
-    "list sessions in profile",
-    sessionStorage.getItem("listSessions")
-  );
+  console.log("list sessions in profile", typeof info.listSessions);
+  console.log("info is updated?", info);
   const [editMode, setEditMode] = useState(false);
 
   const [name, setName] = useState(info.username);

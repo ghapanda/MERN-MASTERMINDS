@@ -15,16 +15,12 @@ router.post("/login", async (req, res) => {
     if (!existingUser) {
       return res.status(401).json({ message: "Wrong username or password" });
     }
-<<<<<<< HEAD
-
-=======
     // if (password != existingUser.password) {
     //   console.log("got u wrong pass");
     //   return res.status(401).json({ message: "Wrong username or password" });
     // }
     // FIX THIS
     console.log("user is", existingUser);
->>>>>>> main
     const passwordMatch = await bcrypt.compare(password, existingUser.password);
     if (!passwordMatch) {
       console.log("got u wrong pass");

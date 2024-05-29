@@ -324,11 +324,12 @@ const EditableProfile = ({ info, setInfo, setEditMode }) => {
         portrait,
         bio,
       };
-
+      console.log("this is the data i am sending", newData);
       const response = await axios.post(
         "http://localhost:3002/api/editprofile",
         newData
       );
+      console.log(response.data);
       setInfo(response.data);
       setEditMode(false);
     } catch (error) {
@@ -339,7 +340,7 @@ const EditableProfile = ({ info, setInfo, setEditMode }) => {
   const handleCancel = () => {
     setEditMode((prevEditMode) => !prevEditMode);
   };
-
+  console.log("info in edit", info);
   return (
     <div className="container_2">
       <h2 className="title">Edit Profile</h2>
