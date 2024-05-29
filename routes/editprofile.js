@@ -39,7 +39,6 @@ router.post("/editprofile", async (req, res) => {
     );
 
     if (!updatedUser) {
-      console.log("here????", updatedUser);
       return res.status(404).json({ error: "User not found" });
     }
 
