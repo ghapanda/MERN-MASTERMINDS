@@ -1,12 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Group from "./Group";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
 const DisplayProfile = ({ info, startEdit }) => {
-  const defaultImage = "./image/temp.png";
-
-
-  const [len, setLen] = useState(info.events.length? (info.events.length>0):false)
-
+  console.log("list sessions:", info.listSessions);
   return (
     <>
       <div
@@ -48,56 +45,41 @@ const DisplayProfile = ({ info, startEdit }) => {
               <h2>{info.displayName}</h2>
               <i>{info.bio}</i>
               <p>Dance Style: {info.danceStyle}</p>
-              <button
-                style={{
-                  height: "36px",
-                  overflow: "visible",
-                  border: "1px solid black",
-                  backgroundColor: "transparent",
-                  color: "black",
-                  borderRadius: "5px",
-                  padding: "0 12px",
-                }}
-                onClick={startEdit}
-              >
-                Edit profile
+              <button className="edit-button" onClick={startEdit}>
+                <FontAwesomeIcon icon={faEdit} />
+                <span>Edit Profile</span>
               </button>
-              {/*
-                    <div style={{ display: 'flex', justifyContent: 'space-between', backgroundColor: '#efefef', padding: '10px', borderRadius: '10px' }}>
-                    <div>
-                        <p className="small text-muted mb-1"># of attend</p>
-                        <p>{info.count}</p>
-                    </div>
-                    <div>
-                        <p className="small text-muted mb-1">I am going to </p>
-                        <p>{info.going}</p>
-                    </div>
-                    <div>
-                        <p className="small text-muted mb-1">instagram</p>
-                        <a>{info.instaUrl}</a>
-                    </div>
-                    </div>*/}
             </div>
           </div>
         </div>
       </div>
-      <div classname="body">
-        {len ? (
+      <div className="body" style={{ marginTop: "20px" }}>
+        {info.listSessions ? (
           <>
-          <h1 style={{ textAlign: "center" }}>Event you have joined</h1>
-          <ul>
-            {info.events.map((event) =>(
-              <li key={event.id}>
-              <h2>{event.date}</h2>
-              </li>
-            ))}
-          </ul>
+            <h1 style={{ textAlign: "center", color: "#4169E1" }}>
+              Events you have joined
+            </h1>
+            <ul style={{ listStyleType: "none", padding: 0 }}>
+              {info.listSessions.map((event) => (
+                <li
+                  key={event.id}
+                  style={{
+                    border: "1px solid #4169E1",
+                    borderRadius: "5px",
+                    padding: "10px",
+                    marginBottom: "10px",
+                  }}
+                >
+                  <h2>{event.date}</h2>
+                </li>
+              ))}
+            </ul>
           </>
-        ):(
-          <h1 style={{textAlign:"center"}}>no events yet</h1>
-        )
-
-        }
+        ) : (
+          <h1 style={{ textAlign: "center", color: "#4169E1" }}>
+            No events yet
+          </h1>
+        )}
       </div>
     </>
   );

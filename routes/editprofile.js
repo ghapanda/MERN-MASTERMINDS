@@ -18,7 +18,7 @@ router.post("/editprofile", async (req, res) => {
       portrait,
       bio,
     } = req.body;
-    console.log("in new request", displayName);
+    console.log("userid:", req.body.userId);
     // Find user by ID and update
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -39,6 +39,7 @@ router.post("/editprofile", async (req, res) => {
     );
 
     if (!updatedUser) {
+      console.log("here????", updatedUser);
       return res.status(404).json({ error: "User not found" });
     }
 

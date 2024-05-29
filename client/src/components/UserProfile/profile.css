@@ -1,21 +1,55 @@
 .header {
   background-color: #4169e1;
+  margin-top: 0px;
 }
 
+/* .button {
+  background-color: #ffd700;
+  color: #4169e1;
+  margin-left: 30px;
+} */
 .button {
-  background-color: #4169e1;
-  color: #ffd700;
+  margin-left: 30px;
+
+  background-color: #ffd700; /* Golden yellow background */
+  color: #4169e1; /* Royal blue text color */
+  border: none;
+  padding: 12px 24px; /* Padding for spacing */
+  font-size: 16px;
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer;
+  outline: none; /* Remove outline on focus */
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; /* Smooth transition effects */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow */
 }
 
 .headerT {
   color: #ffd700;
+  margin-left: 30px;
+  font-size: 50px;
+  font-family: sans-serif;
+  font-style: italic;
 }
 
 .linkh {
-  color: #ffd700;
+  color: #4169e1; /* Royal blue text color */
+  font-size: 20px; /* Font size */
+  text-decoration: none; /* Remove default underline */
+  border-bottom: 2px solid transparent; /* Add a transparent bottom border */
+  transition: color 0.3s, border-color 0.3s; /* Smooth transition effects */
 }
 
-.profile-page {
+.linkh:hover {
+  color: #324ba9; /* Darker shade of blue on hover */
+  border-color: #4169e1; /* Border color on hover */
+}
+
+.linkh:focus {
+  outline: none; /* Remove focus outline */
+  border-color: #4169e1; /* Border color on focus */
+}
+
+/* .profile-page {
   display: flex;
 }
 
@@ -29,4 +63,159 @@
 .profile-details {
   flex-grow: 1;
   padding: 20px;
+}
+*/
+
+*/ .edit-button {
+  border: 1px solid #000;
+  background-color: transparent;
+  color: #000;
+  border-radius: 5px;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.edit-button:hover {
+  background-color: #ccc;
+}
+
+.edit-button {
+  background-color: #4caf50; /* Green background */
+  border: none;
+  color: white; /* White text */
+  padding: 15px 32px; /* Some padding */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a shadow */
+}
+/* 
+.profile-body {
+  margin-top: 20px;
+}
+
+.events-heading {
+  text-align: center;
+  color: #4169e1;
+}
+
+.event-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.event-item {
+  border: 1px solid #4169e1;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.no-events {
+  text-align: center;
+  color: #4169e1;
+} */
+
+.container_2 {
+  background: rgb(223, 230, 230);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  max-width: 700px;
+  width: 100%;
+  margin: auto;
+  margin-top: 40px;
+}
+
+.title {
+  font-family: "Open Sans", sans-serif;
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+.input-group input:focus {
+  border-color: #4169e1;
+  outline: none;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.editButton {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.editButton.save {
+  background-color: #4169e1;
+  color: white;
+}
+
+.editButton.save:hover {
+  background-color: #314b99;
+}
+
+.editButton.cancel {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.editButton.cancel:hover {
+  background-color: #a4ced498;
+}
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #4169e1;
+  color: white;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.custom-file-upload:hover {
+  background-color: #314b99;
+}
+
+.custom-file-upload input[type="file"] {
+  display: none;
 }
