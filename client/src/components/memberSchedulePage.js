@@ -88,13 +88,13 @@ function MemberSchedulePage() {
         location: sessionLocation
       };
       axios
-      .post("http://localhost:3002/schedule/addSession", data2) //put localhost in a variable 
+      .post("http://localhost:3002/schedule/deleteSession", data2) //put localhost in a variable 
       .then((response) => {
-        console.log("Session posted to user successfully:", response.data);
+        console.log("Session deleted to user successfully:", response.data);
         setAttendants(attendants + 1);
       })
       .catch((error) => {
-        console.error("Error posting attendant to user:", error);
+        console.error("Error deleting session to user:", error);
       });
     }
   };

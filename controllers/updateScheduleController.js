@@ -138,3 +138,33 @@ exports.addSession = async (req, res) => {
     }
 };
 
+
+exports.deleteSession = async (req, res) => {
+    try {
+        const { username, name, date, location } = req.body;
+        let foundUser = await User.findOne({ username });
+        if (foundUser) {
+            const newSession = [name, date, location];
+            const sessionExists = foundUser.listSessions.some(session => 
+                session[0] === name && session[1] === date && session[2] === location
+            );
+            if (sessionExists) {
+                foundUser.listSessions = foundUser.listSessions.filter(session => 
+                    !(session[0] === name && session[1] === date && session[2] === location)
+                );
+                const savedUser = await foundUser.save();
+                console.log('session deleted for user:', savedUser);
+                res.status(200).json({ message: 'session deleted for user successfully' });
+            }
+        }
+         else {
+            // If session with the specified index was not found
+            res.status(403).json({ error: 'User ${username} not found ' });
+        }
+    } catch (error) {
+        // If an error occurs during the deletion process
+        console.error('Error deleting session for user:', error);
+        res.status(500).json({ error: 'Error deleting session for user' });
+    }
+};
+

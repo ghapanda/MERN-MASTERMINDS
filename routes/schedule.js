@@ -9,6 +9,7 @@ router.post("/delete", updateScheduleController.delete);
 router.post("/addAttendant", updateScheduleController.addAttendant);
 router.post("/deleteAttendant", updateScheduleController.deleteAttendant);
 router.post("/addSession", updateScheduleController.addSession);
+router.post("/deleteSession", updateScheduleController.deleteSession);
 router.get("/", async (req, res) => {
   try {
     const sessions = await Session.find();
