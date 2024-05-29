@@ -10,7 +10,7 @@ const scheduleSchema = new mongoose.Schema({
     time: String,
     location: String,
     contact: String,
-    listAttendants: [{ type: mongoose.Schema.Types.ObjectId, ref: "user" }], // Assuming Session is another model
+    listAttendants: [{ type: String }], // Assuming Session is another model
 });
 
 module.exports = mongoose.model("Schedule", scheduleSchema); 

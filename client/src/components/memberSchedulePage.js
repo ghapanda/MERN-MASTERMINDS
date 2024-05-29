@@ -13,11 +13,7 @@ function AttendantContainer() {
 
 function MemberSchedulePage() {
   const [sessions, setSessions] = useState([]);
-  const [attendants, setAttendants] = useState([]);
-  const addAttendant = () => {
-    setAttendants([...attendants, <AttendantContainer key={attendants.length} />]); 
-}; 
-
+  const [attendants, setAttendants] = useState(0);
 
   // Fetches current session data 
   useEffect(() => { // Runs while rendering
@@ -25,11 +21,33 @@ function MemberSchedulePage() {
       .get("http://localhost:3002/schedule/")
       .then((response) => {
         setSessions(response.data);
+        console.log(response.data)
       })
       .catch((error) => {
         console.error("Error fetching sessions:", error);
       });
-  }, []);
+  }, [attendants]);
+
+  // Fetches data from sessionStorage
+  const addAttendant = (sessionIndex) => {
+    const token = sessionStorage.getItem("token");
+    const sessionUsername = sessionStorage.getItem("username");
+    if (token) {
+      const data = {
+        index: sessionIndex,
+        username: sessionUsername 
+      };
+      axios
+      .post("http://localhost:3002/schedule/addAttendant", data) //put localhost in a variable 
+      .then((response) => {
+        console.log("Attendant posted successfully:", response.data);
+        setAttendants(attendants + 1);
+      })
+      .catch((error) => {
+        console.error("Error posting attendant:", error);
+      });
+    }
+  };
 
   return (
     <div className="Schedule">
@@ -44,13 +62,12 @@ function MemberSchedulePage() {
           <p>Time: {session.time}</p>
           <p>Location: {session.location}</p>
           <p>Contact: {session.contact}</p>
+          <p>Attendants: {session.listAttendants}</p>
+          <div className="attendants">
+            <button className="addAttendant" onClick={() => addAttendant(session.index)}> + Add Self</button>
+          </div>
         </div>
-        
       ))}
-    <div className="attendants">
-      <button className="addAttendant" onClick={addAttendant}> + Add Attendant</button>
-      {attendants}
-    </div>
     </div>
     </div>
   );

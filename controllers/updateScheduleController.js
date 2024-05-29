@@ -64,3 +64,26 @@ exports.delete = async (req, res) => {
     }
 };
 
+exports.addAttendant = async (req, res) => {
+    try {
+        const { index, username } = req.body;
+        let foundSession = await Session.findOne({ index: index });
+        if (foundSession) {
+            if (!foundSession.listAttendants.includes(username)) {
+                foundSession.listAttendants.push(username); // Initialize listAttendants as an empty array
+                const savedSession = await foundSession.save();
+                console.log('attendant saved:', savedSession);
+                res.status(200).json({ message: 'attendant saved successfully' });
+            }
+        }
+         else {
+            // If session with the specified index was not found
+            res.status(403).json({ error: 'Session ${sessionIndex} not found to save attendant' });
+        }
+    } catch (error) {
+        // If an error occurs during the deletion process
+        console.error('Error saving attendant:', error);
+        res.status(500).json({ error: 'Error saving attendant' });
+    }
+};
+
