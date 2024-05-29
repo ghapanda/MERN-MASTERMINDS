@@ -7,6 +7,7 @@ const Session = require("../models/Schedule");
 router.post("/update", updateScheduleController.update);
 router.post("/delete", updateScheduleController.delete);
 router.post("/addAttendant", updateScheduleController.addAttendant);
+router.post("/deleteAttendant", updateScheduleController.deleteAttendant);
 router.post("/addSession", updateScheduleController.addSession);
 router.get("/", async (req, res) => {
   try {

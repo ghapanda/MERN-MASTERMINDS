@@ -64,6 +64,41 @@ function MemberSchedulePage() {
     }
   };
 
+  const deleteAttendant = (sessionIndex, sessionName, sessionDate, sessionLocation) => {
+    const token = sessionStorage.getItem("token");
+    const sessionUsername = sessionStorage.getItem("username");
+    if (token) {
+      const data1 = {
+        index: sessionIndex,
+        username: sessionUsername 
+      };
+      axios
+      .post("http://localhost:3002/schedule/deleteAttendant", data1) //put localhost in a variable 
+      .then((response) => {
+        console.log("Attendant posted successfully:", response.data);
+        setAttendants(attendants + 1);
+      })
+      .catch((error) => {
+        console.error("Error posting attendant:", error);
+      });
+      const data2 = {
+        username: sessionUsername ,
+        name: sessionName,
+        date: sessionDate,
+        location: sessionLocation
+      };
+      axios
+      .post("http://localhost:3002/schedule/addSession", data2) //put localhost in a variable 
+      .then((response) => {
+        console.log("Session posted to user successfully:", response.data);
+        setAttendants(attendants + 1);
+      })
+      .catch((error) => {
+        console.error("Error posting attendant to user:", error);
+      });
+    }
+  };
+
   return (
     <div className="Schedule">
     <h1 className="Title">Schedule</h1>
@@ -80,6 +115,7 @@ function MemberSchedulePage() {
           <p>Attendants: {session.listAttendants}</p>
           <div className="attendants">
             <button className="addAttendant" onClick={() => addAttendant(session.index, session.name, session.date, session.location)}> + Add Self</button>
+            <button className="deleteAttendant" onClick={() => deleteAttendant(session.index, session.name, session.date, session.location)}> - Delete Self</button>
           </div>
         </div>
       ))}
