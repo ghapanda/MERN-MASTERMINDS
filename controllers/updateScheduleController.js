@@ -69,9 +69,13 @@ exports.addAttendant = async (req, res) => {
         const { index, username } = req.body;
         let foundSession = await Session.findOne({ index: index });
         if (foundSession) {
-            foundSession.listAttendants.push(username); // Initialize listAttendants as an empty array
-            res.status(200).json({ message: 'attendant saved successfully' });
+            if (!foundSession.listAttendants.includes(username)) {
+                foundSession.listAttendants.push(username); // Initialize listAttendants as an empty array
+                const savedSession = await foundSession.save();
+                console.log('attendant saved:', savedSession);
+                res.status(200).json({ message: 'attendant saved successfully' });
             }
+        }
          else {
             // If session with the specified index was not found
             res.status(403).json({ error: 'Session ${sessionIndex} not found to save attendant' });

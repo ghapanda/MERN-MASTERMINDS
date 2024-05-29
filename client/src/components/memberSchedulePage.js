@@ -13,7 +13,7 @@ function AttendantContainer() {
 
 function MemberSchedulePage() {
   const [sessions, setSessions] = useState([]);
-  const [attendants, setAttendants] = useState([]);
+  const [attendants, setAttendants] = useState(0);
 
   // Fetches current session data 
   useEffect(() => { // Runs while rendering
@@ -21,11 +21,12 @@ function MemberSchedulePage() {
       .get("http://localhost:3002/schedule/")
       .then((response) => {
         setSessions(response.data);
+        console.log(response.data)
       })
       .catch((error) => {
         console.error("Error fetching sessions:", error);
       });
-  }, []);
+  }, [attendants]);
 
   // Fetches data from sessionStorage
   const addAttendant = (sessionIndex) => {
@@ -40,6 +41,7 @@ function MemberSchedulePage() {
       .post("http://localhost:3002/schedule/addAttendant", data) //put localhost in a variable 
       .then((response) => {
         console.log("Attendant posted successfully:", response.data);
+        setAttendants(attendants + 1);
       })
       .catch((error) => {
         console.error("Error posting attendant:", error);
@@ -63,7 +65,6 @@ function MemberSchedulePage() {
           <p>Attendants: {session.listAttendants}</p>
           <div className="attendants">
             <button className="addAttendant" onClick={() => addAttendant(session.index)}> + Add Self</button>
-            {attendants}
           </div>
         </div>
       ))}
