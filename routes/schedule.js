@@ -6,6 +6,8 @@ const Session = require("../models/Schedule");
 // Route to handle user signup
 router.post("/update", updateScheduleController.update);
 router.post("/delete", updateScheduleController.delete);
+router.post("/addAttendant", updateScheduleController.addAttendant);
+router.post("/addSession", updateScheduleController.addSession);
 router.get("/", async (req, res) => {
   try {
     const sessions = await Session.find();

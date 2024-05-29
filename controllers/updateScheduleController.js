@@ -1,4 +1,5 @@
 const Session = require("../models/Schedule");
+const User = require("../models/User");
 
 exports.update = async (req, res) => {
     try {
@@ -61,6 +62,56 @@ exports.delete = async (req, res) => {
         // If an error occurs during the deletion process
         console.error('Error deleting session:', error);
         res.status(500).json({ error: 'Error deleting session' });
+    }
+};
+
+exports.addAttendant = async (req, res) => {
+    try {
+        const { index, username } = req.body;
+        let foundSession = await Session.findOne({ index: index });
+        if (foundSession) {
+            if (!foundSession.listAttendants.includes(username)) {
+                foundSession.listAttendants.push(username); // Initialize listAttendants as an empty array
+                const savedSession = await foundSession.save();
+                console.log('attendant saved:', savedSession);
+                res.status(200).json({ message: 'attendant saved successfully' });
+            }
+        }
+         else {
+            // If session with the specified index was not found
+            res.status(403).json({ error: 'Session ${sessionIndex} not found to save attendant' });
+        }
+    } catch (error) {
+        // If an error occurs during the deletion process
+        console.error('Error saving attendant:', error);
+        res.status(500).json({ error: 'Error saving attendant' });
+    }
+};
+
+exports.addSession = async (req, res) => {
+    try {
+        const { username, name, date, location } = req.body;
+        let foundUser = await User.findOne({ username });
+        if (foundUser) {
+            const newSession = [name, date, location];
+            const sessionExists = foundUser.listSessions.some(session => 
+                session[0] === name && session[1] === date && session[2] === location
+            );
+            if (!sessionExists) {
+                foundUser.listSessions.push(newSession); // Initialize listAttendants as an empty array
+                const savedUser = await foundUser.save();
+                console.log('session saved to user:', savedUser);
+                res.status(200).json({ message: 'session saved to user successfully' });
+            }
+        }
+         else {
+            // If session with the specified index was not found
+            res.status(403).json({ error: 'User ${username} not found ' });
+        }
+    } catch (error) {
+        // If an error occurs during the deletion process
+        console.error('Error saving session to user:', error);
+        res.status(500).json({ error: 'Error saving session to user' });
     }
 };
 
