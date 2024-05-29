@@ -6,7 +6,7 @@ const User = require("../models/User"); // Adjust path as necessary
 const router = express.Router();
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.resolve(__dirname, "../client/public/uploads/"));
+    cb(null, path.resolve(__dirname, "../uploads/"));
   },
   filename: (req, file, cb) => {
     cb(null, `${Date.now()}-${file.originalname}`);
@@ -21,8 +21,10 @@ router.post(
   async (req, res) => {
     try {
       const { userId } = req.body;
-      const profilePicturePath = req.file.path;
+      // const profilePicturePath = req.file.path;
+      const profilePictureFileName = req.file.filename;
 
+      const profilePicturePath = `/uploads/${profilePictureFileName}`;
       // Update user's profile picture in the database
       const user = await User.findByIdAndUpdate(
         userId,

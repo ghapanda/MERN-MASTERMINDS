@@ -41,18 +41,17 @@ const DisplayProfile = ({ info, startEdit }) => {
             <div style={{ flexShrink: 0 }}>
               <img
                 style={{ width: "90px", borderRadius: "90px" }}
-                // src={
-                //   info.portrait !== "null"
-                //     ? info.portrait
-                //     : "https://img.icons8.com/ios-glyphs/90/user--v1.png"
-                // }
-                src="/Users/parnianghapandarkashani/Desktop/latest_version/MERN-MASTERMINDS/client/public/uploads/1716973607599-photo_6007961822180786105_y.jpg"
+                src={
+                  info.portrait !== "null"
+                    ? `http://localhost:3002${info.portrait}`
+                    : "https://img.icons8.com/ios-glyphs/90/user--v1.png"
+                }
                 alt={`${info.displayName} profile`}
-                // onError={(e) => {
-                //   e.target.onerror = null;
-                //   e.target.src =
-                //     "https://img.icons8.com/ios-glyphs/90/user--v1.png";
-                // }}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src =
+                    "https://img.icons8.com/ios-glyphs/90/user--v1.png";
+                }}
               />
             </div>
             <div style={{ flexGrow: 1, marginLeft: "20px" }}>
