@@ -93,7 +93,7 @@ const Login = (props) => {
   return (
     <div className={"mainContainer login-bg"}>
       <div className="login-box">
-        <p className="Titles">Login here</p>
+        <h3 className="Titles">Login here</h3>
         <form className="form">
           <div className="user-box">
             <input
@@ -124,7 +124,7 @@ const Login = (props) => {
             Don't have an account? Register{" "}
             <Link
               to="/signup"
-              style={{ color: "blue", textDecoration: "underline" }}
+              style={{ color: "#2d8cf0", textDecoration: "underline" }}
             >
               here
             </Link>

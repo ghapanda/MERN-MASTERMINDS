@@ -44,6 +44,10 @@ const AboutUs = (props) => {
           skill levels.
         </div>
       </div>
+
+      <div className="miniCard">
+          Return to <Link to="/" style={{ color: "#2d8cf0", textDecoration: "underline" }}>home</Link>
+      </div>
   
     </div>
   );

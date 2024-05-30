@@ -56,7 +56,7 @@
   padding: 20px;
   background: lightgrey;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-start;
   justify-content: top;
   gap: 20px;
