@@ -6,7 +6,7 @@ const Home = (props) => {
   sessionStorage.clear();
 
   return (
-    <div className={"mainContainer"}>
+    <div className={"mainContainer1"}>
       
       <video autoPlay muted loop id="bgVideo" >
         <source src="/promo.webm" type="video/webm" />
