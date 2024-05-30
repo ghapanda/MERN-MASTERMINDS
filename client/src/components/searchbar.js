@@ -32,6 +32,8 @@ const SearchBar = () => {
         }
     }, [query]);
 
+    console.log(searchResults)
+
 
     return (
         <div className="search-bar">
@@ -46,10 +48,27 @@ const SearchBar = () => {
                     {searchResults.map((result) => (
                         <li key={result._id}>
                             <div className="search-result-item">
-                                <img src={result.portrait} />
+                                <div style={{ flexShrink: 0 }}>
+                                    <img
+                                        style={{ width: "90px", borderRadius: "90px" }}
+                                        src={
+                                        result.portrait !== "null"
+                                            ? `http://localhost:3002${result.portrait}`
+                                            : "https://img.icons8.com/ios-glyphs/90/user--v1.png"
+                                        }
+                                        alt={`${result.displayName} profile`}
+                                        onError={(e) => {
+                                        e.target.onerror = null;
+                                        e.target.src =
+                                            "https://img.icons8.com/ios-glyphs/90/user--v1.png";
+                                        }}
+                                    />
+                                </div>
+                                {/* <img src= '/Users/srinjanasriram/Documents/Academics/CS/CS35L/Project/MERN-MASTERMINDS/uploads/1717025539960-img2.jpg' /> */}
                                 <div>
-                                    <p>Display Name: {result.displayName}</p>
                                     <p>Username: {result.username}</p>
+                                    <p>Dance Style: {result.danceStyle}</p>
+                                    <p>Bio: {result.bio}</p>
                                 </div>
                             </div>
                         </li>

@@ -19,9 +19,10 @@ router.get("/search", async (req, res) => {
           { displayName: { $regex: regex } },
           { username: { $regex: regex } },
         ],
-      }, "displayName username portrait");
+      }, "displayName username portrait danceStyle bio");
 
       // send response back to the client
+      console.log(users);
       res.json(users);
 
     } catch (error) {
