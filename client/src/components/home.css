@@ -1,12 +1,15 @@
-@font-face {
-    font-family: 'StreetExplorer';
-    src: url('./../../public/StreetExplorer.otf') format('opentype');
-}
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 
 .mainContainer {
     position: relative;
     overflow: hidden;
     height: 100vh; /* Ensure the container takes up the full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+    align-items: center; 
+    height: 100vh;
+
 }
 
 #bgVideo {
@@ -19,24 +22,62 @@
     z-index: -1;
 }
 
-.mission li {
-    margin-bottom: 20px; /* Spacing between bullets in "About Us" Section */
+.blurbContainer {
+    --input-focus: #2d8cf0;
+    --font-color: #323232;
+    --font-color-sub: #666;
+    --bg-color: #fff;
+    --main-color: #323232;
+    padding: 20px;
+    background: lightgrey;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    box-shadow: 4px 4px var(--main-color);
+
+    margin: 50px auto 0 auto;
+    background-color: var(--bg-color);
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--font-color);
+    cursor: pointer;
+
+    font-family: 'Raleway', sans-serif;
 }
 
-.textContainer {
-    padding-top: 70vh; /* Adjust the value as needed to shift the content downwards */
-    color: #C0C0C0;
-    font-family: "StreetExplorer";
-    font-size: 24px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
+.linkContainer {
+    --input-focus: #2d8cf0;
+    --font-color: #323232;
+    --font-color-sub: #666;
+    --bg-color: #fff;
+    --main-color: #323232;
+    padding: 20px;
+    background: lightgrey;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    box-shadow: 4px 4px var(--main-color);
+    
+    margin: 50px auto 0 auto;
+    background-color: var(--bg-color);
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--font-color);
+    cursor: pointer;
 
-.ending {
-    color: #C0C0C0;
-    font-family: "StreetExplorer";
-    font-size: 24px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
+    font-family: 'Raleway', sans-serif;
+    margin-bottom: 50px;
+    
+  }
+
 
 
 
