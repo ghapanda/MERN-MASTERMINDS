@@ -10,19 +10,19 @@ const AboutUs = (props) => {
     <div className="mainContainer2">
 
     <div className="miniCard">
-      <strong>About Us</strong>
+      <h3>About Us</h3>
     </div>
 
       <div className="textContainer">
           <div className="card">
-            <strong>Foster Community:</strong> We believe in the power of dance
+            <h3>Foster Community:</h3> We believe in the power of dance
             to bring people together. Whether you're a seasoned vet or just
             starting out, you'll find a welcoming and inclusive space here at
             OffBeat Sessions. Join us as we connect, inspire, and support one
             another on our dance journeys.
           </div>
           <div className="card">
-          <strong>We Promote Freestyle Dance Culture:</strong> Freestyle is more
+          <h3>We Promote Freestyle Dance Culture:</h3> Freestyle is more
             than just movement: it's a form of self-expression and creativity.
             At OffBeat Sessions, we're dedicated to promoting and cultivating
             the development of freestyle dance culture at UCLA. Through
@@ -30,7 +30,7 @@ const AboutUs = (props) => {
             artistry and push the boundaries of their craft.
           </div>
           <div className="card">
-          <strong>We Build Connections:</strong> We stress the importance of
+          <h3>We Build Connections:</h3> We stress the importance of
             community and collaboration in the street dance world. That's why
             we're committed to forging connections with freestyle dance
             communities beyond UCLA. By fostering collaboration and growth in
@@ -38,7 +38,7 @@ const AboutUs = (props) => {
             interconnected network of dancers.
           </div>
           <div className="card">
-          <strong>Welcome All Styles:</strong> Whether you're into hip hop,
+          <h3>Welcome All Styles:</h3> Whether you're into hip hop,
             popping, locking, breaking, animation, house, or any other style,
             you'll find a home here at OffBeat Sessions. Our community
             celebrates diversity and welcomes dancers of all backgrounds and

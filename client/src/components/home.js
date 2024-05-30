@@ -14,20 +14,20 @@ const Home = (props) => {
       </video>
 
       <div className="blurbContainer">
-        <p>Join us as we dance, connect, and grow together!</p>
+        <h3>Join us as we dance, connect, and grow together!</h3>
       </div>
 
       <div className="linkContainer">
-        <p>
-          New Here? <Link to="/signup">Signup Here</Link>
+        <h3>
+          New Here? <Link to="/signup" style={{ color: "#2d8cf0", textDecoration: "underline" }}>Signup Here</Link>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {/* Adding space */}
-          Already a member? <Link to="/login">Login Here</Link>
+          Already a member? <Link to="/login" style={{ color: "#2d8cf0", textDecoration: "underline" }}>Login Here</Link>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {/* Adding space */}
-          Learn More: <Link to="/aboutus">About Us</Link>
+          Learn More: <Link to="/aboutus" style={{ color: "#2d8cf0", textDecoration: "underline" }}>About Us</Link>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {/* Adding space */}
           Follow us on Instagram:{" "}
-          <a href="https://www.instagram.com/uclaoffbeat/">@uclaoffbeat</a>
-        </p>
+          <a href="https://www.instagram.com/uclaoffbeat/" className="instagram-link">@uclaoffbeat</a>
+        </h3>
       </div>
 
     </div>

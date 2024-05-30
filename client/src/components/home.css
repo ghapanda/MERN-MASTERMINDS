@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
 
 .mainContainer1 {
+    font-family: 'Poetsen One', sans-serif;
     position: relative;
     overflow: hidden;
     height: 100vh; /* Ensure the container takes up the full viewport height */
@@ -8,8 +9,6 @@
     flex-direction: column;
     justify-content: flex-end; 
     align-items: center; 
-    height: 100vh;
-
 }
 
 #bgVideo {
@@ -17,17 +16,14 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: calc(100vh); /* Set the height to one-third of the viewport height */
+    height: calc(100vh); /* Set the height to the full viewport height */
     object-fit: cover; /* Ensure the video covers the entire space */
     z-index: -1;
 }
 
-.blurbContainer {
-    --input-focus: #2d8cf0;
-    --font-color: #323232;
-    --font-color-sub: #666;
-    --bg-color: #fff;
-    --main-color: #323232;
+.blurbContainer,
+.linkContainer {
+    font-family: 'Poetsen One', sans-serif; /* Apply the font-family */
     padding: 20px;
     background: lightgrey;
     display: flex;
@@ -36,48 +32,36 @@
     justify-content: center;
     gap: 20px;
     border-radius: 5px;
-    border: 2px solid var(--main-color);
-    box-shadow: 4px 4px var(--main-color);
-
-    margin: 50px auto 0 auto;
-    background-color: var(--bg-color);
+    border: 2px solid #323232;
+    box-shadow: 4px 4px #323232;
+    margin: 20px auto; /* Center the container with margin auto */
     font-size: 17px;
     font-weight: 800;
-    color: var(--font-color);
+    color: #323232;
     cursor: pointer;
-
-    font-family: 'Raleway', sans-serif;
+    background-color: #fff; /* Ensure background is white */
 }
 
 .linkContainer {
-    --input-focus: #2d8cf0;
-    --font-color: #323232;
-    --font-color-sub: #666;
-    --bg-color: #fff;
-    --main-color: #323232;
-    padding: 20px;
-    background: lightgrey;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 20px;
-    border-radius: 5px;
-    border: 2px solid var(--main-color);
-    box-shadow: 4px 4px var(--main-color);
-    
-    margin: 50px auto 0 auto;
-    background-color: var(--bg-color);
-    font-size: 17px;
-    font-weight: 800;
-    color: var(--font-color);
-    cursor: pointer;
+    margin-bottom: 50px; /* Additional margin for the link container */
+}
 
-    font-family: 'Raleway', sans-serif;
-    margin-bottom: 50px;
-    
-  }
+.linkContainer h2 {
+    margin: 0; /* Remove default margin */
+    text-align: center; /* Center text if desired */
+}
 
+.linkContainer h2 a {
+    color: #2d8cf0; /* Link color */
+    text-decoration: none; /* Remove underline */
+    font-weight: 700; /* Make links bold */
+}
 
+.linkContainer h2 a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
 
-
+.instagram-link {
+    color: #2d8cf0; /* Instagram link color */
+    text-decoration: underline; /* Underline for Instagram link */
+}
