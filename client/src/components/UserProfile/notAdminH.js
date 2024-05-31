@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Navbar from "../dashboard";
 
 import "./profile.css";
 const NotAdminH = () => {
@@ -7,6 +8,7 @@ const NotAdminH = () => {
       <div className="header">
         <h1 className="headerT">UCLA offbeat</h1>
         <div>
+          <Navbar />
           <button className="button">
             <Link to="/dashboard" className="linkh">
               {" "}
