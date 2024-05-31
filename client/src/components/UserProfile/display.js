@@ -18,7 +18,7 @@ const DisplayProfile = ({ info, startEdit }) => {
       <div
         className="vh-100"
         style={{
-          backgroundColor: "#4169E1",
+          backgroundColor: "#fff",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -60,7 +60,7 @@ const DisplayProfile = ({ info, startEdit }) => {
               <p>Dance Style: {info.danceStyle}</p>
               <button className="edit-button" onClick={startEdit}>
                 <FontAwesomeIcon icon={faEdit} />
-                <span>Edit Profile</span>
+                <span style={{ color: '#323232', fontSize: '16px', fontWeight: 'bold', fontFamily: 'Arial, sans-serif' }}>Edit Profile</span>
               </button>
             </div>
           </div>
@@ -69,7 +69,7 @@ const DisplayProfile = ({ info, startEdit }) => {
       <div className="body" style={{ marginTop: "20px" }}>
         {info.listSessions ? (
           <>
-            <h1 style={{ textAlign: "center", color: "#4169E1" }}>
+            <h1 style={{ textAlign: "center", color: "#323232" }}>
               Events you have joined
             </h1>
             <ul style={{ listStyleType: "none", padding: 0 }}>
@@ -84,11 +84,11 @@ const DisplayProfile = ({ info, startEdit }) => {
                     backgroundColor: "#f0f8ff",
                   }}
                 >
-                  <h2 style={{ color: "#4169E1" }}>{event[0]}</h2>
-                  <p style={{ color: "#8b0000", fontWeight: "bold" }}>
+                  <h2 style={{ color: "#323232" }}>{event[0]}</h2>
+                  <p style={{ color: "#323232", fontWeight: "bold" }}>
                     Date: {event[1]}
                   </p>
-                  <p style={{ color: "#2e8b57" }}>Location: {event[2]}</p>
+                  <p style={{ color: "#323232" }}>Location: {event[2]}</p>
                 </li>
               ))}
             </ul>
