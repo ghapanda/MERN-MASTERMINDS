@@ -75,7 +75,7 @@ const Login = (props) => {
       // );
       console.log("usersessions in login"); // "object"
 
-      alert("Welcome!");
+      // alert("Welcome!");
     } catch (error) {
       if (
         error.response &&
@@ -85,7 +85,7 @@ const Login = (props) => {
         setPasswordError("Wrong username or password");
       } else {
         console.error("Error logging in user:");
-        alert("An error occurred while logging in. Please try again.");
+        // alert("An error occurred while logging in. Please try again.");
       }
     }
   };

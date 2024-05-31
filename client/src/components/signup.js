@@ -64,7 +64,7 @@ const SignUp = (props) => {
 
       console.log("User signed up successfully:", response.data);
 
-      alert("Successfully signed up!");
+      // alert("Successfully signed up!");
       navigate("/login"); //redirecting to login
 
       // Handle success, e.g., redirect to login page
