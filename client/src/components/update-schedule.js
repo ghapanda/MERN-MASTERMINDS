@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./update-schedule.css";
 import { Link } from "react-router-dom";
+import Navbar from "./dashboard";
 
 import axios from "axios";
 import { v4 as uuidv4 } from 'uuid';
@@ -131,6 +132,7 @@ function Schedule() {
 
   return (
     <div className="UpdateSchedule">
+       <Navbar />
       <h1 className="Title">Schedule</h1>
       <button className="addSession" onClick={addSession}>+ Add Session</button>
       <div className="sessions">

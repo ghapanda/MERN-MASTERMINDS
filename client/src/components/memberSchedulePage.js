@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './memberSchedulePage.css';
 import { Link } from "react-router-dom";
+import Navbar from "./dashboard";
 
 import axios from "axios";
 
@@ -96,6 +97,7 @@ function MemberSchedulePage() {
 
   return (
     <div className="Schedule">
+      <Navbar />
     <h3 className="Title">Schedule</h3>
     <div className="sessions">
       {sessions.map((session, i) => (

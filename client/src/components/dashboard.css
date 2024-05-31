@@ -1,14 +1,19 @@
-.Home {
-  background-image: url("../../public/dashboard.jpg");
-  background-size: cover; /* Ensures the background image covers the entire screen */
-  background-repeat: no-repeat;
-  height: 100vh;
-  overflow-y: scroll;
-  font-family: sans-serif;
+.navbar {
+  background-color: lightgrey;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
+  padding: 10px;
 }
 
-/* https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-flexbox-properties */
+.navbar a {
+  font-family: 'Poetsen One', sans-serif;
+  font-size: 24px;
+  color: #38cce6;
+  margin-right: 20px;
+  text-decoration: none;
+}
+
+.navbar a.active {
+  color: blue;
+}
+

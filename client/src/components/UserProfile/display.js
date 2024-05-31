@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Group from "./Group";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import Navbar from "../dashboard";
 const DisplayProfile = ({ info, startEdit }) => {
   console.log("list sessions:", info.listSessions);
   // const listSessionsJSON = JSON.parse(info.listSessions);
@@ -35,6 +36,7 @@ const DisplayProfile = ({ info, startEdit }) => {
             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
           }}
         >
+          <Navbar />
           <div
             style={{ display: "flex", alignItems: "center", textAlign: "left" }}
           >
