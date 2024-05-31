@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Group from "./Group";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import Navbar from "../dashboard";
 const DisplayProfile = ({ info, startEdit }) => {
   console.log("list sessions:", info.listSessions);
   // const listSessionsJSON = JSON.parse(info.listSessions);
@@ -15,24 +16,25 @@ const DisplayProfile = ({ info, startEdit }) => {
   }
   return (
     <>
-      <div
+      {/* <div
         className="vh-100"
         style={{
           backgroundColor: "#4169E1",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-        }}
-      >
+        }} for the blue bg
+      > */}
         <div
           style={{
             maxWidth: "500px",
             width: "100%",
             margin: "auto",
-            borderRadius: "15px",
+            borderRadius: "30px",
             backgroundColor: "#fff",
             padding: "20px",
             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+            border: "2px solid #323232",
           }}
         >
           <div
@@ -58,21 +60,7 @@ const DisplayProfile = ({ info, startEdit }) => {
               <h2>{info.displayName}</h2>
               <i>{info.bio}</i>
               <p>Dance Style: {info.danceStyle}</p>
-              <button className="edit-button" onClick={startEdit}>
-                <FontAwesomeIcon icon={faEdit} />
-                <span>Edit Profile</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="body" style={{ marginTop: "20px" }}>
-        {info.listSessions ? (
-          <>
-            <h1 style={{ textAlign: "center", color: "#4169E1" }}>
-              Events you have joined
-            </h1>
-            <ul style={{ listStyleType: "none", padding: 0 }}>
+              <ul style={{ listStyleType: "none", padding: 0 }}>
               {info.listSessions.map((event, index) => (
                 <li
                   key={index}
@@ -92,13 +80,27 @@ const DisplayProfile = ({ info, startEdit }) => {
                 </li>
               ))}
             </ul>
+              <button className="edit-button" onClick={startEdit}>
+                <FontAwesomeIcon icon={faEdit} />
+                <span>Edit Profile</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      {/* </div> */}
+      {/* <div className="body" style={{ marginTop: "20px" }}>
+        {info.listSessions ? (
+          <>
+            <h1 style={{ textAlign: "center", color: "#4169E1" }}>
+              Events you have joined
+            </h1>
           </>
         ) : (
           <h1 style={{ textAlign: "center", color: "#4169E1" }}>
             No events yet
           </h1>
-        )}
-      </div>
+        )} events font
+      </div> */}
     </>
   );
 };

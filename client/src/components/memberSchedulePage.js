@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './memberSchedulePage.css';
+import { Link } from "react-router-dom";
+import Navbar from "./dashboard";
 
 import axios from "axios";
 
-function AttendantContainer() {
-  return (
-    <div className="attendant-container">
-      <label htmlFor="Attendant">Attendant: </label> <input id="Attendant"/>
-    </div>
-  );
-}
+
 
 function MemberSchedulePage() {
   const [sessions, setSessions] = useState([]);
@@ -101,26 +97,31 @@ function MemberSchedulePage() {
 
   return (
     <div className="Schedule">
-    <h1 className="Title">Schedule</h1>
+      <Navbar />
+    <h3 className="Title">Schedule</h3>
     <div className="sessions">
       {sessions.map((session, i) => (
         <div key={i} className="session">
-          <p>Name: {session.name}</p>
-          <p>Week: {session.week}</p>
-          <p>Day: {session.day}</p>
-          <p>Date: {session.date}</p>
-          <p>Time: {session.time}</p>
-          <p>Location: {session.location}</p>
-          <p>Contact: {session.contact}</p>
-          <p>Attendants: {session.listAttendants}</p>
+          <p style={{padding:'10px'}}>Name: {session.name}</p>
+          <p style={{padding:'10px'}}>Week: {session.week}</p>
+          <p style={{padding:'10px'}}>Day: {session.day}</p>
+          <p style={{padding:'10px'}}>Date: {session.date}</p>
+          <p style={{padding:'10px'}}>Time: {session.time}</p>
+          <p style={{padding:'10px'}}>Location: {session.location}</p>
+          <p style={{padding:'10px'}}>Contact: {session.contact}</p>
+          <p style={{padding:'10px'}}>Attendants:  {session.listAttendants.map((attendant, index) => (
+              <div key={index} style={{color:'#666'}}>{attendant}</div>
+            ))}</p>        
           <div className="attendants">
-            <button className="addAttendant" onClick={() => addAttendant(session.index, session.name, session.date, session.location)}> + Add Self</button>
-            <button className="deleteAttendant" onClick={() => deleteAttendant(session.index, session.name, session.date, session.location)}> - Delete Self</button>
+            <button className="addAttendant" style={{margin:'10px'}} onClick={() => addAttendant(session.index, session.name, session.date, session.location)}> + Add Self</button>
+            <button className="deleteAttendant"  style={{margin:'10px'}} onClick={() => deleteAttendant(session.index, session.name, session.date, session.location)}> - Delete Self</button>
           </div>
         </div>
       ))}
     </div>
+    <h3 className="SubTitle">Return to{" "}<Link to="/dashboard" style={{ color: "#2d8cf0", textDecoration: "underline" }}>dashboard</Link></h3>
     </div>
+
   );
 }
 
