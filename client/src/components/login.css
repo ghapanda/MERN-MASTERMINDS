@@ -23,7 +23,7 @@
   font-family: 'Poetsen One', sans-serif;
   color: black;
   font-weight: 900;
-  font-size: 20px;
+  font-size: 25px;
   margin-bottom: 25px;
   text-align: center;
 }
@@ -47,7 +47,7 @@
   border: 2px solid #323232;
   background-color: #fff;
   box-shadow: 4px 4px #323232;
-  font-size: 15px;
+  font-size: 20px;
   font-weight: 600;
   color: #323232;
   padding: 5px 10px;
@@ -66,7 +66,7 @@
 .errorLabel {
   font-family: 'Poetsen One', sans-serif;
   color: #ff4d4d;
-  font-size: 16px;
+  font-size: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -80,9 +80,9 @@
   border: 2px solid #323232;
   background-color: #fff;
   box-shadow: 4px 4px #323232;
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 600;
-  color: #323232;
+  color: black;;
   cursor: pointer;
 }
 
@@ -94,6 +94,7 @@
 
 .register-text {
   font-family: 'Poetsen One', sans-serif;
-  font-size: 14px;
-  color: #323232;
+  font-size: 15px;
+  color: black;;
 }
+

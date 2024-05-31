@@ -93,7 +93,7 @@ const Login = (props) => {
   return (
     <div className={"mainContainer login-bg"}>
       <div className="login-box">
-        <h3 className="Titles">Login here</h3>
+        <h3 className="Titles">Login</h3>
         <form className="form">
           <div className="user-box">
             <input

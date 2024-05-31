@@ -82,19 +82,21 @@ const SignUp = (props) => {
       // Handle error, e.g., display error message to user
     }
   };
+
   return (
     <div className={"mainContainer login-bg"}>
       <div className="login-box">
-        <h2>Sign Up</h2>
-        <form>
+        <h3 className="Titles">Sign Up</h3>
+        <form className="form">
           <div className="user-box">
             <input
               type="text"
               value={email}
               onChange={(ev) => setEmail(ev.target.value)}
               required
+              placeholder="Email"
+              className="input"
             />
-            <label>Email</label>
             <div className="errorLabel">{emailError}</div>
           </div>
           <div className="user-box">
@@ -103,8 +105,9 @@ const SignUp = (props) => {
               value={username}
               onChange={(ev) => setUsername(ev.target.value)}
               required
+              placeholder="Username"
+              className="input"
             />
-            <label>Username</label>
             <div className="errorLabel">{userError}</div>
           </div>
           <div className="user-box">
@@ -113,22 +116,23 @@ const SignUp = (props) => {
               value={password}
               onChange={(ev) => setPassword(ev.target.value)}
               required
+              placeholder="Password"
+              className="input"
             />
-            <label>Password</label>
             <div className="errorLabel">{passwordError}</div>
           </div>
-          <button type="button" onClick={OnSignUpClick}>
+          <button type="button" onClick={OnSignUpClick} className="button-confirm">
             Sign Up
           </button>
-          <p>
+          <h3 className="register-text">
             Already have an account?{" "}
             <Link
               to="/login"
-              style={{ color: "yellow", textDecoration: "underline" }}
+              style={{ color: "#2d8cf0", textDecoration: "underline" }}
             >
               Login
             </Link>
-          </p>
+          </h3>
         </form>
       </div>
     </div>
