@@ -19,7 +19,7 @@ router.get("/search", async (req, res) => {
           { displayName: { $regex: regex } },
           { username: { $regex: regex } },
         ],
-      }, "displayName username portrait danceStyle bio");
+      }, "displayName username portrait danceStyle bio listSessions");
 
       // send response back to the client
       console.log(users);
