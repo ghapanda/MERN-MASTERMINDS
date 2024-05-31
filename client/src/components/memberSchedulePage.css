@@ -7,7 +7,7 @@
   align-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f0f0; /* Background color similar to login-bg */
+  background-color: lightgrey; /* Background color similar to login-bg */
 }
 
 .schedule-box {

@@ -1,112 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+
 .UpdateSchedule {
-  background-color: #282c34; 
+  background-color: lightgrey;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; 
-  align-items: center; 
-  height: 100vh; 
-  overflow-y: scroll; 
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 100vh;
+  overflow-y: scroll;
+  font-family: 'Poetsen One', sans-serif;
+  border: 2px solid #323232;
+  box-shadow: 4px 4px #323232;
+  padding: 20px;
 }
 
 .Title {
-  color: white;
-}
-
-.addSession {
-  display: inline-block;
-  outline: 0;
-  cursor: pointer;
+  color: black;
+  font-weight: 900;
+  font-size: 25px;
+  margin-bottom: 25px;
   text-align: center;
-  border: 1px solid #babfc3;
-  padding: 7px 16px;
-  min-height: 36px;
-  min-width: 36px;
-  color: #202223;
-  background: #38cce6;
-  border-radius: 4px;
-  font-weight: 500;
-  font-size: 14px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 0px 0px;
 }
 
-.addSession:hover {
-  background: #1e6168;
-  outline: 1px solid transparent;
-}
-
-.delete {
-  display: inline-block;
-  outline: 0;
-  cursor: pointer;
-  text-align: center;
-  border: 1px solid #babfc3;
-  padding: 7px 16px;
-  min-height: 36px;
-  min-width: 36px;
-  color: #202223;
-  background: #38cce6;
-  border-radius: 4px;
-  font-weight: 500;
-  font-size: 14px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 0px 0px;
-}
-
-.delete:hover {
-  background: #1e6168;
-  outline: 1px solid transparent;
-}
-
-.sessions {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; 
-  padding: 10px; 
-}
-
-.session-container{
-  justify-content: space-between; 
-  padding: 10px; 
-  display: flex;
-  flex-direction: row;
-  outline: 10;
-  text-align: center;
-  border: 1px solid #babfc3;
-  padding: 7px 16px;
-  min-height: 36px;
-  min-width: 36px;
-  color: #202223;
-  background: #38cce6;
-  border-radius: 4px;
-  font-weight: 500;
-  font-size: 14px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 0px 0px;
-}
-
+.addSession,
+.delete,
 .update {
   display: inline-block;
   outline: 0;
   cursor: pointer;
   text-align: center;
-  border: 1px solid #babfc3;
+  border: 2px solid #323232;
   padding: 7px 16px;
   min-height: 36px;
   min-width: 36px;
-  color: #202223;
-  background: #38cce6;
-  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 4px 4px #323232;
+  font-size: 16px;
+  font-weight: 600;
+  color: black;
+  border-radius: 5px;
+  margin: 10px;
+  font-family: Poetsen One;
+}
+
+.addSession:hover,
+.delete:hover,
+.update:hover {
+  background: #2d8cf0;
+  color: #fff;
+}
+
+.sessions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  width: 100%;
+  gap: 20px;
+}
+
+.session-container {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Add this line */
+  outline: 10;
+  text-align: left;
+  border: 2px solid #323232;
+  padding: 7px 16px;
+  min-height: 36px;
+  min-width: 36px;
+  background: #fff;
+  border-radius: 5px;
   font-weight: 500;
   font-size: 14px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 0px 0px;
+  box-shadow: 4px 4px #323232;
 }
 
-.update:hover {
-  background: #1e6168;
-  outline: 1px solid transparent;
+.session-container label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #323232;
+  padding: 10px;
 }
 
+.session-container input {
+  width: 150px;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid #323232;
+  background-color: #fff;
+  box-shadow: 4px 4px #323232;
+  font-size: 16px;
+  font-weight: 600;
+  color: #323232;
+  padding: 10px;
+  outline: none;
+  margin-bottom: 10px;
+  font-family: Poetsen One;
+}
 
+.session-container input::placeholder {
+  color: #666;
+  opacity: 0.8;
+}
 
+.session-container input:focus {
+  border: 2px solid #2d8cf0;
+}
 
+.session-container {
+  display: flex;
+  flex-direction: row;
+  outline: 10;
+  border: 2px solid #323232;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 14px;
+  box-shadow: 4px 4px #323232;
+}
 
+.input-container {
+  display: flex;
+  align-items: center;
+  padding: 7px 16px;
+}
 
+.input-container label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #323232;
+  padding-right: 10px;
+}
 
+.input-container input {
+  width: 150px;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid #323232;
+  background-color: #fff;
+  box-shadow: 4px 4px #323232;
+  font-size: 16px;
+  font-weight: 600;
+  color: #323232;
+  padding: 10px;
+  outline: none;
+  margin-bottom: 10px;
+}
+
+.delete {
+  align-self: flex-start; /* Adjust alignment of the button */
+  margin-top: 10px; /* Add some top margin for spacing */
+}
