@@ -3,7 +3,6 @@ import Group from "./Group";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
-
 const DisplayProfile = ({ info, startEdit }) => {
   console.log("list sessions:", info.listSessions);
   // const listSessionsJSON = JSON.parse(info.listSessions);
@@ -34,14 +33,14 @@ const DisplayProfile = ({ info, startEdit }) => {
             borderRadius: "5px",
             border: "2px solid #323232",
             padding: "20px",
-            // boxShadow: "box-shadow: 4px 4px #323232"
-            boxShadow: "0 10px 20px rgba(0, 0, 0, 0.2)"
+            fontWeight: "600",
+            boxShadow: "4px 4px #323232"
           }}
         >
           <div
-            style={{ display: "flex", alignItems: "center", textAlign: "left"}}
+            style={{ display: "flex", alignItems: "center", textAlign: "left" }}
           >
-            <div style={{ flexShrink: 0}}>
+            <div style={{ flexShrink: 0 }}>
               <img
                 style={{ width: "90px", borderRadius: "90px" }}
                 src={
@@ -57,10 +56,30 @@ const DisplayProfile = ({ info, startEdit }) => {
                 }}
               />
             </div>
-            <div className= "ProfileBoxInner" style={{ flexGrow: 1, marginLeft: "20px", color: '#323232', backgroundColor: '#fff'}}>
+            <div className="ProfileBoxInner" style={{ flexGrow: 1, marginLeft: "20px", color: '#323232', backgroundColor: '#fff' }}>
               <h2>{info.displayName}</h2>
               <i>{info.bio}</i>
               <p>Dance Style: {info.danceStyle}</p>
+              <ul style={{ listStyleType: "none", padding: 0, backgroundColor:"#D3D3D3", boxShadow: "4px 4px #323232", fontWeight: "600", color:"#323232" }}>
+                {info.listSessions.map((event, index) => (
+                  <li
+                    key={index}
+                    style={{
+                      border: "2px solid #323232",
+                      borderRadius: "2px",
+                      padding: "10px",
+                      marginBottom: "10px",
+                      backgroundColor: "#D3D3D3",
+                    }}
+                  >
+                    <h2 style={{ color: "#323232" }}>{event[0]}</h2>
+                    <p style={{ color: "#323232", fontWeight: "bold" }}>
+                      Date: {event[1]}
+                    </p>
+                    <p style={{ color: "#323232", fontWeight: "bold" }}>Location: {event[2]}</p>
+                  </li>
+                ))}
+              </ul>
               <button className="edit-button" onClick={startEdit}>
                 <FontAwesomeIcon icon={faEdit} />
                 <span style={{ color: '#323232', fontSize: '16px', fontWeight: 'bold', fontFamily: 'Arial, sans-serif' }}>Edit Profile</span>
@@ -69,32 +88,9 @@ const DisplayProfile = ({ info, startEdit }) => {
           </div>
         </div>
       </div>
-      <div className="body" style={{ marginTop: "20px"}}>
+      <div className="body" style={{ marginTop: "20px" }}>
         {info.listSessions ? (
           <>
-            <h1 style={{ textAlign: "center", color: "#323232" }}>
-              Events You Have Joined
-            </h1>
-            <ul style={{ listStyleType: "none", padding: 0 }}>
-              {info.listSessions.map((event, index) => (
-                <li
-                  key={index}
-                  style={{
-                    border: "2px solid #323232",
-                    borderRadius: "2px",
-                    padding: "10px",
-                    marginBottom: "10px",
-                    backgroundColor: "#D3D3D3",
-                  }}
-                >
-                  <h2 style={{ color: "#323232" }}>{event[0]}</h2>
-                  <p style={{ color: "#323232", fontWeight: "bold" }}>
-                    Date: {event[1]}
-                  </p>
-                  <p style={{ color: "#323232", fontWeight: "bold" }}>Location: {event[2]}</p>
-                </li>
-              ))}
-            </ul>
           </>
         ) : (
           <h1 style={{ textAlign: "center", color: "#323232" }}>
