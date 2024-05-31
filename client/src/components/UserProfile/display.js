@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Group from "./Group";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
+
+
 const DisplayProfile = ({ info, startEdit }) => {
   console.log("list sessions:", info.listSessions);
   // const listSessionsJSON = JSON.parse(info.listSessions);
@@ -21,7 +23,7 @@ const DisplayProfile = ({ info, startEdit }) => {
           backgroundColor: "#fff",
           display: "flex",
           justifyContent: "center",
-          alignItems: "center",
+          alignItems: "center"
         }}
       >
         <div
@@ -29,16 +31,17 @@ const DisplayProfile = ({ info, startEdit }) => {
             maxWidth: "500px",
             width: "100%",
             margin: "auto",
-            borderRadius: "15px",
-            backgroundColor: "#fff",
+            borderRadius: "5px",
+            border: "2px solid #323232",
             padding: "20px",
-            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+            // boxShadow: "box-shadow: 4px 4px #323232"
+            boxShadow: "0 10px 20px rgba(0, 0, 0, 0.2)"
           }}
         >
           <div
-            style={{ display: "flex", alignItems: "center", textAlign: "left" }}
+            style={{ display: "flex", alignItems: "center", textAlign: "left"}}
           >
-            <div style={{ flexShrink: 0 }}>
+            <div style={{ flexShrink: 0}}>
               <img
                 style={{ width: "90px", borderRadius: "90px" }}
                 src={
@@ -54,7 +57,7 @@ const DisplayProfile = ({ info, startEdit }) => {
                 }}
               />
             </div>
-            <div style={{ flexGrow: 1, marginLeft: "20px" }}>
+            <div className= "ProfileBoxInner" style={{ flexGrow: 1, marginLeft: "20px", color: '#323232', backgroundColor: '#fff'}}>
               <h2>{info.displayName}</h2>
               <i>{info.bio}</i>
               <p>Dance Style: {info.danceStyle}</p>
@@ -66,29 +69,29 @@ const DisplayProfile = ({ info, startEdit }) => {
           </div>
         </div>
       </div>
-      <div className="body" style={{ marginTop: "20px" }}>
+      <div className="body" style={{ marginTop: "20px"}}>
         {info.listSessions ? (
           <>
             <h1 style={{ textAlign: "center", color: "#323232" }}>
-              Events you have joined
+              Events You Have Joined
             </h1>
             <ul style={{ listStyleType: "none", padding: 0 }}>
               {info.listSessions.map((event, index) => (
                 <li
                   key={index}
                   style={{
-                    border: "1px solid #4169E1",
-                    borderRadius: "5px",
+                    border: "2px solid #323232",
+                    borderRadius: "2px",
                     padding: "10px",
                     marginBottom: "10px",
-                    backgroundColor: "#f0f8ff",
+                    backgroundColor: "#D3D3D3",
                   }}
                 >
                   <h2 style={{ color: "#323232" }}>{event[0]}</h2>
                   <p style={{ color: "#323232", fontWeight: "bold" }}>
                     Date: {event[1]}
                   </p>
-                  <p style={{ color: "#323232" }}>Location: {event[2]}</p>
+                  <p style={{ color: "#323232", fontWeight: "bold" }}>Location: {event[2]}</p>
                 </li>
               ))}
             </ul>

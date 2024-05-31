@@ -16,7 +16,7 @@ const NotAdminH = () => {
           <button className="button">
             <Link to="/" className="linkh">
               {" "}
-              LOGOUT
+              Logout
             </Link>
           </button>
         </div>
