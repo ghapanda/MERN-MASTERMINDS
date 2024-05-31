@@ -5,7 +5,7 @@ const NotAdminH = () => {
   return (
     <>
       <div className="header">
-        <h1 className="headerT">UCLA offbeat</h1>
+        <h1 className="headerT">Offbeat Sessions</h1>
         <div>
           <button className="button">
             <Link to="/dashboard" className="linkh">

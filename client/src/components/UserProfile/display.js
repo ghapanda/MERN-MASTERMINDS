@@ -94,7 +94,7 @@ const DisplayProfile = ({ info, startEdit }) => {
             </ul>
           </>
         ) : (
-          <h1 style={{ textAlign: "center", color: "#4169E1" }}>
+          <h1 style={{ textAlign: "center", color: "#323232" }}>
             No events yet
           </h1>
         )}

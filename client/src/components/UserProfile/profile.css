@@ -1,3 +1,21 @@
+:root {
+  --input-focus: #2d8cf0;
+  --font-color: #323232;
+  --font-color-sub: #666;
+  --bg-color: #fff;
+  --main-color: #323232;
+  padding: 20px;
+  background: lightgrey;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  box-shadow: 4px 4px var(--main-color);
+}
+
 .header {
   background-color: #4169e1;
   margin-top: 0px;
@@ -11,16 +29,23 @@
 .button {
   margin-left: 30px;
 
-  background-color: #ffd700; /* Golden yellow background */
-  color: #4169e1; /* Royal blue text color */
+  background-color: #ffd700;
+  /* Golden yellow background */
+  color: #4169e1;
+  /* Royal blue text color */
   border: none;
-  padding: 12px 24px; /* Padding for spacing */
+  padding: 12px 24px;
+  /* Padding for spacing */
   font-size: 16px;
-  border-radius: 8px; /* Rounded corners */
+  border-radius: 8px;
+  /* Rounded corners */
   cursor: pointer;
-  outline: none; /* Remove outline on focus */
-  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; /* Smooth transition effects */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow */
+  outline: none;
+  /* Remove outline on focus */
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  /* Smooth transition effects */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Add a shadow */
 }
 
 .headerT {
@@ -32,21 +57,30 @@
 }
 
 .linkh {
-  color: #4169e1; /* Royal blue text color */
-  font-size: 20px; /* Font size */
-  text-decoration: none; /* Remove default underline */
-  border-bottom: 2px solid transparent; /* Add a transparent bottom border */
-  transition: color 0.3s, border-color 0.3s; /* Smooth transition effects */
+  color: #4169e1;
+  /* Royal blue text color */
+  font-size: 20px;
+  /* Font size */
+  text-decoration: none;
+  /* Remove default underline */
+  border-bottom: 2px solid transparent;
+  /* Add a transparent bottom border */
+  transition: color 0.3s, border-color 0.3s;
+  /* Smooth transition effects */
 }
 
 .linkh:hover {
-  color: #324ba9; /* Darker shade of blue on hover */
-  border-color: #4169e1; /* Border color on hover */
+  color: #324ba9;
+  /* Darker shade of blue on hover */
+  border-color: #4169e1;
+  /* Border color on hover */
 }
 
 .linkh:focus {
-  outline: none; /* Remove focus outline */
-  border-color: #4169e1; /* Border color on focus */
+  outline: none;
+  /* Remove focus outline */
+  border-color: #4169e1;
+  /* Border color on focus */
 }
 
 /* .profile-page {
@@ -83,10 +117,13 @@
 }
 
 .edit-button {
-  background-color: #4caf50; /* Green background */
+  background-color: red;
+  /* Green background */
   border: none;
-  color: white; /* White text */
-  padding: 15px 32px; /* Some padding */
+  color: white;
+  /* White text */
+  padding: 15px 32px;
+  /* Some padding */
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -95,8 +132,10 @@
   transition-duration: 0.4s;
   cursor: pointer;
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a shadow */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Add a shadow */
 }
+
 /* 
 .profile-body {
   margin-top: 20px;
@@ -201,6 +240,7 @@
 .editButton.cancel:hover {
   background-color: #a4ced498;
 }
+
 .custom-file-upload {
   display: inline-block;
   padding: 10px 20px;
