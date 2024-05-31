@@ -37,7 +37,7 @@
   border: 2px solid var(--main-color);
   box-shadow: 4px 4px var(--main-color);
 
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 800;
   color: var(--font-color);
   cursor: pointer;
@@ -45,7 +45,7 @@
   font-family: 'Poetsen One', sans-serif;
 
   width: 300px;
-  height: 400px;
+  height: 600px;
   margin-right:25px;
   margin-left:25px;
 }
@@ -66,7 +66,7 @@
   border: 2px solid var(--main-color);
   box-shadow: 4px 4px var(--main-color);
 
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 800;
   color: var(--font-color);
   cursor: pointer;

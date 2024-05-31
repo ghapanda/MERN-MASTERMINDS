@@ -122,7 +122,7 @@ const SignUp = (props) => {
             <div className="errorLabel">{passwordError}</div>
           </div>
           <button type="button" onClick={OnSignUpClick} className="button-confirm">
-            Sign Up
+            Sign Up  →
           </button>
           <h3 className="register-text">
             Already have an account?{" "}
@@ -132,6 +132,8 @@ const SignUp = (props) => {
             >
               Login
             </Link>
+            <br />
+            Return to <Link to="/" style={{ color: "#2d8cf0", textDecoration: "underline" }}>home</Link>
           </h3>
         </form>
       </div>

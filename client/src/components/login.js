@@ -128,6 +128,9 @@ const Login = (props) => {
             >
               here
             </Link>
+            <br />
+            Return to <Link to="/" style={{ color: "#2d8cf0", textDecoration: "underline" }}>home</Link>
+
           </h3>
         </form>
       </div>
