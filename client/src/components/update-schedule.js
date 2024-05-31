@@ -146,7 +146,6 @@ function Schedule() {
         ))}
       </div>
       <button className="update" onClick={update}>Update</button>
-      <h3 className="SubTitle">Return to{" "}<Link to="/dashboard" style={{ color: "#2d8cf0", textDecoration: "underline" }}>dashboard</Link></h3>
     </div>
   );
 }

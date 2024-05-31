@@ -1,5 +1,5 @@
 .navbar {
-  background-color: lightgrey;
+  background-color: white;
   display: flex;
   align-items: center;
   padding: 10px;
@@ -7,6 +7,7 @@
   border: 2px solid #323232;
   box-shadow: 4px 4px #323232;
   top: 10px;
+  ;
 }
 
 .navbar a {
@@ -20,4 +21,3 @@
 .navbar a.active {
   color: blue;
 }
-

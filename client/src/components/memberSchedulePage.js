@@ -119,7 +119,6 @@ function MemberSchedulePage() {
         </div>
       ))}
     </div>
-    <h3 className="SubTitle">Return to{" "}<Link to="/dashboard" style={{ color: "#2d8cf0", textDecoration: "underline" }}>dashboard</Link></h3>
     </div>
 
   );
