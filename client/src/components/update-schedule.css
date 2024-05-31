@@ -154,23 +154,54 @@
   margin-top: 10px; /* Add some top margin for spacing */
 }
 
-.button-confirm {
+.addSession {
   font-family: 'Poetsen One', sans-serif;
   margin: 50px auto 0 auto;
-  width: 120px;
-  height: 40px;
+  min-width: 120px;
+  min-height: 40px;
   border-radius: 5px;
   border: 2px solid #323232;
   background-color: #fff;
   box-shadow: 4px 4px #323232;
   font-size: 20px;
   font-weight: 600;
-  color: black;;
+  color: black;
   cursor: pointer;
 }
 
-.button-confirm:active {
+.addSession:active {
   font-family: 'Poetsen One', sans-serif;
   box-shadow: 0px 0px #323232;
   transform: translate(3px, 3px);
+}
+
+.addSession:hover {
+  background-color:#fff;
+  color:black;
+}
+
+.update {
+  font-family: 'Poetsen One', sans-serif;
+  margin: 50px auto 0 auto;
+  min-width: 120px;
+  min-height: 40px;
+  border-radius: 5px;
+  border: 2px solid #323232;
+  background-color: #fff;
+  box-shadow: 4px 4px #323232;
+  font-size: 20px;
+  font-weight: 600;
+  color: black;
+  cursor: pointer;
+}
+
+.update:active {
+  font-family: 'Poetsen One', sans-serif;
+  box-shadow: 0px 0px #323232;
+  transform: translate(3px, 3px);
+}
+
+.update:hover {
+  background-color:#fff;
+  color:black;
 }

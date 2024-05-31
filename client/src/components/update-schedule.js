@@ -134,7 +134,9 @@ function Schedule() {
     <div className="UpdateSchedule">
        <Navbar />
       <h1 className="Title">Schedule</h1>
-      <button className="addSession" onClick={addSession}>+ Add Session</button>
+      <button className="addSession" onClick={addSession} >
+        + Add Session
+      </button>
       <div className="sessions">
         {sessions.map((session, i) => (
           <SessionContainer
