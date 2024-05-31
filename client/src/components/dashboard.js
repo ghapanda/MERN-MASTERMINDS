@@ -8,7 +8,7 @@ export default function Navbar() {
   return (
     <div className="navbar">
       <Link to="/" className={location.pathname === "/" ? "active" : ""}>
-        Log Out
+        Dashboard
       </Link>
       <Link
         to="/update-schedule"
@@ -29,7 +29,7 @@ export default function Navbar() {
         to="/searchbar"
         className={location.pathname === "/searchbar" ? "active" : ""}
       >
-        Community
+        SearchBar
       </Link>
     </div>
   );
