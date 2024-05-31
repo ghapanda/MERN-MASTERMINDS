@@ -1,92 +1,100 @@
-.login-bg {
-  background-size: cover; /* Ensures the background image covers the entire screen */
-  background-repeat: no-repeat;
-  background-image: url("../../public/BACKGROUND FOR LOGIN.jpeg");
-}
-* {
-  box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
 
 .login-box {
+  font-family: 'Poetsen One', sans-serif; /* Apply the font to the entire login box */
   position: absolute;
   top: 50%;
-  left: 75%; /* Adjust this value to move the box further to the right */
-  width: 500px;
-  padding: 40px;
+  left: 50%;
+  width: 300px;
+  padding: 20px;
   transform: translate(-50%, -50%);
-  background: rgba(49, 49, 49, 0.5);
-  box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
-  border-radius: 10px;
+  background: lightgrey;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+  border-radius: 5px;
+  border: 2px solid #323232;
+  box-shadow: 4px 4px #323232;
 }
-.login-box h2 {
-  margin: 0 0 30px;
-  padding: 0;
-  color: #fbfbfb;
+
+.Titles {
+  font-family: 'Poetsen One', sans-serif;
+  color: black;
+  font-weight: 900;
+  font-size: 25px;
+  margin-bottom: 25px;
   text-align: center;
-  font-size: 40px;
 }
 
-.login-box .user-box {
-  position: relative;
-}
-
-.login-box .user-box input {
+.form {
+  font-family: 'Poetsen One', sans-serif;
   width: 100%;
-  padding: 10px 0;
-  font-size: 22px;
-  color: #fff;
-  margin-bottom: 30px;
-  border: none;
-  border-bottom: 1px solid #fff;
-  outline: none;
-  background: transparent;
 }
 
-.login-box .user-box label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 10px 0;
-  font-size: 22px;
-  color: #fff;
-  pointer-events: none;
-  transition: 0.5s;
-}
-
-.login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
-  top: -20px;
-  left: 0;
-  color: #03e9f4;
-  font-size: 18px;
-}
-
-.login-box button {
+.user-box {
+  font-family: 'Poetsen One', sans-serif;
   position: relative;
-  display: inline-block;
-  padding: 10px 20px;
-  color: #03e9f4;
-  font-size: 18px;
-  text-decoration: none;
-  text-transform: uppercase;
-  overflow: hidden;
-  transition: 0.5s;
-  margin-top: 40px;
-  letter-spacing: 4px;
-  background-color: transparent; /* Or any background color you prefer */
-  border: none;
-  cursor: pointer;
+  width: 100%;
 }
 
-.login-box button:hover {
-  color: #fff;
-  background-color: #03e9f4; /* Optional: change background color on hover */
+.input {
+  font-family: 'Poetsen One', sans-serif;
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid #323232;
+  background-color: #fff;
+  box-shadow: 4px 4px #323232;
+  font-size: 20px;
+  font-weight: 600;
+  color: #323232;
+  padding: 5px 10px;
+  outline: none;
+}
+
+.input::placeholder {
+  color: #666;
+  opacity: 0.8;
+}
+
+.input:focus {
+  border: 2px solid #2d8cf0;
 }
 
 .errorLabel {
-  color: #ff4d4d; /* Red color for error messages */
-  font-size: 16px;
-  margin-top: -20px;
-  margin-bottom: 20px;
+  font-family: 'Poetsen One', sans-serif;
+  color: #ff4d4d;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
+
+.button-confirm {
+  font-family: 'Poetsen One', sans-serif;
+  margin: 50px auto 0 auto;
+  width: 120px;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid #323232;
+  background-color: #fff;
+  box-shadow: 4px 4px #323232;
+  font-size: 20px;
+  font-weight: 600;
+  color: black;;
+  cursor: pointer;
+}
+
+.button-confirm:active {
+  font-family: 'Poetsen One', sans-serif;
+  box-shadow: 0px 0px #323232;
+  transform: translate(3px, 3px);
+}
+
+.register-text {
+  font-family: 'Poetsen One', sans-serif;
+  font-size: 14px;
+  color: black;;
+}
+

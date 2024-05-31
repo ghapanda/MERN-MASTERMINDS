@@ -6,30 +6,28 @@ const Home = (props) => {
   sessionStorage.clear();
 
   return (
-    <div className={"mainContainer"}>
-      {/* Background video */}
-      <video autoPlay muted loop id="bgVideo">
+    <div className={"mainContainer1"}>
+      
+      <video autoPlay muted loop id="bgVideo" >
         <source src="/promo.webm" type="video/webm" />
-        {/* Add additional source elements for different video formats if needed */}
         Your browser does not support the video tag.
       </video>
 
-      <div className="textContainer">
-        
-        <p>
-          New Here? <Link to="/signup">Signup here</Link>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {/* Adding space */}
-          Already a member? <Link to="/login">Click here</Link>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {/* Adding space */}
-          Learn More: <Link to="/aboutus">About Us</Link>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {/* Adding space */}
-          Follow us on Instagram:{" "}
-          <a href="https://www.instagram.com/uclaoffbeat/">@uclaoffbeat</a>
-        </p>
+      <div className="blurbContainer">
+        <h3>Join us as we dance, connect, and grow together!</h3>
       </div>
 
-      <div className="ending">
-      <p>Join us as we dance, connect, and grow together!</p>
+      <div className="linkContainer">
+        <h3>
+          New Here? <Link to="/signup" style={{ color: "#2d8cf0", textDecoration: "underline" }}>Signup Here</Link>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {/* Adding space */}
+          Already a member? <Link to="/login" style={{ color: "#2d8cf0", textDecoration: "underline" }}>Login Here</Link>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {/* Adding space */}
+          Learn More: <Link to="/aboutus" style={{ color: "#2d8cf0", textDecoration: "underline" }}>About Us</Link>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {/* Adding space */}
+          Follow us on Instagram:{" "}
+          <a href="https://www.instagram.com/uclaoffbeat/" className="instagram-link">@uclaoffbeat</a>
+        </h3>
       </div>
 
     </div>

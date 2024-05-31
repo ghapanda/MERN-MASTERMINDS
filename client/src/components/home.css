@@ -1,12 +1,14 @@
-@font-face {
-    font-family: 'StreetExplorer';
-    src: url('./../../public/StreetExplorer.otf') format('opentype');
-}
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
 
-.mainContainer {
+.mainContainer1 {
+    font-family: 'Poetsen One', sans-serif;
     position: relative;
     overflow: hidden;
     height: 100vh; /* Ensure the container takes up the full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+    align-items: center; 
 }
 
 #bgVideo {
@@ -14,29 +16,52 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: calc(100vh); /* Set the height to one-third of the viewport height */
+    height: calc(100vh); /* Set the height to the full viewport height */
     object-fit: cover; /* Ensure the video covers the entire space */
     z-index: -1;
 }
 
-.mission li {
-    margin-bottom: 20px; /* Spacing between bullets in "About Us" Section */
+.blurbContainer,
+.linkContainer {
+    font-family: 'Poetsen One', sans-serif; /* Apply the font-family */
+    padding: 20px;
+    background: lightgrey;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+    border-radius: 5px;
+    border: 2px solid #323232;
+    box-shadow: 4px 4px #323232;
+    margin: 20px auto; /* Center the container with margin auto */
+    font-size: 20px;
+    font-weight: 800;
+    color: #323232;
+    cursor: pointer;
+    background-color: #fff; /* Ensure background is white */
 }
 
-.textContainer {
-    padding-top: 70vh; /* Adjust the value as needed to shift the content downwards */
-    color: #C0C0C0;
-    font-family: "StreetExplorer";
-    font-size: 24px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+.linkContainer {
+    margin-bottom: 50px; /* Additional margin for the link container */
 }
 
-.ending {
-    color: #C0C0C0;
-    font-family: "StreetExplorer";
-    font-size: 24px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+.linkContainer h2 {
+    margin: 0; /* Remove default margin */
+    text-align: center; /* Center text if desired */
 }
 
+.linkContainer h2 a {
+    color: #2d8cf0; /* Link color */
+    text-decoration: none; /* Remove underline */
+    font-weight: 700; /* Make links bold */
+}
 
+.linkContainer h2 a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
 
+.instagram-link {
+    color: #2d8cf0; /* Instagram link color */
+    text-decoration: underline; /* Underline for Instagram link */
+}

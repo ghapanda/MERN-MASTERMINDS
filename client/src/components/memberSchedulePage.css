@@ -1,65 +1,97 @@
-.MemberSchedulePage {
-    background-color: #282c34; 
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; 
-    align-items: center; 
-    height: 100vh;
-    overflow-y: scroll; 
-  }
-  
-  .Title {
-    color: white; 
-  }
-    
-  .Schedule {
-    background-color: #282c34; 
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; 
-    align-items: center; 
-    height: 100vh; 
-    overflow-y: scroll; 
-  }
-    
-  .sessions {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; 
-    padding: 10px; 
-  }
-  
-  .session{
-    justify-content: space-between; 
-    padding: 10px; 
-    display: flex;
-    flex-direction: row;
-    outline: 10;
-    text-align: center;
-    border: 1px solid #babfc3;
-    padding: 7px 16px;
-    min-height: 36px;
-    min-width: 36px;
-    color: #202223;
-    background: #38cce6;
-    border-radius: 4px;
-    font-weight: 500;
-    font-size: 14px;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 0px 0px;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+.Schedule {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: lightgrey; /* Background color similar to login-bg */
+}
+
+.schedule-box {
+  font-family: 'Poetsen One', sans-serif; /* Apply the font to the entire schedule box */
+  width: 80%;
+  padding: 20px;
+  background: lightgrey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  border: 2px solid #323232;
+  box-shadow: 4px 4px #323232;
+  overflow-y: auto; /* Enable scrolling if content overflows */
+}
+
+.Title {
+  font-family: 'Poetsen One', sans-serif;
+  color: #323232;
+  font-weight: 900;
+  font-size: 25px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.SubTitle {
+  font-family: 'Poetsen One', sans-serif;
+  color: #323232;
+  font-weight: 900;
+  font-size: 20px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.sessions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.session {
+  font-family: 'Poetsen One', sans-serif;
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 2px solid #323232;
+  box-shadow: 4px 4px #323232;
+}
+
+.session-detail {
+  font-size: 20px;
+  font-weight: 600;
+  color: #323232;
+  margin: 5px 0;
+}
+
+.attendants {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.addAttendant, .deleteAttendant {
+  font-family: 'Poetsen One', sans-serif;
+  width: 120px;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid #323232;
+  background-color: #fff;
+  box-shadow: 4px 4px #323232;
+  font-size: 17px;
+  font-weight: 600;
+  color: #323232;
+  cursor: pointer;
+  outline: none;
+}
+
+.addAttendant:active, .deleteAttendant:active {
+  box-shadow: 0px 0px #323232;
+  transform: translate(3px, 3px);
+}

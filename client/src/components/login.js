@@ -33,7 +33,7 @@ const Login = (props) => {
         userData
       );
       if (!response.data.isAdmin) {
-        navigate("/dashboard");
+        navigate("/memberSchedulePage");
         // navigate("/AdminSchedulePage");
       } else {
         navigate("/MemberSchedulePage");
@@ -93,16 +93,17 @@ const Login = (props) => {
   return (
     <div className={"mainContainer login-bg"}>
       <div className="login-box">
-        <h2>Login</h2>
-        <form>
+        <h3 className="Titles">Login</h3>
+        <form className="form">
           <div className="user-box">
             <input
               type="text"
               value={email}
               onChange={(ev) => setEmail(ev.target.value)}
               required
+              placeholder="Email"
+              className="input"
             />
-            <label>Email or Username</label>
             <div className="errorLabel">{emailError}</div>
           </div>
           <div className="user-box">
@@ -111,22 +112,26 @@ const Login = (props) => {
               value={password}
               onChange={(ev) => setPassword(ev.target.value)}
               required
+              placeholder="Password"
+              className="input"
             />
-            <label>Password</label>
             <div className="errorLabel">{passwordError}</div>
           </div>
-          <button type="button" onClick={onLoginClick}>
-            Log in
+          <button type="button" onClick={onLoginClick} className="button-confirm">
+            Let's go →
           </button>
-          <p>
+          <h3 className="register-text">
             Don't have an account? Register{" "}
             <Link
               to="/signup"
-              style={{ color: "yellow", textDecoration: "underline" }}
+              style={{ color: "#2d8cf0", textDecoration: "underline" }}
             >
               here
             </Link>
-          </p>
+            <br />
+            Return to <Link to="/" style={{ color: "#2d8cf0", textDecoration: "underline" }}>home</Link>
+
+          </h3>
         </form>
       </div>
     </div>

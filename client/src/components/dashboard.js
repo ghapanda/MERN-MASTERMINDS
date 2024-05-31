@@ -1,27 +1,34 @@
 import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./dashboard.css";
 
-export default function dashboard() {
+export default function Navbar() {
+  const location = useLocation();
+
   return (
-    <div className="Home">
-      <h1 className="Title">Dashboard</h1>
+    <div className="navbar">
+      <Link to="/" className={location.pathname === "/" ? "active" : ""}>
+        Dashboard
+      </Link>
       <Link
         to="/update-schedule"
-        style={{ fontSize: "24px", color: "#38cce6" }}
+        className={location.pathname === "/update-schedule" ? "active" : ""}
       >
         Update Schedule
       </Link>
       <Link
         to="/memberSchedulePage"
-        style={{ fontSize: "24px", color: "#38cce6" }}
+        className={location.pathname === "/memberSchedulePage" ? "active" : ""}
       >
         Schedule
       </Link>
-      <Link to="/profile" style={{ fontSize: "24px", color: "#38cce6" }}>
+      <Link to="/profile" className={location.pathname === "/profile" ? "active" : ""}>
         Profile
       </Link>
-      <Link to="/searchbar" style={{ fontSize: "24px", color: "#38cce6" }}>
+      <Link
+        to="/searchbar"
+        className={location.pathname === "/searchbar" ? "active" : ""}
+      >
         SearchBar
       </Link>
     </div>

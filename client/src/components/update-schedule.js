@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./update-schedule.css";
+import { Link } from "react-router-dom";
+import Navbar from "./dashboard";
 
 import axios from "axios";
 import { v4 as uuidv4 } from 'uuid';
@@ -22,24 +24,40 @@ function SessionContainer({ index, session, onSessionUpdate, onSessionDelete }) 
 
   return (
     <div className="session-container">
-      <label htmlFor="name">Name: </label>{" "}
-      <input id="name" value={sessionDict.name} onChange={handleChange} />
-      <label htmlFor="week">Week: </label>{" "}
-      <input id="week" value={sessionDict.week} onChange={handleChange} />
-      <label htmlFor="day">Day: </label>{" "}
-      <input id="day" value={sessionDict.day} onChange={handleChange} />
-      <label htmlFor="date">Date: </label>{" "}
-      <input id="date" value={sessionDict.date} onChange={handleChange} />
-      <label htmlFor="time">Time: </label>{" "}
-      <input id="time" value={sessionDict.time} onChange={handleChange} />
-      <label htmlFor="location">Location: </label>{" "}
-      <input id="location" value={sessionDict.location} onChange={handleChange} />
-      <label htmlFor="contact">Contact: </label>{" "}
-      <input id="contact" value={sessionDict.contact} onChange={handleChange} />
-      <button className="delete" onClick={() => onSessionDelete(index)}>Delete Permanently</button> 
-      {/* () => handles events/passes events, without causes function to run while rendering */}
+      <div className="input-container">
+        <label htmlFor="name">Name: </label>{" "}
+        <input id="name" value={sessionDict.name} onChange={handleChange} />
+      </div>
+      <div className="input-container">
+        <label htmlFor="week">Week: </label>{" "}
+        <input id="week" value={sessionDict.week} onChange={handleChange} />
+      </div>
+      <div className="input-container">
+        <label htmlFor="day">Day: </label>{" "}
+        <input id="day" value={sessionDict.day} onChange={handleChange} />
+      </div>
+      <div className="input-container">
+        <label htmlFor="date">Date: </label>{" "}
+        <input id="date" value={sessionDict.date} onChange={handleChange} />
+      </div>
+      <div className="input-container">
+        <label htmlFor="time">Time: </label>{" "}
+        <input id="time" value={sessionDict.time} onChange={handleChange} />
+      </div>
+      <div className="input-container">
+        <label htmlFor="location">Location: </label>{" "}
+        <input id="location" value={sessionDict.location} onChange={handleChange} />
+      </div>
+      <div className="input-container">
+        <label htmlFor="contact">Contact: </label>{" "}
+        <input id="contact" value={sessionDict.contact} onChange={handleChange} />
+      </div>
+      <div className="input-container">
+        <button className="delete" onClick={() => onSessionDelete(index)}>Delete Permanently</button>
+      </div>
     </div>
   );
+  
 }
 
 function Schedule() {
@@ -114,6 +132,7 @@ function Schedule() {
 
   return (
     <div className="UpdateSchedule">
+       <Navbar />
       <h1 className="Title">Schedule</h1>
       <button className="addSession" onClick={addSession}>+ Add Session</button>
       <div className="sessions">
@@ -127,6 +146,7 @@ function Schedule() {
         ))}
       </div>
       <button className="update" onClick={update}>Update</button>
+      <h3 className="SubTitle">Return to{" "}<Link to="/dashboard" style={{ color: "#2d8cf0", textDecoration: "underline" }}>dashboard</Link></h3>
     </div>
   );
 }
