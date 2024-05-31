@@ -1,5 +1,12 @@
+:root {
+  --main-color: #323232;
+  --bg-color: lightgrey;
+  --font-color: #323232;
+  --input-focus: #2d8cf0;
+}
+
 .header {
-  background-color: #4169e1;
+  background-color: white;
   margin-top: 0px;
 }
 
@@ -11,20 +18,37 @@
 .button {
   margin-left: 30px;
 
-  background-color: #ffd700; /* Golden yellow background */
-  color: #4169e1; /* Royal blue text color */
-  border: none;
-  padding: 12px 24px; /* Padding for spacing */
-  font-size: 16px;
-  border-radius: 8px; /* Rounded corners */
+  /* background-color: red; */
+  /* Golden yellow background */
+  /* color: #4169e1; */
+  /* Royal blue text color */
+  /* border: none; */
+  /* padding: 12px 24px; */
+  /* Padding for spacing */
+  /* font-size: 16px; */
+  /* border-radius: 8px; */
+  /* Rounded corners */
+  /* cursor: pointer; */
+  /* outline: none; */
+  /* Remove outline on focus */
+  /* transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; */
+  /* Smooth transition effects */
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+  /* Add a shadow */
+
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  background-color: var(--bg-color);
+  box-shadow: 4px 4px var(--main-color);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--font-color);
   cursor: pointer;
-  outline: none; /* Remove outline on focus */
-  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; /* Smooth transition effects */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow */
+
 }
 
 .headerT {
-  color: #ffd700;
+  color: var(--font-color);
   margin-left: 30px;
   font-size: 50px;
   font-family: sans-serif;
@@ -32,21 +56,30 @@
 }
 
 .linkh {
-  color: #4169e1; /* Royal blue text color */
-  font-size: 20px; /* Font size */
-  text-decoration: none; /* Remove default underline */
-  border-bottom: 2px solid transparent; /* Add a transparent bottom border */
-  transition: color 0.3s, border-color 0.3s; /* Smooth transition effects */
+  color: var(--font-color);
+  /* Royal blue text color */
+  font-size: 20px;
+  /* Font size */
+  text-decoration: none;
+  /* Remove default underline */
+  border-bottom: 2px solid transparent;
+  /* Add a transparent bottom border */
+  transition: color 0.3s, border-color 0.3s;
+  /* Smooth transition effects */
 }
 
 .linkh:hover {
-  color: #324ba9; /* Darker shade of blue on hover */
-  border-color: #4169e1; /* Border color on hover */
+  color: #324ba9;
+  /* Darker shade of blue on hover */
+  border-color: #4169e1;
+  /* Border color on hover */
 }
 
 .linkh:focus {
-  outline: none; /* Remove focus outline */
-  border-color: #4169e1; /* Border color on focus */
+  outline: none;
+  /* Remove focus outline */
+  border-color: #4169e1;
+  /* Border color on focus */
 }
 
 /* .profile-page {
@@ -83,20 +116,37 @@
 }
 
 .edit-button {
-  background-color: #4caf50; /* Green background */
-  border: none;
-  color: white; /* White text */
-  padding: 15px 32px; /* Some padding */
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+
+  /* background-color: #666; */
+  /* Green background */
+  /* border: none; */
+  /* color: white; */
+  /* White text */
+  /* padding: 15px 32px; */
+  /* Some padding */
+  /* text-align: center; */
+  /* text-decoration: none; */
+  /* display: inline-block; */
+  /* font-size: 16px; */
   margin: 4px 2px;
-  transition-duration: 0.4s;
+  /* transition-duration: 0.4s; */
+  /* cursor: pointer; */
+  /* border-radius: 12px; */
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+  /* Add a shadow */
+  width: 120px;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  background-color: var(--bg-color);
+  box-shadow: 4px 4px var(--main-color);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--font-color);
   cursor: pointer;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a shadow */
+
 }
+
 /* 
 .profile-body {
   margin-top: 20px;
@@ -201,6 +251,7 @@
 .editButton.cancel:hover {
   background-color: #a4ced498;
 }
+
 .custom-file-upload {
   display: inline-block;
   padding: 10px 20px;

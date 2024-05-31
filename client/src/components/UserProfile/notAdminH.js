@@ -6,7 +6,7 @@ const NotAdminH = () => {
   return (
     <>
       <div className="header">
-        <h1 className="headerT">UCLA offbeat</h1>
+        <h1 className="headerT">Offbeat Sessions</h1>
         <div>
           <Navbar />
           <button className="button">
@@ -18,7 +18,7 @@ const NotAdminH = () => {
           <button className="button">
             <Link to="/" className="linkh">
               {" "}
-              LOGOUT
+              Logout
             </Link>
           </button>
         </div>

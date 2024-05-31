@@ -342,7 +342,7 @@ const EditableProfile = ({ info, setInfo, setEditMode }) => {
   };
   console.log("info in edit", info);
   return (
-    <div className="container_2">
+    <div className="container_2" style={{ background: "#D3D3D3"}}>
       <h2 className="title">Edit Profile</h2>
       <div className="input-group">
         <label>Username:</label>
@@ -396,10 +396,10 @@ const EditableProfile = ({ info, setInfo, setEditMode }) => {
         <ProfilePicture info={info} setInfo={setInfo} />
       </div>
       <div className="buttons">
-        <button className="editButton save" onClick={handleSaveClicked}>
+        <button className="editButton save" onClick={handleSaveClicked} style={{ border: "2px solid #323232", backgroundColor:"#D3D3D3", boxShadow: "4px 4px #323232", fontWeight: "600", color:"#323232"}}>
           Save
         </button>
-        <button className="editButton cancel" onClick={handleCancel}>
+        <button className="editButton cancel" onClick={handleCancel} style={{ border: "2px solid #323232", backgroundColor:"#D3D3D3", boxShadow: "4px 4px #323232", fontWeight: "600", color:"#323232"}}>
           Cancel
         </button>
       </div>
