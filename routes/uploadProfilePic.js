@@ -48,7 +48,6 @@ router.post(
         bio: user.bio,
         listSessions: user.listSessions,
       };
-      console.log("sent data PROFILE is ", sentData);
       res.status(200).json(sentData);
     } catch (error) {
       console.error("Error updating profile picture:", error);

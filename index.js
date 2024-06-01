@@ -11,6 +11,7 @@ const searchbarRoute = require("./routes/searchbar");
 const authenticateMiddleware = require("./middleware/auth");
 const updatePorfile = require("./routes/editprofile");
 const uploadProfilePicture = require("./routes/uploadProfilePic");
+const fetchData = require("./routes/fetchData");
 const app = express();
 // Use the cors middleware
 // app.use(
@@ -59,6 +60,7 @@ app.use("/api", signupRoute);
 app.use("/schedule", scheduleRoute);
 app.use("/api", updatePorfile);
 app.use("/api", uploadProfilePicture);
+app.use("/api", fetchData);
 
 app.use(authenticateMiddleware);
 

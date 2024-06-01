@@ -69,11 +69,9 @@ const Login = (props) => {
       sessionStorage.setItem("displayName", displayName);
       sessionStorage.setItem("danceClip", danceClip);
       sessionStorage.setItem("listSessions", listSessionsJSON);
-      console.log("strigified jason:", listSessionsJSON);
       // const retrievedSessions = JSON.parse(
       //   sessionStorage.getItem("listSessions")
       // );
-      console.log("usersessions in login"); // "object"
 
       // alert("Welcome!");
     } catch (error) {
@@ -101,7 +99,7 @@ const Login = (props) => {
               value={email}
               onChange={(ev) => setEmail(ev.target.value)}
               required
-              placeholder="Email"
+              placeholder="Email or Username"
               className="input"
             />
             <div className="errorLabel">{emailError}</div>
@@ -117,7 +115,11 @@ const Login = (props) => {
             />
             <div className="errorLabel">{passwordError}</div>
           </div>
-          <button type="button" onClick={onLoginClick} className="button-confirm">
+          <button
+            type="button"
+            onClick={onLoginClick}
+            className="button-confirm"
+          >
             Let's go →
           </button>
           <h3 className="register-text">
@@ -129,8 +131,13 @@ const Login = (props) => {
               here
             </Link>
             <br />
-            Return to <Link to="/" style={{ color: "#2d8cf0", textDecoration: "underline" }}>home</Link>
-
+            Return to{" "}
+            <Link
+              to="/"
+              style={{ color: "#2d8cf0", textDecoration: "underline" }}
+            >
+              home
+            </Link>
           </h3>
         </form>
       </div>

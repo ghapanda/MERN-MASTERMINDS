@@ -32,24 +32,8 @@ const Profile = () => {
     bio: sessionStorage.getItem("bio") || "No bio",
     listSessions: JSON.parse(sessionStorage.getItem("listSessions")),
   });
-  console.log("list sessions in profile", typeof info.listSessions);
-  console.log("info is updated?", info);
+
   const [editMode, setEditMode] = useState(false);
-
-  const [name, setName] = useState(info.username);
-
-  const [style, setStyle] = useState(info.style);
-  function handleEditComplete(result) {
-    console.log("handleEditComplete", result);
-    if (result != null) {
-      setName(result.name);
-      setStyle(result.style);
-    }
-    setEditMode(false);
-  }
-  //setEditMode(false);
-
-  //const EditProfile = () => {};
 
   return (
     <>
@@ -82,7 +66,11 @@ const Profile = () => {
           ) : (
             <>
               <h1 style={{ textAlign: "center" }}>Profile</h1>
-              <DisplayProfile info={info} startEdit={() => setEditMode(true)} />
+              <DisplayProfile
+                info={info}
+                setInfo={setInfo}
+                startEdit={() => setEditMode(true)}
+              />
             </>
           )}
         </div>
