@@ -14,14 +14,11 @@ export default function NavbarNotAmin() {
       </div>
 
       <div className="navbar">
-        <Link to="/" className={location.pathname === "/" ? "active" : ""}>
-          Home
-        </Link>
         <Link
           to="/dashboardPage"
           className={location.pathname === "/dashboardPage" ? "active" : ""}
         >
-          Dashboard
+          Announcements
         </Link>
 
         <Link
@@ -42,7 +39,7 @@ export default function NavbarNotAmin() {
           to="/searchbar"
           className={location.pathname === "/searchbar" ? "active" : ""}
         >
-          Search for Companions{" "}
+          Community{" "}
         </Link>
         <Link to="/" className={location.pathname === "/" ? "active" : ""}>
           Logout

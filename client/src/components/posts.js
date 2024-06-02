@@ -4,6 +4,7 @@ import Navbar from "./dashboard";
 
 function AnnouncementForm() {
   const [message, setMessage] = useState("");
+  const [date, setDate] = useState("");
   const [error, setError] = useState(null);
   const author = sessionStorage.getItem("displayName");
   const handleSubmit = async (event) => {
@@ -12,6 +13,7 @@ function AnnouncementForm() {
     try {
       const response = await axios.post("http://localhost:3002/api/posts", {
         author,
+        date,
         message,
       });
       setMessage("");
@@ -31,6 +33,19 @@ function AnnouncementForm() {
         <h2>Post Announcement</h2>
         {error && <p>{error}</p>}
         <form onSubmit={handleSubmit}>
+        <div style={{ marginBottom: "10px" }}>
+            <label htmlFor="date" style={{ display: "block" }}>
+              Date:
+            </label>
+            <textarea
+              id="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              rows="1"
+              cols="50"
+              required
+            />
+          </div>
           <div style={{ marginBottom: "10px" }}>
             <label htmlFor="message" style={{ display: "block" }}>
               Message:

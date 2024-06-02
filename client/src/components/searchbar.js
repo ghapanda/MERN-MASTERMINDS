@@ -80,21 +80,10 @@ const SearchBar = () => {
   return (
     <div>
       {isAdmin ? <Navbar /> : <NavbarNotAmin />}
-      <div
-        style={{
-          backgroundColor: "lightgrey",
-
-          height: "100vh",
-          overflowY: "scroll",
-          fontFamily: "sans-serif",
-          border: "none",
-          boxShadow: "4px 4px #323232",
-          padding: "20px",
-        }}
-      >
+      <div className="Container">
         <div className="search-container">
           <div className="search-bar">
-            <h1>Explore Profiles</h1>
+            <h1 className="Titless">Explore Profiles</h1>
             <input
               type="text"
               placeholder="Search"

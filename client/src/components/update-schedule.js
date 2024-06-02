@@ -28,6 +28,7 @@ function SessionContainer({
 
   return (
     <div className="session-container">
+      <div className="line1">
       <div className="input-container">
         <label htmlFor="name">Name: </label>{" "}
         <input id="name" value={sessionDict.name} onChange={handleChange} />
@@ -44,6 +45,8 @@ function SessionContainer({
         <label htmlFor="date">Date: </label>{" "}
         <input id="date" value={sessionDict.date} onChange={handleChange} />
       </div>
+      </div>
+      <div className="line2">
       <div className="input-container">
         <label htmlFor="time">Time: </label>{" "}
         <input id="time" value={sessionDict.time} onChange={handleChange} />
@@ -65,10 +68,12 @@ function SessionContainer({
         />
       </div>
       <div className="input-container">
-        <button className="delete" onClick={() => onSessionDelete(index)}>
+        <button className="delete" onClick={() => onSessionDelete(index)} style= 
+        {{marginTop:"15px"}}>
           Delete Permanently
         </button>
       </div>
+    </div>
     </div>
   );
 }
@@ -150,11 +155,11 @@ function Schedule() {
       {" "}
       <Navbar />
       <div className="UpdateSchedule">
-        <h1 className="Title">Schedule</h1>
+        <h1 className="Titless">Schedule</h1>
         <button className="addSession" onClick={addSession}>
           + Add Session
         </button>
-        <div className="sessions">
+        <div className="Sessions">
           {sessions.map((session, i) => (
             <SessionContainer
               index={i}
@@ -167,15 +172,6 @@ function Schedule() {
         <button className="update" onClick={update}>
           Update
         </button>
-        <h3 className="SubTitle">
-          Return to{" "}
-          <Link
-            to="/dashboard"
-            style={{ color: "#2d8cf0", textDecoration: "underline" }}
-          >
-            dashboard
-          </Link>
-        </h3>
       </div>
     </>
   );

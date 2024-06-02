@@ -150,7 +150,7 @@ const Login = (props) => {
             <div className="errorLabel">{passwordError}</div>
           </div>
           <div className="admin-check">
-            <label>
+            <label style={{fontSize:'18px', fontWeight:'bold'}}>
               <input
                 type="checkbox"
                 checked={isAdminChecked}
@@ -160,7 +160,7 @@ const Login = (props) => {
             </label>
             {isAdminChecked && (
               <div className="user-box">
-                <input
+                <input 
                   type="password"
                   value={adminPassword}
                   onChange={(ev) => setAdminPassword(ev.target.value)}

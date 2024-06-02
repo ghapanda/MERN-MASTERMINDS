@@ -65,7 +65,7 @@ const DashboardPage = () => {
         <ul>
           {announcements.map((announcement, index) => (
             <li key={index}>
-              <strong>{announcement.author}:</strong> {announcement.message}
+              <strong>{announcement.author}{", "}{announcement.date}:</strong>{" "}{announcement.message}
             </li>
           ))}
         </ul>

@@ -40,6 +40,7 @@
     color: #323232;
     cursor: pointer;
     background-color: #fff; /* Ensure background is white */
+    height: 50px;
 }
 
 .linkContainer {

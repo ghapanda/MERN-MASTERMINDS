@@ -18,13 +18,13 @@ export default function Navbar() {
           to="/dashboardPage"
           className={location.pathname === "/dashboardPage" ? "active" : ""}
         >
-          Dashboard
+          Announcements
         </Link>
         <Link
-          to="/update-schedule"
-          className={location.pathname === "/update-schedule" ? "active" : ""}
+          to="/posts"
+          className={location.pathname === "/posts" ? "active" : ""}
         >
-          Update Schedule
+          Make an Announcement
         </Link>
         <Link
           to="/memberSchedulePage"
@@ -32,7 +32,13 @@ export default function Navbar() {
             location.pathname === "/memberSchedulePage" ? "active" : ""
           }
         >
-          Weekly Schedule
+          Schedule
+        </Link>
+        <Link
+          to="/update-schedule"
+          className={location.pathname === "/update-schedule" ? "active" : ""}
+        >
+          Update Schedule
         </Link>
         <Link
           to="/profile"
@@ -44,13 +50,7 @@ export default function Navbar() {
           to="/searchbar"
           className={location.pathname === "/searchbar" ? "active" : ""}
         >
-          Search for Companions
-        </Link>
-        <Link
-          to="/posts"
-          className={location.pathname === "/posts" ? "active" : ""}
-        >
-          Make an Announcement
+          Community
         </Link>
         <Link to="/" className={location.pathname === "/" ? "active" : ""}>
           Logout

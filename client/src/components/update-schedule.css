@@ -4,7 +4,7 @@
   background-color: lightgrey;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   align-content: center;
   height: 100vh;
@@ -12,14 +12,12 @@
   font-family: "Poetsen One", sans-serif;
   border: none;
   box-shadow: 4px 4px #323232;
-  padding: 20px;
 }
 
-.Title {
-  color: black;
+.Titless {
+  color: #323232;
   font-weight: 900;
   font-size: 25px;
-  margin-bottom: 25px;
   text-align: center;
 }
 
@@ -31,58 +29,72 @@
   cursor: pointer;
   text-align: center;
   border: 2px solid #323232;
-  padding: 7px 16px;
   min-height: 36px;
   min-width: 36px;
   background-color: #fff;
   box-shadow: 4px 4px #323232;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   color: black;
   border-radius: 5px;
-  margin: 10px;
+  margin: 0px;
   font-family: Poetsen One;
+  padding: 10px;
 }
 
-.addSession:hover,
-.delete:hover,
-.update:hover {
-  background: #2d8cf0;
-  color: #fff;
+.addSession:active,
+.delete:active ,
+.update:active  {
+  box-shadow: 0px 0px #323232;
+  transform: translate(3px, 3px);
 }
 
-.sessions {
+
+
+.Sessions {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 10px;
-  width: 100%;
-  gap: 20px;
+  padding: 15px;
+  width: 900px;
 }
 
 .session-container {
-  justify-content: space-between;
   display: flex;
-  flex-direction: row;
-  align-items: center; /* Add this line */
+  flex-direction: column;
   outline: 10;
   text-align: left;
   border: 2px solid #323232;
-  padding: 7px 16px;
+  padding: 15px;
   min-height: 36px;
   min-width: 36px;
   background: #fff;
   border-radius: 5px;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 18px;
   box-shadow: 4px 4px #323232;
+  margin: 15px;
 }
 
+.line1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 15px;
+
+}
+
+.line2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 15px;
+}
+
+
 .session-container label {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 18px;
   color: #323232;
-  padding: 10px;
+  padding: 15px;
 }
 
 .session-container input {
@@ -92,8 +104,7 @@
   border: 2px solid #323232;
   background-color: #fff;
   box-shadow: 4px 4px #323232;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 18px;
   color: #323232;
   padding: 10px;
   outline: none;
@@ -110,7 +121,7 @@
   border: 2px solid #2d8cf0;
 }
 
-.session-container {
+/* .session-container {
   display: flex;
   flex-direction: row;
   outline: 10;
@@ -124,11 +135,11 @@
 .input-container {
   display: flex;
   align-items: center;
-  padding: 7px 16px;
+  padding: 0;
 }
 
 .input-container label {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   color: #323232;
   padding-right: 10px;
@@ -141,7 +152,7 @@
   border: 2px solid #323232;
   background-color: #fff;
   box-shadow: 4px 4px #323232;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   color: #323232;
   padding: 10px;
@@ -150,6 +161,6 @@
 }
 
 .delete {
-  align-self: flex-start; /* Adjust alignment of the button */
-  margin-top: 10px; /* Add some top margin for spacing */
-}
+  align-self: flex-start; /* Adjust alignment of the button 
+  margin-top: 10px;  Add some top margin for spacing 
+} */
