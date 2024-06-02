@@ -1,3 +1,7 @@
+/* Import the Poetsen One font */
+@import url("https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap");
+
+/* Define the StreetsXplorer font */
 @font-face {
   font-family: "StreetsXplorer";
   src: url("../../public/StreetExplorer.otf") format("opentype");
@@ -5,41 +9,161 @@
   font-style: normal;
 }
 
-.header {
-  background-color: rgb(17, 164, 164);
-  font-size: "90px";
-  margin-top: 0px;
+body {
+  font-family: "Poetsen One", sans-serif; /* Default font for the entire document */
 }
-.headerT {
-  color: var(--font-color);
-  margin-left: 30px;
-  font-size: 50px;
-  font-family: "StreetsXplorer";
-  font-style: italic;
-}
-.headerA {
-  color: white;
-  background-color: rgb(6, 13, 109);
 
-  font-size: 20px;
-  font-family: sans-serif;
-  font-style: italic;
-}
-.navbar {
-  background-color: rgb(177, 222, 221);
+.header {
+  background-color: lightgrey;
+  margin-top: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   padding: 10px;
 }
 
+.headerT {
+  color: #323232;
+  font-size: 50px;
+  font-family: "StreetsXplorer";
+  font-style: italic;
+  margin: 0;
+}
+
+.headerA {
+  color: black; /* Changed to black */
+  background-color: white; /* Changed to white */
+  font-size: 20px;
+  font-style: italic;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px 0;
+  text-align: center;
+  font-family: "Poetsen One", sans-serif; /* Added Poetsen One font */
+}
+
+.navbar {
+  background-color: white; /* Changed to white */
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 4px 4px #323232;
+  width: 100%;
+}
+
 .navbar a {
-  font-family: "Poetsen One", sans-serif;
   font-size: 24px;
-  color: #0e859a;
+  color: black; /* Changed to black */
   margin-right: 20px;
   text-decoration: none;
+  transition: color 0.3s ease;
+  font-family: "Poetsen One", sans-serif; /* Added Poetsen One font */
+}
+
+.navbar a:hover {
+  color: #2d8cf0;
 }
 
 .navbar a.active {
   color: blue;
+}
+
+/* Styles for consistency with login and sign-up */
+.login-box {
+  font-family: "Poetsen One", sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  padding: 20px;
+  transform: translate(-50%, -50%);
+  background: lightgrey;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+  border-radius: 5px;
+  border: 2px solid #323232;
+  box-shadow: 4px 4px #323232;
+}
+
+.Titles {
+  font-family: "Poetsen One", sans-serif;
+  color: black;
+  font-weight: 900;
+  font-size: 30px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.form {
+  font-family: "Poetsen One", sans-serif;
+  width: 100%;
+}
+
+.user-box {
+  font-family: "Poetsen One", sans-serif;
+  position: relative;
+  width: 100%;
+}
+
+.input {
+  font-family: "Poetsen One", sans-serif;
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid #323232;
+  background-color: #fff;
+  box-shadow: 4px 4px #323232;
+  font-size: 20px;
+  font-weight: 600;
+  color: #323232;
+  padding: 5px 10px;
+  outline: none;
+}
+
+.input::placeholder {
+  color: #666;
+  opacity: 0.8;
+}
+
+.input:focus {
+  border: 2px solid #2d8cf0;
+}
+
+.errorLabel {
+  font-family: "Poetsen One", sans-serif;
+  color: #ff4d4d;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.button-confirm {
+  font-family: "Poetsen One", sans-serif;
+  margin: 50px auto 0 auto;
+  width: 120px;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid #323232;
+  background-color: #fff;
+  box-shadow: 4px 4px #323232;
+  font-size: 20px;
+  font-weight: 600;
+  color: black;
+  cursor: pointer;
+}
+
+.button-confirm:active {
+  font-family: "Poetsen One", sans-serif;
+  box-shadow: 0px 0px #323232;
+  transform: translate(3px, 3px);
+}
+
+.register-text {
+  font-family: "Poetsen One", sans-serif;
+  font-size: 18px;
+  color: black;
 }
