@@ -68,7 +68,8 @@ function SessionContainer({
         />
       </div>
       <div className="input-container">
-        <button className="delete" onClick={() => onSessionDelete(index)}>
+        <button className="delete" onClick={() => onSessionDelete(index)} style= 
+        {{marginTop:"15px"}}>
           Delete Permanently
         </button>
       </div>
@@ -154,7 +155,7 @@ function Schedule() {
       {" "}
       <Navbar />
       <div className="UpdateSchedule">
-        <h1 className="Title">Schedule</h1>
+        <h1 className="Titless">Schedule</h1>
         <button className="addSession" onClick={addSession}>
           + Add Session
         </button>

@@ -12,11 +12,10 @@
   font-family: "Poetsen One", sans-serif;
   border: none;
   box-shadow: 4px 4px #323232;
-  padding: 20px;
 }
 
-.Title {
-  color: black;
+.Titless {
+  color: #323232;
   font-weight: 900;
   font-size: 25px;
   text-align: center;
@@ -30,7 +29,6 @@
   cursor: pointer;
   text-align: center;
   border: 2px solid #323232;
-  padding: 7px 16px;
   min-height: 36px;
   min-width: 36px;
   background-color: #fff;
@@ -39,23 +37,25 @@
   font-weight: 600;
   color: black;
   border-radius: 5px;
-  margin: 10px;
+  margin: 0px;
   font-family: Poetsen One;
+  padding: 10px;
 }
 
-.addSession:hover,
-.delete:hover,
-.update:hover {
-  background: #2d8cf0;
-  color: #fff;
+.addSession:active,
+.delete:active ,
+.update:active  {
+  box-shadow: 0px 0px #323232;
+  transform: translate(3px, 3px);
 }
+
+
 
 .Sessions {
   display: flex;
   flex-direction: column;
   padding: 15px;
   width: 900px;
-  gap: 25px;
 }
 
 .session-container {
@@ -72,6 +72,7 @@
   font-weight: 500;
   font-size: 18px;
   box-shadow: 4px 4px #323232;
+  margin: 15px;
 }
 
 .line1 {
@@ -92,7 +93,6 @@
 
 .session-container label {
   font-size: 18px;
-  font-weight: 600;
   color: #323232;
   padding: 15px;
 }
@@ -105,7 +105,6 @@
   background-color: #fff;
   box-shadow: 4px 4px #323232;
   font-size: 18px;
-  font-weight: 600;
   color: #323232;
   padding: 10px;
   outline: none;
