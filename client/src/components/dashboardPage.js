@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./dashboard";
 import NavbarNotAdmin from "./dashboardNotAdmin";
+
 import axios from "axios";
 
 const DashboardPage = () => {
@@ -60,37 +61,6 @@ const DashboardPage = () => {
           padding: "20px",
         }}
       >
-        {isAdmin && (
-          <>
-            <h2>Post Announcement</h2>
-            {error && <p>{error}</p>}
-            <form onSubmit={handleSubmit}>
-              <div>
-                <label htmlFor="author">Author:</label>
-                <input
-                  type="text"
-                  id="author"
-                  value={author}
-                  onChange={(e) => setAuthor(e.target.value)}
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="message">Message:</label>
-                <textarea
-                  id="message"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  rows="4"
-                  cols="50"
-                  required
-                />
-              </div>
-              <button type="submit">Post Announcement</button>
-            </form>
-          </>
-        )}
-
         <h2>Recent Announcements</h2>
         <ul>
           {announcements.map((announcement, index) => (

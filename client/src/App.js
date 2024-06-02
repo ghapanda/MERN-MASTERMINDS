@@ -21,6 +21,8 @@ import Schedule from "./components/update-schedule.js";
 import MemberSchedulePage from "./components/memberSchedulePage.js";
 import ProtectedRoute from "./authentication/protectedRoutes.js";
 import DashboardPage from "./components/dashboardPage.js";
+import AnnouncementForm from "./components/posts";
+
 function App() {
   return (
     <BrowserRouter>
@@ -42,6 +44,14 @@ function App() {
           element={
             <ProtectedRoute>
               <UsersPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/posts"
+          element={
+            <ProtectedRoute>
+              <AnnouncementForm />
             </ProtectedRoute>
           }
         />

@@ -46,6 +46,12 @@ export default function Navbar() {
         >
           Search for Companions
         </Link>
+        <Link
+          to="/posts"
+          className={location.pathname === "/posts" ? "active" : ""}
+        >
+          Make an Announcement
+        </Link>
         <Link to="/" className={location.pathname === "/" ? "active" : ""}>
           Logout
         </Link>
