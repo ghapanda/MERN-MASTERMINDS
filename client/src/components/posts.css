@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Heading */
+h2 {
+    font-size: 30px;
+    font-weight: 900;
+    color: #323232;
+    font-family: "Poetsen One", sans-serif;
+    margin-bottom: 20px;
+}
+
+/* Error Message */
+.error-message {
+    color: #323232;
+    font-family: "Poetsen One", sans-serif;
+    margin-bottom: 10px;
+}
+
+/* Form */
+form {
+    margin-bottom: 20px;
+}
+
+/* Textarea */
+textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-family: "Poetsen One", sans-serif;
+    border: 2px solid #323232;
+    border-radius: 5px;
+    resize: vertical;
+    /* Allow vertical resizing */
+}
+
+#message {
+    font-size: 16px;
+    font-family: "Poetsen One", sans-serif;
+}
+
+/* Button */
+button {
+    font-family: "Poetsen One", sans-serif;
+    margin: 50px auto 0 auto;
+    width: 160px;
+    height: 60px;
+    border-radius: 5px;
+    border: 2px solid #323232;
+    background-color: #fff;
+    box-shadow: 4px 4px #323232;
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2d8cf0;
+}
+
+button:active {
+    font-family: "Poetsen One", sans-serif;
+    box-shadow: 0px 0px #323232;
+    transform: translate(3px, 3px);
+}

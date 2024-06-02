@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Navbar from "./dashboard";
+import "./posts.css";
 
 function AnnouncementForm() {
   const [message, setMessage] = useState("");
@@ -32,7 +33,7 @@ function AnnouncementForm() {
         {error && <p>{error}</p>}
         <form onSubmit={handleSubmit}>
           <div style={{ marginBottom: "10px" }}>
-            <label htmlFor="message" style={{ display: "block" }}>
+            <label htmlFor="message" style={{ display: "block", fontSize: "20px"}}>
               Message:
             </label>
             <textarea
