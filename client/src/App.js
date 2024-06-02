@@ -20,6 +20,7 @@ import DashboardNotAdmin from "./components/dashboardNotAdmin";
 import Schedule from "./components/update-schedule.js";
 import MemberSchedulePage from "./components/memberSchedulePage.js";
 import ProtectedRoute from "./authentication/protectedRoutes.js";
+import DashboardPage from "./components/dashboardPage.js";
 function App() {
   return (
     <BrowserRouter>
@@ -94,6 +95,14 @@ function App() {
           element={
             <ProtectedRoute>
               <DashboardNotAdmin />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboardPage"
+          element={
+            <ProtectedRoute>
+              <DashboardPage />
             </ProtectedRoute>
           }
         />

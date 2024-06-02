@@ -4,10 +4,12 @@ import "./searchbar.css";
 
 import NavbarNotAmin from "./dashboardNotAdmin";
 import Navbar from "./dashboard";
+import { set } from "mongoose-int32";
 
-function ResultButton({ result, setProfile }) {
+function ResultButton({ result, setProfile, setQuery }) {
   const showProfile = () => {
     setProfile(result);
+    setQuery("");
   };
 
   return (
@@ -31,7 +33,8 @@ function ResultButton({ result, setProfile }) {
         </div>
         {/* <img src= '/Users/srinjanasriram/Documents/Academics/CS/CS35L/Project/MERN-MASTERMINDS/uploads/1717025539960-img2.jpg' /> */}
         <div>
-          <p>Username: {result.username}</p>
+          <p>Screen Name: {result.displayName}</p>
+          <p>User Name: {result.usernaem}</p>
           <p>Dance Style: {result.danceStyle}</p>
           <p>Bio: {result.bio}</p>
         </div>
@@ -77,118 +80,137 @@ const SearchBar = () => {
   return (
     <div>
       {isAdmin ? <Navbar /> : <NavbarNotAmin />}
-      <div className="search-bar">
-        <h1>Search Bar</h1>
-        <input
-          type="text"
-          placeholder="Search"
-          onChange={search}
-          value={query}
-        />
-        {searchResults.length > 0 && (
-          <ul className="search-results">
-            {searchResults.map((result) => (
-              <ResultButton result={result} setProfile={setProfile} />
-            ))}
-          </ul>
-        )}
-      </div>
-      <div>
-        <div style={{ textAlign: "center" }}>Profile</div>
+      <div
+        style={{
+          backgroundColor: "lightgrey",
 
-        {profile && (
-          <div
-            className="vh-100"
-            style={{
-              backgroundColor: "#fff",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <div
-              style={{
-                maxWidth: "500px",
-                width: "100%",
-                margin: "auto",
-                borderRadius: "5px",
-                border: "2px solid #323232",
-                padding: "20px",
-                fontWeight: "600",
-                boxShadow: "4px 4px #323232",
-              }}
-            >
+          height: "100vh",
+          overflowY: "scroll",
+          fontFamily: "sans-serif",
+          border: "none",
+          boxShadow: "4px 4px #323232",
+          padding: "20px",
+        }}
+      >
+        <div className="search-container">
+          <div className="search-bar">
+            <h1>Explore Profiles</h1>
+            <input
+              type="text"
+              placeholder="Search"
+              onChange={search}
+              value={query}
+            />
+            {searchResults.length > 0 && (
+              <ul className="search-results">
+                {searchResults.map((result) => (
+                  <ResultButton
+                    result={result}
+                    setProfile={setProfile}
+                    setQuery={setQuery}
+                  />
+                ))}
+              </ul>
+            )}
+          </div>
+          <div>
+            {profile && (
               <div
+                className="vh-100"
                 style={{
+                  backgroundColor: "#ffffffffff",
                   display: "flex",
+                  justifyContent: "center",
                   alignItems: "center",
-                  textAlign: "left",
                 }}
               >
-                <div style={{ flexShrink: 0 }}>
-                  <img
-                    style={{ width: "90px", borderRadius: "90px" }}
-                    src={
-                      profile.portrait !== "null"
-                        ? `http://localhost:3002${profile.portrait}`
-                        : "https://img.icons8.com/ios-glyphs/90/user--v1.png"
-                    }
-                    alt={`${profile.displayName} profile`}
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src =
-                        "https://img.icons8.com/ios-glyphs/90/user--v1.png";
-                    }}
-                  />
-                </div>
                 <div
-                  className="ProfileBoxInner"
                   style={{
-                    flexGrow: 1,
-                    marginLeft: "20px",
-                    color: "#323232",
-                    backgroundColor: "#fff",
+                    maxWidth: "500px",
+                    width: "100%",
+                    margin: "auto",
+                    borderRadius: "5px",
+                    border: "2px solid #323232",
+                    padding: "20px",
+                    fontWeight: "600",
+                    boxShadow: "4px 4px #323232",
+                    backgroundColor: "white",
                   }}
                 >
-                  <h2>{profile.displayName}</h2>
-                  <i>{profile.bio}</i>
-                  <p>Dance Style: {profile.danceStyle}</p>
-                  <ul
+                  <div
                     style={{
-                      listStyleType: "none",
-                      padding: 0,
-                      backgroundColor: "#D3D3D3",
-                      boxShadow: "4px 4px #323232",
-                      fontWeight: "600",
-                      color: "#323232",
+                      display: "flex",
+                      alignItems: "center",
+                      textAlign: "left",
+                      backgroundColor: "white",
                     }}
                   >
-                    {profile.listSessions.map((event, index) => (
-                      <li
-                        key={index}
+                    <div style={{ flexShrink: 0 }}>
+                      <img
+                        style={{ width: "90px", borderRadius: "90px" }}
+                        src={
+                          profile.portrait !== "null"
+                            ? `http://localhost:3002${profile.portrait}`
+                            : "https://img.icons8.com/ios-glyphs/90/user--v1.png"
+                        }
+                        alt={`${profile.displayName} profile`}
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src =
+                            "https://img.icons8.com/ios-glyphs/90/user--v1.png";
+                        }}
+                      />
+                    </div>
+                    <div
+                      className="ProfileBoxInner"
+                      style={{
+                        flexGrow: 1,
+                        marginLeft: "20px",
+                        color: "#323232",
+                        backgroundColor: "#fff",
+                      }}
+                    >
+                      <h2>{profile.displayName}</h2>
+                      <i>{profile.bio}</i>
+                      <p>Dance Style: {profile.danceStyle}</p>
+                      <ul
                         style={{
-                          border: "2px solid #323232",
-                          borderRadius: "2px",
-                          padding: "10px",
-                          marginBottom: "10px",
+                          listStyleType: "none",
+                          padding: 0,
                           backgroundColor: "#D3D3D3",
+                          boxShadow: "4px 4px #323232",
+                          fontWeight: "600",
+                          color: "#323232",
                         }}
                       >
-                        <h2 style={{ color: "#323232" }}>{event[0]}</h2>
-                        <p style={{ color: "#323232", fontWeight: "bold" }}>
-                          Date: {event[1]}
-                        </p>
-                        <p style={{ color: "#323232", fontWeight: "bold" }}>
-                          Location: {event[2]}
-                        </p>
-                      </li>
-                    ))}
-                  </ul>
+                        {profile.listSessions.map((event, index) => (
+                          <li
+                            key={index}
+                            style={{
+                              border: "2px solid #323232",
+                              borderRadius: "2px",
+                              padding: "10px",
+                              marginBottom: "10px",
+                              backgroundColor: "#D3D3D3",
+                            }}
+                          >
+                            <h2 style={{ color: "#323232" }}>{event[0]}</h2>
+                            <p style={{ color: "#323232", fontWeight: "bold" }}>
+                              Date: {event[1]}
+                            </p>
+                            <p style={{ color: "#323232", fontWeight: "bold" }}>
+                              Location: {event[2]}
+                            </p>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
-        )}
+        </div>
       </div>
     </div>
   );

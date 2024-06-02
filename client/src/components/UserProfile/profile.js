@@ -59,7 +59,6 @@ const Profile = () => {
             </>
           ) : (
             <>
-              <h1 style={{ textAlign: "center" }}>Profile</h1>
               <DisplayProfile
                 info={info}
                 setInfo={setInfo}

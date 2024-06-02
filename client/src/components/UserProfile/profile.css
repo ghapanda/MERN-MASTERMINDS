@@ -5,8 +5,13 @@
   --input-focus: #2d8cf0;
 }
 
+.profile {
+  background-color: lightgrey;
+  display: flex;
+}
+
 .header {
-  background-color: white;
+  background-color: rgb(17, 164, 164);
   margin-top: 0px;
 }
 
@@ -44,7 +49,6 @@
   font-weight: 600;
   color: var(--font-color);
   cursor: pointer;
-
 }
 
 .headerT {
@@ -116,7 +120,6 @@
 }
 
 .edit-button {
-
   /* background-color: #666; */
   /* Green background */
   /* border: none; */
@@ -144,7 +147,6 @@
   font-weight: 600;
   color: var(--font-color);
   cursor: pointer;
-
 }
 
 /* 

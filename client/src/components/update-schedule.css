@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap");
 
 .UpdateSchedule {
   background-color: lightgrey;
@@ -9,8 +9,8 @@
   align-content: center;
   height: 100vh;
   overflow-y: scroll;
-  font-family: 'Poetsen One', sans-serif;
-  border: 2px solid #323232;
+  font-family: "Poetsen One", sans-serif;
+  border: none;
   box-shadow: 4px 4px #323232;
   padding: 20px;
 }

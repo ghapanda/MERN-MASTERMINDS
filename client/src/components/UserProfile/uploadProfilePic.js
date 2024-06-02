@@ -38,12 +38,31 @@ const ProfileUpload = ({ info, setInfo }) => {
     <form onSubmit={handleSubmit}>
       <div>
         <div className="buttons">
-          <label className="custom-file-upload" style={{ border: "2px solid #323232", backgroundColor:"#D3D3D3", boxShadow: "4px 4px #323232", fontWeight: "600", color:"#323232"}}>
+          <label
+            className="custom-file-upload"
+            style={{
+              border: "2px solid #323232",
+              backgroundColor: "#D3D3D3",
+              boxShadow: "4px 4px #323232",
+              fontWeight: "600",
+              color: "#323232",
+            }}
+          >
             <input type="file" accept="image/*" onChange={handleFileChange} />{" "}
-            Choose File
+            Choose Photo
           </label>
 
-          <button type="submit" className="editButton save" style={{ border: "2px solid #323232", backgroundColor:"#D3D3D3", boxShadow: "4px 4px #323232", fontWeight: "600", color:"#323232"}}>
+          <button
+            type="submit"
+            className="editButton save"
+            style={{
+              border: "2px solid #323232",
+              backgroundColor: "#D3D3D3",
+              boxShadow: "4px 4px #323232",
+              fontWeight: "600",
+              color: "#323232",
+            }}
+          >
             Upload
           </button>
         </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./memberSchedulePage.css";
 import { Link } from "react-router-dom";
-import NavbarNotAmin from "./dashboardNotAdmin";
+import NavbarNotAdmin from "./dashboardNotAdmin";
 import Navbar from "./dashboard";
 
 import axios from "axios";
@@ -106,72 +106,75 @@ function MemberSchedulePage() {
   };
 
   return (
-    <div className="Schedule">
-      {isAdmin ? <Navbar /> : <NavbarNotAmin />}
-      <h3 className="Title">Schedule</h3>
-      <div className="sessions">
-        {sessions.map((session, i) => (
-          <div key={i} className="session">
-            <p style={{ padding: "10px" }}>Name: {session.name}</p>
-            <p style={{ padding: "10px" }}>Week: {session.week}</p>
-            <p style={{ padding: "10px" }}>Day: {session.day}</p>
-            <p style={{ padding: "10px" }}>Date: {session.date}</p>
-            <p style={{ padding: "10px" }}>Time: {session.time}</p>
-            <p style={{ padding: "10px" }}>Location: {session.location}</p>
-            <p style={{ padding: "10px" }}>Contact: {session.contact}</p>
-            <p style={{ padding: "10px" }}>
-              Attendants:{" "}
-              {session.listAttendants.map((attendant, index) => (
-                <div key={index} style={{ color: "#666" }}>
-                  {attendant}
-                </div>
-              ))}
-            </p>
-            <div className="attendants">
-              <button
-                className="addAttendant"
-                style={{ margin: "10px" }}
-                onClick={() =>
-                  addAttendant(
-                    session.index,
-                    session.name,
-                    session.date,
-                    session.location
-                  )
-                }
-              >
-                {" "}
-                + Add Self
-              </button>
-              <button
-                className="deleteAttendant"
-                style={{ margin: "10px" }}
-                onClick={() =>
-                  deleteAttendant(
-                    session.index,
-                    session.name,
-                    session.date,
-                    session.location
-                  )
-                }
-              >
-                {" "}
-                - Delete Self
-              </button>
+    <>
+      {" "}
+      {isAdmin ? <Navbar /> : <NavbarNotAdmin />}
+      <div className="Schedule">
+        <h3 className="Title">Schedule</h3>
+        <div className="sessions">
+          {sessions.map((session, i) => (
+            <div key={i} className="session">
+              <p style={{ padding: "10px" }}>Name: {session.name}</p>
+              <p style={{ padding: "10px" }}>Week: {session.week}</p>
+              <p style={{ padding: "10px" }}>Day: {session.day}</p>
+              <p style={{ padding: "10px" }}>Date: {session.date}</p>
+              <p style={{ padding: "10px" }}>Time: {session.time}</p>
+              <p style={{ padding: "10px" }}>Location: {session.location}</p>
+              <p style={{ padding: "10px" }}>Contact: {session.contact}</p>
+              <p style={{ padding: "10px" }}>
+                Attendants:{" "}
+                {session.listAttendants.map((attendant, index) => (
+                  <div key={index} style={{ color: "#666" }}>
+                    {attendant}
+                  </div>
+                ))}
+              </p>
+              <div className="attendants">
+                <button
+                  className="addAttendant"
+                  style={{ margin: "10px" }}
+                  onClick={() =>
+                    addAttendant(
+                      session.index,
+                      session.name,
+                      session.date,
+                      session.location
+                    )
+                  }
+                >
+                  {" "}
+                  + Add Self
+                </button>
+                <button
+                  className="deleteAttendant"
+                  style={{ margin: "10px" }}
+                  onClick={() =>
+                    deleteAttendant(
+                      session.index,
+                      session.name,
+                      session.date,
+                      session.location
+                    )
+                  }
+                >
+                  {" "}
+                  - Delete Self
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        {/* <h3 className="SubTitle">
+          Return to{" "}
+          <Link
+            to={isAdmin ? "/dashboard" : "/dashboardNotAdmin"}
+            style={{ color: "#2d8cf0", textDecoration: "underline" }}
+          >
+            dashboard
+          </Link>
+        </h3> */}
       </div>
-      <h3 className="SubTitle">
-        Return to{" "}
-        <Link
-          to={isAdmin ? "/dashboard" : "/dashboardNotAdmin"}
-          style={{ color: "#2d8cf0", textDecoration: "underline" }}
-        >
-          dashboard
-        </Link>
-      </h3>
-    </div>
+    </>
   );
 }
 

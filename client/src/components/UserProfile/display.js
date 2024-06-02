@@ -28,16 +28,22 @@ const DisplayProfile = ({ info, setInfo, startEdit }) => {
   return (
     <>
       <div
-        className="vh-100"
         style={{
-          backgroundColor: "#fff",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          backgroundColor: "lightgrey",
+
+          height: "100vh",
+          overflowY: "scroll",
+          fontFamily: "sans-serif",
+          border: "none",
+          boxShadow: "4px 4px #323232",
+          padding: "20px",
         }}
       >
+        <h1 style={{ textAlign: "center" }}>Profile</h1>
+
         <div
           style={{
+            backgroundColor: "white",
             maxWidth: "500px",
             width: "100%",
             margin: "auto",

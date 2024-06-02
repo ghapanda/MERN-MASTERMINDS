@@ -1,14 +1,41 @@
+@font-face {
+  font-family: "StreetsXplorer";
+  src: url("../../public/StreetExplorer.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.header {
+  background-color: rgb(17, 164, 164);
+  font-size: "90px";
+  margin-top: 0px;
+}
+.headerT {
+  color: var(--font-color);
+  margin-left: 30px;
+  font-size: 50px;
+  font-family: "StreetsXplorer";
+  font-style: italic;
+}
+.headerA {
+  color: white;
+  background-color: rgb(6, 13, 109);
+
+  font-size: 20px;
+  font-family: sans-serif;
+  font-style: italic;
+}
 .navbar {
-  background-color: lightgrey;
+  background-color: rgb(177, 222, 221);
   display: flex;
   align-items: center;
   padding: 10px;
 }
 
 .navbar a {
-  font-family: 'Poetsen One', sans-serif;
+  font-family: "Poetsen One", sans-serif;
   font-size: 24px;
-  color: #38cce6;
+  color: #0e859a;
   margin-right: 20px;
   text-decoration: none;
 }
@@ -16,4 +43,3 @@
 .navbar a.active {
   color: blue;
 }
-
