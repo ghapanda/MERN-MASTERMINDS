@@ -39,20 +39,14 @@ const Profile = () => {
     <>
       {info.isAdmin ? (
         <>
-          <NotAdminH />
+          <AdminH />
         </>
       ) : (
         <>
-          <AdminH />
+          <NotAdminH />
         </>
       )}
       <div className="container">
-        {/*editMode
-            ?<>
-            </>
-            :<>
-                <sidebar />
-            </> */}
         <div className="Profile">
           {editMode ? (
             <>

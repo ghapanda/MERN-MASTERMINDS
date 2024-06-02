@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./login.css";
+import { response } from "express";
 
 const Login = (props) => {
   const navigate = useNavigate();
@@ -9,6 +10,10 @@ const Login = (props) => {
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [isAdminChecked, setIsAdminChecked] = useState(false);
+  const [adminPassword, setAdminPassword] = useState("");
+  const [adminPassError, setAdminPassError] = useState("");
+
   sessionStorage.clear();
 
   const onLoginClick = async () => {
@@ -86,6 +91,33 @@ const Login = (props) => {
         // alert("An error occurred while logging in. Please try again.");
       }
     }
+    // if (isAdminChecked) {
+    //   if ((adminPassword = "")) {
+    //     setAdminPassError("Please enter admin password");
+    //     return;
+    //   }
+    //   try {
+    //     const response = await axios.post(
+    //       "http://localhost:3002/api/adminCheck",
+    //       {
+    //         userId: sessionStorage.getItem("userId"),
+    //         adminPassword: adminPassword,
+    //       }
+    //     );
+    //     sessionStorage.setItem("isAdmin", response.data.isAdmin);
+    //   } catch (error) {
+    //     if (
+    //       error.response &&
+    //       error.response.status === 401 &&
+    //       error.response.data.message === "Wrong Admin Password"
+    //     ) {
+    //       setAdminPassError("Wrong Admin Password");
+    //       sessionStorage.clear();
+    //     } else {
+    //       console.error("Error logging in Admin:", error);
+    //     }
+    //   }
+    // }
   };
 
   return (
@@ -114,6 +146,27 @@ const Login = (props) => {
               className="input"
             />
             <div className="errorLabel">{passwordError}</div>
+          </div>
+          <div className="admin-check">
+            <label>
+              <input
+                type="checkbox"
+                checked={isAdminChecked}
+                onChange={(ev) => setIsAdminChecked(ev.target.checked)}
+              />{" "}
+              Are you admin?
+            </label>
+            {isAdminChecked && (
+              <div className="user-box">
+                <input
+                  type="password"
+                  value={adminPassword}
+                  onChange={(ev) => setAdminPassword(ev.target.value)}
+                  placeholder="Admin Password"
+                  className="input"
+                />
+              </div>
+            )}
           </div>
           <button
             type="button"

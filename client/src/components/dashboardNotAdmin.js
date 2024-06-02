@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./dashboard.css";
 
-export default function Navbar() {
+export default function NavbarNotAmin() {
   const location = useLocation();
 
   return (
@@ -10,12 +10,7 @@ export default function Navbar() {
       <Link to="/" className={location.pathname === "/" ? "active" : ""}>
         Dashboard
       </Link>
-      <Link
-        to="/update-schedule"
-        className={location.pathname === "/update-schedule" ? "active" : ""}
-      >
-        Update Schedule
-      </Link>
+
       <Link
         to="/memberSchedulePage"
         className={location.pathname === "/memberSchedulePage" ? "active" : ""}
