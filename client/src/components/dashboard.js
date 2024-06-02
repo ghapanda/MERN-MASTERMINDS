@@ -7,7 +7,10 @@ export default function Navbar() {
 
   return (
     <div className="navbar">
-      <Link to="/" className={location.pathname === "/" ? "active" : ""}>
+      <Link
+        to="/dashboard"
+        className={location.pathname === "/dashboard" ? "active" : ""}
+      >
         Dashboard
       </Link>
       <Link

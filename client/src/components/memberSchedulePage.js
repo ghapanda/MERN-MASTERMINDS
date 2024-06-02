@@ -165,7 +165,7 @@ function MemberSchedulePage() {
       <h3 className="SubTitle">
         Return to{" "}
         <Link
-          to="/dashboard"
+          to={isAdmin ? "/dashboard" : "/dashboardNotAdmin"}
           style={{ color: "#2d8cf0", textDecoration: "underline" }}
         >
           dashboard

@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./login.css";
-import { response } from "express";
 
 const Login = (props) => {
   const navigate = useNavigate();
@@ -37,12 +36,7 @@ const Login = (props) => {
         "http://localhost:3002/api/login",
         userData
       );
-      if (!response.data.isAdmin) {
-        navigate("/memberSchedulePage");
-        // navigate("/AdminSchedulePage");
-      } else {
-        navigate("/MemberSchedulePage");
-      }
+
       const {
         token,
         userId,
@@ -79,6 +73,9 @@ const Login = (props) => {
       // );
 
       // alert("Welcome!");
+      if (!isAdminChecked) {
+        navigate("/memberSchedulePage");
+      }
     } catch (error) {
       if (
         error.response &&
@@ -91,32 +88,37 @@ const Login = (props) => {
         // alert("An error occurred while logging in. Please try again.");
       }
     }
-    // if (isAdminChecked) {
-    //   if ((adminPassword = "")) {
-    //     setAdminPassError("Please enter admin password");
-    //     return;
-    //   }
-    //   try {
-    //     const response = await axios.post(
-    //       "http://localhost:3002/api/adminCheck",
-    //       {
-    //         userId: sessionStorage.getItem("userId"),
-    //         adminPassword: adminPassword,
-    //       }
-    //     );
-    //     sessionStorage.setItem("isAdmin", response.data.isAdmin);
-    //   } catch (error) {
-    //     if (
-    //       error.response &&
-    //       error.response.status === 401 &&
-    //       error.response.data.message === "Wrong Admin Password"
-    //     ) {
-    //       setAdminPassError("Wrong Admin Password");
-    //       sessionStorage.clear();
-    //     } else {
-    //       console.error("Error logging in Admin:", error);
-    //     }
-    //   }
+    if (isAdminChecked) {
+      if (adminPassword === "") {
+        setAdminPassError("Please enter admin password");
+        return;
+      }
+      try {
+        const response = await axios.post(
+          "http://localhost:3002/api/adminCheck",
+          {
+            userId: sessionStorage.getItem("userId"),
+            adminPassword: adminPassword,
+          }
+        );
+        sessionStorage.setItem("isAdmin", response.data.isAdmin);
+        navigate("/memberSchedulePage");
+      } catch (error) {
+        if (
+          error.response &&
+          error.response.status === 401 &&
+          error.response.data.message === "Wrong Admin Password"
+        ) {
+          setAdminPassError("Wrong Admin Password");
+          sessionStorage.clear();
+        } else {
+          console.error("Error logging in Admin:", error);
+        }
+      }
+    }
+    // if (!(adminPassError || passwordError || emailError)) {
+    //   console.log("do we get here to navigat");
+    //   navigate("/memberSchedulePage");
     // }
   };
 
@@ -165,6 +167,7 @@ const Login = (props) => {
                   placeholder="Admin Password"
                   className="input"
                 />
+                <div className="errorLabel">{adminPassError}</div>
               </div>
             )}
           </div>

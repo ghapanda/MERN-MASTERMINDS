@@ -8,6 +8,12 @@ export default function NavbarNotAmin() {
   return (
     <div className="navbar">
       <Link to="/" className={location.pathname === "/" ? "active" : ""}>
+        Home
+      </Link>
+      <Link
+        to="/dashboardNotAdmin"
+        className={location.pathname === "/dashboardNotAdmin" ? "active" : ""}
+      >
         Dashboard
       </Link>
 

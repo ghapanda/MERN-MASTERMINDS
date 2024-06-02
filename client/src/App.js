@@ -9,13 +9,14 @@ import AdminPage from "./components/admin-page.js";
 import UsersPage from "./components/users-page.js";
 
 import Profile from "./components/UserProfile/profile.js";
-import SearchBar from "./components/searchbar.js"
+import SearchBar from "./components/searchbar.js";
 
 import Loading from "./components/UserProfile/loading.js";
 
 import AboutUs from "./components/aboutus.js";
 
 import Dashboard from "./components/dashboard.js";
+import DashboardNotAdmin from "./components/dashboardNotAdmin";
 import Schedule from "./components/update-schedule.js";
 import MemberSchedulePage from "./components/memberSchedulePage.js";
 import ProtectedRoute from "./authentication/protectedRoutes.js";
@@ -26,7 +27,14 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/searchbar" element={<SearchBar />} />
+        <Route
+          path="/searchbar"
+          element={
+            <ProtectedRoute>
+              <SearchBar />
+            </ProtectedRoute>
+          }
+        />
 
         <Route
           path="/userspage"
@@ -78,6 +86,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboardNotAdmin"
+          element={
+            <ProtectedRoute>
+              <DashboardNotAdmin />
             </ProtectedRoute>
           }
         />

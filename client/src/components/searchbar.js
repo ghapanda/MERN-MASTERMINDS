@@ -1,115 +1,109 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./searchbar.css"
+import "./searchbar.css";
 
+import NavbarNotAmin from "./dashboardNotAdmin";
 import Navbar from "./dashboard";
-import { Show } from "@chakra-ui/react";
 
-function ResultButton({result, setProfile}) {
+function ResultButton({ result, setProfile }) {
+  const showProfile = () => {
+    setProfile(result);
+  };
 
-    const showProfile = () => {
-        setProfile(result);
-    };
-
-    return(
-
-        <li key={result._id}>
-        <button className="search-result-item" onClick={showProfile}>
-            <div style={{ flexShrink: 0 }}>
-                <img
-                    style={{ width: "90px", borderRadius: "90px" }}
-                    src={
-                    result.portrait !== "null"
-                        ? `http://localhost:3002${result.portrait}`
-                        : "https://img.icons8.com/ios-glyphs/90/user--v1.png"
-                    }
-                    alt={`${result.displayName} profile`}
-                    onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src =
-                        "https://img.icons8.com/ios-glyphs/90/user--v1.png";
-                    }}
-                />
-            </div>
-            {/* <img src= '/Users/srinjanasriram/Documents/Academics/CS/CS35L/Project/MERN-MASTERMINDS/uploads/1717025539960-img2.jpg' /> */}
-            <div>
-                <p>Username: {result.username}</p>
-                <p>Dance Style: {result.danceStyle}</p>
-                <p>Bio: {result.bio}</p>
-            </div>
-        </button>
+  return (
+    <li key={result._id}>
+      <button className="search-result-item" onClick={showProfile}>
+        <div style={{ flexShrink: 0 }}>
+          <img
+            style={{ width: "90px", borderRadius: "90px" }}
+            src={
+              result.portrait !== "null"
+                ? `http://localhost:3002${result.portrait}`
+                : "https://img.icons8.com/ios-glyphs/90/user--v1.png"
+            }
+            alt={`${result.displayName} profile`}
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src =
+                "https://img.icons8.com/ios-glyphs/90/user--v1.png";
+            }}
+          />
+        </div>
+        {/* <img src= '/Users/srinjanasriram/Documents/Academics/CS/CS35L/Project/MERN-MASTERMINDS/uploads/1717025539960-img2.jpg' /> */}
+        <div>
+          <p>Username: {result.username}</p>
+          <p>Dance Style: {result.danceStyle}</p>
+          <p>Bio: {result.bio}</p>
+        </div>
+      </button>
     </li>
-
-    );
-};
+  );
+}
 
 const SearchBar = () => {
+  const [query, setQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [profile, setProfile] = useState(null); //the profile component state should be in the parent component because this manages state
+  const isAdmin = sessionStorage.getItem("isAdmin") == "true" ? true : false;
 
-    const [query, setQuery] = useState("")
-    const [searchResults, setSearchResults] = useState([]);
-    const [profile, setProfile] = useState(null); //the profile component state should be in the parent component because this manages state
+  // event handler for search bar to reflect user input
+  function search(e) {
+    setQuery(e.target.value);
+  }
 
-    // event handler for search bar to reflect user input
-    function search(e) {
-        setQuery(e.target.value)
+  useEffect(() => {
+    if (query.trim() !== "") {
+      // Check if the query is not empty
+      axios
+        .get(`http://localhost:3002/api/search?q=${query}`, {
+          headers: {
+            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+          },
+        })
+        .then((response) => {
+          console.log(response.data);
+          setSearchResults(response.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching search results", error);
+        });
+    } else {
+      setSearchResults([]); // Clear search results if query is empty
     }
+  }, [query]);
 
-    useEffect(() => {
-        if (query.trim() !== "") { // Check if the query is not empty
-            axios
-                .get(`http://localhost:3002/api/search?q=${query}`, {
-                    headers: {
-                        Authorization: `Bearer ${sessionStorage.getItem("token")}`
-                    }
-                })
-                .then((response) => {
-                    console.log(response.data);
-                    setSearchResults(response.data);
-                })
-                .catch((error) => {
-                    console.error("Error fetching search results", error);
-                });
-        } else {
-            setSearchResults([]); // Clear search results if query is empty
-        }
-    }, [query]);
+  console.log(searchResults);
 
-    console.log(searchResults)
-
-
-    return (
-        <div>
-        <div className="search-bar">
-            <Navbar />
-            <h1>Search Bar</h1>
-            <input
-                type="text"
-                placeholder="Search"
-                onChange={search}
-                value={query}
-            />
-            {searchResults.length > 0 && (
-                <ul className="search-results">
-                    {searchResults.map((result) => (
-                        <ResultButton 
-                        result = {result}
-                        setProfile = {setProfile}/>
-   
-                    ))}
-                </ul>
-            )}
-        </div>
-        <div>
+  return (
+    <div>
+      {isAdmin ? <Navbar /> : <NavbarNotAmin />}
+      <div className="search-bar">
+        <h1>Search Bar</h1>
+        <input
+          type="text"
+          placeholder="Search"
+          onChange={search}
+          value={query}
+        />
+        {searchResults.length > 0 && (
+          <ul className="search-results">
+            {searchResults.map((result) => (
+              <ResultButton result={result} setProfile={setProfile} />
+            ))}
+          </ul>
+        )}
+      </div>
+      <div>
         <div style={{ textAlign: "center" }}>Profile</div>
- 
-            {profile && (
-            <div
+
+        {profile && (
+          <div
             className="vh-100"
             style={{
               backgroundColor: "#fff",
               display: "flex",
               justifyContent: "center",
-              alignItems: "center"
+              alignItems: "center",
             }}
           >
             <div
@@ -121,11 +115,15 @@ const SearchBar = () => {
                 border: "2px solid #323232",
                 padding: "20px",
                 fontWeight: "600",
-                boxShadow: "4px 4px #323232"
+                boxShadow: "4px 4px #323232",
               }}
             >
               <div
-                style={{ display: "flex", alignItems: "center", textAlign: "left" }}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  textAlign: "left",
+                }}
               >
                 <div style={{ flexShrink: 0 }}>
                   <img
@@ -143,11 +141,28 @@ const SearchBar = () => {
                     }}
                   />
                 </div>
-                <div className="ProfileBoxInner" style={{ flexGrow: 1, marginLeft: "20px", color: '#323232', backgroundColor: '#fff' }}>
+                <div
+                  className="ProfileBoxInner"
+                  style={{
+                    flexGrow: 1,
+                    marginLeft: "20px",
+                    color: "#323232",
+                    backgroundColor: "#fff",
+                  }}
+                >
                   <h2>{profile.displayName}</h2>
                   <i>{profile.bio}</i>
                   <p>Dance Style: {profile.danceStyle}</p>
-                  <ul style={{ listStyleType: "none", padding: 0, backgroundColor:"#D3D3D3", boxShadow: "4px 4px #323232", fontWeight: "600", color:"#323232" }}>
+                  <ul
+                    style={{
+                      listStyleType: "none",
+                      padding: 0,
+                      backgroundColor: "#D3D3D3",
+                      boxShadow: "4px 4px #323232",
+                      fontWeight: "600",
+                      color: "#323232",
+                    }}
+                  >
                     {profile.listSessions.map((event, index) => (
                       <li
                         key={index}
@@ -163,7 +178,9 @@ const SearchBar = () => {
                         <p style={{ color: "#323232", fontWeight: "bold" }}>
                           Date: {event[1]}
                         </p>
-                        <p style={{ color: "#323232", fontWeight: "bold" }}>Location: {event[2]}</p>
+                        <p style={{ color: "#323232", fontWeight: "bold" }}>
+                          Location: {event[2]}
+                        </p>
                       </li>
                     ))}
                   </ul>
@@ -172,16 +189,9 @@ const SearchBar = () => {
             </div>
           </div>
         )}
-        </div>
-        </div>
-
-
-        
-    
-    );
-
+      </div>
+    </div>
+  );
 };
 
 export default SearchBar;
-
-
