@@ -5,6 +5,11 @@
   --input-focus: #2d8cf0;
 }
 
+@font-face {
+  font-family: 'P';
+  src: url('./PoetsenOne-Regular.ttf') format('truetype');
+}
+
 .profile {
   background-color: lightgrey;
   display: flex;
@@ -138,7 +143,7 @@
   /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
   /* Add a shadow */
   width: 120px;
-  height: 40px;
+  height: 55px;
   border-radius: 5px;
   border: 2px solid var(--main-color);
   background-color: var(--bg-color);
@@ -147,6 +152,13 @@
   font-weight: 600;
   color: var(--font-color);
   cursor: pointer;
+}
+
+
+.edit-button:active {
+  font-family: "P";
+  box-shadow: 0px 0px #323232;
+  transform: translate(3px, 3px);
 }
 
 /* 
@@ -197,6 +209,7 @@
 
 .input-group {
   margin-bottom: 15px;
+  font-family: "P";
 }
 
 .input-group label {
@@ -204,6 +217,8 @@
   font-weight: 600;
   margin-bottom: 5px;
   color: #555;
+  font-family: "P";
+  font-size: 20px;
 }
 
 .input-group input {
@@ -211,14 +226,15 @@
   padding: 10px;
   border: 1px solid #ffffff;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 18px;
   color: #333;
   background-color: #f9f9f9;
+  font-family: "P";
 }
 
 .input-group input:focus {
-  border-color: #4169e1;
-  outline: none;
+  border: 2px solid #2d8cf0;
+  outline: None;
 }
 
 .buttons {
@@ -245,6 +261,12 @@
   background-color: #314b99;
 }
 
+.editButton.save:active {
+  font-family: "P";
+  box-shadow: 0px 0px #323232;
+  transform: translate(3px, 3px);
+}
+
 .editButton.cancel {
   background-color: #f5f5f5;
   color: #333;
@@ -252,6 +274,12 @@
 
 .editButton.cancel:hover {
   background-color: #a4ced498;
+}
+
+.editButton.cancel:active {
+  font-family: "P";
+  box-shadow: 0px 0px #323232;
+  transform: translate(3px, 3px);
 }
 
 .custom-file-upload {
@@ -267,6 +295,12 @@
 
 .custom-file-upload:hover {
   background-color: #314b99;
+}
+
+.custom-file-upload:active {
+  font-family: "P";
+  box-shadow: 0px 0px #323232;
+  transform: translate(3px, 3px);
 }
 
 .custom-file-upload input[type="file"] {

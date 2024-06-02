@@ -46,6 +46,7 @@ const ProfileUpload = ({ info, setInfo }) => {
               boxShadow: "4px 4px #323232",
               fontWeight: "600",
               color: "#323232",
+              fontSize: "20px"
             }}
           >
             <input type="file" accept="image/*" onChange={handleFileChange} />{" "}
@@ -61,6 +62,8 @@ const ProfileUpload = ({ info, setInfo }) => {
               boxShadow: "4px 4px #323232",
               fontWeight: "600",
               color: "#323232",
+              fontFamily: "P",
+              fontSize: "20px"
             }}
           >
             Upload

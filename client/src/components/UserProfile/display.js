@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { React, useState, useEffect } from "react";
 import axios from "axios";
+import "./profile.css"
 
 const DisplayProfile = ({ info, setInfo, startEdit }) => {
   // const listSessionsJSON = JSON.parse(info.listSessions);
@@ -37,9 +38,10 @@ const DisplayProfile = ({ info, setInfo, startEdit }) => {
           border: "none",
           boxShadow: "4px 4px #323232",
           padding: "20px",
+          fontFamily: "P"
         }}
       >
-        <h1 style={{ textAlign: "center" }}>Profile</h1>
+        <h1 style={{ textAlign: "center", fontFamily: "P", fontSize: "30px"}}>Profile</h1>
 
         <div
           style={{
@@ -80,19 +82,22 @@ const DisplayProfile = ({ info, setInfo, startEdit }) => {
                 marginLeft: "20px",
                 color: "#323232",
                 backgroundColor: "#fff",
+                fontFamily: "P"
               }}
             >
-              <h2>{info.displayName}</h2>
-              <i>{info.bio}</i>
-              <p>Dance Style: {info.danceStyle}</p>
+              <h2 style={{ fontSize: "20px"}}>{info.displayName}</h2>
+              <i style={{ fontSize: "18px"}}>{info.bio}</i>
+              <p style={{ fontSize: "18px"}}>Dance Style: {info.danceStyle}</p>
               <ul
                 style={{
                   listStyleType: "none",
                   padding: 0,
-                  backgroundColor: "#D3D3D3",
-                  boxShadow: "4px 4px #323232",
+                  //boxShadow: "4px 4px #323232",
+                  //borderRadius: "5px",
+                  //border: "2px solid #323232",
                   fontWeight: "600",
                   color: "#323232",
+                  fontFamily: "P"
                 }}
               >
                 {info.listSessions.map((event, index) => (
@@ -100,17 +105,19 @@ const DisplayProfile = ({ info, setInfo, startEdit }) => {
                     key={index}
                     style={{
                       border: "2px solid #323232",
-                      borderRadius: "2px",
+                      borderRadius: "5px",
+                      boxShadow: "4px 4px #323232",
                       padding: "10px",
                       marginBottom: "10px",
                       backgroundColor: "#D3D3D3",
+                      fontFamily: "P",
                     }}
                   >
-                    <h2 style={{ color: "#323232" }}>{event[0]}</h2>
-                    <p style={{ color: "#323232", fontWeight: "bold" }}>
+                    <h2 style={{ color: "#323232", fontFamily: "P", fontSize: "20px"}}>{event[0]}</h2>
+                    <p style={{ color: "#323232", fontWeight: "bold", fontFamily: "P", fontSize: "18px"}}>
                       Date: {event[1]}
                     </p>
-                    <p style={{ color: "#323232", fontWeight: "bold" }}>
+                    <p style={{ color: "#323232", fontWeight: "bold",fontFamily: "P", fontSize: "18px"}}>
                       Location: {event[2]}
                     </p>
                   </li>
@@ -123,7 +130,8 @@ const DisplayProfile = ({ info, setInfo, startEdit }) => {
                     color: "#323232",
                     fontSize: "16px",
                     fontWeight: "bold",
-                    fontFamily: "Arial, sans-serif",
+                    fontFamily: "P",
+                    fontSize: "20px"
                   }}
                 >
                   Edit Profile
@@ -133,11 +141,11 @@ const DisplayProfile = ({ info, setInfo, startEdit }) => {
           </div>
         </div>
       </div>
-      <div className="body" style={{ marginTop: "20px" }}>
+      <div className="body" style={{ marginTop: "20px", fontFamily: "P"}}>
         {info.listSessions ? (
           <></>
         ) : (
-          <h1 style={{ textAlign: "center", color: "#323232" }}>
+          <h1 style={{ textAlign: "center", color: "#323232", fontFamily: "P" }}>
             No events yet
           </h1>
         )}

@@ -341,8 +341,8 @@ const EditableProfile = ({ info, setInfo, setEditMode }) => {
   };
   console.log("info in edit", info);
   return (
-    <div className="container_2" style={{ background: "#D3D3D3" }}>
-      <h2 className="title">Edit Profile</h2>
+    <div className="container_2" style={{ background: "#D3D3D3", fontFamily: "P", borderRadius: "5px", border: "2px solid #323232", boxShadow: "4px 4px #323232"}}>
+      <h2 style={{fontFamily: "P", fontSize: "30px"}} className="title">Edit Profile</h2>
       <div className="input-group">
         <label>Username:</label>
         <input
@@ -404,6 +404,8 @@ const EditableProfile = ({ info, setInfo, setEditMode }) => {
             boxShadow: "4px 4px #323232",
             fontWeight: "600",
             color: "#323232",
+            fontFamily: "P",
+            fontSize: "20px"
           }}
         >
           Save
@@ -417,6 +419,8 @@ const EditableProfile = ({ info, setInfo, setEditMode }) => {
             boxShadow: "4px 4px #323232",
             fontWeight: "600",
             color: "#323232",
+            fontFamily: "P",
+            fontSize: "20px"
           }}
         >
           Cancel
