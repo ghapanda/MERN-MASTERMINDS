@@ -13,6 +13,8 @@ const updatePorfile = require("./routes/editprofile");
 const uploadProfilePicture = require("./routes/uploadProfilePic");
 const fetchData = require("./routes/fetchData");
 const adminCheck = require("./routes/adminCheck");
+const fetchPosts = require("./routes/fetchPosts");
+const makePosts = require("./routes/posts");
 const app = express();
 // Use the cors middleware
 // app.use(
@@ -63,6 +65,8 @@ app.use("/api", updatePorfile);
 app.use("/api", uploadProfilePicture);
 app.use("/api", fetchData);
 app.use("/api", adminCheck);
+app.use("/api", fetchPosts);
+app.use("/api", makePosts);
 app.use(authenticateMiddleware);
 
 app.use("/api", searchbarRoute);
