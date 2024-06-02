@@ -5,9 +5,10 @@ const Post = require("../models/Posts");
 // Route to post a new announcement
 router.post("/posts", async (req, res) => {
   try {
-    const { author, message } = req.body;
+    const { author, date, message } = req.body;
     const post = new Post({
       author,
+      date,
       message,
     });
     await post.save();

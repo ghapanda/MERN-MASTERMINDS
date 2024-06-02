@@ -83,7 +83,7 @@ const SearchBar = () => {
       <div className="Container">
         <div className="search-container">
           <div className="search-bar">
-            <h1>Explore Profiles</h1>
+            <h1 className="Titless">Explore Profiles</h1>
             <input
               type="text"
               placeholder="Search"
