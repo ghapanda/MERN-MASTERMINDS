@@ -20,6 +20,7 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 10px;
+  gap: 15px;
 }
 
 .headerT {
@@ -28,32 +29,43 @@ body {
   font-family: "StreetsXplorer";
   font-style: italic;
   margin: 0;
+  align-items: center;
 }
 
 .headerA {
-  color: black; /* Changed to black */
-  background-color: white; /* Changed to white */
-  font-size: 20px;
-  font-style: italic;
-  padding: 10px;
+  font-family: "Poetsen One", sans-serif;
+  width: 40%;
+  height: 40px;
   border-radius: 5px;
-  margin: 10px 0;
+  border: 2px solid #323232;
+  background-color: #fff;
+  box-shadow: 4px 4px #323232;
+  font-size: 20px;
+  font-weight: 600;
+  color: #323232;
+  padding: 5px 10px;
+  outline: none;
   text-align: center;
-  font-family: "Poetsen One", sans-serif; /* Added Poetsen One font */
 }
 
 .navbar {
-  background-color: white; /* Changed to white */
-  display: flex;
-  justify-content: center;
-  padding: 10px;
+  font-family: "Poetsen One", sans-serif;
+  width: 80%;
+  height: 40px;
   border-radius: 5px;
+  border: 2px solid #323232;
+  background-color: #fff;
   box-shadow: 4px 4px #323232;
-  width: 100%;
+  font-size: 20px;
+  font-weight: 600;
+  color: #323232;
+  padding: 5px 10px;
+  outline: none;
+  text-align: center;
 }
 
 .navbar a {
-  font-size: 24px;
+  font-size: 20px;
   color: black; /* Changed to black */
   margin-right: 20px;
   text-decoration: none;
@@ -66,7 +78,7 @@ body {
 }
 
 .navbar a.active {
-  color: blue;
+  color: #2d8cf0;
 }
 
 /* Styles for consistency with login and sign-up */
@@ -167,3 +179,112 @@ body {
   font-size: 18px;
   color: black;
 }
+
+.RecentAnnouncements {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  font-family: 'Poetsen One', sans-serif;
+  font-size: 30px;
+  color: #323232;
+}
+
+.announcements-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Announcement {
+  width: 80%;
+  padding: 20px;
+  margin-bottom: 20px;
+  font-family: 'Poetsen One', sans-serif;
+  font-size: 18px;
+  color: #323232;
+  background-color: white;
+  border-radius: 5px;
+  border: 2px solid #323232;
+  box-shadow: 4px 4px #323232;
+}
+
+.post-announcement-title {
+  text-align: center;
+  font-size: 25px;
+  font-family: Poetsen One;
+  color: #323232;
+}
+
+.post-announcement-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+  font-size: 18px;
+  font-family: 'Poetsen One';
+}
+
+.form-input1 {
+  width: 300px;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid #323232;
+  background-color: #fff;
+  box-shadow: 4px 4px #323232;
+  font-size: 18px;
+  color: #323232;
+  padding: 10px;
+  outline: none;
+  margin-bottom: 10px;
+  font-family: Poetsen One;
+}
+
+.form-input2 {
+  width: 300px;
+  height: 300px;
+  border-radius: 5px;
+  border: 2px solid #323232;
+  background-color: #fff;
+  box-shadow: 4px 4px #323232;
+  font-size: 18px;
+  color: #323232;
+  padding: 10px;
+  outline: none;
+  margin-bottom: 10px;
+  font-family: Poetsen One;
+}
+
+.post-button {
+  display: inline-block;
+  outline: 0;
+  cursor: pointer;
+  text-align: center;
+  border: 2px solid #323232;
+  min-height: 36px;
+  min-width: 36px;
+  background-color: #fff;
+  box-shadow: 4px 4px #323232;
+  font-size: 18px;
+  font-weight: 600;
+  color: black;
+  border-radius: 5px;
+  margin: 0px;
+  font-family: Poetsen One;
+  padding: 10px;
+}
+
+.post-button:active  {
+  box-shadow: 0px 0px #323232;
+  transform: translate(3px, 3px);
+}
+
