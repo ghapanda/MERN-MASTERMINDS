@@ -30,13 +30,13 @@ const DisplayProfile = ({ info, setInfo, startEdit }) => {
     <>
       <div
         style={{
-          backgroundColor: "lightgrey",
+          //backgroundColor: "lightgrey",
 
           height: "100vh",
           overflowY: "scroll",
           fontFamily: "sans-serif",
           border: "none",
-          boxShadow: "4px 4px #323232",
+          //boxShadow: "4px 4px #323232",
           padding: "20px",
           fontFamily: "P"
         }}
