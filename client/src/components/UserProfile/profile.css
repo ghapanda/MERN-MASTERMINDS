@@ -220,12 +220,12 @@
   border-color: #4169e1;
   outline: none;
 }
-
+/*
 .buttons {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
-}
+}*/
 
 .editButton {
   padding: 10px 20px;

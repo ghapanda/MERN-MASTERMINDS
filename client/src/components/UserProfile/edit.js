@@ -394,16 +394,22 @@ const EditableProfile = ({ info, setInfo, setEditMode }) => {
       <div>
         <ProfilePicture info={info} setInfo={setInfo} />
       </div>
-      <div className="buttons">
+      <div className="buttons" style={{  display: 'flex', gap:"10px"}}>
         <button
           className="editButton save"
           onClick={handleSaveClicked}
           style={{
+            //border: "2px solid #323232",
+            //backgroundColor: "#D3D3D3",
+            //boxShadow: "4px 4px #323232",
+            //fontWeight: "600",
+            //color: "#323232",
             border: "2px solid #323232",
-            backgroundColor: "#D3D3D3",
             boxShadow: "4px 4px #323232",
             fontWeight: "600",
-            color: "#323232",
+            backgroundColor: 'black',
+            color: 'white',
+            cursor: 'pointer',
           }}
         >
           Save
@@ -412,11 +418,18 @@ const EditableProfile = ({ info, setInfo, setEditMode }) => {
           className="editButton cancel"
           onClick={handleCancel}
           style={{
+            //border: "2px solid #323232",
+            //backgroundColor: "#D3D3D3",
+            //boxShadow: "4px 4px #323232",
+            //fontWeight: "600",
+            //color: "#323232",
+
             border: "2px solid #323232",
-            backgroundColor: "#D3D3D3",
             boxShadow: "4px 4px #323232",
             fontWeight: "600",
-            color: "#323232",
+            backgroundColor: 'black',
+            color: 'white',
+            cursor: 'pointer',
           }}
         >
           Cancel
