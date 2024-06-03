@@ -61,14 +61,16 @@ const DashboardPage = () => {
           padding: "20px",
         }}
       >
-        <h2>Recent Announcements</h2>
-        <ul>
+        <div class="RecentAnnouncements" style={{fontSize:'25px', color:'#323232'}}>
+          Recent Announcements
+        </div>
+        <div class="announcements-box">
           {announcements.map((announcement, index) => (
-            <li key={index}>
-              <strong>{announcement.author}{", "}{announcement.date}:</strong>{" "}{announcement.message}
-            </li>
+            <div class="Announcement" key={index}>
+              <strong>{announcement.date} {announcement.author}:</strong> {announcement.message}
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </>
   );

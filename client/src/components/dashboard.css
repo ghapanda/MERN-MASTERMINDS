@@ -1,3 +1,7 @@
+/* Import the Poetsen One font */
+@import url("https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap");
+
+/* Define the StreetsXplorer font */
 @font-face {
   font-family: "StreetsXplorer";
   src: url("../../public/StreetExplorer.otf") format("opentype");
@@ -5,41 +9,282 @@
   font-style: normal;
 }
 
-.header {
-  background-color: rgb(17, 164, 164);
-  font-size: "90px";
-  margin-top: 0px;
+body {
+  font-family: "Poetsen One", sans-serif; /* Default font for the entire document */
 }
+
+.header {
+  background-color: lightgrey;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  gap: 15px;
+}
+
 .headerT {
-  color: var(--font-color);
-  margin-left: 30px;
+  color: #323232;
   font-size: 50px;
   font-family: "StreetsXplorer";
   font-style: italic;
-}
-.headerA {
-  color: white;
-  background-color: rgb(6, 13, 109);
-
-  font-size: 20px;
-  font-family: sans-serif;
-  font-style: italic;
-}
-.navbar {
-  background-color: rgb(177, 222, 221);
-  display: flex;
+  margin: 0;
   align-items: center;
-  padding: 10px;
+}
+
+.headerA {
+  font-family: "Poetsen One", sans-serif;
+  width: 40%;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid #323232;
+  background-color: #fff;
+  box-shadow: 4px 4px #323232;
+  font-size: 20px;
+  font-weight: 600;
+  color: #323232;
+  padding: 5px 10px;
+  outline: none;
+  text-align: center;
+}
+
+.navbar {
+  font-family: "Poetsen One", sans-serif;
+  width: 80%;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid #323232;
+  background-color: #fff;
+  box-shadow: 4px 4px #323232;
+  font-size: 20px;
+  font-weight: 600;
+  color: #323232;
+  padding: 5px 10px;
+  outline: none;
+  text-align: center;
 }
 
 .navbar a {
-  font-family: "Poetsen One", sans-serif;
-  font-size: 24px;
-  color: #0e859a;
+  font-size: 20px;
+  color: black; /* Changed to black */
   margin-right: 20px;
   text-decoration: none;
+  transition: color 0.3s ease;
+  font-family: "Poetsen One", sans-serif; /* Added Poetsen One font */
+}
+
+.navbar a:hover {
+  color: #2d8cf0;
 }
 
 .navbar a.active {
-  color: blue;
+  color: #2d8cf0;
 }
+
+/* Styles for consistency with login and sign-up */
+.login-box {
+  font-family: "Poetsen One", sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  padding: 20px;
+  transform: translate(-50%, -50%);
+  background: lightgrey;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+  border-radius: 5px;
+  border: 2px solid #323232;
+  box-shadow: 4px 4px #323232;
+}
+
+.Titles {
+  font-family: "Poetsen One", sans-serif;
+  color: black;
+  font-weight: 900;
+  font-size: 30px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.form {
+  font-family: "Poetsen One", sans-serif;
+  width: 100%;
+}
+
+.user-box {
+  font-family: "Poetsen One", sans-serif;
+  position: relative;
+  width: 100%;
+}
+
+.input {
+  font-family: "Poetsen One", sans-serif;
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid #323232;
+  background-color: #fff;
+  box-shadow: 4px 4px #323232;
+  font-size: 20px;
+  font-weight: 600;
+  color: #323232;
+  padding: 5px 10px;
+  outline: none;
+}
+
+.input::placeholder {
+  color: #666;
+  opacity: 0.8;
+}
+
+.input:focus {
+  border: 2px solid #2d8cf0;
+}
+
+.errorLabel {
+  font-family: "Poetsen One", sans-serif;
+  color: #ff4d4d;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.button-confirm {
+  font-family: "Poetsen One", sans-serif;
+  margin: 50px auto 0 auto;
+  width: 120px;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid #323232;
+  background-color: #fff;
+  box-shadow: 4px 4px #323232;
+  font-size: 20px;
+  font-weight: 600;
+  color: black;
+  cursor: pointer;
+}
+
+.button-confirm:active {
+  font-family: "Poetsen One", sans-serif;
+  box-shadow: 0px 0px #323232;
+  transform: translate(3px, 3px);
+}
+
+.register-text {
+  font-family: "Poetsen One", sans-serif;
+  font-size: 18px;
+  color: black;
+}
+
+.RecentAnnouncements {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  font-family: 'Poetsen One', sans-serif;
+  font-size: 30px;
+  color: #323232;
+}
+
+.announcements-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Announcement {
+  width: 80%;
+  padding: 20px;
+  margin-bottom: 20px;
+  font-family: 'Poetsen One', sans-serif;
+  font-size: 18px;
+  color: #323232;
+  background-color: white;
+  border-radius: 5px;
+  border: 2px solid #323232;
+  box-shadow: 4px 4px #323232;
+}
+
+.post-announcement-title {
+  text-align: center;
+  font-size: 25px;
+  font-family: Poetsen One;
+  color: #323232;
+}
+
+.post-announcement-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+  font-size: 18px;
+  font-family: 'Poetsen One';
+}
+
+.form-input1 {
+  width: 300px;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid #323232;
+  background-color: #fff;
+  box-shadow: 4px 4px #323232;
+  font-size: 18px;
+  color: #323232;
+  padding: 10px;
+  outline: none;
+  margin-bottom: 10px;
+  font-family: Poetsen One;
+}
+
+.form-input2 {
+  width: 300px;
+  height: 300px;
+  border-radius: 5px;
+  border: 2px solid #323232;
+  background-color: #fff;
+  box-shadow: 4px 4px #323232;
+  font-size: 18px;
+  color: #323232;
+  padding: 10px;
+  outline: none;
+  margin-bottom: 10px;
+  font-family: Poetsen One;
+}
+
+.post-button {
+  display: inline-block;
+  outline: 0;
+  cursor: pointer;
+  text-align: center;
+  border: 2px solid #323232;
+  min-height: 36px;
+  min-width: 36px;
+  background-color: #fff;
+  box-shadow: 4px 4px #323232;
+  font-size: 18px;
+  font-weight: 600;
+  color: black;
+  border-radius: 5px;
+  margin: 0px;
+  font-family: Poetsen One;
+  padding: 10px;
+}
+
+.post-button:active  {
+  box-shadow: 0px 0px #323232;
+  transform: translate(3px, 3px);
+}
+

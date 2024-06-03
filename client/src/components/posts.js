@@ -29,15 +29,23 @@ function AnnouncementForm() {
   return (
     <>
       <Navbar />
-      <div>
-        <h2>Post Announcement</h2>
+      <div  style={{
+          backgroundColor: "lightgrey",
+          height: "100vh",
+          overflowY: "scroll",
+          fontFamily: "sans-serif",
+          border: "none",
+          boxShadow: "4px 4px #323232",
+          padding: "20px",
+        }}>
+        <h2 class="post-announcement-title" >Post Announcement</h2>
         {error && <p>{error}</p>}
-        <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: "10px" }}>
-            <label htmlFor="date" style={{ display: "block" }}>
-              Date:
+        <form onSubmit={handleSubmit} class="post-announcement-form">
+        <div style={{ marginBottom: "10px" }} class="form-group">
+            <label htmlFor="date" style={{ display: "block", marginRight: "30px"}} >
+              Date:{"  "}
             </label>
-            <textarea
+            <textarea class="form-input1"
               id="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
@@ -46,11 +54,11 @@ function AnnouncementForm() {
               required
             />
           </div>
-          <div style={{ marginBottom: "10px" }}>
+          <div style={{ marginBottom: "10px" }} class="form-group">
             <label htmlFor="message" style={{ display: "block" }}>
               Message:
             </label>
-            <textarea
+            <textarea class="form-input2"
               id="message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
@@ -59,7 +67,7 @@ function AnnouncementForm() {
               required
             />
           </div>
-          <button type="submit">Post Announcement</button>
+          <button type="submit" className="post-button">Post Announcement</button>
         </form>
       </div>
     </>
