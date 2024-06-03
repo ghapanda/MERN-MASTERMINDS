@@ -45,15 +45,16 @@
   padding: 12px 16px;
   font-size: 16px;
   border-radius: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 4px #323232;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
   transition: box-shadow 0.3s ease;
   font-family: 'Poetsen One';
 }
 
-
 .search-bar input:focus {
   outline: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+  box-shadow: 4px 4px #323232;
 }
 
 .search-results {
@@ -86,6 +87,8 @@
 .search-result-item {
   display: flex;
   align-items: center;
+  box-shadow: 4px 4px #323232;
+  border: "2px solid #323232"
 }
 
 .search-result-item img {
