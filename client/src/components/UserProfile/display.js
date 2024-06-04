@@ -19,7 +19,7 @@ const DisplayProfile = ({ info, startEdit }) => {
       <div
         className="vh-100"
         style={{
-          backgroundColor: "#fff",
+          backgroundColor: "lightgrey",
           display: "flex",
           justifyContent: "center",
           alignItems: "center"
@@ -34,6 +34,7 @@ const DisplayProfile = ({ info, startEdit }) => {
             border: "2px solid #323232",
             padding: "20px",
             fontWeight: "600",
+            backgroundColor: "#FFF",
             boxShadow: "4px 4px #323232"
           }}
         >

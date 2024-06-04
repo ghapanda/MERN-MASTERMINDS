@@ -53,6 +53,7 @@ const Profile = () => {
 
   return (
     <>
+    <div style={{backgroundColor: 'lightgrey'}}>
       {info.isAdmin ? (
         <>
           <NotAdminH />
@@ -62,14 +63,14 @@ const Profile = () => {
           <AdminH />
         </>
       )}
-      <div className="container">
+      <div className="container" style={{backgroundColor: 'lightgrey'}}>
         {/*editMode
             ?<>
             </>
             :<>
                 <sidebar />
             </> */}
-        <div className="Profile">
+        <div className="Profile" style={{backgroundColor: 'lightgrey'}}>
           {editMode ? (
             <>
               <div>{editMode}</div>
@@ -86,6 +87,7 @@ const Profile = () => {
             </>
           )}
         </div>
+      </div>
       </div>
     </>
   );

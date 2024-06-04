@@ -3,10 +3,12 @@
   --bg-color: lightgrey;
   --font-color: #323232;
   --input-focus: #2d8cf0;
+  font-family: 'Poetsen One', sans-serif;
+  background-color: lightgrey;
 }
 
 .header {
-  background-color: white;
+  background-color: lightgrey;
   margin-top: 0px;
 }
 
@@ -51,7 +53,8 @@
   color: var(--font-color);
   margin-left: 30px;
   font-size: 50px;
-  font-family: sans-serif;
+  font-family: 'Poetsen One';
+  background-color: "lightgrey";
   font-style: italic;
 }
 
@@ -190,6 +193,7 @@
   font-size: 24px;
   margin-bottom: 20px;
   text-align: center;
+  background-color: "lightgrey";
   color: #333;
 }
 
