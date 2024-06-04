@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./searchbar.css";
 
-import NavbarNotAmin from "./dashboardNotAdmin";
+import NavbarNotAdmin from "./dashboardNotAdmin";
 import Navbar from "./dashboard";
-import { set } from "mongoose-int32";
 
 function ResultButton({ result, setProfile, setQuery }) {
   const showProfile = () => {
@@ -31,12 +30,11 @@ function ResultButton({ result, setProfile, setQuery }) {
             }}
           />
         </div>
-        {/* <img src= '/Users/srinjanasriram/Documents/Academics/CS/CS35L/Project/MERN-MASTERMINDS/uploads/1717025539960-img2.jpg' /> */}
-        <div>
-          <p>Screen Name: {result.displayName}</p>
-          <p>User Name: {result.usernaem}</p>
-          <p>Dance Style: {result.danceStyle}</p>
-          <p>Bio: {result.bio}</p>
+        <div style={{ marginLeft: "20px", textAlign: "left" }}>
+          <p style={{ fontSize: "18px", fontFamily: "'Poetsen One', sans-serif", color: "#323232" }}>Screen Name: {result.displayName}</p>
+          <p style={{ fontSize: "18px", fontFamily: "'Poetsen One', sans-serif", color: "#323232" }}>User Name: {result.username}</p>
+          <p style={{ fontSize: "18px", fontFamily: "'Poetsen One', sans-serif", color: "#323232" }}>Dance Style: {result.danceStyle}</p>
+          <p style={{ fontSize: "18px", fontFamily: "'Poetsen One', sans-serif", color: "#323232" }}>Bio: {result.bio}</p>
         </div>
       </button>
     </li>
@@ -79,21 +77,32 @@ const SearchBar = () => {
 
   return (
     <div>
-      {isAdmin ? <Navbar /> : <NavbarNotAmin />}
-      <div className="Container">
+      {isAdmin ? <Navbar /> : <NavbarNotAdmin />}
+      <div className="Container" style={{ backgroundColor: "lightgrey", padding: "20px" }}>
         <div className="search-container">
           <div className="search-bar">
-            <h1 className="Titless">Explore Profiles</h1>
+            <h1 className="Title" style={{ fontFamily: "'Poetsen One', sans-serif", color: "#323232", fontWeight: "900", fontSize: "25px", textAlign: "center" }}>Explore Profiles</h1>
             <input
               type="text"
               placeholder="Search"
               onChange={search}
               value={query}
+              style={{
+                width: "100%",
+                padding: "10px",
+                borderRadius: "5px",
+                border: "2px solid #323232",
+                boxShadow: "4px 4px #323232",
+                fontSize: "18px",
+                fontFamily: "'Poetsen One', sans-serif",
+                color: "#323232",
+              }}
             />
             {searchResults.length > 0 && (
-              <ul className="search-results">
+              <ul className="search-results" style={{ listStyleType: "none", padding: 0 }}>
                 {searchResults.map((result) => (
                   <ResultButton
+                    key={result._id}
                     result={result}
                     setProfile={setProfile}
                     setQuery={setQuery}
@@ -104,20 +113,11 @@ const SearchBar = () => {
           </div>
           <div>
             {profile && (
-              <div
-                className="vh-100"
-                style={{
-                  backgroundColor: "#ffffffffff",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
+              <div className="vh-100">
                 <div
                   style={{
                     maxWidth: "500px",
                     width: "100%",
-                    margin: "auto",
                     borderRadius: "5px",
                     border: "2px solid #323232",
                     padding: "20px",
@@ -157,42 +157,37 @@ const SearchBar = () => {
                         marginLeft: "20px",
                         color: "#323232",
                         backgroundColor: "#fff",
+                        fontFamily: "'Poetsen One', sans-serif",
                       }}
                     >
-                      <h2>{profile.displayName}</h2>
+                      <h2 style={{ fontSize: "20px" }}>{profile.displayName}</h2>
                       <i>{profile.bio}</i>
-                      <p>Dance Style: {profile.danceStyle}</p>
-                      <ul
-                        style={{
-                          listStyleType: "none",
-                          padding: 0,
-                          backgroundColor: "#D3D3D3",
-                          boxShadow: "4px 4px #323232",
-                          fontWeight: "600",
-                          color: "#323232",
-                        }}
+                      <p style={{ fontSize: "18px" }}>Dance Style: {profile.danceStyle}</p>
+                      <div
+                      
                       >
                         {profile.listSessions.map((event, index) => (
-                          <li
+                          <div
                             key={index}
                             style={{
                               border: "2px solid #323232",
-                              borderRadius: "2px",
+                              borderRadius: "5px",
                               padding: "10px",
                               marginBottom: "10px",
                               backgroundColor: "#D3D3D3",
+                              boxShadow: "4px 4px #323232",
                             }}
                           >
-                            <h2 style={{ color: "#323232" }}>{event[0]}</h2>
-                            <p style={{ color: "#323232", fontWeight: "bold" }}>
+                            <h2 style={{ color: "#323232", fontSize: "18px" }}>{event[0]}</h2>
+                            <p style={{ color: "#323232", fontWeight: "bold", fontSize: "18px" }}>
                               Date: {event[1]}
                             </p>
-                            <p style={{ color: "#323232", fontWeight: "bold" }}>
+                            <p style={{ color: "#323232", fontWeight: "bold", fontSize: "18px" }}>
                               Location: {event[2]}
                             </p>
-                          </li>
+                          </div>
                         ))}
-                      </ul>
+                      </div>
                     </div>
                   </div>
                 </div>

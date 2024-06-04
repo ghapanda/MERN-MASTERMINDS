@@ -41,26 +41,65 @@ const ProfileUpload = ({ info, setInfo }) => {
           <label
             className="custom-file-upload"
             style={{
+              width: "125px",
+              height: "50px",
+              borderRadius: "5px",
               border: "2px solid #323232",
-              backgroundColor: "#D3D3D3",
+              backgroundColor: "#fff",
               boxShadow: "4px 4px #323232",
+              fontSize: "18px",
               fontWeight: "600",
               color: "#323232",
+              cursor: "pointer",
+              transition: "transform 0.1s",
+              fontFamily: "'Poetsen One', sans-serif",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              textAlign: "center",
+            }}
+            onMouseDown={(e) => {
+              e.currentTarget.style.transform = "translate(3px, 3px)";
+              e.currentTarget.style.boxShadow = "0px 0px #323232";
+            }}
+            onMouseUp={(e) => {
+              e.currentTarget.style.transform = "translate(0px, 0px)";
+              e.currentTarget.style.boxShadow = "4px 4px #323232";
             }}
           >
-            <input type="file" accept="image/*" onChange={handleFileChange} />{" "}
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              style={{ display: "none" }}
+            />{" "}
             Choose Photo
           </label>
-
+  
           <button
             type="submit"
             className="editButton save"
             style={{
+              width: "125px",
+              height: "50px",
+              borderRadius: "5px",
               border: "2px solid #323232",
-              backgroundColor: "#D3D3D3",
+              backgroundColor: "#fff",
               boxShadow: "4px 4px #323232",
+              fontSize: "18px",
               fontWeight: "600",
               color: "#323232",
+              cursor: "pointer",
+              transition: "transform 0.1s",
+              fontFamily: "'Poetsen One', sans-serif",
+            }}
+            onMouseDown={(e) => {
+              e.currentTarget.style.transform = "translate(3px, 3px)";
+              e.currentTarget.style.boxShadow = "0px 0px #323232";
+            }}
+            onMouseUp={(e) => {
+              e.currentTarget.style.transform = "translate(0px, 0px)";
+              e.currentTarget.style.boxShadow = "4px 4px #323232";
             }}
           >
             Upload
@@ -68,7 +107,7 @@ const ProfileUpload = ({ info, setInfo }) => {
         </div>
       </div>
     </form>
-  );
+  );  
 };
 
 export default ProfileUpload;

@@ -4,9 +4,7 @@ import { React, useState, useEffect } from "react";
 import axios from "axios";
 
 const DisplayProfile = ({ info, setInfo, startEdit }) => {
-  // const listSessionsJSON = JSON.parse(info.listSessions);
-  // console.log("parsed back to jason", listSessionsJSON);
-  const defaultImage = "https://img.icons8.com/ios-glyphs/90/user--v1.png"; // Default image URL
+  const defaultImage = "https://img.icons8.com/ios-glyphs/90/user--v1.png";
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,16 +28,15 @@ const DisplayProfile = ({ info, setInfo, startEdit }) => {
       <div
         style={{
           backgroundColor: "lightgrey",
-
           height: "100vh",
           overflowY: "scroll",
-          fontFamily: "sans-serif",
-          border: "none",
-          boxShadow: "4px 4px #323232",
+          fontFamily: "'Poetsen One', sans-serif",
           padding: "20px",
         }}
       >
-        <h1 style={{ textAlign: "center" }}>Profile</h1>
+        <h1 style={{ textAlign: "center", color: "#323232", fontWeight: "900", fontSize: "25px" }}>
+          Profile
+        </h1>
 
         <div
           style={{
@@ -63,13 +60,12 @@ const DisplayProfile = ({ info, setInfo, startEdit }) => {
                 src={
                   info.portrait !== "null"
                     ? `http://localhost:3002${info.portrait}`
-                    : "https://img.icons8.com/ios-glyphs/90/user--v1.png"
+                    : defaultImage
                 }
                 alt={`${info.displayName} profile`}
                 onError={(e) => {
                   e.target.onerror = null;
-                  e.target.src =
-                    "https://img.icons8.com/ios-glyphs/90/user--v1.png";
+                  e.target.src = defaultImage;
                 }}
               />
             </div>
@@ -80,19 +76,21 @@ const DisplayProfile = ({ info, setInfo, startEdit }) => {
                 marginLeft: "20px",
                 color: "#323232",
                 backgroundColor: "#fff",
+                fontSize: "18px",
               }}
             >
-              <h2>{info.displayName}</h2>
+              <h2 style={{ fontSize: "20px" }}>{info.displayName}</h2>
               <i>{info.bio}</i>
               <p>Dance Style: {info.danceStyle}</p>
               <ul
                 style={{
                   listStyleType: "none",
                   padding: 0,
-                  backgroundColor: "#D3D3D3",
-                  boxShadow: "4px 4px #323232",
+                
+                
                   fontWeight: "600",
                   color: "#323232",
+                 
                 }}
               >
                 {info.listSessions.map((event, index) => (
@@ -100,30 +98,62 @@ const DisplayProfile = ({ info, setInfo, startEdit }) => {
                     key={index}
                     style={{
                       border: "2px solid #323232",
-                      borderRadius: "2px",
+                      borderRadius: "5px",
                       padding: "10px",
                       marginBottom: "10px",
                       backgroundColor: "#D3D3D3",
+                      boxShadow: "4px 4px #323232",
                     }}
                   >
-                    <h2 style={{ color: "#323232" }}>{event[0]}</h2>
-                    <p style={{ color: "#323232", fontWeight: "bold" }}>
+                    <h2 style={{ color: "#323232", fontSize: "18px" }}>{event[0]}</h2>
+                    <p style={{ color: "#323232", fontWeight: "bold", fontSize: "18px" }}>
                       Date: {event[1]}
                     </p>
-                    <p style={{ color: "#323232", fontWeight: "bold" }}>
+                    <p style={{ color: "#323232", fontWeight: "bold", fontSize: "18px" }}>
                       Location: {event[2]}
                     </p>
                   </li>
                 ))}
               </ul>
-              <button className="edit-button" onClick={startEdit}>
+              <button
+                className="edit-button"
+                onClick={startEdit}
+                style={{
+                  width: "125px",
+                  height: "50px",
+                  borderRadius: "5px",
+                  border: "2px solid #323232",
+                  backgroundColor: "#fff",
+                  boxShadow: "4px 4px #323232",
+                  fontSize: "18px",
+                  fontWeight: "600",
+                  color: "#323232",
+                  cursor: "pointer",
+                  outline: "none",
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "flex-start",
+                  transition: "transform 0.1s",
+                  fontFamily: "Poetsen One"
+                }}
+                onMouseDown={(e) => {
+                  e.target.style.transform = "translate(3px, 3px)";
+                  e.target.style.boxShadow = "0px 0px #323232";
+                }}
+                onMouseUp={(e) => {
+                  e.target.style.transform = "translate(0px, 0px)";
+                  e.target.style.boxShadow = "4px 4px #323232";
+                }}
+              >
                 <FontAwesomeIcon icon={faEdit} />
                 <span
                   style={{
+                    marginLeft: "5px",
                     color: "#323232",
-                    fontSize: "16px",
+                    fontSize: "18px",
                     fontWeight: "bold",
-                    fontFamily: "Arial, sans-serif",
+                    fontFamily: "Poetsen One"
                   }}
                 >
                   Edit Profile
@@ -137,7 +167,7 @@ const DisplayProfile = ({ info, setInfo, startEdit }) => {
         {info.listSessions ? (
           <></>
         ) : (
-          <h1 style={{ textAlign: "center", color: "#323232" }}>
+          <h1 style={{ textAlign: "center", color: "#323232", fontSize: "20px" }}>
             No events yet
           </h1>
         )}
