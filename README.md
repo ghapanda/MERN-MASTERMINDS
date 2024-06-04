@@ -2,6 +2,8 @@ Project Overview
 
 This is a web application for managing a club with user accounts, dynamic schedules, personalized profiles, and search functionality. The application distinguishes between general members and admins, allowing each to have different capabilities. Admins can create events, while members can view and RSVP to events.
 
+
+
 Features
 1.User Accounts: Sign up, log in, and differentiate between members and admins. Users can attach customizable data to their profile pages.
 2.Landing Page: Links for more information about the club, creating a new account, and logging in with an existing account.
@@ -9,6 +11,22 @@ Features
 4.Search Function: Allows users to look up other club members.
 5.Personalized Profile Pages: Users can customize their profiles with images, short videos, and text descriptions.
 6.Navigation Bar: Redirects to various pages within the web application.
+
+
+Technologies 
+
+Javascript
+
+Node.js
+
+React.js
+
+Express.js
+
+MongoDB
+
+
+
 
 Steps:
 
@@ -24,9 +42,12 @@ npm install axioS
 Usage:
 Running the Application:
 "npm run dev" will run both client and server.
+
 To access the application, Open your browser and navigate to: http://localhost:3000
+
 Server is running on port 3002.
 Note: make sure you are in the root of the project (i.e :MERN-MASTERMIND directory) when you run these commands.
+
 
 Common Issues and Troubleshooting:
 
@@ -57,7 +78,11 @@ you can try
              1. brew tap mongodb/brew
              2. brew install mongodb-community
              3. brew services start mongodb/brew/mongodb-community
-             
-                         
+
+Authors 
+
+    We made this app as a project for cs35L of Professor Paul Eggert in Spring 2024.
+    Name, name, name, name and name. 
+
             
 
