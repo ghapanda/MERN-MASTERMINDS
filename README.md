@@ -21,6 +21,16 @@ npm install react-scripts
 npm install @fortawesome/fontawesome-free
 npm install axioS
 
+### FOR WINDOWS USERS
+
+The method we used to run our project on a Windows operating system was to use VSCode's MongoDB extension.
+
+To install MongoDB through VSCode, install the MongoDB extension.
+
+Then, connect to the extension via any method. We used a connection string with a MongoDB free account.
+
+After connection, no further setup is needed. Use npm run dev!
+
 ## Usage:
 Running the Application:
 "npm run dev" will run both client and server.
