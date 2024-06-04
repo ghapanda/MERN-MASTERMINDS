@@ -38,3 +38,26 @@ If you encounter issues with missing dependencies, try reinstalling them:
 
 npm uninstall axios
 npm install axios
+
+Connecting Mongodb:
+
+You will encounter the problem such that you can not login even though you seems be able to create new account via the sign up page. 
+
+you can try
+
+    1. install mongodb 
+    2. install dependecies 
+        
+        install express (if you have not installed)
+
+        install mongoose 
+    3. connect mongodb (with mongo-community)
+        3.1 on mac (with homebrew)
+             
+             1. brew tap mongodb/brew
+             2. brew install mongodb-community
+             3. brew services start mongodb/brew/mongodb-community
+             
+                         
+            
+
