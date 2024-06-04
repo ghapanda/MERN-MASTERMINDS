@@ -281,10 +281,10 @@
 //     </div>
 //   );
 // };
-import { useState, useEffect } from "react";
-import Group from "./Group";
+
+import { useState } from "react";
 import axios from "axios";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ProfilePicture from "./uploadProfilePic";
 import "./profile.css";
 
@@ -339,88 +339,205 @@ const EditableProfile = ({ info, setInfo, setEditMode }) => {
   const handleCancel = () => {
     setEditMode((prevEditMode) => !prevEditMode);
   };
-  console.log("info in edit", info);
+
   return (
-    <div className="container_2" style={{ background: "#D3D3D3" }}>
-      <h2 className="title">Edit Profile</h2>
-      <div className="input-group">
-        <label>Username:</label>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </div>
-      <div className="input-group">
-        <label>Password:</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-      <div className="input-group">
-        <label>Email:</label>
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
-      <div className="input-group">
-        <label>Screen Name:</label>
-        <input
-          type="text"
-          value={displayName}
-          onChange={(e) => setDisplayName(e.target.value)}
-        />
-      </div>
-      <div className="input-group">
-        <label>Dance Style:</label>
-        <input
-          type="text"
-          value={danceStyle}
-          onChange={(e) => setDanceStyle(e.target.value)}
-        />
-      </div>
-      <div className="input-group">
-        <label>Bio:</label>
-        <input
-          type="text"
-          value={bio}
-          onChange={(e) => setBio(e.target.value)}
-        />
-      </div>
-      <div>
-        <ProfilePicture info={info} setInfo={setInfo} />
-      </div>
-      <div className="buttons">
-        <button
-          className="editButton save"
-          onClick={handleSaveClicked}
-          style={{
-            border: "2px solid #323232",
-            backgroundColor: "#D3D3D3",
-            boxShadow: "4px 4px #323232",
-            fontWeight: "600",
-            color: "#323232",
-          }}
-        >
-          Save
-        </button>
-        <button
-          className="editButton cancel"
-          onClick={handleCancel}
-          style={{
-            border: "2px solid #323232",
-            backgroundColor: "#D3D3D3",
-            boxShadow: "4px 4px #323232",
-            fontWeight: "600",
-            color: "#323232",
-          }}
-        >
-          Cancel
-        </button>
+    <div style={{ backgroundColor: "lightgrey", padding: "20px", height: "100vh" }}>
+      <h2 style={{ textAlign: "center", color: "#323232", fontWeight: "900", fontSize: "25px" }}>
+        Edit Profile
+      </h2>
+      <div
+        style={{
+          backgroundColor: "white",
+          maxWidth: "500px",
+          width: "100%",
+          margin: "auto",
+          borderRadius: "5px",
+          border: "2px solid #323232",
+          padding: "20px",
+          fontWeight: "600",
+          boxShadow: "4px 4px #323232",
+          fontFamily: "'Poetsen One', sans-serif",
+        }}
+      >
+        <div className="input-group" style={{ marginBottom: "15px" }}>
+          <label style={{ display: "block", color: "#323232", fontSize: "18px", marginBottom: "5px" }}>
+            Username:
+          </label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            style={{
+              width: "100%",
+              padding: "10px",
+              borderRadius: "5px",
+              border: "2px solid #323232",
+              boxShadow: "4px 4px #323232",
+              fontSize: "18px",
+              fontFamily: "'Poetsen One', sans-serif",
+              color: "#323232"
+            }}
+          />
+        </div>
+        <div className="input-group" style={{ marginBottom: "15px" }}>
+          <label style={{ display: "block", color: "#323232", fontSize: "18px", marginBottom: "5px" }}>
+            Password:
+          </label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            style={{
+              width: "100%",
+              padding: "10px",
+              borderRadius: "5px",
+              border: "2px solid #323232",
+              boxShadow: "4px 4px #323232",
+              fontSize: "18px",
+              fontFamily: "'Poetsen One', sans-serif",
+              color: "#323232"
+            }}
+          />
+        </div>
+        <div className="input-group" style={{ marginBottom: "15px" }}>
+          <label style={{ display: "block", color: "#323232", fontSize: "18px", marginBottom: "5px" }}>
+            Email:
+          </label>
+          <input
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            style={{
+              width: "100%",
+              padding: "10px",
+              borderRadius: "5px",
+              border: "2px solid #323232",
+              boxShadow: "4px 4px #323232",
+              fontSize: "18px",
+              fontFamily: "'Poetsen One', sans-serif",
+              color: "#323232"
+            }}
+          />
+        </div>
+        <div className="input-group" style={{ marginBottom: "15px" }}>
+          <label style={{ display: "block", color: "#323232", fontSize: "18px", marginBottom: "5px" }}>
+            Screen Name:
+          </label>
+          <input
+            type="text"
+            value={displayName}
+            onChange={(e) => setDisplayName(e.target.value)}
+            style={{
+              width: "100%",
+              padding: "10px",
+              borderRadius: "5px",
+              border: "2px solid #323232",
+              boxShadow: "4px 4px #323232",
+              fontSize: "18px",
+              fontFamily: "'Poetsen One', sans-serif",
+              color: "#323232"
+            }}
+          />
+        </div>
+        <div className="input-group" style={{ marginBottom: "15px" }}>
+          <label style={{ display: "block", color: "#323232", fontSize: "18px", marginBottom: "5px" }}>
+            Dance Style:
+          </label>
+          <input
+            type="text"
+            value={danceStyle}
+            onChange={(e) => setDanceStyle(e.target.value)}
+            style={{
+              width: "100%",
+              padding: "10px",
+              borderRadius: "5px",
+              border: "2px solid #323232",
+              boxShadow: "4px 4px #323232",
+              fontSize: "18px",
+              fontFamily: "'Poetsen One', sans-serif",
+              color: "#323232"
+            }}
+          />
+        </div>
+        <div className="input-group" style={{ marginBottom: "15px" }}>
+          <label style={{ display: "block", color: "#323232", fontSize: "18px", marginBottom: "5px" }}>
+            Bio:
+          </label>
+          <input
+            type="text"
+            value={bio}
+            onChange={(e) => setBio(e.target.value)}
+            style={{
+              width: "100%",
+              padding: "10px",
+              borderRadius: "5px",
+              border: "2px solid #323232",
+              boxShadow: "4px 4px #323232",
+              fontSize: "18px",
+              fontFamily: "'Poetsen One', sans-serif",
+              color: "#323232"
+            }}
+          />
+        </div>
+        <div style={{ marginBottom: "15px" }}>
+          <ProfilePicture info={info} setInfo={setInfo} />
+        </div>
+        <div className="buttons" style={{ display: "flex", justifyContent: "space-between" }}>
+          <button
+            onClick={handleSaveClicked}
+            style={{
+              width: "120px",
+              height: "40px",
+              borderRadius: "5px",
+              border: "2px solid #323232",
+              backgroundColor: "#fff",
+              boxShadow: "4px 4px #323232",
+              fontSize: "18px",
+              fontWeight: "600",
+              color: "#323232",
+              cursor: "pointer",
+              transition: "transform 0.1s",
+              fontFamily: "'Poetsen One', sans-serif",
+            }}
+            onMouseDown={(e) => {
+              e.target.style.transform = "translate(3px, 3px)";
+              e.target.style.boxShadow = "0px 0px #323232";
+            }}
+            onMouseUp={(e) => {
+              e.target.style.transform = "translate(0px, 0px)";
+              e.target.style.boxShadow = "4px 4px #323232";
+            }}
+          >
+            Save
+          </button>
+          <button
+            onClick={handleCancel}
+            style={{
+              width: "120px",
+              height: "40px",
+              borderRadius: "5px",
+              border: "2px solid #323232",
+              backgroundColor: "#fff",
+              boxShadow: "4px 4px #323232",
+              fontSize: "18px",
+              fontWeight: "600",
+              color: "#323232",
+              cursor: "pointer",
+              transition: "transform 0.1s",
+              fontFamily: "'Poetsen One', sans-serif",
+            }}
+            onMouseDown={(e) => {
+              e.target.style.transform = "translate(3px, 3px)";
+              e.target.style.boxShadow = "0px 0px #323232";
+            }}
+            onMouseUp={(e) => {
+              e.target.style.transform = "translate(0px, 0px)";
+              e.target.style.boxShadow = "4px 4px #323232";
+            }}
+          >
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   );

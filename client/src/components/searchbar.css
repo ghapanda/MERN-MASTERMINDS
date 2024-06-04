@@ -68,6 +68,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: 100%;
   font-family: 'Poetsen One';
+  border-radius: "5px";
 }
 
 .search-results li {
@@ -78,6 +79,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  border-radius: "5px";
 }
 
 .search-results li:hover {
@@ -88,7 +90,12 @@
   display: flex;
   align-items: center;
   box-shadow: 4px 4px #323232;
-  border: "2px solid #323232"
+  border: "2px solid #323232";
+  width: 100%;
+  border-radius: 5px;
+  padding: "20px";
+  font-weight: "600";
+  background-color: rgb(211, 211, 211);
 }
 
 .search-result-item img {
