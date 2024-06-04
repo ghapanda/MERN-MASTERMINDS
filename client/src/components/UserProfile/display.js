@@ -1,32 +1,46 @@
-import React, { useState } from "react";
-import Group from "./Group";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { React, useState, useEffect } from "react";
+import axios from "axios";
 
-const DisplayProfile = ({ info, startEdit }) => {
-  console.log("list sessions:", info.listSessions);
-  // const listSessionsJSON = JSON.parse(info.listSessions);
-  // console.log("parsed back to jason", listSessionsJSON);
-  console.log("profile pic path in display:", info.portrait);
-  const defaultImage = "https://img.icons8.com/ios-glyphs/90/user--v1.png"; // Default image URL
-  if (info.portrait === "null") {
-    console.log("portrait is null");
-  } else {
-    console.log("portrait isNOT NULL", typeof info.portrait);
-  }
+const DisplayProfile = ({ info, setInfo, startEdit }) => {
+  const defaultImage = "https://img.icons8.com/ios-glyphs/90/user--v1.png";
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = { userId: info.userId, password: info.password };
+        const response = await axios.post(
+          "http://localhost:3002/api/fetchData",
+          data
+        );
+        setInfo(response.data);
+      } catch (error) {
+        alert("failed to connect to the server");
+        console.log("failed to connect to the server", error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <>
       <div
-        className="vh-100"
         style={{
           backgroundColor: "lightgrey",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center"
+          height: "100vh",
+          overflowY: "scroll",
+          fontFamily: "'Poetsen One', sans-serif",
+          padding: "20px",
         }}
       >
+        <h1 style={{ textAlign: "center", color: "#323232", fontWeight: "900", fontSize: "25px" }}>
+          Profile
+        </h1>
+
         <div
           style={{
+            backgroundColor: "white",
             maxWidth: "500px",
             width: "100%",
             margin: "auto",
@@ -34,8 +48,7 @@ const DisplayProfile = ({ info, startEdit }) => {
             border: "2px solid #323232",
             padding: "20px",
             fontWeight: "600",
-            backgroundColor: "#FFF",
-            boxShadow: "4px 4px #323232"
+            boxShadow: "4px 4px #323232",
           }}
         >
           <div
@@ -47,43 +60,104 @@ const DisplayProfile = ({ info, startEdit }) => {
                 src={
                   info.portrait !== "null"
                     ? `http://localhost:3002${info.portrait}`
-                    : "https://img.icons8.com/ios-glyphs/90/user--v1.png"
+                    : defaultImage
                 }
                 alt={`${info.displayName} profile`}
                 onError={(e) => {
                   e.target.onerror = null;
-                  e.target.src =
-                    "https://img.icons8.com/ios-glyphs/90/user--v1.png";
+                  e.target.src = defaultImage;
                 }}
               />
             </div>
-            <div className="ProfileBoxInner" style={{ flexGrow: 1, marginLeft: "20px", color: '#323232', backgroundColor: '#fff' }}>
-              <h2>{info.displayName}</h2>
+            <div
+              className="ProfileBoxInner"
+              style={{
+                flexGrow: 1,
+                marginLeft: "20px",
+                color: "#323232",
+                backgroundColor: "#fff",
+                fontSize: "18px",
+              }}
+            >
+              <h2 style={{ fontSize: "20px" }}>{info.displayName}</h2>
               <i>{info.bio}</i>
               <p>Dance Style: {info.danceStyle}</p>
-              <ul style={{ listStyleType: "none", padding: 0, backgroundColor:"#D3D3D3", boxShadow: "4px 4px #323232", fontWeight: "600", color:"#323232" }}>
+              <ul
+                style={{
+                  listStyleType: "none",
+                  padding: 0,
+                
+                
+                  fontWeight: "600",
+                  color: "#323232",
+                 
+                }}
+              >
                 {info.listSessions.map((event, index) => (
                   <li
                     key={index}
                     style={{
                       border: "2px solid #323232",
-                      borderRadius: "2px",
+                      borderRadius: "5px",
                       padding: "10px",
                       marginBottom: "10px",
                       backgroundColor: "#D3D3D3",
+                      boxShadow: "4px 4px #323232",
                     }}
                   >
-                    <h2 style={{ color: "#323232" }}>{event[0]}</h2>
-                    <p style={{ color: "#323232", fontWeight: "bold" }}>
+                    <h2 style={{ color: "#323232", fontSize: "18px" }}>{event[0]}</h2>
+                    <p style={{ color: "#323232", fontWeight: "bold", fontSize: "18px" }}>
                       Date: {event[1]}
                     </p>
-                    <p style={{ color: "#323232", fontWeight: "bold" }}>Location: {event[2]}</p>
+                    <p style={{ color: "#323232", fontWeight: "bold", fontSize: "18px" }}>
+                      Location: {event[2]}
+                    </p>
                   </li>
                 ))}
               </ul>
-              <button className="edit-button" onClick={startEdit}>
+              <button
+                className="edit-button"
+                onClick={startEdit}
+                style={{
+                  width: "125px",
+                  height: "50px",
+                  borderRadius: "5px",
+                  border: "2px solid #323232",
+                  backgroundColor: "#fff",
+                  boxShadow: "4px 4px #323232",
+                  fontSize: "18px",
+                  fontWeight: "600",
+                  color: "#323232",
+                  cursor: "pointer",
+                  outline: "none",
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "flex-start",
+                  transition: "transform 0.1s",
+                  fontFamily: "Poetsen One"
+                }}
+                onMouseDown={(e) => {
+                  e.target.style.transform = "translate(3px, 3px)";
+                  e.target.style.boxShadow = "0px 0px #323232";
+                }}
+                onMouseUp={(e) => {
+                  e.target.style.transform = "translate(0px, 0px)";
+                  e.target.style.boxShadow = "4px 4px #323232";
+                }}
+              >
                 <FontAwesomeIcon icon={faEdit} />
-                <span style={{ color: '#323232', fontSize: '16px', fontWeight: 'bold', fontFamily: 'Arial, sans-serif' }}>Edit Profile</span>
+                <span
+                  style={{
+                    marginLeft: "5px",
+                    color: "#323232",
+                    fontSize: "18px",
+                    fontWeight: "bold",
+                    fontFamily: "Poetsen One"
+                  }}
+                >
+                  Edit Profile
+                </span>
               </button>
             </div>
           </div>
@@ -91,10 +165,9 @@ const DisplayProfile = ({ info, startEdit }) => {
       </div>
       <div className="body" style={{ marginTop: "20px" }}>
         {info.listSessions ? (
-          <>
-          </>
+          <></>
         ) : (
-          <h1 style={{ textAlign: "center", color: "#323232" }}>
+          <h1 style={{ textAlign: "center", color: "#323232", fontSize: "20px" }}>
             No events yet
           </h1>
         )}

@@ -3,7 +3,7 @@
 .Schedule {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-content: center;
   align-items: center;
   height: 100vh;
@@ -52,7 +52,7 @@
 
 .session {
   font-family: 'Poetsen One', sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   display: flex;
   flex-direction: row;
   width: 90%;
@@ -84,7 +84,7 @@
   border: 2px solid #323232;
   background-color: #fff;
   box-shadow: 4px 4px #323232;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 600;
   color: #323232;
   cursor: pointer;

@@ -1,46 +1,85 @@
-/* Search Bar */
+/* styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+
+.Container {
+  margin: 0;
+  font-family: 'Sans-serif';
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: lightgrey;
+  height: 100vh;
+}
+
+.search-page-container {
+  background-color: lightgrey;
+  height: 100vh;
+  overflow-y: scroll;
+  font-family: 'Poetsen One';
+  border: none;
+  box-shadow: 4px 4px #323232;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  align-items: center;
+  font-family: 'Poetsen One';
+}
+
 .search-bar {
-  width: 350px;
-  z-index: 999;
-  position: relative;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .search-bar input {
+  border: 2px solid #323232;
   width: 100%;
   padding: 12px 16px;
   font-size: 16px;
-  border: none;
   border-radius: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 4px #323232;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
   transition: box-shadow 0.3s ease;
+  font-family: 'Poetsen One';
 }
 
 .search-bar input:focus {
   outline: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+  box-shadow: 4px 4px #323232;
 }
 
-/* Search Results */
 .search-results {
   list-style-type: none;
   padding: 0;
-  margin: 0;
+  margin: 10px 0;
   max-height: 400px;
   overflow-y: auto;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  position: absolute;
-  top: calc(100% - 10px);
-  left: 0;
   width: 100%;
-  z-index: 1000;
+  font-family: 'Poetsen One';
+  border-radius: "5px";
 }
 
 .search-results li {
   padding: 12px 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-family: 'Poetsen One';
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: "5px";
 }
 
 .search-results li:hover {
@@ -50,6 +89,13 @@
 .search-result-item {
   display: flex;
   align-items: center;
+  box-shadow: 4px 4px #323232;
+  border: "2px solid #323232";
+  width: 100%;
+  border-radius: 5px;
+  padding: "20px";
+  font-weight: "600";
+  background-color: rgb(211, 211, 211);
 }
 
 .search-result-item img {
@@ -62,14 +108,62 @@
 .search-result-item p {
   margin: 0;
   font-size: 16px;
+  font-family: 'Poetsen One';
+  display: flex;
+  flex-direction: row;
 }
 
-/* body {
-    background-color: #83b0de;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    margin: 0;
-    padding-top: 100px;
-} */
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.profile-inner {
+  max-width: 500px;
+  width: 100%;
+  margin: auto;
+  border-radius: 5px;
+  border: 2px solid #323232;
+  padding: 20px;
+  font-weight: 600;
+  box-shadow: 4px 4px #323232;
+  background-color: white;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+
+.profile-img {
+  width: 90px;
+  border-radius: 90px;
+  flex-shrink: 0;
+}
+
+.profile-details {
+  flex-grow: 1;
+  margin-left: 20px;
+  color: #323232;
+  background-color: #fff;
+}
+
+.session-list {
+  list-style-type: none;
+  padding: 0;
+  background-color: #D3D3D3;
+  box-shadow: 4px 4px #323232;
+  font-weight: 600;
+  color: #323232;
+}
+
+.session-item {
+  border: 2px solid #323232;
+  border-radius: 2px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #D3D3D3;
+}

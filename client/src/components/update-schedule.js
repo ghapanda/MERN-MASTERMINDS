@@ -4,10 +4,14 @@ import { Link } from "react-router-dom";
 import Navbar from "./dashboard";
 
 import axios from "axios";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
-
-function SessionContainer({ index, session, onSessionUpdate, onSessionDelete }) {
+function SessionContainer({
+  index,
+  session,
+  onSessionUpdate,
+  onSessionDelete,
+}) {
   const [sessionDict, setDict] = useState(session);
 
   useEffect(() => {
@@ -24,6 +28,7 @@ function SessionContainer({ index, session, onSessionUpdate, onSessionDelete }) 
 
   return (
     <div className="session-container">
+      <div className="line1">
       <div className="input-container">
         <label htmlFor="name">Name: </label>{" "}
         <input id="name" value={sessionDict.name} onChange={handleChange} />
@@ -40,31 +45,45 @@ function SessionContainer({ index, session, onSessionUpdate, onSessionDelete }) 
         <label htmlFor="date">Date: </label>{" "}
         <input id="date" value={sessionDict.date} onChange={handleChange} />
       </div>
+      </div>
+      <div className="line2">
       <div className="input-container">
         <label htmlFor="time">Time: </label>{" "}
         <input id="time" value={sessionDict.time} onChange={handleChange} />
       </div>
       <div className="input-container">
         <label htmlFor="location">Location: </label>{" "}
-        <input id="location" value={sessionDict.location} onChange={handleChange} />
+        <input
+          id="location"
+          value={sessionDict.location}
+          onChange={handleChange}
+        />
       </div>
       <div className="input-container">
         <label htmlFor="contact">Contact: </label>{" "}
-        <input id="contact" value={sessionDict.contact} onChange={handleChange} />
+        <input
+          id="contact"
+          value={sessionDict.contact}
+          onChange={handleChange}
+        />
       </div>
       <div className="input-container">
-        <button className="delete" onClick={() => onSessionDelete(index)}>Delete Permanently</button>
+        <button className="delete" onClick={() => onSessionDelete(index)} style= 
+        {{marginTop:"15px"}}>
+          Delete Permanently
+        </button>
       </div>
     </div>
+    </div>
   );
-  
 }
 
 function Schedule() {
   const [sessions, setSessions] = useState([]);
 
-  // Fetches current session data 
-  useEffect(() => { // Runs while rendering
+  // Fetches current session data
+  useEffect(() => {
+    // Runs while rendering
     axios
       .get("http://localhost:3002/schedule/")
       .then((response) => {
@@ -76,7 +95,8 @@ function Schedule() {
   }, []);
 
   const addSession = () => {
-    const newSession = { // Dictionary type object
+    const newSession = {
+      // Dictionary type object
       index: uuidv4(),
       name: "",
       week: "",
@@ -97,9 +117,9 @@ function Schedule() {
   };
 
   const deleteSession = (index) => {
-    const updatedSessions = [...sessions]; 
-    const deletedSession = updatedSessions[index];;
-    updatedSessions.splice(index, 1); 
+    const updatedSessions = [...sessions];
+    const deletedSession = updatedSessions[index];
+    updatedSessions.splice(index, 1);
     setSessions(updatedSessions);
     axios
       .post("http://localhost:3002/schedule/delete", deletedSession)
@@ -109,7 +129,7 @@ function Schedule() {
       .catch((error) => {
         console.error("Error posting sessions:", error);
       });
-      axios
+    axios
       .post("http://localhost:3002/schedule/deleteUserSession", deletedSession)
       .then((response) => {
         console.log("Session deleted from user successfully:", response.data);
@@ -121,7 +141,7 @@ function Schedule() {
 
   const update = () => {
     axios
-      .post("http://localhost:3002/schedule/update", sessions) //put localhost in a variable 
+      .post("http://localhost:3002/schedule/update", sessions) //put localhost in a variable
       .then((response) => {
         console.log("Sessions posted successfully:", response.data);
       })
@@ -131,24 +151,29 @@ function Schedule() {
   };
 
   return (
-    <div className="UpdateSchedule">
-       <Navbar />
-      <h1 className="Title">Schedule</h1>
-      <button className="addSession" onClick={addSession} >
-        + Add Session
-      </button>
-      <div className="sessions">
-        {sessions.map((session, i) => (
-          <SessionContainer
-            index={i}
-            session={session}
-            onSessionUpdate={updateSession}
-            onSessionDelete={deleteSession}
-          />
-        ))}
+    <>
+      {" "}
+      <Navbar />
+      <div className="UpdateSchedule">
+        <h1 className="Titless">Schedule</h1>
+        <button className="addSession" onClick={addSession}>
+          + Add Session
+        </button>
+        <div className="Sessions">
+          {sessions.map((session, i) => (
+            <SessionContainer
+              index={i}
+              session={session}
+              onSessionUpdate={updateSession}
+              onSessionDelete={deleteSession}
+            />
+          ))}
+        </div>
+        <button className="update" onClick={update}>
+          Update
+        </button>
       </div>
-      <button className="update" onClick={update}>Update</button>
-    </div>
+    </>
   );
 }
 

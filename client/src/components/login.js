@@ -9,6 +9,10 @@ const Login = (props) => {
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [isAdminChecked, setIsAdminChecked] = useState(false);
+  const [adminPassword, setAdminPassword] = useState("");
+  const [adminPassError, setAdminPassError] = useState("");
+
   sessionStorage.clear();
 
   const onLoginClick = async () => {
@@ -32,12 +36,7 @@ const Login = (props) => {
         "http://localhost:3002/api/login",
         userData
       );
-      if (!response.data.isAdmin) {
-        navigate("/memberSchedulePage");
-        // navigate("/AdminSchedulePage");
-      } else {
-        navigate("/MemberSchedulePage");
-      }
+
       const {
         token,
         userId,
@@ -69,13 +68,14 @@ const Login = (props) => {
       sessionStorage.setItem("displayName", displayName);
       sessionStorage.setItem("danceClip", danceClip);
       sessionStorage.setItem("listSessions", listSessionsJSON);
-      console.log("strigified jason:", listSessionsJSON);
       // const retrievedSessions = JSON.parse(
       //   sessionStorage.getItem("listSessions")
       // );
-      console.log("usersessions in login"); // "object"
 
-      alert("Welcome!");
+      // alert("Welcome!");
+      if (!isAdminChecked) {
+        navigate("/memberSchedulePage");
+      }
     } catch (error) {
       if (
         error.response &&
@@ -85,9 +85,41 @@ const Login = (props) => {
         setPasswordError("Wrong username or password");
       } else {
         console.error("Error logging in user:");
-        alert("An error occurred while logging in. Please try again.");
+        // alert("An error occurred while logging in. Please try again.");
       }
     }
+    if (isAdminChecked) {
+      if (adminPassword === "") {
+        setAdminPassError("Please enter admin password");
+        return;
+      }
+      try {
+        const response = await axios.post(
+          "http://localhost:3002/api/adminCheck",
+          {
+            userId: sessionStorage.getItem("userId"),
+            adminPassword: adminPassword,
+          }
+        );
+        sessionStorage.setItem("isAdmin", response.data.isAdmin);
+        navigate("/memberSchedulePage");
+      } catch (error) {
+        if (
+          error.response &&
+          error.response.status === 401 &&
+          error.response.data.message === "Wrong Admin Password"
+        ) {
+          setAdminPassError("Wrong Admin Password");
+          sessionStorage.clear();
+        } else {
+          console.error("Error logging in Admin:", error);
+        }
+      }
+    }
+    // if (!(adminPassError || passwordError || emailError)) {
+    //   console.log("do we get here to navigat");
+    //   navigate("/memberSchedulePage");
+    // }
   };
 
   return (
@@ -101,7 +133,7 @@ const Login = (props) => {
               value={email}
               onChange={(ev) => setEmail(ev.target.value)}
               required
-              placeholder="Email"
+              placeholder="Email or Username"
               className="input"
             />
             <div className="errorLabel">{emailError}</div>
@@ -117,7 +149,33 @@ const Login = (props) => {
             />
             <div className="errorLabel">{passwordError}</div>
           </div>
-          <button type="button" onClick={onLoginClick} className="button-confirm">
+          <div className="admin-check">
+            <label style={{fontSize:'18px', fontWeight:'bold'}}>
+              <input
+                type="checkbox"
+                checked={isAdminChecked}
+                onChange={(ev) => setIsAdminChecked(ev.target.checked)}
+              />{" "}
+              Are you admin?
+            </label>
+            {isAdminChecked && (
+              <div className="user-box">
+                <input 
+                  type="password"
+                  value={adminPassword}
+                  onChange={(ev) => setAdminPassword(ev.target.value)}
+                  placeholder="Admin Password"
+                  className="input"
+                />
+                <div className="errorLabel">{adminPassError}</div>
+              </div>
+            )}
+          </div>
+          <button
+            type="button"
+            onClick={onLoginClick}
+            className="button-confirm"
+          >
             Let's go →
           </button>
           <h3 className="register-text">
@@ -129,8 +187,13 @@ const Login = (props) => {
               here
             </Link>
             <br />
-            Return to <Link to="/" style={{ color: "#2d8cf0", textDecoration: "underline" }}>home</Link>
-
+            Return to{" "}
+            <Link
+              to="/"
+              style={{ color: "#2d8cf0", textDecoration: "underline" }}
+            >
+              home
+            </Link>
           </h3>
         </form>
       </div>

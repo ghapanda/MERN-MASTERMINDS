@@ -4,33 +4,58 @@ import "./dashboard.css";
 
 export default function Navbar() {
   const location = useLocation();
+  const displayName = sessionStorage.getItem("displayName");
 
   return (
-    <div className="navbar">
-      <Link to="/" className={location.pathname === "/" ? "active" : ""}>
-        Log Out
-      </Link>
-      <Link
-        to="/update-schedule"
-        className={location.pathname === "/update-schedule" ? "active" : ""}
-      >
-        Update Schedule
-      </Link>
-      <Link
-        to="/memberSchedulePage"
-        className={location.pathname === "/memberSchedulePage" ? "active" : ""}
-      >
-        Schedule
-      </Link>
-      <Link to="/profile" className={location.pathname === "/profile" ? "active" : ""}>
-        Profile
-      </Link>
-      <Link
-        to="/searchbar"
-        className={location.pathname === "/searchbar" ? "active" : ""}
-      >
-        Community
-      </Link>
+    <div className="header">
+      <div className="headerT">OFFBEAT SESSIONS</div>
+      <div className="headerA">
+        Hello {displayName}, welcome to your admin account!
+      </div>
+
+      <div className="navbar">
+        <Link
+          to="/dashboardPage"
+          className={location.pathname === "/dashboardPage" ? "active" : ""}
+        >
+          Announcements
+        </Link>
+        <Link
+          to="/posts"
+          className={location.pathname === "/posts" ? "active" : ""}
+        >
+          Make an Announcement
+        </Link>
+        <Link
+          to="/memberSchedulePage"
+          className={
+            location.pathname === "/memberSchedulePage" ? "active" : ""
+          }
+        >
+          Schedule
+        </Link>
+        <Link
+          to="/update-schedule"
+          className={location.pathname === "/update-schedule" ? "active" : ""}
+        >
+          Update Schedule
+        </Link>
+        <Link
+          to="/profile"
+          className={location.pathname === "/profile" ? "active" : ""}
+        >
+          Profile
+        </Link>
+        <Link
+          to="/searchbar"
+          className={location.pathname === "/searchbar" ? "active" : ""}
+        >
+          Community
+        </Link>
+        <Link to="/" className={location.pathname === "/" ? "active" : ""}>
+          Logout
+        </Link>
+      </div>
     </div>
   );
 }

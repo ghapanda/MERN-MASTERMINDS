@@ -1,16 +1,14 @@
-import { Link } from "react-router-dom";
 import Navbar from "../dashboard";
 
-import "./profile.css" 
+import "./profile.css";
+import "../dashboard.css";
 
-const AdminH =()=>{
-    return (
-      <div className="header">
-        <h1 className="headerT">ucla offbeat</h1>
-            <Navbar />
-           {/* <button className="button"><Link to="/userspage" className="linkh">users</Link></button>*/}
-        </div>
-    )
-}
+const AdminH = () => {
+  return (
+    <>
+      <Navbar />
+    </>
+  );
+};
 
-export default AdminH
+export default AdminH;
