@@ -25,11 +25,14 @@ npm install axioS
 
 The method we used to run our project on a Windows operating system was to use VSCode's MongoDB extension.
 
-To install MongoDB through VSCode, install the MongoDB extension named "MongoDB for VS Code".
-
-Then, connect to the extension via any method. We used a connection string with a MongoDB free account.
-
-After connection, no further setup is needed. Use npm run dev!
+To install MongoDB through VSCode, first: 
+1) Install the MongoDB extension named "MongoDB for VS Code".
+2) Then, go to "https://cloud.mongodb.com/"
+3) If you don't have a MongoDB cloud Atlas account, create one.
+4) Otherwise, log in. Then, obtain a connection string.
+5) In VSCode, open command palette via Ctrl-Shift-P or View -> Command Palette in the hot bar.
+6) Enter MongoDB: Connect and input your connection string. (Other methods of connect may be used, but this is the one that we used.)
+7) After connection, no further setup is needed. Use npm run dev!
 
 ## Usage:
 Running the Application:
