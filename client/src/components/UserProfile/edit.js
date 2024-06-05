@@ -482,22 +482,29 @@ const EditableProfile = ({ info, setInfo, setEditMode }) => {
         <div style={{ marginBottom: "15px" }}>
           <ProfilePicture info={info} setInfo={setInfo} />
         </div>
-        <div className="buttons" style={{ display: "flex", justifyContent: "space-between" }}>
+        <div className="buttons" style={{ display: "flex", justifyContent: "30px" }}>
           <button
             onClick={handleSaveClicked}
             style={{
               width: "120px",
               height: "40px",
               borderRadius: "5px",
-              border: "2px solid #323232",
-              backgroundColor: "#fff",
-              boxShadow: "4px 4px #323232",
+
+
+
               fontSize: "18px",
-              fontWeight: "600",
-              color: "#323232",
+
+
               cursor: "pointer",
               transition: "transform 0.1s",
               fontFamily: "'Poetsen One', sans-serif",
+
+              border: "2px solid #323232",
+              boxShadow: "4px 4px #323232",
+              fontWeight: "600",
+              backgroundColor: 'black',
+              color: 'white',
+              cursor: 'pointer',
             }}
             onMouseDown={(e) => {
               e.target.style.transform = "translate(3px, 3px)";
@@ -516,15 +523,21 @@ const EditableProfile = ({ info, setInfo, setEditMode }) => {
               width: "120px",
               height: "40px",
               borderRadius: "5px",
-              border: "2px solid #323232",
-              backgroundColor: "#fff",
-              boxShadow: "4px 4px #323232",
+
+
               fontSize: "18px",
-              fontWeight: "600",
-              color: "#323232",
-              cursor: "pointer",
+
+
               transition: "transform 0.1s",
               fontFamily: "'Poetsen One', sans-serif",
+
+
+              border: "2px solid #323232",
+              boxShadow: "4px 4px #323232",
+              fontWeight: "600",
+              backgroundColor: 'black',
+              color: 'white',
+              cursor: 'pointer',
             }}
             onMouseDown={(e) => {
               e.target.style.transform = "translate(3px, 3px)";
