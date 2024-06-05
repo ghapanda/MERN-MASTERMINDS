@@ -46,6 +46,9 @@ Note: make sure you are in the root of the project (i.e :MERN-MASTERMIND directo
 File Uploads:
 Make sure the upload folder exists in the root directory of the project for file uploads to work correctly.
 
+Incompatible Plugins:
+Some packages in package-lock.json and package.json may be incompatible with Windows. To fix this, delete package-lock, remove the offending packages from package.json, use npm install to reinstall any needed packages, and hope the project works. It worked when we tested it on a Windows 10 machine.
+
 Missing Dependencies:
 If you encounter issues with missing dependencies, try reinstalling them:
 
