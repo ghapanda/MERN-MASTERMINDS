@@ -71,7 +71,7 @@ You will encounter the problem such that you can not login even though you seems
 you can try
 
     1. install mongodb
-    2. install dependecies
+    2. install dependencies
 
         install express (if you have not installed)
 
