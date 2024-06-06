@@ -3,18 +3,19 @@
 This is a web application for managing a club with user accounts, dynamic schedules, personalized profiles, and search functionality. The application distinguishes between general members and admins, allowing each to have different capabilities. Admins can create events, while members can view and RSVP to events.
 
 ## Features
-1) User Accounts: Sign up, log in, and differentiate between members and admins. Users can attach customizable data to their profile pages.
-2) Landing Page: Links for more information about the club, creating a new account, and logging in with an existing account.
-3) Dynamic Schedule Page: Admins can create events, and members can view and RSVP to events.
-4) Search Function: Allows users to look up other club members.
-5) Personalized Profile Pages: Users can customize their profiles with images, short videos, and text descriptions.
-6) Navigation Bar: Redirects to various pages within the web application.
+
+1. User Accounts: Sign up, log in, and differentiate between members and admins. Users can attach customizable data to their profile pages.
+2. Landing Page: Links for more information about the club, creating a new account, and logging in with an existing account.
+3. Dynamic Schedule Page: Admins can create events, and members can view and RSVP to events.
+4. Search Function: Allows users to look up other club members.
+5. Personalized Profile Pages: Users can customize their profiles with images, short videos, and text descriptions.
+6. Navigation Bar: Redirects to various pages within the web application.
 
 ## Steps:
 
-1) git clone https://github.com/ghapanda/MERN-MASTERMINDS.git
-2) cd MERN-MASTERMINDS
-3) Install dependencies:
+1. git clone https://github.com/ghapanda/MERN-MASTERMINDS.git
+2. cd MERN-MASTERMINDS
+3. Install dependencies:
 
 npm install
 npm install react-scripts
@@ -25,23 +26,31 @@ npm install axioS
 
 The method we used to run our project on a Windows operating system was to use VSCode's MongoDB extension.
 
-To install MongoDB through VSCode, first: 
-1) Install the MongoDB extension named "MongoDB for VS Code".
-2) Then, go to "https://cloud.mongodb.com/"
-3) If you don't have a MongoDB cloud Atlas account, create one.
-4) Otherwise, log in. Then, obtain a connection string.
-5) In VSCode, open command palette via Ctrl-Shift-P or View -> Command Palette in the hot bar.
-6) Enter MongoDB: Connect and input your connection string. (Other methods of connect may be used, but this is the one that we used.)
-7) After connection, no further setup is needed. Use npm run dev!
+To install MongoDB through VSCode, first:
+
+1. Install the MongoDB extension named "MongoDB for VS Code".
+2. Then, go to "https://cloud.mongodb.com/"
+3. If you don't have a MongoDB cloud Atlas account, create one.
+4. Otherwise, log in. Then, obtain a connection string.
+5. In VSCode, open command palette via Ctrl-Shift-P or View -> Command Palette in the hot bar.
+6. Enter MongoDB: Connect and input your connection string. (Other methods of connect may be used, but this is the one that we used.)
+7. After connection, no further setup is needed. Use npm run dev!
 
 ## Usage:
+
 Running the Application:
 "npm run dev" will run both client and server.
 To access the application, Open your browser and navigate to: http://localhost:3000
-Server is running on port 3002.
+Server is running on port 3002 by default.
 Note: make sure you are in the root of the project (i.e :MERN-MASTERMIND directory) when you run these commands.
 
 ## Common Issues and Troubleshooting:
+
+Server Port:
+By default, the server is running on port 3002. Hoever, this port may not be availbale on your machine. If you encouter an error like this "Something else is already running on port 3002" follow these steps:
+
+1. In the root of the project, find the index.js file and modify this line according to the available ports on your machine: const PORT = process.env.PORT || 3002;
+2. Go to client/src/components/portCongi.js and modify the SERVERPORT constant according to avaiable ports on your machine.
 
 File Uploads:
 Make sure the upload folder exists in the root directory of the project for file uploads to work correctly.
@@ -55,28 +64,26 @@ If you encounter issues with missing dependencies, try reinstalling them:
 npm uninstall axios
 npm install axios
 
-
-
 Connecting Mongodb:
 
-You will encounter the problem such that you can not login even though you seems be able to create new account via the sign up page. 
+You will encounter the problem such that you can not login even though you seems be able to create new account via the sign up page.
 
 you can try
 
-    1. install mongodb 
-    2. install dependecies 
-        
+    1. install mongodb
+    2. install dependecies
+
         install express (if you have not installed)
 
-        install mongoose 
+        install mongoose
     3. connect mongodb (with mongo-community)
         3.1 on mac (with homebrew)
-             
+
              1. brew tap mongodb/brew
              2. brew install mongodb-community
              3. brew services start mongodb/brew/mongodb-community
 
-Authors 
+Authors
 
     We made this app as a project for cs35L of Professor Paul Eggert in Spring 2024.
-    Parnian, Srinjana, Vatsal, Cody and Masahiro. 
+    Parnian, Srinjana, Vatsal, Cody and Masahiro.
