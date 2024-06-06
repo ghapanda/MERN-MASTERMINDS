@@ -21,6 +21,19 @@ npm install react-scripts
 npm install @fortawesome/fontawesome-free
 npm install axioS
 
+### FOR WINDOWS USERS
+
+The method we used to run our project on a Windows operating system was to use VSCode's MongoDB extension.
+
+To install MongoDB through VSCode, first: 
+1) Install the MongoDB extension named "MongoDB for VS Code".
+2) Then, go to "https://cloud.mongodb.com/"
+3) If you don't have a MongoDB cloud Atlas account, create one.
+4) Otherwise, log in. Then, obtain a connection string.
+5) In VSCode, open command palette via Ctrl-Shift-P or View -> Command Palette in the hot bar.
+6) Enter MongoDB: Connect and input your connection string. (Other methods of connect may be used, but this is the one that we used.)
+7) After connection, no further setup is needed. Use npm run dev!
+
 ## Usage:
 Running the Application:
 "npm run dev" will run both client and server.
@@ -32,6 +45,9 @@ Note: make sure you are in the root of the project (i.e :MERN-MASTERMIND directo
 
 File Uploads:
 Make sure the upload folder exists in the root directory of the project for file uploads to work correctly.
+
+Incompatible Plugins:
+Some packages in package-lock.json and package.json may be incompatible with Windows. To fix this, delete package-lock, remove the offending packages from package.json, use npm install to reinstall any needed packages, and hope the project works. It worked when we tested it on a Windows 10 machine.
 
 Missing Dependencies:
 If you encounter issues with missing dependencies, try reinstalling them:
