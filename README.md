@@ -1,48 +1,56 @@
+![Logo](./logo.png)
+
 # Project Overview
 
-This is a web application for managing a club with user accounts, dynamic schedules, personalized profiles, and search functionality. The application distinguishes between general members and admins, allowing each to have different capabilities. Admins can create events, while members can view and RSVP to events.
+This is a web application for managing UCLA's dance club: OFFBEAT SESSIONS. The applications allows club members to create user accounts with personalized profiles, view quarterly dance schedules, and search for each others profiles. The application distinguishes between club members and club administrators, allowing each to have different capabilities. Admins can update schedules and post announcements while members can RSVP to sessions.
 
 ## Features
 
-1. User Accounts: Sign up, log in, and differentiate between members and admins. Users can attach customizable data to their profile pages.
-2. Landing Page: Links for more information about the club, creating a new account, and logging in with an existing account.
-3. Dynamic Schedule Page: Admins can create events, and members can view and RSVP to events.
-4. Search Function: Allows users to look up other club members.
-5. Personalized Profile Pages: Users can customize their profiles with images, short videos, and text descriptions.
-6. Navigation Bar: Redirects to various pages within the web application.
+1. User Accounts: Sign up, log in (differentiates between members and admins). Users can attach customizable data to their profile pages.
+2. Home Page: Links for more information about the club, registering a new account, and logging in with an existing account.
+3. Announcement Page: Admins can post announcement whihc can be viewed by other members.
+4. Dynamic Schedule Page: Admins can create sessions, and members can view and RSVP to sessions.
+5. Search Page: Allows users to look up other user profiles.
+6. Profile Pages: Users can customize their profiles with profile pictures and text descriptions.
+7. Navigation Bar: Redirects to various pages within the web application.
 
-## Steps:
+## Steps
 
-1. git clone https://github.com/ghapanda/MERN-MASTERMINDS.git
-2. cd MERN-MASTERMINDS
-3. Install dependencies:
+1. Install and run a local instance of MongoDB Community Edition: https://www.mongodb.com/docs/manual/administration/install-community/ 
+Don't forget to run MongoDB after installing it! For more details about running a local instance of MongoDB Community Edition, scroll below.
+2. git clone https://github.com/ghapanda/MERN-MASTERMINDS.git
+3. cd MERN-MASTERMINDS
+4. Install dependencies:
 
+```sh
 npm install
-npm install react-scripts
-npm install @fortawesome/fontawesome-free
-npm install axioS
+npm run dev
+```
 
-### FOR WINDOWS USERS
+Note: make sure you are in the root of the project (i.e :MERN-MASTERMIND directory) when you run these commands. Ignore warnings.
 
-The method we used to run our project on a Windows operating system was to use VSCode's MongoDB extension.
+### For Linux and MacOS Users
 
-To install MongoDB through VSCode, first:
+To run our project on your OS, follow the instructions in the link above to install and run a local instance of MongoDB Community Edition.
 
+### For Windows Users
+
+The method we used to run our project on Windows OS was to use VSCode's MongoDB extension. However, you can also use the link above to install and run a local instance of MongoDB Community Edition.
+
+To install MongoDB through VSCode:
 1. Install the MongoDB extension named "MongoDB for VS Code".
 2. Then, go to "https://cloud.mongodb.com/"
 3. If you don't have a MongoDB cloud Atlas account, create one.
 4. Otherwise, log in. Then, obtain a connection string.
 5. In VSCode, open command palette via Ctrl-Shift-P or View -> Command Palette in the hot bar.
 6. Enter MongoDB: Connect and input your connection string. (Other methods of connect may be used, but this is the one that we used.)
-7. After connection, no further setup is needed. Use npm run dev!
+7. After connection, no further setup is needed. Use "npm run dev".
 
 ## Usage:
 
-Running the Application:
-"npm run dev" will run both client and server.
-To access the application, Open your browser and navigate to: http://localhost:3000
-Server is running on port 3002 by default.
-Note: make sure you are in the root of the project (i.e :MERN-MASTERMIND directory) when you run these commands.
+- "npm run dev" will run both client and server. MongoDB will run on port 27017 and the server will run on port 3002 by default.
+- To access the application, open your browser and navigate to: http://localhost:3000
+Note: make sure you are in the root of the project (i.e :MERN-MASTERMIND directory) when you run these commands. Ignore warnings.
 
 ## Common Issues and Troubleshooting:
 
@@ -53,37 +61,41 @@ By default, the server is running on port 3002. Hoever, this port may not be ava
 2. Go to client/src/components/portCongi.js and modify the SERVERPORT constant according to avaiable ports on your machine.
 
 File Uploads:
-Make sure the upload folder exists in the root directory of the project for file uploads to work correctly.
+Make sure the uploads folder exists in the root directory of the project for file uploads to work correctly.
 
 Incompatible Plugins:
-Some packages in package-lock.json and package.json may be incompatible with Windows. To fix this, delete package-lock, remove the offending packages from package.json, use npm install to reinstall any needed packages, and hope the project works. It worked when we tested it on a Windows 10 machine.
+Some packages in package-lock.json and package.json may be incompatible with Windows. To fix this, delete package-lock.json, remove the offending packages from package.json, use npm install to reinstall any needed packages, and hope the project works XD. It worked when we tested it on a Windows 10 machine.
 
-Missing Dependencies:
-If you encounter issues with missing dependencies, try reinstalling them:
+If you notice an error which says something like "onSignUpClick data attribute can't be read", this likely means your MongoDB connection was not set up correctly. Either because you did not install and run MongoDB correctly or because there is some incompatibility with your mongoose driver.
 
+Missing/Outdated Dependencies:
+1. If you encounter issues with missing dependencies, try reinstalling them. Common ones that might require uninstalling and reinstalling are the following.
+
+```sh
 npm uninstall axios
 npm install axios
 
-Connecting Mongodb:
+npm uninstall react-scripts
+npm install react-scripts
 
-You will encounter the problem such that you can not login even though you seems be able to create new account via the sign up page.
+npm uninstall @fortawesome/fontawesome-free
+npm install @fortawesome/fontawesome-free
 
-you can try
+npm install express
+npm install mongoose
+```
 
-    1. install mongodb
-    2. install dependencies
+2. If you encounter issues with outdated dependencies, try
+```sh
+npm outdated
+```
 
-        install express (if you have not installed)
-
-        install mongoose
-    3. connect mongodb (with mongo-community)
-        3.1 on mac (with homebrew)
-
-             1. brew tap mongodb/brew
-             2. brew install mongodb-community
-             3. brew services start mongodb/brew/mongodb-community
+to list the outdated packages and update them using
+```sh
+npm update <package_name>
+```
 
 Authors
 
     We made this app as a project for cs35L of Professor Paul Eggert in Spring 2024.
-    Parnian, Srinjana, Vatsal, Cody and Masahiro.
+    Parnian, Srinjana, Vatsal, Masahiro and Cody.
