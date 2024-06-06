@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Navbar from "./dashboard";
-
+import SERVERPORT from "./portConfig";
 function AnnouncementForm() {
   const [message, setMessage] = useState("");
   const [date, setDate] = useState("");
@@ -11,11 +11,14 @@ function AnnouncementForm() {
     event.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3002/api/posts", {
-        author,
-        date,
-        message,
-      });
+      const response = await axios.post(
+        `http://localhost:${SERVERPORT}/api/posts`,
+        {
+          author,
+          date,
+          message,
+        }
+      );
       setMessage("");
       setError(null);
       if (response.data.message == "Announcement posted successfully")
@@ -29,7 +32,8 @@ function AnnouncementForm() {
   return (
     <>
       <Navbar />
-      <div  style={{
+      <div
+        style={{
           backgroundColor: "lightgrey",
           height: "100vh",
           overflowY: "scroll",
@@ -37,15 +41,20 @@ function AnnouncementForm() {
           border: "none",
           boxShadow: "4px 4px #323232",
           padding: "20px",
-        }}>
-        <h2 class="post-announcement-title" >Post Announcement</h2>
+        }}
+      >
+        <h2 class="post-announcement-title">Post Announcement</h2>
         {error && <p>{error}</p>}
         <form onSubmit={handleSubmit} class="post-announcement-form">
-        <div style={{ marginBottom: "10px" }} class="form-group">
-            <label htmlFor="date" style={{ display: "block", marginRight: "30px"}} >
+          <div style={{ marginBottom: "10px" }} class="form-group">
+            <label
+              htmlFor="date"
+              style={{ display: "block", marginRight: "30px" }}
+            >
               Date:{"  "}
             </label>
-            <textarea class="form-input1"
+            <textarea
+              class="form-input1"
               id="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
@@ -58,7 +67,8 @@ function AnnouncementForm() {
             <label htmlFor="message" style={{ display: "block" }}>
               Message:
             </label>
-            <textarea class="form-input2"
+            <textarea
+              class="form-input2"
               id="message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
@@ -67,7 +77,9 @@ function AnnouncementForm() {
               required
             />
           </div>
-          <button type="submit" className="post-button">Post Announcement</button>
+          <button type="submit" className="post-button">
+            Post Announcement
+          </button>
         </form>
       </div>
     </>

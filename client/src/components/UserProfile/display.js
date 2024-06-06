@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { React, useState, useEffect } from "react";
 import axios from "axios";
+import SERVERPORT from "../portConfig";
 
 const DisplayProfile = ({ info, setInfo, startEdit }) => {
   const defaultImage = "https://img.icons8.com/ios-glyphs/90/user--v1.png";
@@ -11,7 +12,7 @@ const DisplayProfile = ({ info, setInfo, startEdit }) => {
       try {
         const data = { userId: info.userId, password: info.password };
         const response = await axios.post(
-          "http://localhost:3002/api/fetchData",
+          `http://localhost:${SERVERPORT}/api/fetchData`,
           data
         );
         setInfo(response.data);
@@ -34,7 +35,14 @@ const DisplayProfile = ({ info, setInfo, startEdit }) => {
           padding: "20px",
         }}
       >
-        <h1 style={{ textAlign: "center", color: "#323232", fontWeight: "900", fontSize: "25px" }}>
+        <h1
+          style={{
+            textAlign: "center",
+            color: "#323232",
+            fontWeight: "900",
+            fontSize: "25px",
+          }}
+        >
           Profile
         </h1>
 
@@ -59,7 +67,7 @@ const DisplayProfile = ({ info, setInfo, startEdit }) => {
                 style={{ width: "90px", borderRadius: "90px" }}
                 src={
                   info.portrait !== "null"
-                    ? `http://localhost:3002${info.portrait}`
+                    ? `http://localhost:${SERVERPORT}${info.portrait}`
                     : defaultImage
                 }
                 alt={`${info.displayName} profile`}
@@ -86,11 +94,9 @@ const DisplayProfile = ({ info, setInfo, startEdit }) => {
                 style={{
                   listStyleType: "none",
                   padding: 0,
-                
-                
+
                   fontWeight: "600",
                   color: "#323232",
-                 
                 }}
               >
                 {info.listSessions.map((event, index) => (
@@ -105,11 +111,25 @@ const DisplayProfile = ({ info, setInfo, startEdit }) => {
                       boxShadow: "4px 4px #323232",
                     }}
                   >
-                    <h2 style={{ color: "#323232", fontSize: "18px" }}>{event[0]}</h2>
-                    <p style={{ color: "#323232", fontWeight: "bold", fontSize: "18px" }}>
+                    <h2 style={{ color: "#323232", fontSize: "18px" }}>
+                      {event[0]}
+                    </h2>
+                    <p
+                      style={{
+                        color: "#323232",
+                        fontWeight: "bold",
+                        fontSize: "18px",
+                      }}
+                    >
                       Date: {event[1]}
                     </p>
-                    <p style={{ color: "#323232", fontWeight: "bold", fontSize: "18px" }}>
+                    <p
+                      style={{
+                        color: "#323232",
+                        fontWeight: "bold",
+                        fontSize: "18px",
+                      }}
+                    >
                       Location: {event[2]}
                     </p>
                   </li>
@@ -135,7 +155,7 @@ const DisplayProfile = ({ info, setInfo, startEdit }) => {
                   alignItems: "center",
                   justifyContent: "flex-start",
                   transition: "transform 0.1s",
-                  fontFamily: "Poetsen One"
+                  fontFamily: "Poetsen One",
                 }}
                 onMouseDown={(e) => {
                   e.target.style.transform = "translate(3px, 3px)";
@@ -153,7 +173,7 @@ const DisplayProfile = ({ info, setInfo, startEdit }) => {
                     color: "#323232",
                     fontSize: "18px",
                     fontWeight: "bold",
-                    fontFamily: "Poetsen One"
+                    fontFamily: "Poetsen One",
                   }}
                 >
                   Edit Profile
@@ -167,7 +187,9 @@ const DisplayProfile = ({ info, setInfo, startEdit }) => {
         {info.listSessions ? (
           <></>
         ) : (
-          <h1 style={{ textAlign: "center", color: "#323232", fontSize: "20px" }}>
+          <h1
+            style={{ textAlign: "center", color: "#323232", fontSize: "20px" }}
+          >
             No events yet
           </h1>
         )}

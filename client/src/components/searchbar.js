@@ -4,6 +4,7 @@ import "./searchbar.css";
 
 import NavbarNotAdmin from "./dashboardNotAdmin";
 import Navbar from "./dashboard";
+import SERVERPORT from "./portConfig";
 
 function ResultButton({ result, setProfile, setQuery }) {
   const showProfile = () => {
@@ -19,7 +20,7 @@ function ResultButton({ result, setProfile, setQuery }) {
             style={{ width: "90px", borderRadius: "90px" }}
             src={
               result.portrait !== "null"
-                ? `http://localhost:3002${result.portrait}`
+                ? `http://localhost:${SERVERPORT}${result.portrait}`
                 : "https://img.icons8.com/ios-glyphs/90/user--v1.png"
             }
             alt={`${result.displayName} profile`}
@@ -31,10 +32,42 @@ function ResultButton({ result, setProfile, setQuery }) {
           />
         </div>
         <div style={{ marginLeft: "20px", textAlign: "left" }}>
-          <p style={{ fontSize: "18px", fontFamily: "'Poetsen One', sans-serif", color: "#323232" }}>Screen Name: {result.displayName}</p>
-          <p style={{ fontSize: "18px", fontFamily: "'Poetsen One', sans-serif", color: "#323232" }}>User Name: {result.username}</p>
-          <p style={{ fontSize: "18px", fontFamily: "'Poetsen One', sans-serif", color: "#323232" }}>Dance Style: {result.danceStyle}</p>
-          <p style={{ fontSize: "18px", fontFamily: "'Poetsen One', sans-serif", color: "#323232" }}>Bio: {result.bio}</p>
+          <p
+            style={{
+              fontSize: "18px",
+              fontFamily: "'Poetsen One', sans-serif",
+              color: "#323232",
+            }}
+          >
+            Screen Name: {result.displayName}
+          </p>
+          <p
+            style={{
+              fontSize: "18px",
+              fontFamily: "'Poetsen One', sans-serif",
+              color: "#323232",
+            }}
+          >
+            User Name: {result.username}
+          </p>
+          <p
+            style={{
+              fontSize: "18px",
+              fontFamily: "'Poetsen One', sans-serif",
+              color: "#323232",
+            }}
+          >
+            Dance Style: {result.danceStyle}
+          </p>
+          <p
+            style={{
+              fontSize: "18px",
+              fontFamily: "'Poetsen One', sans-serif",
+              color: "#323232",
+            }}
+          >
+            Bio: {result.bio}
+          </p>
         </div>
       </button>
     </li>
@@ -56,7 +89,7 @@ const SearchBar = () => {
     if (query.trim() !== "") {
       // Check if the query is not empty
       axios
-        .get(`http://localhost:3002/api/search?q=${query}`, {
+        .get(`http://localhost:${SERVERPORT}/api/search?q=${query}`, {
           headers: {
             Authorization: `Bearer ${sessionStorage.getItem("token")}`,
           },
@@ -78,10 +111,24 @@ const SearchBar = () => {
   return (
     <div>
       {isAdmin ? <Navbar /> : <NavbarNotAdmin />}
-      <div className="Container" style={{ backgroundColor: "lightgrey", padding: "20px" }}>
+      <div
+        className="Container"
+        style={{ backgroundColor: "lightgrey", padding: "20px" }}
+      >
         <div className="search-container">
           <div className="search-bar">
-            <h1 className="Title" style={{ fontFamily: "'Poetsen One', sans-serif", color: "#323232", fontWeight: "900", fontSize: "25px", textAlign: "center" }}>Explore Profiles</h1>
+            <h1
+              className="Title"
+              style={{
+                fontFamily: "'Poetsen One', sans-serif",
+                color: "#323232",
+                fontWeight: "900",
+                fontSize: "25px",
+                textAlign: "center",
+              }}
+            >
+              Explore Profiles
+            </h1>
             <input
               type="text"
               placeholder="Search"
@@ -99,7 +146,10 @@ const SearchBar = () => {
               }}
             />
             {searchResults.length > 0 && (
-              <ul className="search-results" style={{ listStyleType: "none", padding: 0 }}>
+              <ul
+                className="search-results"
+                style={{ listStyleType: "none", padding: 0 }}
+              >
                 {searchResults.map((result) => (
                   <ResultButton
                     key={result._id}
@@ -139,7 +189,7 @@ const SearchBar = () => {
                         style={{ width: "90px", borderRadius: "90px" }}
                         src={
                           profile.portrait !== "null"
-                            ? `http://localhost:3002${profile.portrait}`
+                            ? `http://localhost:${SERVERPORT}${profile.portrait}`
                             : "https://img.icons8.com/ios-glyphs/90/user--v1.png"
                         }
                         alt={`${profile.displayName} profile`}
@@ -160,12 +210,14 @@ const SearchBar = () => {
                         fontFamily: "'Poetsen One', sans-serif",
                       }}
                     >
-                      <h2 style={{ fontSize: "20px" }}>{profile.displayName}</h2>
+                      <h2 style={{ fontSize: "20px" }}>
+                        {profile.displayName}
+                      </h2>
                       <i>{profile.bio}</i>
-                      <p style={{ fontSize: "18px" }}>Dance Style: {profile.danceStyle}</p>
-                      <div
-                      
-                      >
+                      <p style={{ fontSize: "18px" }}>
+                        Dance Style: {profile.danceStyle}
+                      </p>
+                      <div>
                         {profile.listSessions.map((event, index) => (
                           <div
                             key={index}
@@ -178,11 +230,25 @@ const SearchBar = () => {
                               boxShadow: "4px 4px #323232",
                             }}
                           >
-                            <h2 style={{ color: "#323232", fontSize: "18px" }}>{event[0]}</h2>
-                            <p style={{ color: "#323232", fontWeight: "bold", fontSize: "18px" }}>
+                            <h2 style={{ color: "#323232", fontSize: "18px" }}>
+                              {event[0]}
+                            </h2>
+                            <p
+                              style={{
+                                color: "#323232",
+                                fontWeight: "bold",
+                                fontSize: "18px",
+                              }}
+                            >
                               Date: {event[1]}
                             </p>
-                            <p style={{ color: "#323232", fontWeight: "bold", fontSize: "18px" }}>
+                            <p
+                              style={{
+                                color: "#323232",
+                                fontWeight: "bold",
+                                fontSize: "18px",
+                              }}
+                            >
                               Location: {event[2]}
                             </p>
                           </div>

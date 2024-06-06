@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./update-schedule.css";
 import { Link } from "react-router-dom";
 import Navbar from "./dashboard";
+import SERVERPORT from "./portConfig";
 
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
@@ -29,51 +30,54 @@ function SessionContainer({
   return (
     <div className="session-container">
       <div className="line1">
-      <div className="input-container">
-        <label htmlFor="name">Name: </label>{" "}
-        <input id="name" value={sessionDict.name} onChange={handleChange} />
-      </div>
-      <div className="input-container">
-        <label htmlFor="week">Week: </label>{" "}
-        <input id="week" value={sessionDict.week} onChange={handleChange} />
-      </div>
-      <div className="input-container">
-        <label htmlFor="day">Day: </label>{" "}
-        <input id="day" value={sessionDict.day} onChange={handleChange} />
-      </div>
-      <div className="input-container">
-        <label htmlFor="date">Date: </label>{" "}
-        <input id="date" value={sessionDict.date} onChange={handleChange} />
-      </div>
+        <div className="input-container">
+          <label htmlFor="name">Name: </label>{" "}
+          <input id="name" value={sessionDict.name} onChange={handleChange} />
+        </div>
+        <div className="input-container">
+          <label htmlFor="week">Week: </label>{" "}
+          <input id="week" value={sessionDict.week} onChange={handleChange} />
+        </div>
+        <div className="input-container">
+          <label htmlFor="day">Day: </label>{" "}
+          <input id="day" value={sessionDict.day} onChange={handleChange} />
+        </div>
+        <div className="input-container">
+          <label htmlFor="date">Date: </label>{" "}
+          <input id="date" value={sessionDict.date} onChange={handleChange} />
+        </div>
       </div>
       <div className="line2">
-      <div className="input-container">
-        <label htmlFor="time">Time: </label>{" "}
-        <input id="time" value={sessionDict.time} onChange={handleChange} />
+        <div className="input-container">
+          <label htmlFor="time">Time: </label>{" "}
+          <input id="time" value={sessionDict.time} onChange={handleChange} />
+        </div>
+        <div className="input-container">
+          <label htmlFor="location">Location: </label>{" "}
+          <input
+            id="location"
+            value={sessionDict.location}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="input-container">
+          <label htmlFor="contact">Contact: </label>{" "}
+          <input
+            id="contact"
+            value={sessionDict.contact}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="input-container">
+          <button
+            className="delete"
+            onClick={() => onSessionDelete(index)}
+            style={{ marginTop: "15px" }}
+          >
+            Delete Permanently
+          </button>
+        </div>
       </div>
-      <div className="input-container">
-        <label htmlFor="location">Location: </label>{" "}
-        <input
-          id="location"
-          value={sessionDict.location}
-          onChange={handleChange}
-        />
-      </div>
-      <div className="input-container">
-        <label htmlFor="contact">Contact: </label>{" "}
-        <input
-          id="contact"
-          value={sessionDict.contact}
-          onChange={handleChange}
-        />
-      </div>
-      <div className="input-container">
-        <button className="delete" onClick={() => onSessionDelete(index)} style= 
-        {{marginTop:"15px"}}>
-          Delete Permanently
-        </button>
-      </div>
-    </div>
     </div>
   );
 }
@@ -85,7 +89,7 @@ function Schedule() {
   useEffect(() => {
     // Runs while rendering
     axios
-      .get("http://localhost:3002/schedule/")
+      .get(`http://localhost:${SERVERPORT}/schedule/`)
       .then((response) => {
         setSessions(response.data);
       })
@@ -122,7 +126,7 @@ function Schedule() {
     updatedSessions.splice(index, 1);
     setSessions(updatedSessions);
     axios
-      .post("http://localhost:3002/schedule/delete", deletedSession)
+      .post(`http://localhost:${SERVERPORT}/schedule/delete`, deletedSession)
       .then((response) => {
         console.log("Sessions posted successfully:", response.data);
       })
@@ -130,7 +134,10 @@ function Schedule() {
         console.error("Error posting sessions:", error);
       });
     axios
-      .post("http://localhost:3002/schedule/deleteUserSession", deletedSession)
+      .post(
+        `http://localhost:${SERVERPORT}/schedule/deleteUserSession`,
+        deletedSession
+      )
       .then((response) => {
         console.log("Session deleted from user successfully:", response.data);
       })
@@ -141,7 +148,7 @@ function Schedule() {
 
   const update = () => {
     axios
-      .post("http://localhost:3002/schedule/update", sessions) //put localhost in a variable
+      .post(`http://localhost:${SERVERPORT}/schedule/update`, sessions) //put localhost in a variable
       .then((response) => {
         console.log("Sessions posted successfully:", response.data);
       })

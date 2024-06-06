@@ -287,6 +287,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import ProfilePicture from "./uploadProfilePic";
 import "./profile.css";
+import SERVERPORT from "../portConfig";
 
 const EditableProfile = ({ info, setInfo, setEditMode }) => {
   const navigate = useNavigate();
@@ -325,7 +326,7 @@ const EditableProfile = ({ info, setInfo, setEditMode }) => {
         bio,
       };
       const response = await axios.post(
-        "http://localhost:3002/api/editprofile",
+        `http://localhost:${SERVERPORT}/api/editprofile`,
         newData
       );
       console.log(response.data);
@@ -341,8 +342,17 @@ const EditableProfile = ({ info, setInfo, setEditMode }) => {
   };
 
   return (
-    <div style={{ backgroundColor: "lightgrey", padding: "20px", height: "100vh" }}>
-      <h2 style={{ textAlign: "center", color: "#323232", fontWeight: "900", fontSize: "25px" }}>
+    <div
+      style={{ backgroundColor: "lightgrey", padding: "20px", height: "100vh" }}
+    >
+      <h2
+        style={{
+          textAlign: "center",
+          color: "#323232",
+          fontWeight: "900",
+          fontSize: "25px",
+        }}
+      >
         Edit Profile
       </h2>
       <div
@@ -360,7 +370,14 @@ const EditableProfile = ({ info, setInfo, setEditMode }) => {
         }}
       >
         <div className="input-group" style={{ marginBottom: "15px" }}>
-          <label style={{ display: "block", color: "#323232", fontSize: "18px", marginBottom: "5px" }}>
+          <label
+            style={{
+              display: "block",
+              color: "#323232",
+              fontSize: "18px",
+              marginBottom: "5px",
+            }}
+          >
             Username:
           </label>
           <input
@@ -375,12 +392,19 @@ const EditableProfile = ({ info, setInfo, setEditMode }) => {
               boxShadow: "4px 4px #323232",
               fontSize: "18px",
               fontFamily: "'Poetsen One', sans-serif",
-              color: "#323232"
+              color: "#323232",
             }}
           />
         </div>
         <div className="input-group" style={{ marginBottom: "15px" }}>
-          <label style={{ display: "block", color: "#323232", fontSize: "18px", marginBottom: "5px" }}>
+          <label
+            style={{
+              display: "block",
+              color: "#323232",
+              fontSize: "18px",
+              marginBottom: "5px",
+            }}
+          >
             Password:
           </label>
           <input
@@ -395,12 +419,19 @@ const EditableProfile = ({ info, setInfo, setEditMode }) => {
               boxShadow: "4px 4px #323232",
               fontSize: "18px",
               fontFamily: "'Poetsen One', sans-serif",
-              color: "#323232"
+              color: "#323232",
             }}
           />
         </div>
         <div className="input-group" style={{ marginBottom: "15px" }}>
-          <label style={{ display: "block", color: "#323232", fontSize: "18px", marginBottom: "5px" }}>
+          <label
+            style={{
+              display: "block",
+              color: "#323232",
+              fontSize: "18px",
+              marginBottom: "5px",
+            }}
+          >
             Email:
           </label>
           <input
@@ -415,12 +446,19 @@ const EditableProfile = ({ info, setInfo, setEditMode }) => {
               boxShadow: "4px 4px #323232",
               fontSize: "18px",
               fontFamily: "'Poetsen One', sans-serif",
-              color: "#323232"
+              color: "#323232",
             }}
           />
         </div>
         <div className="input-group" style={{ marginBottom: "15px" }}>
-          <label style={{ display: "block", color: "#323232", fontSize: "18px", marginBottom: "5px" }}>
+          <label
+            style={{
+              display: "block",
+              color: "#323232",
+              fontSize: "18px",
+              marginBottom: "5px",
+            }}
+          >
             Screen Name:
           </label>
           <input
@@ -435,12 +473,19 @@ const EditableProfile = ({ info, setInfo, setEditMode }) => {
               boxShadow: "4px 4px #323232",
               fontSize: "18px",
               fontFamily: "'Poetsen One', sans-serif",
-              color: "#323232"
+              color: "#323232",
             }}
           />
         </div>
         <div className="input-group" style={{ marginBottom: "15px" }}>
-          <label style={{ display: "block", color: "#323232", fontSize: "18px", marginBottom: "5px" }}>
+          <label
+            style={{
+              display: "block",
+              color: "#323232",
+              fontSize: "18px",
+              marginBottom: "5px",
+            }}
+          >
             Dance Style:
           </label>
           <input
@@ -455,12 +500,19 @@ const EditableProfile = ({ info, setInfo, setEditMode }) => {
               boxShadow: "4px 4px #323232",
               fontSize: "18px",
               fontFamily: "'Poetsen One', sans-serif",
-              color: "#323232"
+              color: "#323232",
             }}
           />
         </div>
         <div className="input-group" style={{ marginBottom: "15px" }}>
-          <label style={{ display: "block", color: "#323232", fontSize: "18px", marginBottom: "5px" }}>
+          <label
+            style={{
+              display: "block",
+              color: "#323232",
+              fontSize: "18px",
+              marginBottom: "5px",
+            }}
+          >
             Bio:
           </label>
           <input
@@ -475,14 +527,17 @@ const EditableProfile = ({ info, setInfo, setEditMode }) => {
               boxShadow: "4px 4px #323232",
               fontSize: "18px",
               fontFamily: "'Poetsen One', sans-serif",
-              color: "#323232"
+              color: "#323232",
             }}
           />
         </div>
         <div style={{ marginBottom: "15px" }}>
           <ProfilePicture info={info} setInfo={setInfo} />
         </div>
-        <div className="buttons" style={{ display: "flex", justifyContent: "30px" }}>
+        <div
+          className="buttons"
+          style={{ display: "flex", justifyContent: "30px" }}
+        >
           <button
             onClick={handleSaveClicked}
             style={{
@@ -490,10 +545,7 @@ const EditableProfile = ({ info, setInfo, setEditMode }) => {
               height: "40px",
               borderRadius: "5px",
 
-
-
               fontSize: "18px",
-
 
               cursor: "pointer",
               transition: "transform 0.1s",
@@ -502,9 +554,9 @@ const EditableProfile = ({ info, setInfo, setEditMode }) => {
               border: "2px solid #323232",
               boxShadow: "4px 4px #323232",
               fontWeight: "600",
-              backgroundColor: 'black',
-              color: 'white',
-              cursor: 'pointer',
+              backgroundColor: "black",
+              color: "white",
+              cursor: "pointer",
             }}
             onMouseDown={(e) => {
               e.target.style.transform = "translate(3px, 3px)";
@@ -524,20 +576,17 @@ const EditableProfile = ({ info, setInfo, setEditMode }) => {
               height: "40px",
               borderRadius: "5px",
 
-
               fontSize: "18px",
-
 
               transition: "transform 0.1s",
               fontFamily: "'Poetsen One', sans-serif",
 
-
               border: "2px solid #323232",
               boxShadow: "4px 4px #323232",
               fontWeight: "600",
-              backgroundColor: 'black',
-              color: 'white',
-              cursor: 'pointer',
+              backgroundColor: "black",
+              color: "white",
+              cursor: "pointer",
             }}
             onMouseDown={(e) => {
               e.target.style.transform = "translate(3px, 3px)";

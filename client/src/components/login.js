@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./login.css";
+import SERVERPORT from "./portConfig";
 
 const Login = (props) => {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ const Login = (props) => {
     try {
       const userData = { emailOrUsername: email, password: password };
       const response = await axios.post(
-        "http://localhost:3002/api/login",
+        `http://localhost:${SERVERPORT}/api/login`,
         userData
       );
 
@@ -95,7 +96,7 @@ const Login = (props) => {
       }
       try {
         const response = await axios.post(
-          "http://localhost:3002/api/adminCheck",
+          `http://localhost:${SERVERPORT}/api/adminCheck`,
           {
             userId: sessionStorage.getItem("userId"),
             adminPassword: adminPassword,
@@ -150,7 +151,7 @@ const Login = (props) => {
             <div className="errorLabel">{passwordError}</div>
           </div>
           <div className="admin-check">
-            <label style={{fontSize:'18px', fontWeight:'bold'}}>
+            <label style={{ fontSize: "18px", fontWeight: "bold" }}>
               <input
                 type="checkbox"
                 checked={isAdminChecked}
@@ -160,7 +161,7 @@ const Login = (props) => {
             </label>
             {isAdminChecked && (
               <div className="user-box">
-                <input 
+                <input
                   type="password"
                   value={adminPassword}
                   onChange={(ev) => setAdminPassword(ev.target.value)}

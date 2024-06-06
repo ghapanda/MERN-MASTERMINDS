@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./login.css";
+import SERVERPORT from "./portConfig";
 
 const SignUp = (props) => {
   const navigate = useNavigate(); //for redirecting to login page
@@ -58,7 +59,7 @@ const SignUp = (props) => {
     };
     try {
       const response = await axios.post(
-        "http://localhost:3002/api/signup",
+        `http://localhost:${SERVERPORT}/api/signup`,
         userData
       );
 
@@ -121,8 +122,12 @@ const SignUp = (props) => {
             />
             <div className="errorLabel">{passwordError}</div>
           </div>
-          <button type="button" onClick={OnSignUpClick} className="button-confirm">
-            Sign Up  →
+          <button
+            type="button"
+            onClick={OnSignUpClick}
+            className="button-confirm"
+          >
+            Sign Up →
           </button>
           <h3 className="register-text">
             Already have an account?{" "}
@@ -133,7 +138,13 @@ const SignUp = (props) => {
               Login
             </Link>
             <br />
-            Return to <Link to="/" style={{ color: "#2d8cf0", textDecoration: "underline" }}>home</Link>
+            Return to{" "}
+            <Link
+              to="/"
+              style={{ color: "#2d8cf0", textDecoration: "underline" }}
+            >
+              home
+            </Link>
           </h3>
         </form>
       </div>

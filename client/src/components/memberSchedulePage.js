@@ -3,6 +3,7 @@ import "./memberSchedulePage.css";
 import { Link } from "react-router-dom";
 import NavbarNotAdmin from "./dashboardNotAdmin";
 import Navbar from "./dashboard";
+import SERVERPORT from "./portConfig";
 
 import axios from "axios";
 
@@ -14,7 +15,7 @@ function MemberSchedulePage() {
   useEffect(() => {
     // Runs while rendering
     axios
-      .get("http://localhost:3002/schedule/")
+      .get(`http://localhost:${SERVERPORT}/schedule/`)
       .then((response) => {
         setSessions(response.data);
         console.log(response.data);
@@ -39,7 +40,7 @@ function MemberSchedulePage() {
         username: sessionUsername,
       };
       axios
-        .post("http://localhost:3002/schedule/addAttendant", data1) //put localhost in a variable
+        .post(`http://localhost:${SERVERPORT}/schedule/addAttendant`, data1) //put localhost in a variable
         .then((response) => {
           console.log("Attendant posted successfully:", response.data);
           setAttendants(attendants + 1);
@@ -54,7 +55,7 @@ function MemberSchedulePage() {
         location: sessionLocation,
       };
       axios
-        .post("http://localhost:3002/schedule/addSession", data2) //put localhost in a variable
+        .post(`http://localhost:${SERVERPORT}/schedule/addSession`, data2) //put localhost in a variable
         .then((response) => {
           console.log("Session posted to user successfully:", response.data);
           setAttendants(attendants + 1);
@@ -79,7 +80,7 @@ function MemberSchedulePage() {
         username: sessionUsername,
       };
       axios
-        .post("http://localhost:3002/schedule/deleteAttendant", data1) //put localhost in a variable
+        .post(`http://localhost:${SERVERPORT}/schedule/deleteAttendant`, data1) //put localhost in a variable
         .then((response) => {
           console.log("Attendant posted successfully:", response.data);
           setAttendants(attendants + 1);
@@ -94,7 +95,7 @@ function MemberSchedulePage() {
         location: sessionLocation,
       };
       axios
-        .post("http://localhost:3002/schedule/deleteSession", data2) //put localhost in a variable
+        .post(`http://localhost:${SERVERPORT}/schedule/deleteSession`, data2) //put localhost in a variable
         .then((response) => {
           console.log("Session deleted to user successfully:", response.data);
           setAttendants(attendants + 1);
@@ -121,7 +122,11 @@ function MemberSchedulePage() {
               <p style={{ padding: "10px" }}>Time: {session.time}</p>
               <p style={{ padding: "10px" }}>Location: {session.location}</p>
               <p style={{ padding: "10px" }}>Contact: {session.contact}</p>
-              <p style={{ padding: "10px" }}>
+              <p
+                style={{
+                  padding: "10px",
+                }}
+              >
                 Attendants:{" "}
                 {session.listAttendants.map((attendant, index) => (
                   <div key={index} style={{ color: "#666" }}>

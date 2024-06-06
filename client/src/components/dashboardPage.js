@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./dashboard";
 import NavbarNotAdmin from "./dashboardNotAdmin";
+import SERVERPORT from "./portConfig";
 
 import axios from "axios";
 
@@ -16,7 +17,7 @@ const DashboardPage = () => {
     const fetchAnnouncements = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3002/api/fetchPosts"
+          `http://localhost:${SERVERPORT}/api/fetchPosts`
         );
         setAnnouncements(response.data);
       } catch (error) {
@@ -32,10 +33,13 @@ const DashboardPage = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3002/api/posts", {
-        author,
-        message,
-      });
+      const response = await axios.post(
+        `http://localhost:${SERVERPORT}/api/posts`,
+        {
+          author,
+          message,
+        }
+      );
       setAuthor("");
       setMessage("");
       setError(null);
@@ -61,13 +65,19 @@ const DashboardPage = () => {
           padding: "20px",
         }}
       >
-        <div class="RecentAnnouncements" style={{fontSize:'25px', color:'#323232'}}>
+        <div
+          class="RecentAnnouncements"
+          style={{ fontSize: "25px", color: "#323232" }}
+        >
           Recent Announcements
         </div>
         <div class="announcements-box">
           {announcements.map((announcement, index) => (
             <div class="Announcement" key={index}>
-              <strong>{announcement.date} {announcement.author}:</strong> {announcement.message}
+              <strong>
+                {announcement.date} {announcement.author}:
+              </strong>{" "}
+              {announcement.message}
             </div>
           ))}
         </div>

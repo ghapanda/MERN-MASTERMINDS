@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./profile.css";
+import SERVERPORT from "../portConfig";
+
 const ProfileUpload = ({ info, setInfo }) => {
   const [profilePicture, setProfilePicture] = useState(null);
 
@@ -22,7 +24,7 @@ const ProfileUpload = ({ info, setInfo }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3002/api/uploadProfilePicture",
+        `http://localhost:${SERVERPORT}/api/uploadProfilePicture`,
         formData,
         {
           headers: {
@@ -41,13 +43,18 @@ const ProfileUpload = ({ info, setInfo }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <div className="buttons" style={{  display: 'flex',
-  justifyContent: 'space-between',
-  marginTop: '20px',marginBottom: '20px'}}>
+        <div
+          className="buttons"
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginTop: "20px",
+            marginBottom: "20px",
+          }}
+        >
           <label
             className="custom-file-upload"
             style={{
-
               //borderRadius: "5px",
               //border: "2px solid #323232",
               //backgroundColor: "#fff",
@@ -67,12 +74,12 @@ const ProfileUpload = ({ info, setInfo }) => {
 
               boxShadow: "2px 2px #323232",
               fontWeight: "600",
-              marginBottom: '10px',
-              padding: '10px 20px',
-              backgroundColor: 'white',
-              color: 'black',
-              borderRadius: '5px',
-              cursor: 'pointer'
+              marginBottom: "10px",
+              padding: "10px 20px",
+              backgroundColor: "white",
+              color: "black",
+              borderRadius: "5px",
+              cursor: "pointer",
             }}
             onMouseDown={(e) => {
               e.currentTarget.style.transform = "translate(3px, 3px)";
@@ -99,9 +106,9 @@ const ProfileUpload = ({ info, setInfo }) => {
               width: "125px",
               height: "50px",
               borderRadius: "5px",
-          //    border: "2px solid #323232",
+              //    border: "2px solid #323232",
               //backgroundColor: "#fff",
-            //  boxShadow: "4px 4px #323232",
+              //  boxShadow: "4px 4px #323232",
               fontSize: "18px",
               //fontWeight: "600",
               //color: "#323232",
@@ -109,13 +116,12 @@ const ProfileUpload = ({ info, setInfo }) => {
               transition: "transform 0.1s",
               fontFamily: "'Poetsen One', sans-serif",
 
-                            //border: "2px solid #323232",
+              //border: "2px solid #323232",
               //boxShadow: "4px 4px #323232",
               //fontWeight: "600",
               //backgroundColor: 'black',
               //color: 'white',
               //cursor: 'pointer',
-
 
               border: "2px solid #323232",
               backgroundColor: "#D3D3D3",
@@ -137,7 +143,7 @@ const ProfileUpload = ({ info, setInfo }) => {
         </div>
       </div>
     </form>
-  );  
+  );
 };
 
 export default ProfileUpload;
