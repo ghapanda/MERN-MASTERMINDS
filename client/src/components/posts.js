@@ -24,7 +24,6 @@ function AnnouncementForm() {
       if (response.data.message == "Announcement posted successfully")
         alert("Announcement posted successfully");
     } catch (error) {
-      console.error(error);
       setError("An error occurred. Please try again later.");
     }
   };

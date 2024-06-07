@@ -95,18 +95,15 @@ const SearchBar = () => {
           },
         })
         .then((response) => {
-          console.log(response.data);
           setSearchResults(response.data);
         })
         .catch((error) => {
-          console.error("Error fetching search results", error);
+          alert("Error fetching search results");
         });
     } else {
       setSearchResults([]); // Clear search results if query is empty
     }
   }, [query]);
-
-  console.log(searchResults);
 
   return (
     <div>

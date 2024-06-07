@@ -18,10 +18,9 @@ function MemberSchedulePage() {
       .get(`http://localhost:${SERVERPORT}/schedule/`)
       .then((response) => {
         setSessions(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
-        console.error("Error fetching sessions:", error);
+        // console.error("Error fetching sessions:", error);
       });
   }, [attendants]);
 
@@ -42,27 +41,25 @@ function MemberSchedulePage() {
       axios
         .post(`http://localhost:${SERVERPORT}/schedule/addAttendant`, data1) //put localhost in a variable
         .then((response) => {
-          console.log("Attendant posted successfully:", response.data);
           setAttendants(attendants + 1);
         })
         .catch((error) => {
-          console.error("Error posting attendant:", error);
+          alert("Error posting attendant");
         });
       const data2 = {
         username: sessionUsername,
         name: sessionName,
         date: sessionDate,
         location: sessionLocation,
-        index: sessionIndex
+        index: sessionIndex,
       };
       axios
         .post(`http://localhost:${SERVERPORT}/schedule/addSession`, data2) //put localhost in a variable
         .then((response) => {
-          console.log("Session posted to user successfully:", response.data);
           setAttendants(attendants + 1);
         })
         .catch((error) => {
-          console.error("Error posting attendant to user:", error);
+          // console.error("Error posting attendant to user:", error);
         });
     }
   };
@@ -83,11 +80,10 @@ function MemberSchedulePage() {
       axios
         .post(`http://localhost:${SERVERPORT}/schedule/deleteAttendant`, data1) //put localhost in a variable
         .then((response) => {
-          console.log("Attendant posted successfully:", response.data);
           setAttendants(attendants + 1);
         })
         .catch((error) => {
-          console.error("Error posting attendant:", error);
+          alert("Error posting attendant:", error);
         });
       const data2 = {
         username: sessionUsername,
@@ -98,11 +94,10 @@ function MemberSchedulePage() {
       axios
         .post(`http://localhost:${SERVERPORT}/schedule/deleteSession`, data2) //put localhost in a variable
         .then((response) => {
-          console.log("Session deleted to user successfully:", response.data);
           setAttendants(attendants + 1);
         })
         .catch((error) => {
-          console.error("Error deleting session to user:", error);
+          alert("Error deleting session to user:", error);
         });
     }
   };
@@ -170,15 +165,6 @@ function MemberSchedulePage() {
             </div>
           ))}
         </div>
-        {/* <h3 className="SubTitle">
-          Return to{" "}
-          <Link
-            to={isAdmin ? "/dashboard" : "/dashboardNotAdmin"}
-            style={{ color: "#2d8cf0", textDecoration: "underline" }}
-          >
-            dashboard
-          </Link>
-        </h3> */}
       </div>
     </>
   );

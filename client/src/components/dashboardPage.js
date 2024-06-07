@@ -21,7 +21,6 @@ const DashboardPage = () => {
         );
         setAnnouncements(response.data);
       } catch (error) {
-        console.error(error);
         setError("An error occurred. Please try again later.");
       }
     };
@@ -46,7 +45,6 @@ const DashboardPage = () => {
       if (response.data.message == "Announcement posted successfully")
         alert("Announcement posted successfully");
     } catch (error) {
-      console.error(error);
       setError("An error occurred. Please try again later.");
     }
   };
@@ -66,14 +64,14 @@ const DashboardPage = () => {
         }}
       >
         <div
-          class="RecentAnnouncements"
+          className="RecentAnnouncements"
           style={{ fontSize: "25px", color: "#323232" }}
         >
           Recent Announcements
         </div>
-        <div class="announcements-box">
+        <div className="announcements-box">
           {announcements.map((announcement, index) => (
-            <div class="Announcement" key={index}>
+            <div className="Announcement" key={index}>
               <strong>
                 {announcement.date} {announcement.author}:
               </strong>{" "}

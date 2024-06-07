@@ -18,7 +18,6 @@ router.post("/editprofile", async (req, res) => {
       portrait,
       bio,
     } = req.body;
-    console.log("userid:", req.body);
     // Find user by ID and update
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -55,7 +54,6 @@ router.post("/editprofile", async (req, res) => {
     }
 
     res.status(200).json(sentData);
-    console.log("EDITED:", updatedUser);
   } catch (err) {
     console.error("Error updating profile:", err);
     res.status(500).json({ error: "Server error" });

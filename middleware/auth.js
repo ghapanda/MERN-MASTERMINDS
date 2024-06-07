@@ -7,9 +7,7 @@ const authenticateMiddleware = (req, res, next) => {
   // Extract the token from the request headers
   const token =
     req.headers.authorization && req.headers.authorization.split(" ")[1];
-  console.log("do we get into authentication");
   if (!token) {
-    console.log("we are in this if statement")
     return res.status(401).json({ error: "Unauthorized" });
   }
 

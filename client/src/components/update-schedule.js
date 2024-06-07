@@ -94,7 +94,7 @@ function Schedule() {
         setSessions(response.data);
       })
       .catch((error) => {
-        console.error("Error fetching sessions:", error);
+        // console.error("Error fetching sessions:", error);
       });
   }, []);
 
@@ -127,11 +127,9 @@ function Schedule() {
     setSessions(updatedSessions);
     axios
       .post(`http://localhost:${SERVERPORT}/schedule/delete`, deletedSession)
-      .then((response) => {
-        console.log("Sessions posted successfully:", response.data);
-      })
+      .then((response) => {})
       .catch((error) => {
-        console.error("Error posting sessions:", error);
+        alert("Error posting sessions:", error);
       });
     axios
       .post(
@@ -139,10 +137,10 @@ function Schedule() {
         deletedSession
       )
       .then((response) => {
-        console.log("Session deleted from user successfully:", response.data);
+        // console.log("Session deleted from user successfully:", response.data);
       })
       .catch((error) => {
-        console.error("Error deleting sessions:", error);
+        alert("Error deleting sessions:", error);
       });
   };
 
@@ -150,10 +148,10 @@ function Schedule() {
     axios
       .post(`http://localhost:${SERVERPORT}/schedule/update`, sessions) //put localhost in a variable
       .then((response) => {
-        console.log("Sessions posted successfully:", response.data);
+        // console.log("Sessions posted successfully:", response.data);
       })
       .catch((error) => {
-        console.error("Error posting sessions:", error);
+        alert("Error posting sessions:", error);
       });
     axios
       .post(
@@ -161,10 +159,10 @@ function Schedule() {
         sessions
       )
       .then((response) => {
-        console.log("Session updated for user successfully:", response.data);
+        // console.log("Session updated for user successfully:", response.data);
       })
       .catch((error) => {
-        console.error("Error updating session for user:", error);
+        // console.error("Error updating session for user:", error);
       });
   };
 

@@ -18,7 +18,6 @@ const DisplayProfile = ({ info, setInfo, startEdit }) => {
         setInfo(response.data);
       } catch (error) {
         alert("failed to connect to the server");
-        console.log("failed to connect to the server", error);
       }
     };
     fetchData();

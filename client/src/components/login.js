@@ -51,9 +51,7 @@ const Login = (props) => {
         danceClip,
         listSessions,
       } = response.data;
-      console.log("usersessions in login", listSessions);
       const listSessionsJSON = JSON.stringify(listSessions);
-      console.log("user id in login", userId);
 
       sessionStorage.setItem("token", token);
 
@@ -85,8 +83,7 @@ const Login = (props) => {
       ) {
         setPasswordError("Wrong username or password");
       } else {
-        console.error("Error logging in user:");
-        // alert("An error occurred while logging in. Please try again.");
+        alert("An error occurred while logging in. Please try again.");
       }
     }
     if (isAdminChecked) {
@@ -113,14 +110,9 @@ const Login = (props) => {
           setAdminPassError("Wrong Admin Password");
           sessionStorage.clear();
         } else {
-          console.error("Error logging in Admin:", error);
         }
       }
     }
-    // if (!(adminPassError || passwordError || emailError)) {
-    //   console.log("do we get here to navigat");
-    //   navigate("/memberSchedulePage");
-    // }
   };
 
   return (

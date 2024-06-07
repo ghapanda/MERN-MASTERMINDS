@@ -34,7 +34,6 @@ exports.update = async (req, res) => {
 
       // Save the session document to the database
       const savedSession = await foundSession.save();
-      console.log("Session saved:", savedSession);
     }
 
     res.status(200).json({ message: "Sessions saved successfully" });
@@ -107,10 +106,10 @@ exports.updateUserSession = async (req, res) => {
     // Iterate through each user
     for (const user of users) {
       for (const sessionData of req.body) {
-        let foundSession =  user.listSessions.find( (session) =>
-          session[3] == sessionData.index 
+        let foundSession = user.listSessions.find(
+          (session) => session[3] == sessionData.index
         );
-        
+
         if (foundSession) {
           // If session found, update its properties
           foundSession[0] = sessionData.name;
@@ -119,11 +118,9 @@ exports.updateUserSession = async (req, res) => {
           // No need to update listAttendants if it's not provided in sessionData
 
           const savedUser = await user.save();
-          console.log("User saved:", savedUser);
         }
-  
+
         // Save the session document to the database
-        
       }
     }
     // Send a response indicating success
@@ -145,7 +142,6 @@ exports.addAttendant = async (req, res) => {
       if (!foundSession.listAttendants.includes(username)) {
         foundSession.listAttendants.push(username); // Initialize listAttendants as an empty array
         const savedSession = await foundSession.save();
-        console.log("attendant saved:", savedSession);
         res.status(200).json({ message: "attendant saved successfully" });
       }
     } else {
@@ -171,16 +167,13 @@ exports.deleteAttendant = async (req, res) => {
           (attendant) => attendant !== username
         ); // Initialize listAttendants as an empty array
         const savedSession = await foundSession.save();
-        console.log("attendant deleted:", savedSession);
         res.status(200).json({ message: "attendant deleted successfully" });
       }
     } else {
       // If session with the specified index was not found
-      res
-        .status(403)
-        .json({
-          error: "Session ${sessionIndex} not found to delete attendant",
-        });
+      res.status(403).json({
+        error: "Session ${sessionIndex} not found to delete attendant",
+      });
     }
   } catch (error) {
     // If an error occurs during the deletion process
@@ -194,7 +187,6 @@ exports.addSession = async (req, res) => {
     const { username, name, date, location, index } = req.body;
     let foundUser = await User.findOne({ username });
     if (foundUser) {
-      console.log("found user", foundUser);
       const newSession = [name, date, location, index];
       const sessionExists = foundUser.listSessions.some(
         (session) =>
@@ -203,7 +195,6 @@ exports.addSession = async (req, res) => {
       if (!sessionExists) {
         foundUser.listSessions.push(newSession); // Initialize listAttendants as an empty array
         const savedUser = await foundUser.save();
-        console.log("session saved to user:", savedUser);
         res.status(200).json({ message: "session saved to user successfully" });
       }
     } else {
@@ -237,7 +228,6 @@ exports.deleteSession = async (req, res) => {
             )
         );
         const savedUser = await foundUser.save();
-        console.log("session deleted for user:", savedUser);
         res
           .status(200)
           .json({ message: "session deleted for user successfully" });

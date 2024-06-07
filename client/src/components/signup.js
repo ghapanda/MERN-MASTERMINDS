@@ -63,8 +63,6 @@ const SignUp = (props) => {
         userData
       );
 
-      console.log("User signed up successfully:", response.data);
-
       // alert("Successfully signed up!");
       navigate("/login"); //redirecting to login
 
@@ -77,7 +75,6 @@ const SignUp = (props) => {
       ) {
         setEmailError("User already exists");
       } else {
-        console.error("Error signing up user:", error.response.data);
         alert("An error occurred while signing up. Please try again.");
       }
       // Handle error, e.g., display error message to user

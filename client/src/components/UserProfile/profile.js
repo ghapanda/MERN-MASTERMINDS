@@ -17,8 +17,6 @@ import AdminH from "./adminH.js";
 import NotAdminH from "./notAdminH.js";
 
 const Profile = () => {
-  //console.log("email is ", sessionStorage.getItem("email"));
-
   const [info, setInfo] = useState({
     userId: sessionStorage.getItem("userId"),
     username: sessionStorage.getItem("username"),

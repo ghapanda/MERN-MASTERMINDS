@@ -32,11 +32,9 @@ const ProfileUpload = ({ info, setInfo }) => {
           },
         }
       );
-      console.log("USERS RESOPOSE HAS NO ID", response.data); // Handle the response as needed
       setInfo(response.data);
-      console.log(info);
     } catch (error) {
-      console.error("Error uploading profile picture:", error);
+      alert("Error uploading profile picture");
     }
   };
 
