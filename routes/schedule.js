@@ -5,6 +5,7 @@ const Session = require("../models/Schedule");
 
 // Route to handle user signup
 router.post("/update", updateScheduleController.update);
+router.post("/updateUserSession", updateScheduleController.updateUserSession);
 router.post("/delete", updateScheduleController.delete);
 router.post("/deleteUserSession", updateScheduleController.deleteUserSession);
 router.post("/addAttendant", updateScheduleController.addAttendant);

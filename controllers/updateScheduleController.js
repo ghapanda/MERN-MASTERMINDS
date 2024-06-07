@@ -99,6 +99,44 @@ exports.deleteUserSession = async (req, res) => {
   }
 };
 
+exports.updateUserSession = async (req, res) => {
+  try {
+    // Retrieve all users
+    const users = await User.find();
+
+    // Iterate through each user
+    for (const user of users) {
+      for (const sessionData of req.body) {
+        let foundSession =  user.listSessions.find( (session) =>
+          session[3] == sessionData.index 
+        );
+        
+        if (foundSession) {
+          // If session found, update its properties
+          foundSession[0] = sessionData.name;
+          foundSession[1] = sessionData.date;
+          foundSession[2] = sessionData.location;
+          // No need to update listAttendants if it's not provided in sessionData
+
+          const savedUser = await user.save();
+          console.log("User saved:", savedUser);
+        }
+  
+        // Save the session document to the database
+        
+      }
+    }
+    // Send a response indicating success
+    res.status(200).json({ message: "session updated for user successfully" });
+  } catch (error) {
+    // Handle any errors that occurred during the process
+    console.error("Error updating sessions for user", error);
+    res
+      .status(500)
+      .json({ message: "An error occurred while updating sessions for user" });
+  }
+};
+
 exports.addAttendant = async (req, res) => {
   try {
     const { index, username } = req.body;
@@ -153,11 +191,11 @@ exports.deleteAttendant = async (req, res) => {
 
 exports.addSession = async (req, res) => {
   try {
-    const { username, name, date, location } = req.body;
+    const { username, name, date, location, index } = req.body;
     let foundUser = await User.findOne({ username });
     if (foundUser) {
       console.log("found user", foundUser);
-      const newSession = [name, date, location];
+      const newSession = [name, date, location, index];
       const sessionExists = foundUser.listSessions.some(
         (session) =>
           session[0] === name && session[1] === date && session[2] === location
