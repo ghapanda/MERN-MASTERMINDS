@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
       validate: {
         validator: function(v) {
           // Ensure each sub-array has exactly 3 strings
-          return v.every(subArray => subArray.length === 3);
+          return v.every(subArray => subArray.length === 4);
         },
         message: props => `${props.value} does not have exactly 3 elements!`
       }

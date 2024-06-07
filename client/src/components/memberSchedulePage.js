@@ -53,6 +53,7 @@ function MemberSchedulePage() {
         name: sessionName,
         date: sessionDate,
         location: sessionLocation,
+        index: sessionIndex
       };
       axios
         .post(`http://localhost:${SERVERPORT}/schedule/addSession`, data2) //put localhost in a variable

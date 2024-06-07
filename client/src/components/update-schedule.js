@@ -155,6 +155,17 @@ function Schedule() {
       .catch((error) => {
         console.error("Error posting sessions:", error);
       });
+    axios
+      .post(
+        `http://localhost:${SERVERPORT}/schedule/updateUserSession`,
+        sessions
+      )
+      .then((response) => {
+        console.log("Session updated for user successfully:", response.data);
+      })
+      .catch((error) => {
+        console.error("Error updating session for user:", error);
+      });
   };
 
   return (
