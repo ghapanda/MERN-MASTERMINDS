@@ -16,8 +16,8 @@ This is a web application for managing UCLA's dance club: OFFBEAT SESSIONS. The 
 
 ## Steps
 
-1. Install and run a local instance of MongoDB Community Edition: https://www.mongodb.com/docs/manual/administration/install-community/ 
-Don't forget to run MongoDB after installing it! For more details about running a local instance of MongoDB Community Edition, scroll below.
+1. Install and run a local instance of MongoDB Community Edition: https://www.mongodb.com/docs/manual/administration/install-community/
+   Don't forget to run MongoDB after installing it! For more details about running a local instance of MongoDB Community Edition, scroll below.
 2. git clone https://github.com/ghapanda/MERN-MASTERMINDS.git
 3. cd MERN-MASTERMINDS
 4. Install dependencies:
@@ -38,6 +38,7 @@ To run our project on your OS, follow the instructions in the link above to inst
 The method we used to run our project on Windows OS was to use VSCode's MongoDB extension. However, you can also use the link above to install and run a local instance of MongoDB Community Edition.
 
 To install MongoDB through VSCode:
+
 1. Install the MongoDB extension named "MongoDB for VS Code".
 2. Then, go to "https://cloud.mongodb.com/"
 3. If you don't have a MongoDB cloud Atlas account, create one.
@@ -50,12 +51,14 @@ To install MongoDB through VSCode:
 
 - "npm run dev" will run both client and server. MongoDB will run on port 27017 and the server will run on port 3002 by default.
 - To access the application, open your browser and navigate to: http://localhost:3000
-Note: make sure you are in the root of the project (i.e :MERN-MASTERMIND directory) when you run these commands. Ignore warnings.
+  Note: make sure you are in the root of the project (i.e :MERN-MASTERMIND directory) when you run these commands. Ignore warnings.
+  -As a first time user, there is no record of users in the database and you will need to populate database with users. This can be simply achieved by sigining up and creating new accounts.
+  -To login as an admin, you need admin password. This is unique and cannot be changed: "mernadmin"
 
 ## Common Issues and Troubleshooting:
 
 Server Port:
-By default, the server is running on port 3002. Hoever, this port may not be availbale on your machine. If you encouter an error like this "Something else is already running on port 3002" follow these steps:
+By default, the server is running on port 3002. However, this port may not be availbale on your machine. If you encouter an error like this "Something else is already running on port 3002" follow these steps:
 
 1. In the root of the project, find the index.js file and modify this line according to the available ports on your machine: const PORT = process.env.PORT || 3002;
 2. Go to client/src/components/portCongi.js and modify the SERVERPORT constant according to avaiable ports on your machine.
@@ -71,6 +74,7 @@ Some packages in package-lock.json and package.json may be incompatible with Win
 If you notice an error which says something like "onSignUpClick data attribute can't be read", this likely means your MongoDB connection was not set up correctly. Either because you did not install and run MongoDB correctly or because there is some incompatibility with your mongoose driver.
 
 Missing/Outdated Dependencies:
+
 1. If you encounter issues with missing dependencies, try reinstalling them. Common ones that might require uninstalling and reinstalling are the following.
 
 ```sh
@@ -88,13 +92,17 @@ npm install mongoose
 ```
 
 2. If you encounter issues with outdated dependencies, try
+
 ```sh
 npm outdated
 ```
 
 to list the outdated packages and update them using
+
 ```sh
 npm update <package_name>
+
+
 ```
 
 Authors
