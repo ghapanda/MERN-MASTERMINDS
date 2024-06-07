@@ -66,6 +66,8 @@ Make sure the uploads folder exists in the root directory of the project for fil
 Incompatible Plugins:
 Some packages in package-lock.json and package.json may be incompatible with Windows. To fix this, delete package-lock.json, remove the offending packages from package.json, use npm install to reinstall any needed packages, and hope the project works XD. It worked when we tested it on a Windows 10 machine.
 
+(e.g. if you see "Error: ..\MERN-MASTERMINDS\node_modules\bcrypt\lib\binding\napi-v3\bcrypt_lib.node is not a valid Win32 application.", then use "npm uninstall bcrypt" and "npm install bcrypt")
+
 If you notice an error which says something like "onSignUpClick data attribute can't be read", this likely means your MongoDB connection was not set up correctly. Either because you did not install and run MongoDB correctly or because there is some incompatibility with your mongoose driver.
 
 Missing/Outdated Dependencies:
