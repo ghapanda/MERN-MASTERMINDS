@@ -54,7 +54,7 @@ const SignUp = (props) => {
       danceStyle: "Not chosen yet",
       danceClip: "",
       portrait: "",
-      bio: "add a bio",
+      bio: "No bio yet",
       listSessions: [],
     };
     try {
